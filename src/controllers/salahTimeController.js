@@ -1,5 +1,6 @@
 const prayerTimes = {
   Fajr: '',
+  Sunrise: '',
   Dhuhr: '',
   Asr: '',
   Maghrib: '',

@@ -44,10 +44,11 @@ const SalahTimesContextProvider = (props) => {
       const temp = {
         ...prayerTimes,
         Fajr: convertedSalahTimes[0],
-        Dhuhr: convertedSalahTimes[1],
-        Asr: convertedSalahTimes[2],
-        Maghrib: convertedSalahTimes[3],
-        Isha: convertedSalahTimes[4],
+        Sunrise: convertedSalahTimes[1],
+        Dhuhr: convertedSalahTimes[2],
+        Asr: convertedSalahTimes[3],
+        Maghrib: convertedSalahTimes[4],
+        Isha: convertedSalahTimes[5],
       };
 
       return temp;
@@ -110,7 +111,6 @@ const SalahTimesContextProvider = (props) => {
         ...input,
         city: cityNameFromLatLng,
       };
-
       setInput(temp);
 
       setIsLoading(false);

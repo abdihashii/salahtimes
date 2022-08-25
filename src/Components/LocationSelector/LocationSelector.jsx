@@ -6,13 +6,9 @@ import './styles/locationSelector.scss';
 export const LocationSelector = () => {
   const {
     input,
-    setInput,
-    setPrayerTimes,
     handleLocationChange,
     handleSelect,
     onMapIconClick,
-    getSalahTimes,
-    getCityNameFromLatLng,
     getLocationByIpAddress,
   } = useContext(SalahTimesContext);
 
