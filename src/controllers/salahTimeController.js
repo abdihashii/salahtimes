@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 const prayerTimes = {
   Fajr: '',
   Sunrise: '',
@@ -21,6 +23,9 @@ const convertFrom24HourTo12Hour = (time) => {
   if (hourInt > 12) {
     hourInt -= 12;
     hourString = '0' + hourInt.toString();
+    amPm = 'pm';
+  } else if (hourInt === 12) {
+    hourInt.toString();
     amPm = 'pm';
   }
   const convertedTime = `${hourString}:${minute} ${amPm}`;

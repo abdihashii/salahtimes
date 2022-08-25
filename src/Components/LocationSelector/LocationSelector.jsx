@@ -10,6 +10,7 @@ export const LocationSelector = () => {
     handleSelect,
     onMapIconClick,
     getLocationByIpAddress,
+    getUpcomingSalah,
     setDebug,
   } = useContext(SalahTimesContext);
 
@@ -27,6 +28,11 @@ export const LocationSelector = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    getUpcomingSalah();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [input]);
 
   return (
     <div className="field">

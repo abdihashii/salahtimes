@@ -1,5 +1,5 @@
 import { useState, createContext } from 'react';
-// import update from 'immutability-helper';
+import moment from 'moment-timezone';
 import {
   convertSalahTimes,
   getCityNameFromLatLng,
@@ -22,6 +22,11 @@ const SalahTimesContextProvider = (props) => {
     Maghrib: '',
     Isha: '',
   });
+  const [closestPrayerTime, setClosetPrayerTime] = useState({
+    closestPrayer: '',
+    closestPrayerTime: '',
+  });
+
   /**
    * Gets the prayer times from the latitude and longitude using the aladhan API
    * @param {Number} lat - Latitude
@@ -122,6 +127,42 @@ const SalahTimesContextProvider = (props) => {
     }
   };
 
+  const getUpcomingSalah = async () => {
+    if (input.lat && input.lng) {
+      try {
+        const currentEpochTime = moment().unix();
+
+        const url = `https://maps.googleapis.com/maps/api/timezone/json?location=${input.lat},${input.lng}&timestamp=${currentEpochTime}&key=AIzaSyCxVzF10x8rBy1VakwMG5pXfeEJHqZARX0`;
+        const res = await fetch(url);
+
+        const { timeZoneId } = await res.json();
+
+        const currentLocalTime = moment().tz(timeZoneId).format('hh:mm a');
+        console.log(currentLocalTime);
+        const currentLocalTimeInMinutes = moment
+          .duration(moment(currentLocalTime, 'hh:mm a').format('HH:mm'))
+          .asMinutes();
+
+        const [closestPrayer, closestPrayerTime] = Object.entries(
+          prayerTimes
+        ).find(([prayer, time]) => {
+          const timeInMinutes = moment
+            .duration(moment(time, 'hh:mm a').format('HH:mm'))
+            .asMinutes();
+
+          return timeInMinutes > currentLocalTimeInMinutes;
+        });
+
+        setClosetPrayerTime({
+          closestPrayer,
+          closestPrayerTime,
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    }
+  };
+
   const handleLocationChange = (location) => {
     const temp = { ...input, city: location };
     setInput(temp);
@@ -153,8 +194,11 @@ const SalahTimesContextProvider = (props) => {
         getCityNameFromLatLng,
         onMapIconClick,
         getLocationByIpAddress,
+        getUpcomingSalah,
         handleLocationChange,
         handleSelect,
+        closestPrayerTime,
+        setClosetPrayerTime,
       }}
     >
       {props.children}
