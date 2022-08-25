@@ -10,6 +10,7 @@ export const LocationSelector = () => {
     handleSelect,
     onMapIconClick,
     getLocationByIpAddress,
+    setDebug,
   } = useContext(SalahTimesContext);
 
   useEffect(() => {
@@ -17,6 +18,14 @@ export const LocationSelector = () => {
       `https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyCxVzF10x8rBy1VakwMG5pXfeEJHqZARX0`,
       { method: 'POST' }
     );
+
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const debugString = urlParams.get('debug');
+
+    setDebug(debugString ? true : false);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

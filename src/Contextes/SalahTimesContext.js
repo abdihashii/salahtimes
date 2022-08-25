@@ -9,6 +9,7 @@ import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 export const SalahTimesContext = createContext(null);
 
 const SalahTimesContextProvider = (props) => {
+  const [debug, setDebug] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [input, setInput] = useState({
     city: '',
@@ -139,6 +140,8 @@ const SalahTimesContextProvider = (props) => {
   return (
     <SalahTimesContext.Provider
       value={{
+        debug,
+        setDebug,
         isLoading,
         setIsLoading,
         input,
