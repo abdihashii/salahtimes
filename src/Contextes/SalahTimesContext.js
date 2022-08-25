@@ -13,6 +13,8 @@ const SalahTimesContextProvider = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [input, setInput] = useState({
     city: '',
+    lat: 0,
+    lng: 0,
   });
   const [prayerTimes, setPrayerTimes] = useState({
     Fajr: '',
@@ -78,6 +80,8 @@ const SalahTimesContextProvider = (props) => {
         const temp = {
           ...input,
           city: cityNameFromLatLng,
+          lat,
+          lng,
         };
         setInput(temp);
 
@@ -116,6 +120,8 @@ const SalahTimesContextProvider = (props) => {
       const cityNameFromLatLng = await getCityNameFromLatLng(lat, lng);
       const temp = {
         ...input,
+        lat,
+        lng,
         city: cityNameFromLatLng,
       };
       setInput(temp);
@@ -168,11 +174,19 @@ const SalahTimesContextProvider = (props) => {
     setInput(temp);
   };
 
-  const handleSelect = (address) => {
-    geocodeByAddress(address)
-      .then((results) => getLatLng(results[0]))
-      .then(async (latLng) => {
+  const handleSelect = (location) => {
+    geocodeByAddress(location)
+      .then(async (results) => {
+        const { long_name } = results[0].address_components.find((o) =>
+          o.types.find((type) => type === 'locality')
+        );
+        const latLng = await getLatLng(results[0]);
+        return { latLng, long_name };
+      })
+      .then(async ({ latLng, long_name }) => {
         const { lat, lng } = latLng;
+        setInput({ ...input, city: long_name, lat, lng });
+
         const tempPrayerTimes = await getSalahTimes(lat, lng);
         setPrayerTimes(tempPrayerTimes);
       })
