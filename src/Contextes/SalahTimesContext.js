@@ -67,6 +67,10 @@ const SalahTimesContextProvider = (props) => {
     }
   };
 
+  /**
+   * When the user clicks on the map icon, this will set the prayer times from geolocation
+   * and will also change the city name
+   */
   const onMapIconClick = () => {
     const success = async (position) => {
       try {
@@ -105,6 +109,11 @@ const SalahTimesContextProvider = (props) => {
     }
   };
 
+  /**
+   * Sets the prayer times and the city name on page init load
+   * @param {string} url - the api url
+   * @param {object} options - the post options properties
+   */
   const getLocationByIpAddress = async (url, options) => {
     try {
       setIsLoading(true);
@@ -133,6 +142,9 @@ const SalahTimesContextProvider = (props) => {
     }
   };
 
+  /**
+   * Shows the user the upcoming salah based on the location of the city
+   */
   const getUpcomingSalah = async () => {
     if (input.lat && input.lng) {
       try {
@@ -151,7 +163,7 @@ const SalahTimesContextProvider = (props) => {
 
         const [closestPrayer, closestPrayerTime] = Object.entries(
           prayerTimes
-        ).find(([prayer, time]) => {
+        ).find(([_, time]) => {
           const timeInMinutes = moment
             .duration(moment(time, 'hh:mm a').format('HH:mm'))
             .asMinutes();
@@ -169,11 +181,19 @@ const SalahTimesContextProvider = (props) => {
     }
   };
 
+  /**
+   * On change handler for the city name input
+   * @param {string} location - the city name
+   */
   const handleLocationChange = (location) => {
     const temp = { ...input, city: location };
     setInput(temp);
   };
 
+  /**
+   * When the user selects the city name from the popover list
+   * @param {string} location - the city name
+   */
   const handleSelect = (location) => {
     geocodeByAddress(location)
       .then(async (results) => {

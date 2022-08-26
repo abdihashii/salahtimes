@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 const prayerTimes = {
   Fajr: '',
   Sunrise: '',
@@ -54,6 +52,12 @@ export const convertSalahTimes = (salahTimes) => {
   return convertedSalahTimesList;
 };
 
+/**
+ * Gets the city name based on lat and long inputs
+ * @param {number} lat - latitude
+ * @param {number} lng - longitude
+ * @returns the city name
+ */
 export const getCityNameFromLatLng = async (lat, lng) => {
   try {
     const res = await fetch(
