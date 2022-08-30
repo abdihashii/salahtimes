@@ -156,20 +156,28 @@ const SalahTimesContextProvider = (props) => {
         const { timeZoneId } = await res.json();
 
         const currentLocalTime = moment().tz(timeZoneId).format('hh:mm a');
-        console.log(currentLocalTime);
         const currentLocalTimeInMinutes = moment
           .duration(moment(currentLocalTime, 'hh:mm a').format('HH:mm'))
           .asMinutes();
 
-        const [closestPrayer, closestPrayerTime] = Object.entries(
+        let [closestPrayer, closestPrayerTime] = Object.entries(
           prayerTimes
-        ).find(([_, time]) => {
+        ).find(([prayer, time]) => {
           const timeInMinutes = moment
             .duration(moment(time, 'hh:mm a').format('HH:mm'))
             .asMinutes();
 
+          if (prayer === 'Isha') {
+            return true;
+          }
+
           return timeInMinutes > currentLocalTimeInMinutes;
         });
+
+        if (closestPrayer === 'Isha' && currentLocalTime > closestPrayerTime) {
+          closestPrayer = 'Fajr';
+          closestPrayerTime = prayerTimes.Fajr;
+        }
 
         setClosetPrayerTime({
           closestPrayer,
