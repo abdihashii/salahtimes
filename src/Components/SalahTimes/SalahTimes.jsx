@@ -12,7 +12,7 @@ export const SalahTimes = () => {
         <progress className="progress is-small is-primary" max="100"></progress>
       ) : (
         <>
-          <div className="columns mt-5">
+          <div className="columns is-desktop mt-5">
             <div className="column">
               <p className="title is-4 is-uppercase has-text-weight-bold">
                 Fajr

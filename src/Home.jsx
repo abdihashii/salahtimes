@@ -5,11 +5,8 @@ import SalahTimesContextProvider from './Contextes/SalahTimesContext';
 function App() {
   return (
     <SalahTimesContextProvider>
-      <div>
-        <div
-          className="container is-fullhd box mt-6"
-          style={{ width: '800px' }}
-        >
+      <div className="container">
+        <div className="box mt-6">
           <LocationSelector />
 
           <SalahTimes />
