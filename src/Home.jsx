@@ -1,5 +1,6 @@
 import { LocationSelector } from './Components/LocationSelector/LocationSelector';
 import { SalahTimes } from './Components/SalahTimes/SalahTimes';
+import { MoreSalahTimes } from './Components/MoreSalahTimes/MoreSalahTimes';
 import SalahTimesContextProvider from './Contextes/SalahTimesContext';
 
 function App() {
@@ -10,6 +11,8 @@ function App() {
           <LocationSelector />
 
           <SalahTimes />
+
+          <MoreSalahTimes />
         </div>
       </div>
     </SalahTimesContextProvider>

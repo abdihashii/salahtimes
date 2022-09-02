@@ -28,6 +28,8 @@ const SalahTimesContextProvider = (props) => {
     closestPrayer: '',
     closestPrayerTime: '',
   });
+  const [isMoreSalahTimesToggled, setIsMoreSalahTimesToggled] = useState(false);
+  const [salahCalendarDates, setSalahCalendarDates] = useState([]);
 
   /**
    * Gets the prayer times from the latitude and longitude using the aladhan API
@@ -221,6 +223,10 @@ const SalahTimesContextProvider = (props) => {
       .catch((error) => console.error('Error', error));
   };
 
+  const handleMoreSalahTimesToggle = () => {
+    setIsMoreSalahTimesToggled(!isMoreSalahTimesToggled);
+  };
+
   return (
     <SalahTimesContext.Provider
       value={{
@@ -241,6 +247,11 @@ const SalahTimesContextProvider = (props) => {
         handleSelect,
         closestPrayerTime,
         setClosetPrayerTime,
+        isMoreSalahTimesToggled,
+        setIsMoreSalahTimesToggled,
+        handleMoreSalahTimesToggle,
+        salahCalendarDates,
+        setSalahCalendarDates,
       }}
     >
       {props.children}
