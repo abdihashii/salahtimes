@@ -1,5 +1,5 @@
 ### P1 ideas
-- [x] Show city name and current time once selected
+- [x] Show city name and current time once selected (#2)
 - [ ] Allow users to select method
 - [ ] Allow for even more advanced methods in the future (like asr calculations, etc.)
 - [ ] Qibla
