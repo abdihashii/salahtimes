@@ -40,66 +40,106 @@ export const LocationSelector = () => {
   const handleMethodSelect = ({ target: { value } }) => {
     setMethod(value);
   };
+
+  useEffect(() => {
+    getSalahTimes(input.lat, input.lng, method);
+
+    // debugger;
+  }, [method]);
+
   return (
-    <div className="field">
-      <div className="control has-icons-left has-icons-right">
-        {/* Map icon */}
-        <span className="icon is-left fa-xl">
-          <i className="fa-solid fa-location-dot"></i>
-        </span>
+    <>
+      <div className="field">
+        <div className="control has-icons-left has-icons-right">
+          {/* Map icon */}
+          <span className="icon is-left fa-xl">
+            <i className="fa-solid fa-location-dot"></i>
+          </span>
 
-        <PlacesAutocomplete
-          value={input.city}
-          onChange={handleLocationChange}
-          onSelect={handleSelect}
-        >
-          {({
-            getInputProps,
-            suggestions,
-            getSuggestionItemProps,
-            loading,
-          }) => (
-            <div>
-              <input
-                {...getInputProps({
-                  placeholder: 'Enter location',
-                  className: 'input is-large',
-                })}
-              />
+          <PlacesAutocomplete
+            value={input.city}
+            onChange={handleLocationChange}
+            onSelect={handleSelect}
+          >
+            {({
+              getInputProps,
+              suggestions,
+              getSuggestionItemProps,
+              loading,
+            }) => (
               <div>
-                {loading && <div>Loading...</div>}
-                {suggestions.map((suggestion) => {
-                  const className = suggestion.active
-                    ? 'suggestion-item--active'
-                    : 'suggestion-item';
-                  // inline style for demonstration purpose
-                  const style = suggestion.active
-                    ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                    : { backgroundColor: '#ffffff', cursor: 'pointer' };
-                  return (
-                    <div
-                      {...getSuggestionItemProps(suggestion, {
-                        className,
-                        style,
-                      })}
-                    >
-                      <span>{suggestion.description}</span>
-                    </div>
-                  );
-                })}
+                <input
+                  {...getInputProps({
+                    placeholder: 'Enter location',
+                    className: 'input is-large',
+                  })}
+                />
+                <div>
+                  {loading && <div>Loading...</div>}
+                  {suggestions.map((suggestion) => {
+                    const className = suggestion.active
+                      ? 'suggestion-item--active'
+                      : 'suggestion-item';
+                    // inline style for demonstration purpose
+                    const style = suggestion.active
+                      ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                      : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                    return (
+                      <div
+                        {...getSuggestionItemProps(suggestion, {
+                          className,
+                          style,
+                        })}
+                      >
+                        <span>{suggestion.description}</span>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-          )}
-        </PlacesAutocomplete>
+            )}
+          </PlacesAutocomplete>
 
-        <span
-          id="maps-icon"
-          className="icon is-right fa-xl"
-          onClick={onMapIconClick}
-        >
-          <i className="fa-solid fa-location-crosshairs"></i>
-        </span>
+          <span
+            id="maps-icon"
+            className="icon is-right fa-xl"
+            onClick={onMapIconClick}
+          >
+            <i className="fa-solid fa-location-crosshairs"></i>
+          </span>
+        </div>
       </div>
-    </div>
+
+      <div className="control has-icons-left">
+        <div className="select">
+          <select onChange={handleMethodSelect} value={method}>
+            <option value="0">Shia Ithna-Ansari</option>
+            <option value="1">University of Islamic Sciences, Karachi</option>
+            <option value="2">Islamic Society of North America</option>
+            <option value="3">Muslim World League</option>
+            <option value="4">Umm Al-Qura University, Makkah</option>
+            <option value="5">Egyptian General Authority of Survey</option>
+            <option value="7">
+              Institute of Geophysics, University of Tehran
+            </option>
+            <option value="8">Gulf Region</option>
+            <option value="9">Kuwait</option>
+            <option value="10">Qatar</option>
+            <option value="11">Majlis Ugama Islam Singapura, Singapore</option>
+            <option value="12">Union Organization islamic de France</option>
+            <option value="13">Diyanet İşleri Başkanlığı, Turkey</option>
+            <option value="14">
+              Spiritual Administration of Muslims of Russia
+            </option>
+            <option value="15">
+              Moonsighting Committee Worldwide (also requires shafaq paramteer)
+            </option>
+          </select>
+        </div>
+        <div className="icon is-small is-left">
+          <i className="fas fa-globe"></i>
+        </div>
+      </div>
+    </>
   );
 };
