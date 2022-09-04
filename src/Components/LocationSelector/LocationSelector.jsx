@@ -12,6 +12,9 @@ export const LocationSelector = () => {
     getLocationByIpAddress,
     getUpcomingSalah,
     setDebug,
+    method,
+    setMethod,
+    getSalahTimes,
   } = useContext(SalahTimesContext);
 
   useEffect(() => {
@@ -34,6 +37,9 @@ export const LocationSelector = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input]);
 
+  const handleMethodSelect = ({ target: { value } }) => {
+    setMethod(value);
+  };
   return (
     <div className="field">
       <div className="control has-icons-left has-icons-right">
