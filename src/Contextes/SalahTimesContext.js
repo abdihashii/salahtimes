@@ -13,6 +13,7 @@ const SalahTimesContextProvider = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const [input, setInput] = useState({
     city: '',
+    selectedCity: '',
     lat: 0,
     lng: 0,
   });
@@ -30,6 +31,7 @@ const SalahTimesContextProvider = (props) => {
   });
   const [isMoreSalahTimesToggled, setIsMoreSalahTimesToggled] = useState(false);
   const [salahCalendarDates, setSalahCalendarDates] = useState([]);
+  const [currentTime, setCurrentTime] = useState('');
 
   /**
    * Gets the prayer times from the latitude and longitude using the aladhan API
@@ -86,6 +88,7 @@ const SalahTimesContextProvider = (props) => {
         const temp = {
           ...input,
           city: cityNameFromLatLng,
+          selectedCity: cityNameFromLatLng,
           lat,
           lng,
         };
@@ -134,6 +137,7 @@ const SalahTimesContextProvider = (props) => {
         lat,
         lng,
         city: cityNameFromLatLng,
+        selectedCity: cityNameFromLatLng,
       };
       setInput(temp);
 
@@ -215,7 +219,13 @@ const SalahTimesContextProvider = (props) => {
       })
       .then(async ({ latLng, long_name }) => {
         const { lat, lng } = latLng;
-        setInput({ ...input, city: long_name, lat, lng });
+        setInput({
+          ...input,
+          city: long_name,
+          selectedCity: long_name,
+          lat,
+          lng,
+        });
 
         const tempPrayerTimes = await getSalahTimes(lat, lng);
         setPrayerTimes(tempPrayerTimes);
@@ -252,6 +262,8 @@ const SalahTimesContextProvider = (props) => {
         handleMoreSalahTimesToggle,
         salahCalendarDates,
         setSalahCalendarDates,
+        currentTime,
+        setCurrentTime,
       }}
     >
       {props.children}
