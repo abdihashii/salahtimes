@@ -3,7 +3,8 @@ import { SalahTimesContext } from '../../Contextes/SalahTimesContext';
 import moment from 'moment';
 
 export const CityAndTimeDisplay = () => {
-  const { input, currentTime, setCurrentTime } = useContext(SalahTimesContext);
+  const { input, currentTime, setCurrentTime, isLoading } =
+    useContext(SalahTimesContext);
 
   useEffect(() => {
     if (input.lat && input.lng) {
@@ -29,8 +30,12 @@ export const CityAndTimeDisplay = () => {
   }, [input.selectedCity, input.lat, input.lng, setCurrentTime]);
 
   return (
-    <div>
-      {input.selectedCity}, {currentTime}
-    </div>
+    <>
+      {!isLoading && (
+        <div>
+          {input.selectedCity}, {currentTime}
+        </div>
+      )}
+    </>
   );
 };
