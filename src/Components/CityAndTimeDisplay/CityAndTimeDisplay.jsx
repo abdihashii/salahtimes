@@ -17,7 +17,9 @@ export const CityAndTimeDisplay = () => {
 
           const { timeZoneId } = await res.json();
 
-          const currentTime = moment().tz(timeZoneId).format('hh:mm a');
+          const currentTime = moment()
+            .tz(timeZoneId)
+            .format('ddd, MMMM  Do hh:mm a');
 
           setCurrentTime(currentTime);
         } catch (err) {
@@ -33,7 +35,8 @@ export const CityAndTimeDisplay = () => {
     <>
       {!isLoading && (
         <div>
-          {input.selectedCity}, {currentTime}
+          <div>{input.selectedCity}</div>
+          <div>{currentTime}</div>
         </div>
       )}
     </>

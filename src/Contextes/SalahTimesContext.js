@@ -32,6 +32,7 @@ const SalahTimesContextProvider = (props) => {
   const [isMoreSalahTimesToggled, setIsMoreSalahTimesToggled] = useState(false);
   const [salahCalendarDates, setSalahCalendarDates] = useState([]);
   const [currentTime, setCurrentTime] = useState('');
+  const [method, setMethod] = useState('2');
 
   /**
    * Gets the prayer times from the latitude and longitude using the aladhan API
@@ -39,35 +40,37 @@ const SalahTimesContextProvider = (props) => {
    * @param {Number} lon - Latitude
    * @returns Object prayer times
    */
-  const getSalahTimes = async (lat, lon) => {
-    try {
-      const url = `http://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=2`;
+  const getSalahTimes = async (lat, lon, method) => {
+    if ((lat, lon)) {
+      try {
+        const url = `http://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=${method}`;
 
-      setIsLoading(true);
+        setIsLoading(true);
 
-      const res = await fetch(url);
-      const {
-        data: { timings },
-      } = await res.json();
+        const res = await fetch(url);
+        const {
+          data: { timings },
+        } = await res.json();
 
-      setIsLoading(false);
+        setIsLoading(false);
 
-      const convertedSalahTimes = convertSalahTimes(timings);
+        const convertedSalahTimes = convertSalahTimes(timings);
 
-      const temp = {
-        ...prayerTimes,
-        Fajr: convertedSalahTimes[0],
-        Sunrise: convertedSalahTimes[1],
-        Dhuhr: convertedSalahTimes[2],
-        Asr: convertedSalahTimes[3],
-        Maghrib: convertedSalahTimes[4],
-        Isha: convertedSalahTimes[5],
-      };
+        const temp = {
+          ...prayerTimes,
+          Fajr: convertedSalahTimes[0],
+          Sunrise: convertedSalahTimes[1],
+          Dhuhr: convertedSalahTimes[2],
+          Asr: convertedSalahTimes[3],
+          Maghrib: convertedSalahTimes[4],
+          Isha: convertedSalahTimes[5],
+        };
 
-      return temp;
-    } catch (err) {
-      setIsLoading(false);
-      console.error(err);
+        return temp;
+      } catch (err) {
+        setIsLoading(false);
+        console.error(err);
+      }
     }
   };
 
@@ -81,7 +84,7 @@ const SalahTimesContextProvider = (props) => {
         const lat = position.coords.latitude;
         const lng = position.coords.longitude;
 
-        const tempPrayerTimes = await getSalahTimes(lat, lng);
+        const tempPrayerTimes = await getSalahTimes(lat, lng, method);
         setPrayerTimes(tempPrayerTimes);
 
         const cityNameFromLatLng = await getCityNameFromLatLng(lat, lng);
@@ -128,7 +131,7 @@ const SalahTimesContextProvider = (props) => {
         location: { lat, lng },
       } = await res.json();
 
-      const tempPrayerTimes = await getSalahTimes(lat, lng);
+      const tempPrayerTimes = await getSalahTimes(lat, lng, method);
       setPrayerTimes(tempPrayerTimes);
 
       const cityNameFromLatLng = await getCityNameFromLatLng(lat, lng);
@@ -227,7 +230,7 @@ const SalahTimesContextProvider = (props) => {
           lng,
         });
 
-        const tempPrayerTimes = await getSalahTimes(lat, lng);
+        const tempPrayerTimes = await getSalahTimes(lat, lng, method);
         setPrayerTimes(tempPrayerTimes);
       })
       .catch((error) => console.error('Error', error));
@@ -264,6 +267,8 @@ const SalahTimesContextProvider = (props) => {
         setSalahCalendarDates,
         currentTime,
         setCurrentTime,
+        method,
+        setMethod,
       }}
     >
       {props.children}

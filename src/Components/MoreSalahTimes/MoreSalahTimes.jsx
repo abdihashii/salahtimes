@@ -41,8 +41,8 @@ export const MoreSalahTimes = () => {
           <span>More Salah Times</span>
           <span className="icon">
             <i
-              className={`fa-solid ${
-                isMoreSalahTimesToggled ? 'fa-arrow-up' : 'fa-arrow-down'
+              className={`fas ${
+                isMoreSalahTimesToggled ? 'fa-angle-up' : 'fa-angle-down'
               }`}
             ></i>
           </span>
