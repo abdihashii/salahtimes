@@ -43,9 +43,7 @@ export const LocationSelector = () => {
 
   useEffect(() => {
     getSalahTimes(input.lat, input.lng, method);
-
-    // debugger;
-  }, [method]);
+  }, [method, input.lat, input.lng, getSalahTimes]);
 
   return (
     <>
