@@ -43,7 +43,9 @@ export const LocationSelector = () => {
 
   useEffect(() => {
     getSalahTimes(input.lat, input.lng, method);
-  }, [method, input.lat, input.lng, getSalahTimes]);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [method]);
 
   return (
     <>
