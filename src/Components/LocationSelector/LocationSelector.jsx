@@ -13,7 +13,7 @@ export const LocationSelector = () => {
     getUpcomingSalah,
     setDebug,
     method,
-    setMethod,
+    // setMethod,
     getSalahTimes,
   } = useContext(SalahTimesContext);
 
