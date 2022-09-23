@@ -35,7 +35,7 @@ export const MoreSalahTimes = () => {
     <>
       <div className="buttons is-centered">
         <button
-          className="button is-primary"
+          className="more-salah-times-btn"
           onClick={handleMoreSalahTimesToggle}
         >
           <span>More Salah Times</span>
@@ -50,7 +50,7 @@ export const MoreSalahTimes = () => {
       </div>
 
       {isMoreSalahTimesToggled && (
-        <div>
+        <div className="more-salah-times-table-container">
           <table className="table">
             <thead>
               <tr>
@@ -74,7 +74,7 @@ export const MoreSalahTimes = () => {
                     <tr
                       key={readable}
                       className={`${
-                        todaysDate === readable ? 'currentDate' : ''
+                        todaysDate === readable ? 'current-date' : ''
                       }`}
                     >
                       <th>{readable}</th>

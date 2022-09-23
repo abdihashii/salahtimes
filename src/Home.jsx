@@ -2,21 +2,22 @@ import { LocationSelector } from './Components/LocationSelector/LocationSelector
 import { SalahTimes } from './Components/SalahTimes/SalahTimes';
 import { MoreSalahTimes } from './Components/MoreSalahTimes/MoreSalahTimes';
 import SalahTimesContextProvider from './Contextes/SalahTimesContext';
-import { CityAndTimeDisplay } from './Components/CityAndTimeDisplay/CityAndTimeDisplay';
+// import { CityAndTimeDisplay } from './Components/CityAndTimeDisplay/CityAndTimeDisplay';
+import { Title } from './Components/Title/Title';
 
 function App() {
   return (
     <SalahTimesContextProvider>
-      <div className="container">
-        <div className="box mt-6">
-          <LocationSelector />
+      <div className="salah-container">
+        <Title />
 
-          <CityAndTimeDisplay />
+        <LocationSelector />
 
-          <SalahTimes />
+        {/* <CityAndTimeDisplay /> */}
 
-          <MoreSalahTimes />
-        </div>
+        <SalahTimes />
+
+        <MoreSalahTimes />
       </div>
     </SalahTimesContextProvider>
   );

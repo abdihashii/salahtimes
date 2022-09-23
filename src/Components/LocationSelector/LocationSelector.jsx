@@ -110,7 +110,11 @@ export const LocationSelector = () => {
         </div>
       </div>
 
-      <div className="control has-icons-left">
+      {/* <div>
+        <input className="location-input" type="text" />
+      </div> */}
+
+      {/* <div className="control has-icons-left">
         <div className="select">
           <select onChange={handleMethodSelect} value={method}>
             <option value="0">Shia Ithna-Ansari</option>
@@ -139,7 +143,7 @@ export const LocationSelector = () => {
         <div className="icon is-small is-left">
           <i className="fas fa-globe"></i>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };
