@@ -1,5 +1,3 @@
-import './styles/title.scss';
-
 export const Title = () => {
-  return <h1>myPrayerTimes.com</h1>;
+  return <h1 className="text-7xl text-center mb-16">myPrayerTimes.com</h1>;
 };

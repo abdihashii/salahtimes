@@ -2,6 +2,7 @@ import { useContext, useEffect } from 'react';
 import { SalahTimesContext } from '../../Contextes/SalahTimesContext';
 import moment from 'moment';
 import './styles/moreSalahTimes.scss';
+import { MoreButtonsBtn } from './MoreButtonsBtn';
 
 export const MoreSalahTimes = () => {
   const {
@@ -33,24 +34,13 @@ export const MoreSalahTimes = () => {
 
   return (
     <>
-      <div className="buttons is-centered">
-        <button
-          className="more-salah-times-btn"
-          onClick={handleMoreSalahTimesToggle}
-        >
-          <span>More Salah Times</span>
-          <span className="icon">
-            <i
-              className={`fas ${
-                isMoreSalahTimesToggled ? 'fa-angle-up' : 'fa-angle-down'
-              }`}
-            ></i>
-          </span>
-        </button>
-      </div>
+      <MoreButtonsBtn
+        onClickHandler={handleMoreSalahTimesToggle}
+        {...{ isMoreSalahTimesToggled }}
+      />
 
       {isMoreSalahTimesToggled && (
-        <div className="more-salah-times-table-container">
+        <div className="flex justify-center">
           <table className="table">
             <thead>
               <tr>
