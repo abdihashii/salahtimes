@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import { SalahTimesContext } from '../../Contextes/SalahTimesContext';
-import './styles/salahTimes.scss';
 import { SalahCard } from './SalahCard';
 
 export const SalahTimes = () => {
@@ -13,7 +12,7 @@ export const SalahTimes = () => {
         <progress className="progress is-small is-primary" max="100"></progress>
       ) : (
         <>
-          <div className="salah-cards">
+          <div className="mt-56px mb-38px flex flex-row gap-1.125 ">
             {Object.entries(prayerTimes).map(([salah, time]) => {
               return <SalahCard {...{ salah, time }} />;
             })}
