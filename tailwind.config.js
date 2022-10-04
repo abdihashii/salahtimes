@@ -26,16 +26,22 @@ module.exports = {
       height: {
         '55px': '55px',
         '151px': '151px',
+        '1063px': '1063px',
       },
       width: {
         '242px': '242px',
         '229px': '229px',
+        '981px': '981px',
       },
       gap: {
         1.125: '1.125rem',
       },
       fontSize: {
         '24px': '24px',
+      },
+      padding: {
+        '12px': '12px',
+        '49px': '49px',
       },
     },
   },
