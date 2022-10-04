@@ -13,7 +13,7 @@ export const LocationSelector = () => {
     getUpcomingSalah,
     setDebug,
     method,
-    setMethod,
+    // setMethod,
     getSalahTimes,
   } = useContext(SalahTimesContext);
 
@@ -37,9 +37,9 @@ export const LocationSelector = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input]);
 
-  const handleMethodSelect = ({ target: { value } }) => {
-    setMethod(value);
-  };
+  // const handleMethodSelect = ({ target: { value } }) => {
+  //   setMethod(value);
+  // };
 
   useEffect(() => {
     getSalahTimes(input.lat, input.lng, method);
