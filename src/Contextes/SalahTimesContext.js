@@ -43,7 +43,7 @@ const SalahTimesContextProvider = (props) => {
   const getSalahTimes = async (lat, lon, method) => {
     if ((lat, lon)) {
       try {
-        const url = `http://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=${method}`;
+        const url = `https://api.aladhan.com/v1/timings?latitude=${lat}&longitude=${lon}&method=${method}`;
 
         setIsLoading(true);
 

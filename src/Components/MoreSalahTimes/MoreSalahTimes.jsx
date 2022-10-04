@@ -26,7 +26,7 @@ export const MoreSalahTimes = () => {
 
     if (input.lat && input.lng) {
       getSalahCalendar(
-        `http://api.aladhan.com/v1/calendar?latitude=${input.lat}&longitude=${input.lng}`
+        `https://api.aladhan.com/v1/calendar?latitude=${input.lat}&longitude=${input.lng}`
       );
     }
   }, [input.lat, input.lng, setSalahCalendarDates]);
