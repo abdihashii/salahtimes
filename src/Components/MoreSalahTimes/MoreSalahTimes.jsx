@@ -1,7 +1,6 @@
 import { useContext, useEffect } from 'react';
 import { SalahTimesContext } from '../../Contextes/SalahTimesContext';
 import moment from 'moment';
-import './styles/moreSalahTimes.scss';
 import { MoreButtonsBtn } from './MoreButtonsBtn';
 
 export const MoreSalahTimes = () => {
@@ -63,9 +62,7 @@ export const MoreSalahTimes = () => {
                   return (
                     <tr
                       key={readable}
-                      className={`${
-                        todaysDate === readable ? 'current-date' : ''
-                      }`}
+                      className={`${todaysDate === readable ? 'bg-green' : ''}`}
                     >
                       <th>{readable}</th>
                       <td>{Fajr}</td>
