@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-import './styles/salahCard.scss';
 import { SalahTimesContext } from '../../Contextes/SalahTimesContext';
 
 export const SalahCard = ({ salah, time }) => {
