@@ -9,10 +9,13 @@ export const SalahTimes = () => {
   return (
     <>
       {isLoading ? (
-        <progress className="progress is-small is-primary" max="100"></progress>
+        <progress
+          className="progress is-small is-primary mr-0 mb-38px"
+          max="100"
+        ></progress>
       ) : (
         <>
-          <div className="mt-56px mb-38px flex flex-row gap-1.125 ">
+          <div className="mb-38px flex flex-row gap-1.125 ">
             {Object.entries(prayerTimes).map(([salah, time]) => {
               return <SalahCard {...{ salah, time }} />;
             })}

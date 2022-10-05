@@ -12,6 +12,7 @@ module.exports = {
       borderRadius: {
         '4xl': '32px',
         '20px': '20px',
+        '40px': '40px',
       },
       boxShadow: {
         green: '0px 8px 28px -6px rgba(10, 150, 58, 0.42)',
@@ -19,12 +20,14 @@ module.exports = {
         gray: '0px 8px 28px -6px rgba(24, 39, 75, 0.12), 0px 18px 88px -4px rgba(24, 39, 75, 0.14)',
       },
       margin: {
+        '24px': '24px',
         '51px': '51px',
         '56px': '56px',
-        '38px': '38px',
+        '38px': '38px !important',
       },
       height: {
         '55px': '55px',
+        '69px': '69px',
         '151px': '151px',
         '1063px': '1063px',
       },
@@ -32,6 +35,7 @@ module.exports = {
         '242px': '242px',
         '229px': '229px',
         '981px': '981px',
+        '933px': '933px',
       },
       gap: {
         1.125: '1.125rem',
@@ -41,7 +45,6 @@ module.exports = {
       },
       padding: {
         '12px': '12px',
-        '49px': '49px',
       },
     },
   },

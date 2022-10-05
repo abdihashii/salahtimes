@@ -49,12 +49,12 @@ export const LocationSelector = () => {
 
   return (
     <>
-      <div className="field">
-        <div className="control has-icons-left has-icons-right">
+      <div className="mb-56px flex justify-center">
+        <div className="relative flex items-center focus-within:text-white">
           {/* Map icon */}
-          <span className="icon is-left fa-xl">
-            <i className="fa-solid fa-location-dot"></i>
-          </span>
+          {/* <span className="fa-xl absolute z-10 ml-24px text-green"> */}
+          <i className="fa-xl fa-solid fa-location-dot absolute z-10 ml-24px text-green"></i>
+          {/* </span> */}
 
           <PlacesAutocomplete
             value={input.city}
@@ -71,7 +71,8 @@ export const LocationSelector = () => {
                 <input
                   {...getInputProps({
                     placeholder: 'Enter location',
-                    className: 'input is-large',
+                    className:
+                      'w-933px pl-16 z-0 input is-large rounded-40px border-2 border-none ring-green ring-2 hover:ring-green-dark focus:ring-green-dark focus:ring-2',
                   })}
                 />
                 <div>
@@ -101,11 +102,10 @@ export const LocationSelector = () => {
           </PlacesAutocomplete>
 
           <span
-            id="maps-icon"
-            className="icon is-right fa-xl"
+            className="absolute right-0 z-10 mr-24px inline-flex h-10 w-10 cursor-pointer items-center justify-center border-l border-black pl-4 text-green hover:text-green-dark"
             onClick={onMapIconClick}
           >
-            <i className="fa-solid fa-location-crosshairs"></i>
+            <i className="fa-xl fa-solid fa-location-crosshairs"></i>
           </span>
         </div>
       </div>
