@@ -70,32 +70,50 @@ export const LocationSelector = () => {
               <div>
                 <input
                   {...getInputProps({
-                    placeholder: 'Enter location',
-                    className:
-                      'input is-large border-2 border-none ring-green ring-2 hover:ring-green-dark focus:ring-green-dark focus:ring-2 rounded-20px',
+                    placeholder: 'Enter your location',
+                    className: `${
+                      suggestions.length > 1
+                        ? 'rounded-bl-none rounded-br-none'
+                        : ''
+                    } input is-large focus:ring-0 ring-0 rounded-20px border-2 border-green focus:border-green-dark hover:border-green-dark`,
                   })}
                 />
-                <div>
-                  {loading && <div>Loading...</div>}
-                  {suggestions.map((suggestion) => {
-                    const className = suggestion.active
-                      ? 'suggestion-item--active'
-                      : 'suggestion-item';
-                    // inline style for demonstration purpose
-                    const style = suggestion.active
-                      ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                      : { backgroundColor: '#ffffff', cursor: 'pointer' };
-                    return (
-                      <div
-                        {...getSuggestionItemProps(suggestion, {
-                          className,
-                          style,
-                        })}
-                      >
-                        <span>{suggestion.description}</span>
-                      </div>
-                    );
-                  })}
+                <div
+                  className={`${
+                    suggestions.length > 0
+                      ? 'rounded-bl-20px rounded-br-20px border-2 border-t-0 border-green-dark'
+                      : ''
+                  }`}
+                >
+                  {loading ? (
+                    <progress
+                      className="progress is-small is-primary mr-0 mb-38px mt-38px"
+                      max="100"
+                    ></progress>
+                  ) : (
+                    <>
+                      {suggestions.map((suggestion) => {
+                        debugger;
+                        const className = suggestion.active
+                          ? 'suggestion-item--active text-green text-center py-2 last:rounded-bl-20px last:rounded-br-20px'
+                          : 'suggestion-item text-center py-2 last:rounded-bl-20px last:rounded-br-20px';
+                        // inline style for demonstration purpose
+                        const style = suggestion.active
+                          ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                          : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                        return (
+                          <div
+                            {...getSuggestionItemProps(suggestion, {
+                              className,
+                              style,
+                            })}
+                          >
+                            <span>{suggestion.description}</span>
+                          </div>
+                        );
+                      })}{' '}
+                    </>
+                  )}
                 </div>
               </div>
             )}
