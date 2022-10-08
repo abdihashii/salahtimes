@@ -159,7 +159,7 @@ const SalahTimesContextProvider = (props) => {
       try {
         const currentEpochTime = moment().unix();
 
-        const url = `https://maps.googleapis.com/maps/api/timezone/json?location=${input.lat},${input.lng}&timestamp=${currentEpochTime}&key=AIzaSyCxVzF10x8rBy1VakwMG5pXfeEJHqZARX0`;
+        const url = `https://maps.googleapis.com/maps/api/timezone/json?location=${input.lat},${input.lng}&timestamp=${currentEpochTime}&key=${process.env.REACT_APP_MAPS_API_KEY}`;
         const res = await fetch(url);
 
         const { timeZoneId } = await res.json();

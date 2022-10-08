@@ -61,7 +61,7 @@ export const convertSalahTimes = (salahTimes) => {
 export const getCityNameFromLatLng = async (lat, lng) => {
   try {
     const res = await fetch(
-      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyCxVzF10x8rBy1VakwMG5pXfeEJHqZARX0`
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${process.env.REACT_APP_MAPS_API_KEY}`
     );
     const { results } = await res.json();
 
