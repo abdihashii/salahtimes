@@ -21,21 +21,23 @@ module.exports = {
       },
       margin: {
         '24px': '24px',
+        '38px': '38px !important',
         '51px': '51px',
         '56px': '56px',
-        '38px': '38px !important',
+        '86px': '86px',
       },
       height: {
         '55px': '55px',
         '69px': '69px',
         '151px': '151px',
+        '200px': '200px',
         '1063px': '1063px',
       },
       width: {
         '242px': '242px',
         '229px': '229px',
-        '981px': '981px',
         '933px': '933px',
+        '981px': '981px',
       },
       gap: {
         1.125: '1.125rem',

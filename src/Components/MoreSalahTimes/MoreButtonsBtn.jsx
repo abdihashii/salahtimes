@@ -4,7 +4,7 @@ export const MoreButtonsBtn = ({ onClickHandler, isMoreSalahTimesToggled }) => {
   return (
     <div className="flex justify-center">
       <button
-        className=" mb-51px h-55px w-242px cursor-pointer rounded-4xl border-none bg-green text-base font-semibold uppercase text-white shadow-green hover:bg-green-dark"
+        className="h-55px w-242px cursor-pointer rounded-4xl border-none bg-green text-base font-semibold uppercase text-white shadow-green hover:bg-green-dark"
         onClick={onClickHandler}
       >
         <span>More Salah Times</span>

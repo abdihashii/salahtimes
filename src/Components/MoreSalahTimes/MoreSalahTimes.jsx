@@ -39,7 +39,7 @@ export const MoreSalahTimes = () => {
       />
 
       {isMoreSalahTimesToggled && (
-        <div className="flex justify-center">
+        <div className="mt-51px flex justify-center">
           <table className="table h-1063px w-981px rounded-20px shadow-gray">
             <thead className="px-49px py-12px">
               <tr>

@@ -14,19 +14,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background-image: url(./assests/islamic-skyline-vector.png);
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-size: contain;
   min-height: 1372px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-.salah-container {
-  width: 981px;
-  height: 532px;
-  margin: 86px auto;
 }

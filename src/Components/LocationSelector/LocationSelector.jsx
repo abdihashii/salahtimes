@@ -72,7 +72,7 @@ export const LocationSelector = () => {
                   {...getInputProps({
                     placeholder: 'Enter your location',
                     className: `${
-                      suggestions.length > 1
+                      suggestions.length > 0
                         ? 'rounded-bl-none rounded-br-none'
                         : ''
                     } input is-large focus:ring-0 ring-0 rounded-20px border-2 border-green focus:border-green-dark hover:border-green-dark`,
@@ -86,10 +86,12 @@ export const LocationSelector = () => {
                   }`}
                 >
                   {loading ? (
-                    <progress
-                      className="progress is-small is-primary mr-0 mb-38px mt-38px"
-                      max="100"
-                    ></progress>
+                    <div className="h-200px">
+                      {/* <progress
+                        className="progress is-small is-primary mr-0 mb-38px mt-38px"
+                        max="100"
+                      ></progress> */}
+                    </div>
                   ) : (
                     <>
                       {suggestions.map((suggestion) => {
@@ -111,7 +113,7 @@ export const LocationSelector = () => {
                             <span>{suggestion.description}</span>
                           </div>
                         );
-                      })}{' '}
+                      })}
                     </>
                   )}
                 </div>
