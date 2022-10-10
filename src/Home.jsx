@@ -7,31 +7,31 @@ import SalahTimesContextProvider from './Contextes/SalahTimesContext';
 import { Logo } from './Components/Logo/Logo';
 
 function App() {
-	useEffect(() => {
-		// 👇 add class to body element
-		document.body.classList.add(
-			'bg-contain',
-			'bg-no-repeat',
-			'bg-center',
-			'bg-bottom',
-			'pb-16'
-		);
-	}, []);
+  useEffect(() => {
+    // 👇 add class to body element
+    document.body.classList.add(
+      'bg-contain',
+      'bg-no-repeat',
+      'bg-center',
+      'bg-bottom',
+      'pb-16'
+    );
+  }, []);
 
-	return (
-		<SalahTimesContextProvider>
-			<div className="mx-auto w-981px">
-				{/* <Title /> */}
-				<Logo />
+  return (
+    <SalahTimesContextProvider>
+      <div className="mx-auto w-screen lg:w-981px">
+        {/* <Title /> */}
+        <Logo />
 
-				<LocationSelector />
+        <LocationSelector />
 
-				<SalahTimes />
+        <SalahTimes />
 
-				<MoreSalahTimes />
-			</div>
-		</SalahTimesContextProvider>
-	);
+        <MoreSalahTimes />
+      </div>
+    </SalahTimesContextProvider>
+  );
 }
 
 export default App;

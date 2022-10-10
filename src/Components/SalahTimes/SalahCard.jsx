@@ -7,7 +7,7 @@ export const SalahCard = ({ salah, time }) => {
   return (
     <>
       <div
-        className={`flex h-151px w-229px flex-col items-center justify-center rounded-20px  ${
+        className={`flex h-151px w-11/12 flex-col items-center justify-center rounded-20px md:w-229px  ${
           closestPrayerTime.closestPrayer === salah
             ? 'bg-green text-white shadow-green'
             : 'bg-white shadow-gray'

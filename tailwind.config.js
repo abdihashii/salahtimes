@@ -25,6 +25,7 @@ module.exports = {
         '51px': '51px',
         '56px': '56px',
         '86px': '86px',
+        auto: 'auto !important',
       },
       height: {
         '55px': '55px',
