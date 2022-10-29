@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import { PrayerTimesContext } from "../../contexts/prayerTimesContext";
-import { PrayerTimeCard } from "./prayerTimeCard";
+import React, { useContext } from 'react';
+import { PrayerTimesContext } from '../../contexts/prayerTimesContext';
+import { PrayerTimeCard } from './prayerTimeCard';
 
 export const PrayerTimes = () => {
   const { debug, input, isLoading, prayerTimes, closestPrayerTime } =
@@ -9,12 +9,12 @@ export const PrayerTimes = () => {
   return (
     <>
       {isLoading ? (
-        // <progress
-        //   className="progress is-small is-primary mr-0 mb-38px"
-        //   max="100"
-        // ></progress>
-        <h1>Loading...</h1>
+        <progress
+          className="progress is-small is-primary mr-0 mb-38px"
+          max="100"
+        ></progress>
       ) : (
+        // <h1>Loading...</h1>
         <>
           <div className="mb-38px flex flex-col items-center gap-1.125 lg:flex-row">
             {Object.entries(prayerTimes).map(([salah, time]) => {
