@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `My Prayer Times`,
+    description: 'Get your local prayer times!',
     author: '@abdihashii',
     siteUrl: `https://www.myprayertimes.com`,
   },
