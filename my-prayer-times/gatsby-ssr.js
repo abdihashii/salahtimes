@@ -5,6 +5,14 @@ const HeadComponents = [
   <script
     src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GATSBY_MAPS_API_KEY}&libraries=places`}
   ></script>,
+  <script
+    src="https://kit.fontawesome.com/f8b711175a.js"
+    crossOrigin="anonymous"
+  ></script>,
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+  ></link>,
 ];
 
 // Adds a class name to the body element
