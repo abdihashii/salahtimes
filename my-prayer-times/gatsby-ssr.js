@@ -13,6 +13,12 @@ const HeadComponents = [
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
   ></link>,
+  <link rel="preconnect" href="https://fonts.googleapis.com"></link>,
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin></link>,
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+    rel="stylesheet"
+  ></link>,
 ];
 
 // Adds a class name to the body element
