@@ -34,5 +34,14 @@ module.exports = {
     },
     'gatsby-plugin-postcss',
     'gatsby-plugin-fontawesome-css',
+    {
+      resolve: 'gatsby-plugin-web-font-loader',
+      options: {
+        google: {
+          families: ['Poppins', 'sans-serif'],
+        },
+      },
+    },
+    `gatsby-plugin-sass`,
   ],
 };

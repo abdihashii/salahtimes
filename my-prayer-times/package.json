@@ -15,19 +15,23 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "bulma": "^0.9.4",
     "gatsby": "^4.24.4",
     "gatsby-plugin-fontawesome-css": "^1.2.0",
     "gatsby-plugin-google-analytics": "^4.24.0",
     "gatsby-plugin-image": "^2.24.0",
     "gatsby-plugin-manifest": "^4.24.0",
+    "gatsby-plugin-sass": "^5.24.0",
     "gatsby-plugin-sharp": "^4.24.0",
     "gatsby-plugin-sitemap": "^5.24.0",
+    "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-filesystem": "^4.24.0",
     "gatsby-transformer-sharp": "^4.24.0",
     "moment-timezone": "^0.5.38",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-places-autocomplete": "^7.3.0"
+    "react-places-autocomplete": "^7.3.0",
+    "sass": "^1.55.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.12",
