@@ -115,7 +115,13 @@ export const LocationSelector = () => {
             )}
           </PlacesAutocomplete>
 
-          <span className="icon is-right fa-xl" onClick={onMapIconClick}>
+          <span
+            className="icon is-right fa-xl"
+            onClick={onMapIconClick}
+            onKeyDown={onMapIconClick}
+            role="button"
+            tabIndex={0}
+          >
             <i className="fa-solid fa-location-crosshairs pointer-events-auto cursor-pointer text-green hover:text-green-dark"></i>
           </span>
         </div>
