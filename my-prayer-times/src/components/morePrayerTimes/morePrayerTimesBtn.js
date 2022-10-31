@@ -11,7 +11,7 @@ export const MorePrayerTimesBtn = ({
         onClick={onClickHandler}
       >
         <span>More Salah Times</span>
-        <span className="icon">
+        <span className="h-1.5em w-1.5em inline-flex items-center justify-center">
           <i
             className={`fas ${
               isMoreSalahTimesToggled ? 'fa-angle-up' : 'fa-angle-down'
