@@ -36,6 +36,7 @@ module.exports = {
         '151px': '151px',
         '200px': '200px',
         '1063px': '1063px',
+        '1.5em': '1.5em',
         '2.5em': '2.5em',
       },
       width: {
@@ -43,12 +44,15 @@ module.exports = {
         '229px': '229px',
         '933px': '933px',
         '981px': '981px',
+        '1.5em': '1.5em',
+        '2.5em': '2.5em',
       },
       gap: {
         1.125: '1.125rem',
       },
       fontSize: {
         '24px': '24px',
+        '1.5em': '1.5em',
       },
       padding: {
         '11px': '11px',

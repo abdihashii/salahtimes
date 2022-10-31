@@ -18,7 +18,7 @@ export const PrayerTimes = () => {
         <>
           <div className="mb-38px flex flex-col items-center gap-1.125 lg:flex-row">
             {Object.entries(prayerTimes).map(([salah, time]) => {
-              return <PrayerTimeCard {...{ salah, time }} />;
+              return <PrayerTimeCard key={salah} {...{ salah, time }} />;
             })}
           </div>
 

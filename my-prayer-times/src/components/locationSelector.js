@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import { PrayerTimesContext } from '../contexts/prayerTimesContext';
-// import "./styles/locationSelector.scss";
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 export const LocationSelector = () => {
   const {
@@ -45,9 +45,9 @@ export const LocationSelector = () => {
   return (
     <>
       <div className="mx-auto mb-56px w-11/12">
-        <div className="control has-icons-left has-icons-right">
+        <div className="relative">
           {/* Map icon */}
-          <span className="icon is-left fa-xl">
+          <span className="fa-xl absolute left-0 top-0 z-10 inline-flex h-2.5em w-2.5em items-center justify-center">
             <i className="fa-solid fa-location-dot text-green"></i>
           </span>
 
@@ -81,12 +81,18 @@ export const LocationSelector = () => {
                   }`}
                 >
                   {loading ? (
-                    <div className="h-200px">
-                      {/* <progress
-                        className="progress is-small is-primary mr-0 mb-38px mt-38px"
-                        max="100"
-                      ></progress> */}
-                    </div>
+                    // <div className="h-200px">
+                    //   <progress
+                    //     className="progress is-small is-primary mr-0 mb-38px mt-38px"
+                    //     max="100"
+                    //   ></progress>
+                    // </div>
+                    <ProgressBar
+                      className="mr-0 mb-38px mt-38px"
+                      animated={true}
+                      striped={true}
+                      now={100}
+                    />
                   ) : (
                     <>
                       {suggestions.map((suggestion) => {
@@ -116,7 +122,7 @@ export const LocationSelector = () => {
           </PlacesAutocomplete>
 
           <span
-            className="icon is-right fa-xl"
+            className="fa-xl fa-xl absolute right-0 top-0 z-10 inline-flex h-2.5em w-2.5em items-center justify-center"
             onClick={onMapIconClick}
             onKeyDown={onMapIconClick}
             role="button"
