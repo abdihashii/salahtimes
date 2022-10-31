@@ -5,6 +5,7 @@
   "dependencies": {
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "gatsby-plugin-purgecss": "^6.1.2",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.35",
     "react": "^18.2.0",
