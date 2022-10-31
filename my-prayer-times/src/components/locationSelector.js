@@ -70,7 +70,7 @@ export const LocationSelector = () => {
                       suggestions.length > 0
                         ? 'rounded-bl-none rounded-br-none'
                         : ''
-                    } input is-large focus:ring-0 ring-0 rounded-20px border-2 border-green focus:border-green-dark hover:border-green-dark`,
+                    } h-2.5em w-full rounded-20px border-2 border-green py-11px px-60px text-2xl hover:border-green-dark focus:border-red-500`,
                   })}
                 />
                 <div
