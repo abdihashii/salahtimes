@@ -39,7 +39,7 @@ export const MorePrayerTimes = () => {
       />
 
       {isMoreSalahTimesToggled && (
-        <div className="flex h-1063px w-981px justify-center rounded-20px bg-white py-8 px-4 shadow-gray">
+        <div className="mb-51px flex w-981px justify-center rounded-20px bg-white py-8 px-4 shadow-gray">
           <table className="table w-full">
             <thead className="px-49px py-12px">
               <tr>

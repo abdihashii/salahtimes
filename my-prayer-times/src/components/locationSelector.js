@@ -43,7 +43,7 @@ export const LocationSelector = () => {
 
   return (
     <>
-      <div className="mx-auto mb-56px w-full">
+      <div className="mx-auto mb-56px w-11/12 lg:w-full">
         <div className="relative">
           {/* Map icon */}
           <span className="fa-xl absolute left-0 top-0 z-10 inline-flex h-2.5em w-2.5em items-center justify-center">
