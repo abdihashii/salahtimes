@@ -39,17 +39,17 @@ export const MorePrayerTimes = () => {
       />
 
       {isMoreSalahTimesToggled && (
-        <div className="mb-51px flex w-981px justify-center rounded-20px bg-white py-8 px-4 shadow-gray">
-          <table className="table w-full">
-            <thead className="px-49px py-12px">
+        <div className="mx-auto mb-51px flex w-11/12 justify-center overflow-x-auto rounded-20px bg-white py-8 px-4 shadow-gray lg:w-full">
+          <table className="w-full table-auto text-left">
+            <thead className="uppercase">
               <tr>
-                <th>Date</th>
-                <th>Fajr</th>
-                <th>Sunrise</th>
-                <th>Dhuhr</th>
-                <th>Asr</th>
-                <th>Maghrib</th>
-                <th>Isha</th>
+                <th className="py-3 px-6">Date</th>
+                <th className="py-3 px-6">Fajr</th>
+                <th className="py-3 px-6">Sunrise</th>
+                <th className="py-3 px-6">Dhuhr</th>
+                <th className="py-3 px-6">Asr</th>
+                <th className="py-3 px-6">Maghrib</th>
+                <th className="py-3 px-6">Isha</th>
               </tr>
             </thead>
             <tbody>
@@ -62,29 +62,36 @@ export const MorePrayerTimes = () => {
                   return (
                     <tr
                       key={readable}
-                      className={`${todaysDate === readable ? 'bg-green' : ''}`}
+                      className={`border-b hover:bg-gray-50 ${
+                        todaysDate === readable ? 'bg-green' : ''
+                      }`}
                     >
-                      <th>{readable}</th>
-                      <td>{Fajr}</td>
-                      <td>{Sunrise}</td>
-                      <td>{Dhuhr}</td>
-                      <td>{Asr}</td>
-                      <td>{Maghrib}</td>
-                      <td>{Isha}</td>
+                      <th
+                        scope="row"
+                        className="py-4 px-6 lg:whitespace-nowrap"
+                      >
+                        {readable}
+                      </th>
+                      <td className="py-4 px-6">{Fajr}</td>
+                      <td className="py-4 px-6">{Sunrise}</td>
+                      <td className="py-4 px-6">{Dhuhr}</td>
+                      <td className="py-4 px-6">{Asr}</td>
+                      <td className="py-4 px-6">{Maghrib}</td>
+                      <td className="py-4 px-6">{Isha}</td>
                     </tr>
                   );
                 }
               )}
             </tbody>
-            <tfoot>
+            <tfoot className="uppercase">
               <tr>
-                <th>Date</th>
-                <th>Fajr</th>
-                <th>Sunrise</th>
-                <th>Dhuhr</th>
-                <th>Asr</th>
-                <th>Maghrib</th>
-                <th>Isha</th>
+                <th className="py-3 px-6">Date</th>
+                <th className="py-3 px-6">Fajr</th>
+                <th className="py-3 px-6">Sunrise</th>
+                <th className="py-3 px-6">Dhuhr</th>
+                <th className="py-3 px-6">Asr</th>
+                <th className="py-3 px-6">Maghrib</th>
+                <th className="py-3 px-6">Isha</th>
               </tr>
             </tfoot>
           </table>
