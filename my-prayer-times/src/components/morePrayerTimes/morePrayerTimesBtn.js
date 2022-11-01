@@ -7,7 +7,7 @@ export const MorePrayerTimesBtn = ({
   return (
     <div className="mb-51px flex justify-center">
       <button
-        className="h-55px w-242px cursor-pointer rounded-4xl border-none bg-green text-base font-semibold uppercase text-white shadow-green hover:bg-green-dark"
+        className="h-55px w-242px cursor-pointer rounded-4xl border-none bg-green-dark text-base font-semibold uppercase text-white shadow-darkGreen hover:bg-green"
         onClick={onClickHandler}
       >
         <span>More Salah Times</span>

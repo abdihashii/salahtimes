@@ -47,7 +47,7 @@ export const LocationSelector = () => {
         <div className="relative">
           {/* Map icon */}
           <span className="fa-xl absolute left-0 top-0 z-10 inline-flex h-2.5em w-2.5em items-center justify-center">
-            <i className="fa-solid fa-location-dot text-green"></i>
+            <i className="fa-solid fa-location-dot text-green-dark"></i>
           </span>
 
           <PlacesAutocomplete
@@ -69,13 +69,13 @@ export const LocationSelector = () => {
                       suggestions.length > 0
                         ? 'rounded-bl-none rounded-br-none'
                         : ''
-                    } h-2.5em w-full rounded-20px border-2 border-green py-11px px-60px text-2xl hover:border-green-dark focus:border-green-dark outline-none`,
+                    } h-2.5em w-full rounded-20px border-2 border-green-dark py-11px px-60px text-2xl hover:border-green focus:border-green outline-none`,
                   })}
                 />
                 <div
                   className={`${
                     suggestions.length > 0
-                      ? 'rounded-bl-20px rounded-br-20px border-2 border-t-0 border-green-dark'
+                      ? 'rounded-bl-20px rounded-br-20px border-2 border-t-0 border-green'
                       : ''
                   }`}
                 >
@@ -119,7 +119,7 @@ export const LocationSelector = () => {
             tabIndex={0}
             aria-label="Get current location's prayer times"
           >
-            <i className="fa-solid fa-location-crosshairs pointer-events-auto cursor-pointer text-green hover:text-green-dark"></i>
+            <i className="fa-solid fa-location-crosshairs pointer-events-auto cursor-pointer text-green-dark hover:text-green"></i>
           </span>
         </div>
       </div>

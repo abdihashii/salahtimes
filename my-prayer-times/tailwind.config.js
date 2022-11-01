@@ -19,6 +19,7 @@ module.exports = {
       },
       boxShadow: {
         green: '0px 8px 28px -6px rgba(10, 150, 58, 0.42)',
+        darkGreen: '0px 8px 28px -6px #006307',
         // green: '0px 8px 28px -6px rgba(10, 150, 58, 0.42), 0px 18px 88px -4px rgba(11, 147, 59, 0.42);'
         gray: '0px 8px 28px -6px rgba(24, 39, 75, 0.12), 0px 18px 88px -4px rgba(24, 39, 75, 0.14)',
       },
