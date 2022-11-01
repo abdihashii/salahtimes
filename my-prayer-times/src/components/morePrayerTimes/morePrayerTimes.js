@@ -26,7 +26,7 @@ export const MorePrayerTimes = () => {
 
     if (input.lat && input.lng) {
       getSalahCalendar(
-        `https://api.aladhan.com/v1/calendar?latitude=${input.lat}&longitude=${input.lng}`,
+        `https://api.aladhan.com/v1/calendar?latitude=${input.lat}&longitude=${input.lng}`
       );
     }
   }, [input.lat, input.lng, setSalahCalendarDates]);
@@ -39,7 +39,7 @@ export const MorePrayerTimes = () => {
       />
 
       {isMoreSalahTimesToggled && (
-        <div className="mt-51px flex h-1063px w-981px justify-center rounded-20px bg-white py-8 px-4 shadow-gray">
+        <div className="flex h-1063px w-981px justify-center rounded-20px bg-white py-8 px-4 shadow-gray">
           <table className="table w-full">
             <thead className="px-49px py-12px">
               <tr>
@@ -73,7 +73,7 @@ export const MorePrayerTimes = () => {
                       <td>{Isha}</td>
                     </tr>
                   );
-                },
+                }
               )}
             </tbody>
             <tfoot>

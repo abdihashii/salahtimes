@@ -43,7 +43,7 @@ export const LocationSelector = () => {
 
   return (
     <>
-      <div className="mx-auto mb-56px w-11/12">
+      <div className="mx-auto mb-56px w-full">
         <div className="relative">
           {/* Map icon */}
           <span className="fa-xl absolute left-0 top-0 z-10 inline-flex h-2.5em w-2.5em items-center justify-center">
@@ -69,7 +69,7 @@ export const LocationSelector = () => {
                       suggestions.length > 0
                         ? 'rounded-bl-none rounded-br-none'
                         : ''
-                    } h-2.5em w-full rounded-20px border-2 border-green py-11px px-60px text-2xl hover:border-green-dark focus:border-red-500`,
+                    } h-2.5em w-full rounded-20px border-2 border-green py-11px px-60px text-2xl hover:border-green-dark focus:border-green-dark outline-none`,
                   })}
                 />
                 <div
