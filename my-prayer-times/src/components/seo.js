@@ -1,7 +1,15 @@
-import React from "react";
+import React from 'react';
+import useSiteMetadata from '../hooks/useSiteMetadata';
 
 const Seo = ({ pageTitle }) => {
-  return <title>{pageTitle} | My Prayer Times</title>;
+  const { description } = useSiteMetadata();
+
+  return (
+    <>
+      <title>{pageTitle} | My Prayer Times</title>
+      <meta name="description" content={description} />
+    </>
+  );
 };
 
 export default Seo;

@@ -18,7 +18,7 @@ export const LocationSelector = () => {
   useEffect(() => {
     getLocationByIpAddress(
       `https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.GATSBY_MAPS_API_KEY}`,
-      { method: 'POST' },
+      { method: 'POST' }
     );
 
     const queryString = window.location.search;
@@ -117,6 +117,7 @@ export const LocationSelector = () => {
             onKeyDown={onMapIconClick}
             role="button"
             tabIndex={0}
+            aria-label="Get current location's prayer times"
           >
             <i className="fa-solid fa-location-crosshairs pointer-events-auto cursor-pointer text-green hover:text-green-dark"></i>
           </span>

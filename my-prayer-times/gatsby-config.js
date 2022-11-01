@@ -58,5 +58,11 @@ module.exports = {
         // More options defined here https://purgecss.com/configuration.html#options
       },
     },
+    {
+      resolve: 'gatsby-plugin-html-attributes',
+      options: {
+        lang: 'en',
+      },
+    },
   ],
 };
