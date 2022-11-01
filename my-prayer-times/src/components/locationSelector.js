@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import { PrayerTimesContext } from '../contexts/prayerTimesContext';
-import ProgressBar from 'react-bootstrap/ProgressBar';
 
 export const LocationSelector = () => {
   const {
@@ -81,18 +80,9 @@ export const LocationSelector = () => {
                   }`}
                 >
                   {loading ? (
-                    // <div className="h-200px">
-                    //   <progress
-                    //     className="progress is-small is-primary mr-0 mb-38px mt-38px"
-                    //     max="100"
-                    //   ></progress>
-                    // </div>
-                    <ProgressBar
-                      className="mr-0 mb-38px mt-38px"
-                      animated={true}
-                      striped={true}
-                      now={100}
-                    />
+                    <p className="mt-56px flex items-start justify-center">
+                      Loading...
+                    </p>
                   ) : (
                     <>
                       {suggestions.map((suggestion) => {
