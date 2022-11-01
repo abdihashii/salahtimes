@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
           src="../images/logo.png"
           alt="My Prayer Times Logo"
           placeholder="tracedSVG"
-          className="mx-0 flex w-screen justify-center lg:mx-auto lg:w-2/5"
+          className="mx-auto flex w-screen justify-center lg:w-2/5"
         />
         {children}
       </div>
