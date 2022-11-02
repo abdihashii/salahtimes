@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `My Prayer Times`,
@@ -9,7 +13,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-analytics',
       options: {
-        trackingId: '\u0016',
+        trackingId: process.env.GOOGLE_ANALYTICS_PROPERTY_ID,
       },
     },
     'gatsby-plugin-image',
