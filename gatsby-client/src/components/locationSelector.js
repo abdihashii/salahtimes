@@ -18,7 +18,7 @@ export const LocationSelector = () => {
   useEffect(() => {
     getLocationByIpAddress(
       `https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.GATSBY_MAPS_API_KEY}`,
-      { method: 'POST' }
+      { method: 'POST' },
     );
 
     const queryString = window.location.search;
@@ -33,7 +33,7 @@ export const LocationSelector = () => {
   useEffect(() => {
     getUpcomingSalah();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [input]);
+  }, [input.selectedCity]);
 
   useEffect(() => {
     getSalahTimes(input.lat, input.lng, method);
