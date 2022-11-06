@@ -5,3 +5,5 @@
 
 - fix hover in more prayer times table for current date
 - make hover a little darker
+
+- change "More Salah Times" to "More Prayer Times"
