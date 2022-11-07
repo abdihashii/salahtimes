@@ -1,10 +1,12 @@
-import React, { useState, createContext } from 'react';
 import moment from 'moment-timezone';
+import React, { createContext, useState } from 'react';
+import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import {
   convertSalahTimes,
   getCityNameFromLatLng,
+  getCurrentLocalTime,
+  getTimeZoneId,
 } from '../controllers/prayerTimesController';
-import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 
 export const PrayerTimesContext = createContext(null);
 
@@ -157,14 +159,12 @@ const PrayerTimesContextProvider = (props) => {
   const getUpcomingSalah = async () => {
     if (input.lat && input.lng) {
       try {
-        const currentEpochTime = moment().unix();
+        const timeZoneId = await getTimeZoneId(input.lat, input.lng);
 
-        const url = `https://maps.googleapis.com/maps/api/timezone/json?location=${input.lat},${input.lng}&timestamp=${currentEpochTime}&key=${process.env.GATSBY_MAPS_API_KEY}`;
-        const res = await fetch(url);
+        const currentLocalTime = getCurrentLocalTime(timeZoneId);
 
-        const { timeZoneId } = await res.json();
+        setCurrentTime(currentLocalTime);
 
-        const currentLocalTime = moment().tz(timeZoneId).format('hh:mm a');
         const currentLocalTimeInMinutes = moment
           .duration(moment(currentLocalTime, 'hh:mm a').format('HH:mm'))
           .asMinutes();

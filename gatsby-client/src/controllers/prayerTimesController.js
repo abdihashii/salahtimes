@@ -1,10 +1,12 @@
+import moment from 'moment-timezone';
+
 const prayerTimes = {
-  Fajr: "",
-  Sunrise: "",
-  Dhuhr: "",
-  Asr: "",
-  Maghrib: "",
-  Isha: "",
+  Fajr: '',
+  Sunrise: '',
+  Dhuhr: '',
+  Asr: '',
+  Maghrib: '',
+  Isha: '',
 };
 
 /**
@@ -12,19 +14,19 @@ const prayerTimes = {
  * @param {String} time - The time in string format ex: 13:35
  */
 const convertFrom24HourTo12Hour = (time) => {
-  const [hour, minute] = time.split(":");
+  const [hour, minute] = time.split(':');
 
-  let amPm = "am";
+  let amPm = 'am';
   let hourString = hour;
   let hourInt = parseInt(hour);
 
   if (hourInt > 12) {
     hourInt -= 12;
-    hourString = "0" + hourInt.toString();
-    amPm = "pm";
+    hourString = '0' + hourInt.toString();
+    amPm = 'pm';
   } else if (hourInt === 12) {
     hourInt.toString();
-    amPm = "pm";
+    amPm = 'pm';
   }
   const convertedTime = `${hourString}:${minute} ${amPm}`;
 
@@ -66,7 +68,7 @@ export const getCityNameFromLatLng = async (lat, lng) => {
     const { results } = await res.json();
 
     for (const result of results) {
-      if (result.types.includes("locality")) {
+      if (result.types.includes('locality')) {
         const { long_name: city } = result.address_components[0];
 
         return city;
@@ -75,4 +77,19 @@ export const getCityNameFromLatLng = async (lat, lng) => {
   } catch (err) {
     console.error(err);
   }
+};
+
+export const getCurrentLocalTime = (timeZoneId) => {
+  return moment().tz(timeZoneId).format('h:mm a');
+};
+
+export const getTimeZoneId = async (lat, lng) => {
+  const currentEpochTime = moment().unix();
+
+  const url = `https://maps.googleapis.com/maps/api/timezone/json?location=${lat},${lng}&timestamp=${currentEpochTime}&key=${process.env.GATSBY_MAPS_API_KEY}`;
+  const res = await fetch(url);
+
+  const { timeZoneId } = await res.json();
+
+  return timeZoneId;
 };
