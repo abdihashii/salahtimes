@@ -19,7 +19,7 @@ const Home = () => {
 export const Head = () => {
   return (
     <>
-      <Seo pageTitle={'Prayer Times In ...'} />
+      <Seo pageTitle={'Prayer Times'} />
     </>
   );
 };
