@@ -80,7 +80,11 @@ export const getCityNameFromLatLng = async (lat, lng) => {
 };
 
 export const getCurrentLocalTime = (timeZoneId) => {
+<<<<<<< HEAD
   return moment().tz(timeZoneId).format('hh:mm a');
+=======
+  return moment().tz(timeZoneId).format('h:mm a');
+>>>>>>> add most of currentTime feat
 };
 
 export const getTimeZoneId = async (lat, lng) => {
