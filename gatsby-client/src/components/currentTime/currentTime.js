@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { PrayerTimesContext } from '../../contexts/prayerTimesContext';
 
 const CurrentTime = () => {
-<<<<<<< HEAD
   const { input, currentTime } = useContext(PrayerTimesContext);
 
   return (
@@ -14,16 +13,6 @@ const CurrentTime = () => {
           {currentTime}
         </p>
       )}
-=======
-  const { input } = useContext(PrayerTimesContext);
-
-  return (
-    <div className="flex">
-      <p>
-        Current time in{' '}
-        <span className="text-green-dark">{input.selectedCity}</span> : 5:57 pm
-      </p>
->>>>>>> init
     </div>
   );
 };
