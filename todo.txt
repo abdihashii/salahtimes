@@ -1,7 +1,1 @@
-- shimmer for loading prayer times
-  - on init load
-  - when selecting a new location
-  - on location icon click
-
-- fix hover in more prayer times table for current date
-- make hover a little darker
+- change "More Salah Times" to "More Prayer Times"
