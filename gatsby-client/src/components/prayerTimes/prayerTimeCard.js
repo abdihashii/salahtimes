@@ -8,13 +8,13 @@ export const PrayerTimeCard = ({ salah, time, isLoading }) => {
   return (
     <>
       <div
-        className={`text-white lg:text-black lg:flex lg:h-151px w-full flex items-center lg:flex-col lg:justify-center rounded-20px lg:w-229px ${
+        className={`flex w-full items-center border-b border-black px-6 py-5 text-black first:rounded-t-20px last:rounded-b-20px last:border-none lg:flex lg:h-151px lg:w-229px lg:flex-col lg:justify-center lg:rounded-20px lg:border-0 lg:p-0 ${
           isLoading
             ? `${gradient}`
             : `${
                 closestPrayerTime.closestPrayer === salah
-                  ? 'lg:bg-green-dark lg:!text-white lg:shadow-darkGreen'
-                  : 'lg:bg-white lg:shadow-gray'
+                  ? 'bg-green-dark !text-white lg:shadow-darkGreen'
+                  : 'bg-white lg:shadow-gray'
               }`
         }`}
       >
@@ -23,8 +23,8 @@ export const PrayerTimeCard = ({ salah, time, isLoading }) => {
         ) : (
           <>
             <p className="text-24px font-semibold uppercase">{salah}</p>
-            <p className='flex-1 lg:hidden'></p>
-            <p className="text-base font-normal">{time}</p>
+            <p className="flex-1 lg:hidden"></p>
+            <p className="text-base font-bold lg:font-normal">{time}</p>
           </>
         )}
       </div>

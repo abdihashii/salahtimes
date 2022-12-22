@@ -32,7 +32,7 @@ export const MorePrayerTimes = () => {
   }, [input.lat, input.lng, setSalahCalendarDates]);
 
   return (
-    <>
+    <div className="hidden lg:block">
       <MorePrayerTimesBtn
         onClickHandler={handleMoreSalahTimesToggle}
         {...{ isMoreSalahTimesToggled }}
@@ -99,6 +99,6 @@ export const MorePrayerTimes = () => {
           </table>
         </div>
       )}
-    </>
+    </div>
   );
 };
