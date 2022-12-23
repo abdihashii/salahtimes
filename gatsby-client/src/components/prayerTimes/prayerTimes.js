@@ -8,7 +8,7 @@ export const PrayerTimes = () => {
 
   return (
     <>
-      <div className="mb-51px flex flex-col items-center gap-1.125 lg:flex-row">
+      <div className="mx-auto mb-51px flex w-11/12 flex-col items-center rounded-20px border border-black lg:w-full lg:flex-row lg:gap-1.125 lg:rounded-none lg:border-0 lg:p-0">
         {Object.entries(prayerTimes).map(([salah, time]) => {
           return (
             <PrayerTimeCard

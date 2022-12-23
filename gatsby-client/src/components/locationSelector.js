@@ -18,7 +18,7 @@ export const LocationSelector = () => {
   useEffect(() => {
     getLocationByIpAddress(
       `https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.GATSBY_MAPS_API_KEY}`,
-      { method: 'POST' },
+      { method: 'POST' }
     );
 
     const queryString = window.location.search;
@@ -43,8 +43,8 @@ export const LocationSelector = () => {
 
   return (
     <>
-      <div className="mx-auto mb-56px w-11/12 lg:w-full">
-        <div className="relative">
+      <div className="fixed inset-x-0 bottom-0 mx-auto mb-4 w-full lg:static lg:mb-56px">
+        <div className="relative mx-auto w-11/12 lg:w-full">
           {/* Map icon */}
           <span className="fa-xl absolute left-0 top-0 z-10 inline-flex h-2.5em w-2.5em items-center justify-center">
             <i className="fa-solid fa-location-dot text-green-dark"></i>
@@ -65,6 +65,7 @@ export const LocationSelector = () => {
                 <input
                   {...getInputProps({
                     placeholder: 'Enter your location',
+                    autoFocus: true,
                     className: `${
                       suggestions.length > 0
                         ? 'rounded-bl-none rounded-br-none'
