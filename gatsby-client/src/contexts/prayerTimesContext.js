@@ -35,6 +35,7 @@ const PrayerTimesContextProvider = (props) => {
   const [salahCalendarDates, setSalahCalendarDates] = useState([]);
   const [currentTime, setCurrentTime] = useState('');
   const [method, setMethod] = useState('2');
+  const [menuBarOpen, setMenuBarOpen] = useState(false);
 
   /**
    * Gets the prayer times from the latitude and longitude using the aladhan API
@@ -170,7 +171,7 @@ const PrayerTimesContextProvider = (props) => {
           .asMinutes();
 
         let [closestPrayer, closestPrayerTime] = Object.entries(
-          prayerTimes,
+          prayerTimes
         ).find(([prayer, time]) => {
           const timeInMinutes = moment
             .duration(moment(time, 'hh:mm a').format('HH:mm'))
@@ -215,7 +216,7 @@ const PrayerTimesContextProvider = (props) => {
     geocodeByAddress(location)
       .then(async (results) => {
         const { long_name } = results[0].address_components.find((o) =>
-          o.types.find((type) => type === 'locality' || type === 'political'),
+          o.types.find((type) => type === 'locality' || type === 'political')
         );
         const latLng = await getLatLng(results[0]);
         return { latLng, long_name };
@@ -269,6 +270,8 @@ const PrayerTimesContextProvider = (props) => {
         setCurrentTime,
         method,
         setMethod,
+        menuBarOpen,
+        setMenuBarOpen,
       }}
     >
       {props.children}
