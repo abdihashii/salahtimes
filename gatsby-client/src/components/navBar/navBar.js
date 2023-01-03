@@ -1,8 +1,12 @@
-import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { useStaticQuery, graphql } from 'gatsby';
+import React, { useContext } from 'react';
+import { PrayerTimesContext } from '../../contexts/prayerTimesContext';
+import MobileMenuBar from '../mobileMenuBar/mobileMenuBar';
 
 const NavBar = () => {
+  const { menuBarOpen, setMenuBarOpen } = useContext(PrayerTimesContext);
+
   const { mobileLogo, desktopLogo } = useStaticQuery(graphql`
     query HeaderQuery {
       mobileLogo: file(relativePath: { eq: "logo-single-cropped.png" }) {
@@ -30,7 +34,21 @@ const NavBar = () => {
         alt="My Prayer Times Logo"
         className="hidden lg:mx-auto lg:!flex lg:w-2/5 lg:justify-center"
       />
-      <i className="fa-solid fa-bars fa-2xl pointer-events-auto cursor-pointer text-green-dark lg:hidden"></i>
+      <span
+        // className={`absolute top-5 right-0 z-50 space-y-2 lg:hidden ${
+        //   // TODO: for switching from hamburger to X
+        //   menuBarOpen ? '' : ''
+        // }`}
+        onClick={() => setMenuBarOpen(!menuBarOpen)}
+        onKeyDown={() => setMenuBarOpen(!menuBarOpen)}
+        role="button"
+        tabIndex={0}
+      >
+        <i className="fa-solid fa-bars fa-2xl text-green-dark lg:hidden"></i>
+        {/* <div className={`h-0.5 w-8 ${menuBarOpen ? 'bg-white' : 'bg-green-dark'}`}></div>
+          <div className={`h-0.5 w-8 ${menuBarOpen ? 'bg-white' : 'bg-green-dark'}`}></div>
+          <div className={`h-0.5 w-8 ${menuBarOpen ? 'bg-white' : 'bg-green-dark'}`}></div> */}
+      </span>
     </div>
   );
 };
