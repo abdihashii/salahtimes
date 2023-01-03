@@ -6,22 +6,25 @@ import { PrayerTimes } from '../components/prayerTimes/prayerTimes';
 import { MorePrayerTimes } from '../components/morePrayerTimes/morePrayerTimes';
 import CurrentTime from '../components/currentTime/currentTime';
 import '../styles/styles.scss';
+import BackgroundSection from '../pages/bg-image';
 
 const Home = () => {
   return (
-    <Layout>
-      <LocationSelector />
-      <CurrentTime />
-      <PrayerTimes />
-      <MorePrayerTimes />
-    </Layout>
+    <BackgroundSection>
+      <Layout>
+        <LocationSelector />
+        <CurrentTime />
+        <PrayerTimes />
+        <MorePrayerTimes />
+      </Layout>
+    </BackgroundSection>
   );
 };
 
 export const Head = () => {
   return (
     <>
-      <Seo pageTitle={'Prayer Times'} />
+      <Seo pageTitle={'Accurate Prayer Times, Anywhere'} />
     </>
   );
 };

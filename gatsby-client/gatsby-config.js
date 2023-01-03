@@ -5,7 +5,8 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: `My Prayer Times`,
-    description: 'Get your local prayer times!',
+    description:
+      'Get accurate, reliable Islamic prayer times for your current location with our easy-to-use website. Never miss your daily salah again with our reliable prayer time calculator. Start getting your prayer times today and stay on track with your daily salah!',
     author: '@abdihashii',
     siteUrl: `https://www.myprayertimes.com`,
   },

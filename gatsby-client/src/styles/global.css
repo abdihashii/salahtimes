@@ -7,16 +7,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-image: url(../images/islamic-skyline-vector.png);
+  /* background-image: url(../images/islamic-skyline-vector.png); */
   /* background-image: url(../images/islamic-skyline-vector.png),
     linear-gradient(#0a963a, #fff); */
   /* background-image: url(../images/islamic-skyline-vector.png),
     linear-gradient(#fff, #006307); */
   /* min-height: 1372px; */
-  min-height: 110vh;
+  /* min-height: 110vh;
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: bottom;
+  background-position: bottom; */
 }
 
 code {
