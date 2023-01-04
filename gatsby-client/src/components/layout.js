@@ -3,6 +3,7 @@ import PrayerTimesContextProvider from '../contexts/prayerTimesContext';
 import MobileMenuBar from './mobileMenuBar/mobileMenuBar';
 import NavBar from './navBar/navBar';
 import { graphql, useStaticQuery } from 'gatsby';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const Layout = ({ children }) => {
   const [menuBarOpen, setMenuBarOpen] = useState(false);
@@ -33,6 +34,15 @@ const Layout = ({ children }) => {
           <NavBar
             {...{ setMenuBarOpen, menuBarOpen, mobileLogo, desktopLogo }}
           />
+          <div className='hidden lg:block'>
+            <a className="contents" href="/">
+              <GatsbyImage
+                image={desktopLogo.childImageSharp.gatsbyImageData}
+                alt="My Prayer Times Logo"
+                className="hidden lg:mx-auto lg:!flex lg:w-2/5 lg:justify-center"
+              />
+            </a>
+          </div>
           {children}
         </div>
       )}
