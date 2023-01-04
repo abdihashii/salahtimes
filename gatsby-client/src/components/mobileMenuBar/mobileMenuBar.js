@@ -3,7 +3,7 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 
 const MobileMenuBar = ({ setMenuBarOpen, menuBarOpen, mobileLogo }) => {
   return (
-    <div className="z-50 flex h-screen w-screen flex-col bg-green-dark lg:hidden">
+    <div className="z-50 flex h-screen w-screen flex-col bg-green-dark lg:hidden text-white">
       <div
         className={`mx-auto flex w-11/12 flex-row items-center justify-between pt-6`}
       >
@@ -17,11 +17,12 @@ const MobileMenuBar = ({ setMenuBarOpen, menuBarOpen, mobileLogo }) => {
           onKeyDown={() => setMenuBarOpen(!menuBarOpen)}
           role="button"
           tabIndex={0}
+          className="mr-1"
         >
-          <i className="fa-solid fa-bars fa-2xl text-white lg:hidden"></i>
+          <i className="fa-solid fa-xmark fa-2xl lg:hidden"></i>
         </span>
       </div>
-      <ul className="flex h-full flex-col items-center justify-center gap-y-14 text-2xl font-semibold text-white">
+      <ul className="flex h-full flex-col items-center justify-center gap-y-14 text-2xl font-semibold">
         <a href="/">
           <li>Home</li>
         </a>
