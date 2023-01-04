@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import React from 'react';
 import BackgroundImage from 'gatsby-background-image';
-import { getImage, GatsbyImage } from 'gatsby-plugin-image';
+import { getImage } from 'gatsby-plugin-image';
 import { convertToBgImage } from 'gbimage-bridge';
 
 const BackgroundSection = ({ children }) => {

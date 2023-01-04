@@ -1,23 +1,7 @@
-import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 
-const NavBar = ({ setMenuBarOpen, menuBarOpen }) => {
-  const { mobileLogo, desktopLogo } = useStaticQuery(graphql`
-    query HeaderQuery {
-      mobileLogo: file(relativePath: { eq: "logo-single-cropped.png" }) {
-        childImageSharp {
-          gatsbyImageData(placeholder: TRACED_SVG)
-        }
-      }
-      desktopLogo: file(relativePath: { eq: "logo.png" }) {
-        childImageSharp {
-          gatsbyImageData(placeholder: TRACED_SVG)
-        }
-      }
-    }
-  `);
-
+const NavBar = ({ setMenuBarOpen, menuBarOpen, mobileLogo, desktopLogo }) => {
   return (
     <div
       className={`mx-auto mt-6 mb-12 flex w-11/12 flex-row items-center justify-between lg:my-0 lg:w-full lg:justify-center ${
