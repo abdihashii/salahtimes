@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
           {...{ setMenuBarOpen, menuBarOpen, mobileLogo, desktopLogo }}
         />
       ) : (
-        <div className="mx-auto w-screen pb-28 lg:w-981px lg:p-0">
+        <div className="mx-auto w-screen pb-28 lg:w-981px lg:p-0 lg:pb-8">
           <NavBar
             {...{ setMenuBarOpen, menuBarOpen, mobileLogo, desktopLogo }}
           />
