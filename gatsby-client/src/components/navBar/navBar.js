@@ -1,12 +1,8 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import React, { useContext } from 'react';
-import { PrayerTimesContext } from '../../contexts/prayerTimesContext';
-import MobileMenuBar from '../mobileMenuBar/mobileMenuBar';
+import React from 'react';
 
-const NavBar = () => {
-  const { menuBarOpen, setMenuBarOpen } = useContext(PrayerTimesContext);
-
+const NavBar = ({ setMenuBarOpen, menuBarOpen }) => {
   const { mobileLogo, desktopLogo } = useStaticQuery(graphql`
     query HeaderQuery {
       mobileLogo: file(relativePath: { eq: "logo-single-cropped.png" }) {
@@ -23,7 +19,11 @@ const NavBar = () => {
   `);
 
   return (
-    <div className="mx-auto mt-6 mb-12 flex w-11/12 flex-row items-center justify-between lg:my-0 lg:w-full lg:justify-center">
+    <div
+      className={`mx-auto mt-6 mb-12 flex w-11/12 flex-row items-center justify-between lg:my-0 lg:w-full lg:justify-center ${
+        menuBarOpen ? 'hidden' : ''
+      }`}
+    >
       <GatsbyImage
         image={mobileLogo.childImageSharp.gatsbyImageData}
         alt="My Prayer Times Logo"

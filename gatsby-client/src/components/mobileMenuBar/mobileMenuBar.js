@@ -2,7 +2,7 @@ import React from 'react';
 
 const MobileMenuBar = () => {
   return (
-    <div className="w- h-screen w-screen bg-green-dark lg:hidden">
+    <div className="z-50 h-screen w-screen bg-green-dark lg:hidden">
       <ul className="flex h-full flex-col items-center justify-center gap-y-14 text-2xl font-semibold text-white">
         <a href="/">
           <li>Home</li>
