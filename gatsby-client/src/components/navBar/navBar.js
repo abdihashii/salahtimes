@@ -8,16 +8,20 @@ const NavBar = ({ setMenuBarOpen, menuBarOpen, mobileLogo, desktopLogo }) => {
         menuBarOpen ? 'hidden' : ''
       }`}
     >
-      <GatsbyImage
-        image={mobileLogo.childImageSharp.gatsbyImageData}
-        alt="My Prayer Times Logo"
-        className="w-1/6 lg:mx-auto lg:hidden lg:w-1/5"
-      />
-      <GatsbyImage
-        image={desktopLogo.childImageSharp.gatsbyImageData}
-        alt="My Prayer Times Logo"
-        className="hidden lg:mx-auto lg:!flex lg:w-2/5 lg:justify-center"
-      />
+      <a className="contents" href="/">
+        <GatsbyImage
+          image={mobileLogo.childImageSharp.gatsbyImageData}
+          alt="My Prayer Times Logo"
+          className="w-1/6 lg:mx-auto lg:hidden lg:w-1/5"
+        />
+      </a>
+      <a className="contents" href="/">
+        <GatsbyImage
+          image={desktopLogo.childImageSharp.gatsbyImageData}
+          alt="My Prayer Times Logo"
+          className="hidden lg:mx-auto lg:!flex lg:w-2/5 lg:justify-center"
+        />
+      </a>
       <span
         // className={`absolute top-5 right-0 z-50 space-y-2 lg:hidden ${
         //   // TODO: for switching from hamburger to X
