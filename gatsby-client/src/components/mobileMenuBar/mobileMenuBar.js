@@ -25,8 +25,8 @@ const MobileMenuBar = ({ setMenuBarOpen, menuBarOpen, mobileLogo }) => {
         <a href="/">
           <li>Home</li>
         </a>
-        <a href="/media">
-          <li>Media</li>
+        <a href="/blog">
+          <li>Blog</li>
         </a>
         <a href="/about-us">
           <li>About Us</li>
