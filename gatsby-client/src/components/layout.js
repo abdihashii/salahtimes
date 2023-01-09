@@ -9,7 +9,7 @@ const Layout = ({ children }) => {
         <StaticImage
           src="../images/logo.png"
           alt="My Prayer Times Logo"
-          placeholder="tracedSVG"
+          placeholder="BLURRED"
           className="mx-auto !flex w-6/12 justify-center lg:w-2/5"
         />
         {children}
