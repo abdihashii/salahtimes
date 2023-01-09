@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from 'react';
 import PlacesAutocomplete from 'react-places-autocomplete';
 import { PrayerTimesContext } from '../contexts/prayerTimesContext';
+import { BiCurrentLocation } from 'react-icons/bi';
+import { MdLocationOn } from 'react-icons/md';
 
 export const LocationSelector = () => {
   const {
@@ -46,9 +48,12 @@ export const LocationSelector = () => {
       <div className="fixed inset-x-0 bottom-0 mx-auto mb-4 w-full lg:static lg:mb-56px">
         <div className="relative mx-auto w-11/12 lg:w-full">
           {/* Map icon */}
-          <span className="fa-xl absolute left-0 top-0 z-10 inline-flex h-2.5em w-2.5em items-center justify-center">
-            <i className="fa-solid fa-location-dot text-green-dark"></i>
+          <span className="absolute left-0 top-0 z-10 inline-flex h-2.5em w-2.5em items-center justify-center text-2xl">
+            <MdLocationOn className="text-green-dark" />
           </span>
+          {/* <span className="fa-xl absolute left-0 top-0 z-10 inline-flex h-2.5em w-2.5em items-center justify-center">
+            <i className="fa-solid fa-location-dot text-green-dark"></i>
+          </span> */}
 
           <PlacesAutocomplete
             value={input.city}
@@ -113,15 +118,25 @@ export const LocationSelector = () => {
           </PlacesAutocomplete>
 
           <span
-            className="fa-xl fa-xl absolute right-0 top-0 z-10 inline-flex h-2.5em w-2.5em items-center justify-center"
+            className="absolute right-0 top-0 z-10 inline-flex h-2.5em w-2.5em items-center justify-center text-2xl"
             onClick={onMapIconClick}
             onKeyDown={onMapIconClick}
             role="button"
             tabIndex={0}
             aria-label="Get current location's prayer times"
           >
-            <i className="fa-solid fa-location-crosshairs pointer-events-auto cursor-pointer text-green-dark hover:text-green"></i>
+            <BiCurrentLocation className="pointer-events-auto cursor-pointer text-green-dark hover:text-green" />
           </span>
+          {/* <span
+            className="fa-xl absolute right-0 top-0 z-10 inline-flex h-2.5em w-2.5em items-center justify-center"
+            onClick={onMapIconClick}
+            onKeyDown={onMapIconClick}
+            role="button"
+            tabIndex={0}
+            aria-label="Get current location's prayer times"
+            >
+            <i className="fa-solid fa-location-crosshairs pointer-events-auto cursor-pointer text-green-dark hover:text-green"></i>
+          </span> */}
         </div>
       </div>
     </>

@@ -6,13 +6,6 @@ const HeadComponents = [
     key={1}
     src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GATSBY_MAPS_API_KEY}&libraries=places`}
   ></script>,
-  <script
-    key={2}
-    rel="preload"
-    as="font"
-    src="https://kit.fontawesome.com/f8b711175a.js"
-    crossOrigin="anonymous"
-  ></script>,
 ];
 
 // Adds a class name to the body element
