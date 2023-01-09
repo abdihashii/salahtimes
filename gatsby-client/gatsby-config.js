@@ -133,5 +133,12 @@ module.exports = {
         lang: 'en',
       },
     },
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: 'https://www.myprayertimes.com',
+        sitemap: 'https://www.myprayertimes.com/sitemap-0.xml',
+      },
+    },
   ],
 };
