@@ -10,6 +10,7 @@ module.exports = {
         green: {
           DEFAULT: '#0A963A',
           dark: '#006307',
+          logo_text: '#0A8337',
         },
       },
       borderRadius: {
@@ -24,6 +25,8 @@ module.exports = {
         gray: '0px 8px 28px -6px rgba(24, 39, 75, 0.12), 0px 18px 88px -4px rgba(24, 39, 75, 0.14)',
       },
       margin: {
+        '10px': '10px',
+        '11px': '11px',
         '24px': '24px',
         '38px': '38px !important',
         '51px': '51px',
@@ -56,6 +59,7 @@ module.exports = {
         '1.5em': '1.5em',
       },
       padding: {
+        '10px': '10px',
         '11px': '11px',
         '12px': '12px',
         '17px': '17px',
