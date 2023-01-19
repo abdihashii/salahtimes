@@ -4,7 +4,7 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 
 const index = () => {
   return (
-    <header className="flex flex-row items-center pt-11px pb-10px border-b">
+    <header className="flex flex-row items-center pt-11px pb-10px border-b border-header_border_color">
       <StaticImage
         src="../../images/favicon-cropped.png"
         alt="My Prayer Times Logo"

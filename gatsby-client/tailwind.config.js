@@ -12,6 +12,7 @@ module.exports = {
           dark: '#006307',
           logo_text: '#0A8337',
         },
+        header_border_color: 'rgba(126, 126, 126, 0.3)',
       },
       borderRadius: {
         '4xl': '32px',
