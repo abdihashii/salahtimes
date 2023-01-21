@@ -3,42 +3,45 @@ import { StaticImage } from 'gatsby-plugin-image';
 
 const Footer = () => {
   return (
-    <footer className="mt-56px tracking-0.011em flex flex-col mx-auto pt-12 border-t-3px border-green-secondary">
-      <div className="flex flex-row items-center justify-center mb-8">
+    <footer className="mx-auto mt-56px flex flex-col border-t-3px border-green-secondary pt-12 tracking-0.011em">
+      <div className="mb-8 flex flex-row items-center justify-center">
         <StaticImage
           src="../../../images/favicon-cropped.png"
           alt="My Prayer Times Logo"
           placeholder="BLURRED"
           className="w-2/12"
         />
-        <p className="uppercase ml-13px text-green-secondary font-bold text-17px">
+        <p className="ml-13px text-17px font-bold uppercase text-green-secondary">
           My Prayer Times
         </p>
       </div>
 
-      <div className="mx-auto text-center w-10/12 justify-center mb-51px text-base">
-        <p>Varius tristique aliquet vulputate senectus duis urna et tellus</p>
+      <div className="font- mx-auto mb-51px w-10/12 justify-center text-center text-base text-text-grey">
+        <p>
+          Connecting the global Ummah with accurate prayer times and spiritual
+          growth
+        </p>
       </div>
 
-      <ul className="flex flex-col items-center font-medium text-lg leading-44px mb-50px text-text-grey">
+      <ul className="mb-50px flex flex-col items-center text-lg font-medium leading-44px text-text-grey">
         <li className="inline-block">
-          <a href=""></a>Prayer Times
+          <a href="/">Prayer Times</a>
         </li>
         <li className="inline-block">
-          <a href=""></a>Blog
+          <a href="">Blog</a>
         </li>
         <li className="inline-block">
-          <a href=""></a>About Us
+          <a href="/about-us">About Us</a>
         </li>
         <li className="inline-block">
-          <a href=""></a>Contact Us
+          <a href="">Contact Us</a>
         </li>
         <li className="inline-block">
-          <a href=""></a>FAQs
+          <a href="">FAQs</a>
         </li>
       </ul>
 
-      <ul className="flex flex-col items-center font-medium text-lg leading-44px mb-50px text-text-grey">
+      <ul className="mb-50px flex flex-col items-center text-lg font-medium leading-44px text-text-grey">
         <li className="inline-block">
           <a href="">Privacy Policy</a>
         </li>
@@ -53,7 +56,7 @@ const Footer = () => {
         </li>
       </ul>
 
-      <ul className="flex flex-col items-center font-medium text-lg leading-44px mb-55px text-text-grey">
+      <ul className="mb-55px flex flex-col items-center text-lg font-medium leading-44px text-text-grey">
         <li className="inline-block">
           <a href="">Manage Preferences</a>
         </li>
@@ -64,12 +67,12 @@ const Footer = () => {
 
       <a
         href=""
-        className="uppercase flex justify-center font-medium text-xl leading-39px text-text-layout_text mb-26px"
+        className="mb-26px flex justify-center text-xl font-medium uppercase leading-39px text-text-layout_text"
       >
         Follow Us
       </a>
 
-      <ul className="flex flex-row gap-x-11px justify-center mb-63px">
+      <ul className="mb-63px flex flex-row justify-center gap-x-11px">
         <li>
           <a href="">Twitter</a>
         </li>
@@ -78,7 +81,7 @@ const Footer = () => {
         </li>
       </ul>
 
-      <div className="bg-bg-grey flex justify-center text-13px leading-26px font-extralight text-text-layout_text p-22px">
+      <div className="flex justify-center bg-bg-grey p-22px text-13px font-extralight leading-26px text-text-layout_text">
         Copyright ©MyPrayerTimes 2023. All rights reserved
       </div>
     </footer>
