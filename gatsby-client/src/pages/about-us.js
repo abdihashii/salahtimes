@@ -14,32 +14,63 @@ const SectionBorder = () => {
 const CoreValues = () => {
   const coreValues = [
     {
-      imageUrl: `../images/about-us-page/iman.jpg`,
       coreValue: 'Iman (Faith)',
-      coreValueDescription: `We are passionate and committed to the constant process of transforming ideas into solutions in order to improve our website and make it part of the Muslim Lifestyle.`,
+      coreValueDescription: `At MyPrayerTimes, we believe that faith is 
+      the foundation of a meaningful and fulfilling life as a Muslim. 
+      We strive to provide content and resources that deepen knowledge 
+      and connection with Allah.`,
     },
     {
-      imageUrl: `../images/about-us-page/integrity.jpg`,
       coreValue: 'Integrity + Transparency',
-      coreValueDescription: `The community is our most important asset. Every individual, regardless of their background, plays a vital role in creating a voice and building the back bone for the Muslim community.`,
+      coreValueDescription: `We pride ourselves on being open and 
+      upfront with our users, providing accurate and reliable salah times 
+      and being transparent in our practices.`,
     },
     {
-      imageUrl: `../images/about-us-page/quality.jpg`,
       coreValue: 'Commitment to Quality',
-      coreValueDescription: `The Muslim world is vast with endless possibilities and opportunities. We value collaborative efforts with fresh and diverse talents to unlock the potential of the community.`,
+      coreValueDescription: `We aim to provide the highest quality content 
+      and user experience, from accurate prayer times to informative and 
+      well-researched blog posts about prayer in Islam.`,
     },
   ];
 
   return (
-    <div className="mt-45px flex flex-col gap-10">
-      {coreValues.map(({ coreValue, coreValueDescription }) => {
-        return (
-          <div className="border border-gray-600">
-            <p>{coreValue}</p>
-            <p>{coreValueDescription}</p>
-          </div>
-        );
-      })}
+    <div className="mt-45px flex flex-col gap-10 text-left">
+      <div>
+        <StaticImage
+          src="../images/about-us-page/iman.jpg"
+          placeholder="BLURRED"
+          className="mb-30px"
+        />
+        <p className="mb-25px text-xl font-medium">{coreValues[0].coreValue}</p>
+        <p className="text-text-core_values">
+          {coreValues[0].coreValueDescription}
+        </p>
+      </div>
+
+      <div>
+        <StaticImage
+          src="../images/about-us-page/integrity.jpg"
+          placeholder="BLURRED"
+          className="mb-30px"
+        />
+        <p className="mb-25px text-xl font-medium">{coreValues[1].coreValue}</p>
+        <p className="text-text-core_values">
+          {coreValues[1].coreValueDescription}
+        </p>
+      </div>
+
+      <div>
+        <StaticImage
+          src="../images/about-us-page/quality.jpg"
+          placeholder="BLURRED"
+          className="mb-30px"
+        />
+        <p className="mb-25px text-xl font-medium">{coreValues[2].coreValue}</p>
+        <p className="text-text-core_values">
+          {coreValues[2].coreValueDescription}
+        </p>
+      </div>
     </div>
   );
 };
@@ -54,6 +85,33 @@ const AboutUsTextSection = ({ heading, textContent, children }) => {
 
       {children && children}
     </section>
+  );
+};
+
+/** Our Pledge section */
+const OurPledge = () => {
+  return (
+    <div
+      className="mb-5 pb-52px text-center text-white"
+      style={{
+        background: 'linear-gradient(100.39deg, #122318 0.8%, #00260E 100%)',
+      }}
+    >
+      <h2 className="mb-30px pt-12 text-28px font-bold">Our Pledge</h2>
+      <p className="mx-auto mb-9 w-11/12">
+        Every day, we focus on creating a better mobile app, one that is
+        relevant and useful to the Ummah. We may not always get it right, but we
+        pledge to always listen to you, our users, to improve and to serve you
+        better today, compared to yesterday.
+      </p>
+      <hr className="mx-auto mb-9 w-6/12" />
+      <p className="mx-auto mb-9 w-11/12">
+        If anyone fulfils his brother’s needs, Allah will fulfil his needs; if
+        one relieves a Muslim of his troubles, Allah will relieve his troubles
+        on the Day of Resurrection.
+      </p>
+      <p>Prophet Muhammad ﷺ, Sahih Bukhari</p>
+    </div>
   );
 };
 
@@ -120,14 +178,19 @@ const AboutUs = () => {
         {/* Our Core Values */}
         <AboutUsTextSection
           heading={'Our Core Values'}
-          textContent={`These values are reflected in all aspects MyPrayerTimes, from the
-            accurate prayer times to the informative content and how we interact
-            with our users. We also pride ourselves on providing well-researched
-            and high-quality content that goes above and beyond prayer times to
-            deepen understanding and connection with the faith.`}
+          textContent={`Discover the guiding principles that shape our mission and vision at MyPrayerTimes.`}
         >
           <CoreValues />
         </AboutUsTextSection>
+
+        {/* Our Pledge */}
+        <OurPledge />
+
+        {/* Trending Stores Of The Month */}
+        <AboutUsTextSection
+          heading={'Must-Read Stories Of The Month'}
+          textContent={`Stay informed and inspired with our top-trending stories of the month.`}
+        ></AboutUsTextSection>
       </>
     </Layout>
   );
