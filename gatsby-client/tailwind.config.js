@@ -19,6 +19,7 @@ module.exports = {
           grey: '#646464',
           layout_text: '#0F0700',
           button: '#FFFAF5',
+          core_values: '#717171',
         },
         bg: {
           grey: '#F8F8F8',
@@ -48,6 +49,7 @@ module.exports = {
         '24px': '24px',
         '25px': '25px',
         '26px': '26px',
+        '30px': '30px',
         '38px': '38px !important',
         '39px': '39px',
         '45px': '45px',
@@ -85,6 +87,7 @@ module.exports = {
         '13px': '13px',
         '17px': '17.56px',
         '24px': '24px',
+        '28px': '28px',
         '32px': '32px',
         '1.5em': '1.5em',
       },
@@ -97,6 +100,7 @@ module.exports = {
         '22px': '22px',
         '23px': '23px',
         '30px': '30px',
+        '52px': '52px',
         '60px': '60px',
       },
       minWidth: {
