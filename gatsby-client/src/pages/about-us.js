@@ -2,6 +2,7 @@ import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 import Layout from '../components/layout';
 import masjidBackground from '../images/masjid_bg.png';
+import Seo from '../components/seo';
 
 /** The small green border under each 'About Us' section */
 const SectionBorder = () => {
@@ -193,6 +194,14 @@ const AboutUs = () => {
         ></AboutUsTextSection>
       </>
     </Layout>
+  );
+};
+
+export const Head = () => {
+  return (
+    <>
+      <Seo pageTitle={'About Us'} />
+    </>
   );
 };
 
