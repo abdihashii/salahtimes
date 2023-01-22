@@ -92,7 +92,7 @@ const AboutUsTextSection = ({ heading, textContent, children }) => {
 const OurPledge = () => {
   return (
     <div
-      className="mb-5 pb-52px text-center text-white"
+      className="mb-21px pb-52px text-center text-white"
       style={{
         background: 'linear-gradient(100.39deg, #122318 0.8%, #00260E 100%)',
       }}
