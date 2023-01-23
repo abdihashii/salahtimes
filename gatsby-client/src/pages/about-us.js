@@ -1,8 +1,10 @@
-import { StaticImage } from 'gatsby-plugin-image';
+import { StaticImage, GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 import Layout from '../components/layout';
 import masjidBackground from '../images/masjid_bg.png';
 import Seo from '../components/seo';
+import { graphql } from 'gatsby';
+import { HiOutlineArrowRight } from 'react-icons/hi';
 
 /** The small green border under each 'About Us' section */
 const SectionBorder = () => {
@@ -79,7 +81,7 @@ const CoreValues = () => {
 /** Component for each 'About Us' section */
 const AboutUsTextSection = ({ heading, textContent, children }) => {
   return (
-    <section className="mx-auto mb-38px flex w-11/12 flex-col text-center">
+    <section className="mx-auto mb-10 flex w-11/12 flex-col text-center">
       <h2 className="mb-3 text-2xl font-bold leading-30px">{heading}</h2>
       <SectionBorder />
       <p className="text-text-medium_grey">{textContent}</p>
@@ -93,7 +95,7 @@ const AboutUsTextSection = ({ heading, textContent, children }) => {
 const OurPledge = () => {
   return (
     <div
-      className="mb-21px pb-52px text-center text-white"
+      className="mb-10 pb-52px text-center text-white"
       style={{
         background: 'linear-gradient(100.39deg, #122318 0.8%, #00260E 100%)',
       }}
@@ -116,7 +118,11 @@ const OurPledge = () => {
   );
 };
 
-const AboutUs = () => {
+const AboutUs = ({ data }) => {
+  const {
+    allContentfulBlogPost: { nodes: blogPosts },
+  } = data;
+
   return (
     <Layout transparentNav={true}>
       <>
@@ -191,11 +197,51 @@ const AboutUs = () => {
         <AboutUsTextSection
           heading={'Must-Read Stories Of The Month'}
           textContent={`Stay informed and inspired with our top-trending stories of the month.`}
-        ></AboutUsTextSection>
+        >
+          <div className="mt-45px mb-69px text-left">
+            {blogPosts.map(
+              ({ slug, title, date, postHeaderImage: { gatsbyImageData } }) => {
+                return (
+                  <div className="mb-10 last:mb-0">
+                    <GatsbyImage className="mb-30px" image={gatsbyImageData} />
+                    <a
+                      href={`/${slug}`}
+                      className="mb-10px inline-block text-xl font-medium text-text-light_black"
+                    >
+                      {title}
+                    </a>
+                    <p className="text-lg text-text-core_values">{date}</p>
+                  </div>
+                );
+              },
+            )}
+          </div>
+
+          <button className="mx-auto flex w-max flex-row items-center gap-2 rounded-4xl bg-green-secondary py-3 px-8 text-xs font-semibold text-white">
+            Explore Our Blogs
+            <HiOutlineArrowRight />
+          </button>
+        </AboutUsTextSection>
       </>
     </Layout>
   );
 };
+
+export const query = graphql`
+  query {
+    allContentfulBlogPost(sort: { date: DESC }) {
+      nodes {
+        slug
+        title
+        date(formatString: "MMM Do, yyyy")
+        postHeaderImage {
+          gatsbyImageData(formats: WEBP, placeholder: BLURRED)
+          description
+        }
+      }
+    }
+  }
+`;
 
 export const Head = () => {
   return (
