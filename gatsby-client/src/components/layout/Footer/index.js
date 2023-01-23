@@ -16,6 +16,7 @@ const Footer = () => {
         </p>
       </div>
 
+      {/* footer one-liner */}
       <div className="font- mx-auto mb-51px w-10/12 justify-center text-center text-base text-text-grey">
         <p>
           Connecting the global Ummah with accurate prayer times and spiritual
@@ -23,64 +24,67 @@ const Footer = () => {
         </p>
       </div>
 
+      {/* Prayer times, blog, about us, contact us, and faqs */}
       <ul className="mb-50px flex flex-col items-center text-lg font-medium leading-44px text-text-grey">
         <li className="inline-block">
           <a href="/">Prayer Times</a>
         </li>
         <li className="inline-block">
-          <a href="">Blog</a>
+          <a href="/blog">Blog</a>
         </li>
         <li className="inline-block">
           <a href="/about-us">About Us</a>
         </li>
         <li className="inline-block">
-          <a href="">Contact Us</a>
+          <a href="contact-us">Contact Us</a>
         </li>
         <li className="inline-block">
-          <a href="">FAQs</a>
+          <a href="faqs">FAQs</a>
         </li>
       </ul>
 
+      {/* Privacy policy, terms of use, disclamer, and help center */}
       <ul className="mb-50px flex flex-col items-center text-lg font-medium leading-44px text-text-grey">
         <li className="inline-block">
-          <a href="">Privacy Policy</a>
+          <a href="/">Privacy Policy</a>
         </li>
         <li className="inline-block">
-          <a href="">Terms of Use</a>
+          <a href="/">Terms of Use</a>
         </li>
         <li className="inline-block">
-          <a href="">Disclamer</a>
+          <a href="/">Disclamer</a>
         </li>
         <li className="inline-block">
-          <a href="">Help Center</a>
+          <a href="/">Help Center</a>
         </li>
       </ul>
 
+      {/* Manage preferences and cookies policy */}
       <ul className="mb-55px flex flex-col items-center text-lg font-medium leading-44px text-text-grey">
         <li className="inline-block">
-          <a href="">Manage Preferences</a>
+          <a href="/">Manage Preferences</a>
         </li>
         <li className="inline-block">
-          <a href="">Cookies Policy</a>
+          <a href="/">Cookies Policy</a>
         </li>
       </ul>
 
-      <a
-        href=""
-        className="mb-26px flex justify-center text-xl font-medium uppercase leading-39px text-text-layout_text"
-      >
+      {/* Follow us */}
+      <p className="mb-26px flex justify-center text-xl font-medium uppercase leading-39px text-text-layout_text">
         Follow Us
-      </a>
+      </p>
 
+      {/* Social media links */}
       <ul className="mb-63px flex flex-row justify-center gap-x-11px">
         <li>
-          <a href="">Twitter</a>
+          <a href="/">Twitter</a>
         </li>
         <li>
-          <a href="">Instagram</a>
+          <a href="/">Instagram</a>
         </li>
       </ul>
 
+      {/* Copyright */}
       <div className="flex justify-center bg-bg-grey p-22px text-13px font-extralight leading-26px text-text-layout_text">
         Copyright ©MyPrayerTimes 2023. All rights reserved
       </div>
