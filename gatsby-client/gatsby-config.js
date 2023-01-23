@@ -140,5 +140,12 @@ module.exports = {
         sitemap: 'https://www.myprayertimes.com/sitemap-0.xml',
       },
     },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_DELIVERY_API_ACCESS_TOKEN,
+      },
+    },
   ],
 };
