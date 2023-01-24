@@ -1,4 +1,4 @@
-import { StaticImage, GatsbyImage } from 'gatsby-plugin-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 import Layout from '../components/layout';
 import masjidBackground from '../images/masjid_bg.webp';
