@@ -14,7 +14,7 @@ const SectionBorder = () => {
 };
 
 /** Core values */
-const CoreValues = () => {
+const CoreValues = ({ images }) => {
   const coreValues = [
     {
       coreValue: 'Iman (Faith)',
@@ -40,10 +40,10 @@ const CoreValues = () => {
   return (
     <div className="mt-45px flex flex-col gap-10 text-left">
       <div>
-        <StaticImage
-          src="../images/about-us-page/iman.jpg"
-          placeholder="BLURRED"
+        <GatsbyImage
+          image={images.iman.childImageSharp.gatsbyImageData}
           className="mb-30px"
+          alt="Mashaf next to dates, representing Iman (Faith)"
         />
         <p className="mb-25px text-xl font-medium">{coreValues[0].coreValue}</p>
         <p className="text-text-core_values">
@@ -52,10 +52,10 @@ const CoreValues = () => {
       </div>
 
       <div>
-        <StaticImage
-          src="../images/about-us-page/integrity.jpg"
-          placeholder="BLURRED"
+        <GatsbyImage
+          image={images.integrity.childImageSharp.gatsbyImageData}
           className="mb-30px"
+          alt="Roots of a tree next to a waterfall, representing a strong foundation"
         />
         <p className="mb-25px text-xl font-medium">{coreValues[1].coreValue}</p>
         <p className="text-text-core_values">
@@ -64,10 +64,10 @@ const CoreValues = () => {
       </div>
 
       <div>
-        <StaticImage
-          src="../images/about-us-page/quality.jpg"
-          placeholder="BLURRED"
+        <GatsbyImage
+          image={images.quality.childImageSharp.gatsbyImageData}
           className="mb-30px"
+          alt="A magnifying glass, representing quality"
         />
         <p className="mb-25px text-xl font-medium">{coreValues[2].coreValue}</p>
         <p className="text-text-core_values">
@@ -120,7 +120,11 @@ const OurPledge = () => {
 
 const AboutUs = ({ data }) => {
   const {
-    allContentfulBlogPost: { nodes: blogPosts },
+    contentfulBlogPosts: { nodes: blogPosts },
+    zayed,
+    iman,
+    integrity,
+    quality,
   } = data;
 
   return (
@@ -150,12 +154,11 @@ const AboutUs = ({ data }) => {
           </button>
         </div>
 
-        {/* Image Section */}
+        {/* Image w/ Shadow Section */}
         <section className="relative mx-auto mb-10 w-11/12 pb-21px">
           <div className="absolute bottom-0 right-0 h-5/6 w-10/12 bg-green-secondary"></div>
-          <StaticImage
-            src="../images/about-us-page/sheikh-zayed-grand-mosque.jpg"
-            placeholder="BLURRED"
+          <GatsbyImage
+            image={zayed.childImageSharp.gatsbyImageData}
             className="w-11/12"
           />
         </section>
@@ -187,7 +190,9 @@ const AboutUs = ({ data }) => {
           heading={'Our Core Values'}
           textContent={`Discover the guiding principles that shape our mission and vision at MyPrayerTimes.`}
         >
-          <CoreValues />
+          <CoreValues
+            images={{ iman: iman, integrity: integrity, quality: quality }}
+          />
         </AboutUsTextSection>
 
         {/* Our Pledge */}
@@ -202,8 +207,12 @@ const AboutUs = ({ data }) => {
             {blogPosts.map(
               ({ slug, title, date, postHeaderImage: { gatsbyImageData } }) => {
                 return (
-                  <div className="mb-10 last:mb-0">
-                    <GatsbyImage className="mb-30px" image={gatsbyImageData} />
+                  <div key={slug} className="mb-10 last:mb-0">
+                    <GatsbyImage
+                      className="mb-30px"
+                      image={gatsbyImageData}
+                      alt=""
+                    />
                     <a
                       href={`/${slug}`}
                       className="mb-10px inline-block text-xl font-medium text-text-light_black"
@@ -229,7 +238,7 @@ const AboutUs = ({ data }) => {
 
 export const query = graphql`
   query {
-    allContentfulBlogPost(sort: { date: DESC }) {
+    contentfulBlogPosts: allContentfulBlogPost(sort: { date: DESC }) {
       nodes {
         slug
         title
@@ -238,6 +247,28 @@ export const query = graphql`
           gatsbyImageData(formats: WEBP, placeholder: BLURRED)
           description
         }
+      }
+    }
+    zayed: file(
+      relativePath: { in: "about-us-page/sheikh-zayed-grand-mosque.jpg" }
+    ) {
+      childImageSharp {
+        gatsbyImageData(placeholder: BLURRED, formats: WEBP)
+      }
+    }
+    iman: file(relativePath: { in: "about-us-page/iman.jpg" }) {
+      childImageSharp {
+        gatsbyImageData(placeholder: BLURRED, formats: WEBP)
+      }
+    }
+    quality: file(relativePath: { in: "about-us-page/quality.jpg" }) {
+      childImageSharp {
+        gatsbyImageData(placeholder: BLURRED, formats: WEBP)
+      }
+    }
+    integrity: file(relativePath: { in: "about-us-page/integrity.jpg" }) {
+      childImageSharp {
+        gatsbyImageData(placeholder: BLURRED, formats: WEBP)
       }
     }
   }
