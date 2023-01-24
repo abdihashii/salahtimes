@@ -1,7 +1,7 @@
 import { StaticImage, GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 import Layout from '../components/layout';
-import masjidBackground from '../images/masjid_bg.png';
+import masjidBackground from '../images/masjid_bg.webp';
 import Seo from '../components/seo';
 import { graphql } from 'gatsby';
 import { HiOutlineArrowRight } from 'react-icons/hi';
@@ -222,7 +222,7 @@ const AboutUs = ({ data }) => {
                     <p className="text-lg text-text-core_values">{date}</p>
                   </div>
                 );
-              },
+              }
             )}
           </div>
 
