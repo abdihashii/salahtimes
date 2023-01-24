@@ -250,7 +250,7 @@ const AboutUs = ({ data }) => {
               ({ slug, title, date, postHeaderImage: { gatsbyImageData } }) => {
                 return (
                   <a
-                    href={`/${slug}`}
+                    href={`/blog/${slug}`}
                     key={slug}
                     className="mb-10 inline-block last:mb-0"
                   >
