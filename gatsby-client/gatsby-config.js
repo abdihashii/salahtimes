@@ -27,7 +27,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        exclude: ['/404.html'],
+        exclude: ['/404.html', '/404'],
         query: `
           {
             site {
@@ -43,12 +43,6 @@ module.exports = {
             }
           }
         `,
-        // resolveSiteUrl: ({ site }) => site.siteMetadata.siteUrl,
-        // resolvePages: ({ allSitePage: { nodes } }) => {
-        //   return nodes.map((node) => {
-        //     return node.path;
-        //   });
-        // },
       },
     },
     {
@@ -83,7 +77,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-image',
-    'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {

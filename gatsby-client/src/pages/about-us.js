@@ -63,6 +63,7 @@ const CoreValues = ({ images }) => {
         <a
           className="mb-5 inline-block text-xs text-text-core_values"
           target="_blank"
+          rel="noreferrer"
           href={coreValues[0].imageCredit.link}
         >
           Photo by {coreValues[0].imageCredit.author} |{' '}
@@ -83,6 +84,7 @@ const CoreValues = ({ images }) => {
         <a
           className="mb-5 inline-block text-xs text-text-core_values"
           target="_blank"
+          rel="noreferrer"
           href={coreValues[1].imageCredit.link}
         >
           Photo by {coreValues[1].imageCredit.author} |{' '}
@@ -103,6 +105,7 @@ const CoreValues = ({ images }) => {
         <a
           className="mb-5 inline-block text-xs text-text-core_values"
           target="_blank"
+          rel="noreferrer"
           href={coreValues[2].imageCredit.link}
         >
           Photo by {coreValues[2].imageCredit.author} |{' '}
