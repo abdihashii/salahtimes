@@ -133,7 +133,7 @@ const AboutUsTextSection = ({ heading, textContent, children }) => {
 /** Our Pledge section */
 const OurPledge = () => {
   return (
-    <div
+    <section
       className="mb-10 pb-52px text-center text-white"
       style={{
         background: 'linear-gradient(100.39deg, #122318 0.8%, #00260E 100%)',
@@ -153,7 +153,7 @@ const OurPledge = () => {
         on the Day of Resurrection.
       </p>
       <p>Prophet Muhammad ﷺ, Sahih Bukhari</p>
-    </div>
+    </section>
   );
 };
 
