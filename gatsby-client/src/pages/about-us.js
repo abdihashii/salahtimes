@@ -265,7 +265,7 @@ const AboutUs = ({ data }) => {
                     <p className="text-lg text-text-core_values">{date}</p>
                   </a>
                 );
-              },
+              }
             )}
           </div>
 
