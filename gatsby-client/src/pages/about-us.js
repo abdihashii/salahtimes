@@ -246,20 +246,21 @@ const AboutUs = ({ data }) => {
             {blogPosts.map(
               ({ slug, title, date, postHeaderImage: { gatsbyImageData } }) => {
                 return (
-                  <div key={slug} className="mb-10 last:mb-0">
+                  <a
+                    href={`/${slug}`}
+                    key={slug}
+                    className="mb-10 inline-block last:mb-0"
+                  >
                     <GatsbyImage
                       className="mb-30px"
                       image={gatsbyImageData}
                       alt=""
                     />
-                    <a
-                      href={`/${slug}`}
-                      className="mb-10px inline-block text-xl font-medium text-text-light_black"
-                    >
+                    <p className="mb-10px text-xl font-medium text-text-light_black">
                       {title}
-                    </a>
+                    </p>
                     <p className="text-lg text-text-core_values">{date}</p>
-                  </div>
+                  </a>
                 );
               },
             )}
