@@ -1,8 +1,19 @@
 import React from 'react';
-import { StaticImage } from 'gatsby-plugin-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import { RxHamburgerMenu } from 'react-icons/rx';
+import { graphql, useStaticQuery } from 'gatsby';
 
 const NavBar = ({ transparentNav }) => {
+  const { faviconCropped } = useStaticQuery(graphql`
+    query {
+      faviconCropped: file(relativePath: { in: "favicon-cropped-600px.png" }) {
+        childImageSharp {
+          gatsbyImageData(placeholder: BLURRED, formats: WEBP)
+        }
+      }
+    }
+  `);
+
   return (
     <header
       className={`flex flex-row items-center pt-11px pb-10px ${
@@ -12,10 +23,9 @@ const NavBar = ({ transparentNav }) => {
       }`}
     >
       <a className="contents" href="/">
-        <StaticImage
-          src="../../../images/favicon-cropped.png"
+        <GatsbyImage
+          image={faviconCropped.childImageSharp.gatsbyImageData}
           alt="My Prayer Times Logo"
-          placeholder="BLURRED"
           className="ml-5 w-2/12"
         />
       </a>

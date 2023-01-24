@@ -1,14 +1,24 @@
 import React from 'react';
-import { StaticImage } from 'gatsby-plugin-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
+import { graphql, useStaticQuery } from 'gatsby';
 
 const Footer = () => {
+  const { faviconCropped } = useStaticQuery(graphql`
+    query {
+      faviconCropped: file(relativePath: { in: "favicon-cropped-600px.png" }) {
+        childImageSharp {
+          gatsbyImageData(placeholder: BLURRED, formats: WEBP)
+        }
+      }
+    }
+  `);
+
   return (
     <footer className="mx-auto mt-56px flex flex-col border-t-3px border-green-secondary pt-12 tracking-0.011em">
       <div className="mb-8 flex flex-row items-center justify-center">
-        <StaticImage
-          src="../../../images/favicon-cropped.png"
+        <GatsbyImage
+          image={faviconCropped.childImageSharp.gatsbyImageData}
           alt="My Prayer Times Logo"
-          placeholder="BLURRED"
           className="w-2/12"
         />
         <p className="ml-13px text-17px font-bold uppercase text-green-secondary">
