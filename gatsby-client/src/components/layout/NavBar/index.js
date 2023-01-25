@@ -20,7 +20,7 @@ const NavBar = ({ transparentNav }) => {
 
   const HamburgerMenu = () => {
     return (
-      <nav className="absolute top-0 left-0 z-10 mx-auto w-full bg-green-extra_dark pt-36 pb-52px font-semibold text-white">
+      <nav className="absolute top-0 left-0 z-10 mx-auto min-h-screen w-full bg-green-extra_dark pt-36 pb-52px font-semibold text-white">
         <ul className="mb-83px flex flex-col gap-16 text-2xl">
           <li className="mx-auto w-fit">
             <a href="/">Prayer Times</a>
