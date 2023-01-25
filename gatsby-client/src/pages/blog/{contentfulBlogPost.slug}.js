@@ -137,8 +137,8 @@ const BlogPost = ({ data }) => {
 };
 
 export const query = graphql`
-  query {
-    blogPost: contentfulBlogPost {
+  query ($id: String) {
+    blogPost: contentfulBlogPost(id: { eq: $id }) {
       slug
       title
       author
