@@ -4,18 +4,25 @@ import Seo from '../../components/seo';
 import Layout from '../../components/layout';
 import './blogPost.css';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  PocketShareButton,
+} from 'react-share';
 
 const BlogPost = ({ data }) => {
+  const blogUrl = typeof window !== 'undefined' ? window.location.href : '';
+
   return (
     <Layout>
-      <section className="mx-auto mt-9 mb-12 w-11/12 text-left">
+      <section className="mx-auto mt-9 mb-12 w-10/12 text-left">
         {/* Title */}
         <h1 className="mb-30px text-xl font-semibold text-text-layout_text">
           {data.blogPost.title}
         </h1>
 
-        {/* Author & Date */}
-        <div className="mb-8 flex flex-row gap-4">
+        {/* Author, Date, & share links */}
+        <div className="mb-8 flex flex-row items-center gap-4">
           {/* Author's image */}
           <span
             style={{
@@ -25,6 +32,7 @@ const BlogPost = ({ data }) => {
               borderRadius: '46px',
             }}
           ></span>
+
           {/* Author name and date */}
           <div className="flex flex-col gap-1">
             <p className="text-base text-text-layout_text">
@@ -33,6 +41,42 @@ const BlogPost = ({ data }) => {
             <p className="text-xs text-text-medium_grey">
               {data.blogPost.date}
             </p>
+          </div>
+
+          {/* Social Media Share Button */}
+          <div className="ml-auto flex flex-row gap-3">
+            {/* Twitter */}
+            <TwitterShareButton
+              url={blogUrl}
+              title={data.blogPost.body.childMarkdownRemark.excerpt}
+              className="inline-block w-6"
+            >
+              <GatsbyImage
+                image={data.twitterShareButton.childImageSharp.gatsbyImageData}
+              />
+            </TwitterShareButton>
+
+            {/* FB */}
+            <FacebookShareButton
+              url={blogUrl}
+              quote={data.blogPost.body.childMarkdownRemark.excerpt}
+              className="inline-block w-6"
+            >
+              <GatsbyImage
+                image={data.facebookShareButton.childImageSharp.gatsbyImageData}
+              />
+            </FacebookShareButton>
+
+            {/* Pocket */}
+            <PocketShareButton
+              url={blogUrl}
+              title={data.blogPost.body.childMarkdownRemark.excerpt}
+              className="inline-block w-6"
+            >
+              <GatsbyImage
+                image={data.pocketShareButton.childImageSharp.gatsbyImageData}
+              />
+            </PocketShareButton>
           </div>
         </div>
 
@@ -71,18 +115,18 @@ const BlogPost = ({ data }) => {
         }}
         className="pt-34px pb-8 text-center text-white"
       >
-        <h3 className="mx-auto mb-27px w-11/12 text-xl font-bold">
+        <h3 className="mx-auto mb-27px w-10/12 text-xl font-bold">
           Subscribe to our bi-weekly newsletter
         </h3>
         <input
           type="text"
-          className="mb-14px w-11/12 rounded-full border-2 py-4 px-6 text-text-core_values"
+          className="mb-14px w-10/12 rounded-full border-2 py-4 px-6 text-text-core_values"
           placeholder="Enter your email address"
         ></input>
-        <button className="mb-14px w-11/12 rounded-full border-2 py-4">
+        <button className="mb-14px w-10/12 rounded-full border-2 py-4">
           Subscribe
         </button>
-        <p className="mx-auto w-11/12 text-xs">
+        <p className="mx-auto w-10/12 text-xs">
           By clicking the Subscribe button you are agreeing to receive
           occasional email communications from MyPrayerTimes. We will not share
           your details with any 3rd parties and you can unsubscribe at any time.
@@ -120,6 +164,21 @@ export const query = graphql`
       }
       postHeaderImage {
         gatsbyImageData(formats: WEBP, placeholder: BLURRED)
+      }
+    }
+    twitterShareButton: file(name: { eq: "twitter-share-button" }) {
+      childImageSharp {
+        gatsbyImageData(placeholder: BLURRED, formats: WEBP)
+      }
+    }
+    facebookShareButton: file(name: { eq: "facebook-share-button-96" }) {
+      childImageSharp {
+        gatsbyImageData(placeholder: BLURRED, formats: WEBP)
+      }
+    }
+    pocketShareButton: file(name: { eq: "pocket-share-button" }) {
+      childImageSharp {
+        gatsbyImageData(placeholder: BLURRED, formats: WEBP)
       }
     }
   }
