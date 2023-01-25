@@ -55,6 +55,7 @@ module.exports = {
         '24px': '24px',
         '25px': '25px',
         '26px': '26px',
+        '27px': '27px',
         '30px': '30px',
         '38px': '38px !important',
         '39px': '39px',
@@ -90,6 +91,7 @@ module.exports = {
       },
       gap: {
         '11px': '11px',
+        '15px': '15px',
         1.125: '1.125rem',
       },
       fontSize: {
