@@ -87,6 +87,7 @@ module.exports = {
       },
       gap: {
         '11px': '11px',
+        '15px': '15px',
         1.125: '1.125rem',
       },
       fontSize: {
