@@ -140,5 +140,9 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_DELIVERY_API_ACCESS_TOKEN,
       },
     },
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {},
+    },
   ],
 };
