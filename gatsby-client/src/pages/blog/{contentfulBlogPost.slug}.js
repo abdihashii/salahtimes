@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import Seo from '../../components/seo';
 import Layout from '../../components/layout';
 import './blogPost.css';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 const BlogPost = ({ data }) => {
   return (
@@ -35,9 +36,28 @@ const BlogPost = ({ data }) => {
           </div>
         </div>
 
+        {/* Time to read */}
+        <p style={{ color: '#323130' }} className="mb-4 text-sm">
+          {data.blogPost.body.childMarkdownRemark.timeToRead} min read
+        </p>
+
+        {/* Intro */}
+        <div
+          className="blogPostBody mb-7"
+          dangerouslySetInnerHTML={{
+            __html: data.blogPost.intro.childMarkdownRemark.html,
+          }}
+        ></div>
+
+        {/* Hero Image */}
+        <GatsbyImage
+          className="mb-7"
+          image={data.blogPost.postHeaderImage.gatsbyImageData}
+        />
+
         {/* Content */}
         <div
-          id="blogPostBody"
+          className="blogPostBody"
           dangerouslySetInnerHTML={{
             __html: data.blogPost.body.childMarkdownRemark.html,
           }}
@@ -79,9 +99,23 @@ export const query = graphql`
       title
       author
       date(formatString: "MMM Do, YYYY")
+      intro {
+        childMarkdownRemark {
+          html
+        }
+      }
+      postHeaderImage {
+        gatsbyImageData(placeholder: BLURRED, formats: WEBP)
+      }
+      heroImageCredit {
+        childMarkdownRemark {
+          html
+        }
+      }
       body {
         childMarkdownRemark {
           html
+          timeToRead
         }
       }
       postHeaderImage {
