@@ -56,7 +56,7 @@ const BlogPost = ({ data }) => {
         </h3>
         <input
           type="text"
-          className="mb-14px w-11/12 rounded-full border-2 py-4 px-6"
+          className="mb-14px w-11/12 rounded-full border-2 py-4 px-6 text-text-core_values"
           placeholder="Enter your email address"
         ></input>
         <button className="mb-14px w-11/12 rounded-full border-2 py-4">
