@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       colors: {
         green: {
-          DEFAULT: '#0A963A',
+          DEFAULT: '#34C759',
           dark: '#006307',
           secondary: '#0A8337',
           blog: '#024C1E',
@@ -23,14 +23,19 @@ module.exports = {
           layout_text: '#0F0700',
           button: '#FFFAF5',
           core_values: '#717171',
+          light_blue: '#74B8FE',
         },
         bg: {
           grey: '#F8F8F8',
         },
+        border: {
+          input_white: '#EEEDF0',
+        },
       },
       borderRadius: {
-        '4xl': '32px',
+        '30px': '30px',
         '20px': '20px',
+        '4xl': '32px',
         '40px': '40px',
       },
       borderWidth: {
@@ -76,6 +81,7 @@ module.exports = {
       },
       height: {
         '55px': '55px',
+        '60px': '60px',
         '69px': '69px',
         '151px': '151px',
         '200px': '200px',
@@ -85,6 +91,7 @@ module.exports = {
         '2.5em': '2.5em',
       },
       width: {
+        '60px': '60px',
         '242px': '242px',
         '229px': '229px',
         '933px': '933px',
@@ -137,6 +144,7 @@ module.exports = {
         '30px': '30px',
         '39px': '39px',
         '44px': '44px',
+        '45px': '45px',
       },
     },
   },
