@@ -4,10 +4,10 @@ import Layout from '../components/layout';
 import masjidBackground from '../images/masjid_bg.webp';
 import Seo from '../components/seo';
 import { graphql } from 'gatsby';
-import { HiOutlineArrowRight } from 'react-icons/hi';
 import TextSection from '../components/textSection';
 import CoreValues from '../components/aboutUs/coreValues';
 import OurPledge from '../components/aboutUs/ourPledge';
+import TrendingStories from '../components/trendingStories';
 
 const AboutUs = ({ data }) => {
   const {
@@ -85,39 +85,7 @@ const AboutUs = ({ data }) => {
         <OurPledge />
 
         {/* Trending Stores Of The Month */}
-        <TextSection
-          heading={'Must-Read Stories Of The Month'}
-          textContent={`Stay informed and inspired with our top-trending stories of the month.`}
-        >
-          <div className="mt-45px mb-69px text-left">
-            {blogPosts.map(
-              ({ slug, title, date, postHeaderImage: { gatsbyImageData } }) => {
-                return (
-                  <a
-                    href={`/blog/${slug}`}
-                    key={slug}
-                    className="mb-10 inline-block last:mb-0"
-                  >
-                    <GatsbyImage
-                      className="mb-30px"
-                      image={gatsbyImageData}
-                      alt=""
-                    />
-                    <p className="mb-10px text-xl font-medium text-text-light_black">
-                      {title}
-                    </p>
-                    <p className="text-lg text-text-core_values">{date}</p>
-                  </a>
-                );
-              },
-            )}
-          </div>
-
-          <button className="mx-auto flex w-max flex-row items-center gap-2 rounded-4xl bg-green-secondary py-3 px-8 text-xs font-semibold text-white">
-            Explore Our Blogs
-            <HiOutlineArrowRight />
-          </button>
-        </TextSection>
+        <TrendingStories />
       </>
     </Layout>
   );
