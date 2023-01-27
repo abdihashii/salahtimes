@@ -10,10 +10,7 @@ import OurPledge from '../components/aboutUs/ourPledge';
 import TrendingStories from '../components/trendingStories';
 
 const AboutUs = ({ data }) => {
-  const {
-    contentfulBlogPosts: { nodes: blogPosts },
-    zayed,
-  } = data;
+  const { zayed } = data;
 
   return (
     <Layout transparentNav={true}>
