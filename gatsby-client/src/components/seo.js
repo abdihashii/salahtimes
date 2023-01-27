@@ -8,6 +8,7 @@ const Seo = ({ pageTitle }) => {
     <>
       <title>{pageTitle} | My Prayer Times</title>
       <meta name="description" content={description} />
+      <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
     </>
   );
 };
