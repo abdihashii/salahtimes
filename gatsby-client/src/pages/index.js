@@ -53,7 +53,7 @@ Viverra purus sit auctor convallis. Nullam ac ut elit orci donec sed velit sit n
           href="/about-us"
           className="mx-auto flex w-fit flex-row items-center gap-4 rounded-full border px-25px py-14px text-xs font-semibold"
         >
-          <p className="text-green-secondary">Learn more</p>
+          <p className="text-green-secondary">About Us</p>
           <RxArrowRight />
         </a>
       </section>
