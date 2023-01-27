@@ -5,168 +5,14 @@ import masjidBackground from '../images/masjid_bg.webp';
 import Seo from '../components/seo';
 import { graphql } from 'gatsby';
 import { HiOutlineArrowRight } from 'react-icons/hi';
-
-/** The small green border under each 'About Us' section */
-const SectionBorder = () => {
-  return (
-    <span className="mx-auto mb-25px w-20 rounded-xl border-4 border-green-secondary"></span>
-  );
-};
-
-/** Core values */
-const CoreValues = ({ images }) => {
-  const coreValues = [
-    {
-      coreValue: 'Iman (Faith)',
-      coreValueDescription: `At MyPrayerTimes, we believe that faith is 
-      the foundation of a meaningful and fulfilling life as a Muslim. 
-      We strive to provide content and resources that deepen knowledge 
-      and connection with Allah.`,
-      imageCredit: {
-        link: 'https://unsplash.com/photos/Dxi6KbpvUgA',
-        author: 'Abdullah Arif',
-        website: 'Unsplash',
-      },
-    },
-    {
-      coreValue: 'Integrity + Transparency',
-      coreValueDescription: `We pride ourselves on being open and 
-      upfront with our users, providing accurate and reliable salah times 
-      and being transparent in our practices.`,
-      imageCredit: {
-        link: 'https://unsplash.com/photos/hW11fwjzVfA',
-        author: 'Zach Reiner',
-        website: 'Unsplash',
-      },
-    },
-    {
-      coreValue: 'Commitment to Quality',
-      coreValueDescription: `We aim to provide the highest quality content 
-      and user experience, from accurate prayer times to informative and 
-      well-researched blog posts about prayer in Islam.`,
-      imageCredit: {
-        link: 'https://unsplash.com/photos/ZSBFoikEu_Q',
-        author: 'Jon Tyson',
-        website: 'Unsplash',
-      },
-    },
-  ];
-
-  return (
-    <div className="mt-45px flex flex-col gap-10 text-left">
-      {/* Iman (Faith) */}
-      <div>
-        <GatsbyImage
-          image={images.iman.childImageSharp.gatsbyImageData}
-          alt="Mashaf next to dates, representing Iman (Faith)"
-        />
-        <a
-          className="mb-5 inline-block text-xs text-text-core_values"
-          target="_blank"
-          rel="noreferrer"
-          href={coreValues[0].imageCredit.link}
-        >
-          Photo by {coreValues[0].imageCredit.author} |{' '}
-          {coreValues[0].imageCredit.website}
-        </a>
-        <p className="mb-25px text-xl font-medium">{coreValues[0].coreValue}</p>
-        <p className="text-text-core_values">
-          {coreValues[0].coreValueDescription}
-        </p>
-      </div>
-
-      {/* Integrity + Transparency */}
-      <div>
-        <GatsbyImage
-          image={images.integrity.childImageSharp.gatsbyImageData}
-          alt="Roots of a tree next to a waterfall, representing a strong foundation"
-        />
-        <a
-          className="mb-5 inline-block text-xs text-text-core_values"
-          target="_blank"
-          rel="noreferrer"
-          href={coreValues[1].imageCredit.link}
-        >
-          Photo by {coreValues[1].imageCredit.author} |{' '}
-          {coreValues[1].imageCredit.website}
-        </a>
-        <p className="mb-25px text-xl font-medium">{coreValues[1].coreValue}</p>
-        <p className="text-text-core_values">
-          {coreValues[1].coreValueDescription}
-        </p>
-      </div>
-
-      {/* Quality */}
-      <div>
-        <GatsbyImage
-          image={images.quality.childImageSharp.gatsbyImageData}
-          alt="A magnifying glass, representing quality"
-        />
-        <a
-          className="mb-5 inline-block text-xs text-text-core_values"
-          target="_blank"
-          rel="noreferrer"
-          href={coreValues[2].imageCredit.link}
-        >
-          Photo by {coreValues[2].imageCredit.author} |{' '}
-          {coreValues[2].imageCredit.website}
-        </a>
-        <p className="mb-25px text-xl font-medium">{coreValues[2].coreValue}</p>
-        <p className="text-text-core_values">
-          {coreValues[2].coreValueDescription}
-        </p>
-      </div>
-    </div>
-  );
-};
-
-/** Component for each 'About Us' section */
-const AboutUsTextSection = ({ heading, textContent, children }) => {
-  return (
-    <section className="mx-auto mb-10 flex w-11/12 flex-col text-center">
-      <h2 className="mb-3 text-2xl font-bold leading-30px">{heading}</h2>
-      <SectionBorder />
-      <p className="text-text-medium_grey">{textContent}</p>
-
-      {children && children}
-    </section>
-  );
-};
-
-/** Our Pledge section */
-const OurPledge = () => {
-  return (
-    <section
-      className="mb-10 pb-52px text-center text-white"
-      style={{
-        background: 'linear-gradient(100.39deg, #122318 0.8%, #00260E 100%)',
-      }}
-    >
-      <h2 className="mb-30px pt-12 text-28px font-bold">Our Pledge</h2>
-      <p className="mx-auto mb-9 w-11/12">
-        Every day, we focus on creating a better mobile app, one that is
-        relevant and useful to the Ummah. We may not always get it right, but we
-        pledge to always listen to you, our users, to improve and to serve you
-        better today, compared to yesterday.
-      </p>
-      <hr className="mx-auto mb-9 w-6/12" />
-      <p className="mx-auto mb-9 w-11/12">
-        If anyone fulfils his brother’s needs, Allah will fulfil his needs; if
-        one relieves a Muslim of his troubles, Allah will relieve his troubles
-        on the Day of Resurrection.
-      </p>
-      <p>Prophet Muhammad ﷺ, Sahih Bukhari</p>
-    </section>
-  );
-};
+import TextSection from '../components/textSection';
+import CoreValues from '../components/aboutUs/coreValues';
+import OurPledge from '../components/aboutUs/ourPledge';
 
 const AboutUs = ({ data }) => {
   const {
     contentfulBlogPosts: { nodes: blogPosts },
     zayed,
-    iman,
-    integrity,
-    quality,
   } = data;
 
   return (
@@ -206,7 +52,7 @@ const AboutUs = ({ data }) => {
         </section>
 
         {/* Our Mission */}
-        <AboutUsTextSection
+        <TextSection
           heading={'Our Mission'}
           textContent={`To empower Muslims of diverse backgrounds with accurate and reliable
             Islamic prayer times while providing informative content to deepen
@@ -218,7 +64,7 @@ const AboutUs = ({ data }) => {
         />
 
         {/* Our Vision */}
-        <AboutUsTextSection
+        <TextSection
           heading={'Our Vision'}
           textContent={`To be a global platform that engages the Ummah and inspires a deeper
             connection and love for Salah through accurate prayer times and
@@ -228,20 +74,18 @@ const AboutUs = ({ data }) => {
         />
 
         {/* Our Core Values */}
-        <AboutUsTextSection
+        <TextSection
           heading={'Our Core Values'}
           textContent={`Discover the guiding principles that shape our mission and vision at MyPrayerTimes.`}
         >
-          <CoreValues
-            images={{ iman: iman, integrity: integrity, quality: quality }}
-          />
-        </AboutUsTextSection>
+          <CoreValues />
+        </TextSection>
 
         {/* Our Pledge */}
         <OurPledge />
 
         {/* Trending Stores Of The Month */}
-        <AboutUsTextSection
+        <TextSection
           heading={'Must-Read Stories Of The Month'}
           textContent={`Stay informed and inspired with our top-trending stories of the month.`}
         >
@@ -265,7 +109,7 @@ const AboutUs = ({ data }) => {
                     <p className="text-lg text-text-core_values">{date}</p>
                   </a>
                 );
-              }
+              },
             )}
           </div>
 
@@ -273,7 +117,7 @@ const AboutUs = ({ data }) => {
             Explore Our Blogs
             <HiOutlineArrowRight />
           </button>
-        </AboutUsTextSection>
+        </TextSection>
       </>
     </Layout>
   );
@@ -295,21 +139,6 @@ export const query = graphql`
     zayed: file(
       relativePath: { in: "about-us-page/sheikh-zayed-grand-mosque.jpg" }
     ) {
-      childImageSharp {
-        gatsbyImageData(placeholder: BLURRED, formats: WEBP)
-      }
-    }
-    iman: file(relativePath: { in: "about-us-page/iman.jpg" }) {
-      childImageSharp {
-        gatsbyImageData(placeholder: BLURRED, formats: WEBP)
-      }
-    }
-    quality: file(relativePath: { in: "about-us-page/quality.jpg" }) {
-      childImageSharp {
-        gatsbyImageData(placeholder: BLURRED, formats: WEBP)
-      }
-    }
-    integrity: file(relativePath: { in: "about-us-page/integrity.jpg" }) {
       childImageSharp {
         gatsbyImageData(placeholder: BLURRED, formats: WEBP)
       }
