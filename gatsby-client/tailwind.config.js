@@ -33,8 +33,9 @@ module.exports = {
         },
       },
       borderRadius: {
-        '30px': '30px',
+        '5px': '5px',
         '20px': '20px',
+        '30px': '30px',
         '4xl': '32px',
         '40px': '40px',
       },
@@ -103,6 +104,7 @@ module.exports = {
         '10px': '10px',
         '11px': '11px',
         '15px': '15px',
+        '22px': '22px',
         1.125: '1.125rem',
       },
       fontSize: {
