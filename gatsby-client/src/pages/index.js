@@ -22,17 +22,21 @@ const Home = () => {
       >
         <PrayerTimesTitle />
         <CurrentTime />
+
+        {/* Calculation settings */}
         <p className="mx-auto mb-5 w-10/12 text-lg font-medium text-text-light_grey">
           Calculation Method: Islamic Society of North America, Juristic
           settings: <strong>Shafii</strong>
         </p>
+
+        {/* Change settings button */}
         <button className="mx-auto mb-45px flex w-fit items-center gap-2 text-text-light_blue">
           <RxPencil2 /> Change Settings
         </button>
         <LocationSelector />
+        <PrayerTimes />
+        <MorePrayerTimes />
       </section>
-      <PrayerTimes />
-      <MorePrayerTimes />
     </Layout>
   );
 };
