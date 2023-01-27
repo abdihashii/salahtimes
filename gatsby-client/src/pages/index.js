@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Layout from '../components/layout';
 import { LocationSelector } from '../components/locationSelector';
 import Seo from '../components/seo';
