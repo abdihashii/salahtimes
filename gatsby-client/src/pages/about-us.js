@@ -1,7 +1,6 @@
 import React from 'react';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
-import TextSection from '../components/textSection';
 import CoreValues from '../components/aboutUs/coreValues';
 import OurPledge from '../components/aboutUs/ourPledge';
 import TrendingStories from '../components/trendingStories';
