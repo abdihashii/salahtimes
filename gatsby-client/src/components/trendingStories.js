@@ -16,7 +16,11 @@ const TrendingStories = () => {
           title
           date(formatString: "MMM Do, yyyy")
           postHeaderImage {
-            gatsbyImageData(formats: WEBP, placeholder: BLURRED)
+            gatsbyImageData(
+              formats: WEBP
+              placeholder: BLURRED
+              aspectRatio: 1.823396614
+            )
             description
           }
         }
@@ -29,7 +33,7 @@ const TrendingStories = () => {
       heading={'Must-Read Stories Of The Month'}
       textContent={`Stay informed and inspired with our top-trending stories of the month.`}
     >
-      <div className="mt-45px mb-69px text-left">
+      <div className="mt-45px mb-69px text-left lg:mb-20 lg:grid lg:grid-cols-3 lg:gap-10">
         {blogPosts.map(
           ({ slug, title, date, postHeaderImage: { gatsbyImageData } }) => {
             return (
@@ -55,7 +59,7 @@ const TrendingStories = () => {
 
       <a
         href="/blog"
-        className="mx-auto flex w-max flex-row items-center gap-2 rounded-full bg-green-secondary py-3 px-8 text-xs font-semibold text-white"
+        className="mx-auto flex w-max flex-row items-center gap-2 rounded-full bg-green-secondary py-3 px-8 text-xs font-semibold text-white lg:text-lg"
       >
         <p>Explore Our Blogs</p>
         <RxArrowRight />
