@@ -4,31 +4,31 @@ import React from 'react';
 const SectionBorder = ({ className }) => {
   return (
     <hr
-      className={`mx-auto mb-25px w-20 rounded-xl border-4 border-green-secondary lg:!ml-0 lg:w-16 lg:border-5px lg:bg-green-secondary ${className}`}
+      className={`mx-auto mb-25px w-20 rounded-xl border-4 border-green-secondary lg:!ml-0 lg:w-16 lg:bg-green-secondary ${className}`}
     />
   );
 };
 
 /** Component for each 'About Us' section */
-const TextSection = ({
-  heading,
-  textContent,
-  children,
-  desktop,
-  className,
-}) => {
+const TextSection = ({ heading, textContent, children, className }) => {
   const isCoreValuesOrTrending =
-    heading === 'Our Core Values' || 'Must-Read Stories Of The Month';
+    heading === 'Our Core Values' ||
+    heading === 'Must-Read Stories Of The Month';
+
+  const isMissionOrVision =
+    heading === 'Our Mission' || heading === 'Our Vision';
 
   return (
     <section
       className={`mx-auto mb-10 flex w-11/12 flex-col text-center ${
-        desktop ? 'lg:mb-45px lg:text-left' : ''
+        isMissionOrVision
+          ? 'w-full lg:mb-45px lg:!mr-0 lg:justify-between lg:text-left'
+          : ''
       } ${isCoreValuesOrTrending ? 'lg:mb-28 lg:w-9/12' : ''} ${className}`}
     >
       <h2
         className={`mb-3 text-2xl font-bold leading-30px lg:font-semibold ${
-          desktop ? 'lg:text-45px lg:leading-57px' : ''
+          isMissionOrVision ? 'lg:text-45px lg:leading-57px' : ''
         } ${
           isCoreValuesOrTrending ? 'lg:mb-30px lg:text-40px lg:font-bold' : ''
         }`}
