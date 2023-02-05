@@ -20,7 +20,7 @@ const OurPledge = () => {
       <p className="mx-auto mb-9 w-11/12 lg:w-7/12">
         "If anyone fulfils his brother’s needs, Allah will fulfil his needs; if
         one relieves a Muslim of his troubles, Allah will relieve his troubles
-        on the Day of Resurrection.""
+        on the Day of Resurrection."
       </p>
       <p>Prophet Muhammad ﷺ, Sahih Bukhari</p>
     </section>

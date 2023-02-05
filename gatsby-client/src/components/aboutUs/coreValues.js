@@ -74,18 +74,21 @@ const CoreValues = () => {
         <SingleCoreValue
           image={iman.childImageSharp.gatsbyImageData}
           coreValue={coreValues[0]}
+          alt="Mashaf next to dates, representing Iman (Faith)"
         />
 
         {/* Integrity + Transparency */}
         <SingleCoreValue
           image={integrity.childImageSharp.gatsbyImageData}
           coreValue={coreValues[1]}
+          alt="Roots of a tree next to a waterfall, representing a strong foundation"
         />
 
         {/* Quality */}
         <SingleCoreValue
           image={quality.childImageSharp.gatsbyImageData}
           coreValue={coreValues[2]}
+          alt="A magnifying glass, representing quality"
         />
       </div>
     </TextSection>
