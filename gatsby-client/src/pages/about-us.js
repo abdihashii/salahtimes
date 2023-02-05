@@ -5,7 +5,7 @@ import TextSection from '../components/textSection';
 import CoreValues from '../components/aboutUs/coreValues';
 import OurPledge from '../components/aboutUs/ourPledge';
 import TrendingStories from '../components/trendingStories';
-import AboutUsHeader from '../components/aboutUs/header';
+import AboutUsHeader from '../components/aboutUs/aboutUsHeader';
 import MissionAndVision from '../components/aboutUs/missionAndVision';
 
 const aboutUsContent = {
