@@ -17,7 +17,7 @@ const MissionAndVision = ({ aboutUsContent }) => {
   `);
 
   return (
-    <section className="lg:mx-auto lg:mb-183px lg:flex lg:w-10/12 lg:flex-row lg:gap-20">
+    <section className="lg:mx-auto lg:mb-183px lg:flex lg:w-9/12 lg:flex-row lg:gap-20">
       {/* Image w/ Shadow Section */}
       <section className="relative mx-auto mb-10 w-11/12 lg:mb-0">
         <div className="absolute bottom-0 right-0 h-full w-10/12 bg-green-secondary"></div>
