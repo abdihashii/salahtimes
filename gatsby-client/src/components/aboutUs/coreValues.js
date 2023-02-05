@@ -49,12 +49,12 @@ const CoreValues = () => {
           gatsbyImageData(placeholder: BLURRED, formats: WEBP)
         }
       }
-      quality: file(relativePath: { in: "about-us-page/quality.jpg" }) {
+      integrity: file(relativePath: { in: "about-us-page/integrity.jpg" }) {
         childImageSharp {
           gatsbyImageData(placeholder: BLURRED, formats: WEBP)
         }
       }
-      integrity: file(relativePath: { in: "about-us-page/integrity.jpg" }) {
+      quality: file(relativePath: { in: "about-us-page/quality.jpg" }) {
         childImageSharp {
           gatsbyImageData(placeholder: BLURRED, formats: WEBP)
         }
@@ -64,7 +64,7 @@ const CoreValues = () => {
 
   return (
     <div
-      className={`mt-45px flex flex-col gap-10 text-left lg:flex lg:flex-row`}
+      className={`mt-45px flex flex-col gap-10 text-left lg:grid lg:grid-cols-3`}
     >
       {/* Iman (Faith) */}
       <SingleCoreValue
