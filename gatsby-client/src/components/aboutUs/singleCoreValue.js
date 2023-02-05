@@ -3,7 +3,7 @@ import React from 'react';
 
 const SingleCoreValue = ({ image, alt, coreValue }) => {
   return (
-    <div>
+    <div className="max-w-370px">
       <GatsbyImage image={image} alt={alt} />
       <a
         className="mb-5 inline-block text-xs text-text-core_values"
