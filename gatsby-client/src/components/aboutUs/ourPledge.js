@@ -4,7 +4,7 @@ import React from 'react';
 const OurPledge = () => {
   return (
     <section
-      className="mb-10 pb-52px pt-12 text-center text-white lg:py-20"
+      className="mb-10 pb-52px pt-12 text-center text-white lg:mb-28 lg:py-20"
       style={{
         background: 'linear-gradient(100.39deg, #122318 0.8%, #00260E 100%)',
       }}
