@@ -40,12 +40,7 @@ const AboutUs = () => {
         <MissionAndVision {...{ aboutUsContent }} />
 
         {/* Our Core Values */}
-        <TextSection
-          heading={'Our Core Values'}
-          textContent={`Discover the guiding principles that shape our mission and vision at MyPrayerTimes.`}
-        >
-          <CoreValues />
-        </TextSection>
+        <CoreValues />
 
         {/* Our Pledge */}
         <OurPledge />

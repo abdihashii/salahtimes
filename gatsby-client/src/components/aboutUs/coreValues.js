@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
+import TextSection from '../textSection';
 import SingleCoreValue from './singleCoreValue';
 
 /** Core values */
@@ -63,27 +63,32 @@ const CoreValues = () => {
   `);
 
   return (
-    <div
-      className={`mt-45px flex flex-col gap-10 text-left lg:grid lg:grid-cols-3`}
+    <TextSection
+      heading={'Our Core Values'}
+      textContent={`Discover the guiding principles that shape our mission and vision at MyPrayerTimes.`}
     >
-      {/* Iman (Faith) */}
-      <SingleCoreValue
-        image={iman.childImageSharp.gatsbyImageData}
-        coreValue={coreValues[0]}
-      />
+      <div
+        className={`mt-45px flex flex-col gap-10 text-left lg:grid lg:grid-cols-3`}
+      >
+        {/* Iman (Faith) */}
+        <SingleCoreValue
+          image={iman.childImageSharp.gatsbyImageData}
+          coreValue={coreValues[0]}
+        />
 
-      {/* Integrity + Transparency */}
-      <SingleCoreValue
-        image={integrity.childImageSharp.gatsbyImageData}
-        coreValue={coreValues[1]}
-      />
+        {/* Integrity + Transparency */}
+        <SingleCoreValue
+          image={integrity.childImageSharp.gatsbyImageData}
+          coreValue={coreValues[1]}
+        />
 
-      {/* Quality */}
-      <SingleCoreValue
-        image={quality.childImageSharp.gatsbyImageData}
-        coreValue={coreValues[2]}
-      />
-    </div>
+        {/* Quality */}
+        <SingleCoreValue
+          image={quality.childImageSharp.gatsbyImageData}
+          coreValue={coreValues[2]}
+        />
+      </div>
+    </TextSection>
   );
 };
 
