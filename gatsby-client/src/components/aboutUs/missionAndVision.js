@@ -24,7 +24,7 @@ const aboutUsContent = {
   },
 };
 
-const MissionAndVision = () => {
+const ImageWithShadow = () => {
   const { zayed } = useStaticQuery(graphql`
     query {
       zayed: file(
@@ -42,27 +42,29 @@ const MissionAndVision = () => {
   `);
 
   return (
+    <section className="relative mx-auto mb-10 w-11/12 pb-21px lg:mb-0 lg:w-1/2 lg:p-0">
+      <div className="absolute bottom-0 right-0 h-5/6 w-10/12 bg-green-secondary"></div>
+      <GatsbyImage
+        image={zayed.childImageSharp.gatsbyImageData}
+        className="h-5/6 w-10/12"
+      />
+    </section>
+  );
+};
+
+const MissionAndVision = () => {
+  return (
     <section className="lg:mx-auto lg:mb-183px lg:flex lg:w-9/12 lg:flex-row lg:gap-6">
       {/* Image w/ Shadow Section */}
-      <section className="relative mx-auto mb-10 w-11/12 pb-21px lg:mb-0 lg:w-1/2 lg:p-0">
-        <div
-          className="absolute bottom-0 right-0 h-5/6 w-10/12 bg-green-secondary"
-          // style={{ height: 'calc(100% - 16px)' }}
-        ></div>
-        <GatsbyImage
-          image={zayed.childImageSharp.gatsbyImageData}
-          className="h-5/6 w-10/12"
-        />
-      </section>
+      <ImageWithShadow />
 
+      {/* Our Mission and Vision */}
       <div className="lg:w-1/2">
-        {/* Our Mission */}
         <TextSection
           heading={aboutUsContent.mission.title}
           textContent={aboutUsContent.mission.content}
         />
 
-        {/* Our Vision */}
         <TextSection
           heading={aboutUsContent.vision.title}
           textContent={aboutUsContent.vision.content}
