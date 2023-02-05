@@ -23,12 +23,12 @@ const TextSection = ({
     <section
       className={`mx-auto mb-10 flex w-11/12 flex-col text-center ${
         desktop ? 'lg:mb-45px lg:text-left' : ''
-      } ${isCoreValues ? 'lg:w-9/12' : ''} ${className}`}
+      } ${isCoreValues ? 'lg:mb-28 lg:w-9/12' : ''} ${className}`}
     >
       <h2
         className={`mb-3 text-2xl font-bold leading-30px lg:font-semibold ${
           desktop ? 'lg:text-45px lg:leading-57px' : ''
-        }`}
+        } ${isCoreValues ? 'lg:mb-30px lg:text-40px lg:font-bold' : ''}`}
       >
         {heading}
       </h2>
