@@ -17,12 +17,13 @@ const TextSection = ({
   desktop,
   className,
 }) => {
-  console.log(heading === 'Our Core Values');
+  const isCoreValues = heading === 'Our Core Values';
+
   return (
     <section
       className={`mx-auto mb-10 flex w-11/12 flex-col text-center ${
         desktop ? 'lg:mb-45px lg:text-left' : ''
-      } ${className}`}
+      } ${isCoreValues ? 'lg:w-9/12' : ''} ${className}`}
     >
       <h2
         className={`mb-3 text-2xl font-bold leading-30px lg:font-semibold ${
@@ -32,9 +33,7 @@ const TextSection = ({
         {heading}
       </h2>
 
-      <SectionBorder
-        className={`${heading === 'Our Core Values' ? 'lg:hidden' : ''}`}
-      />
+      <SectionBorder className={`${isCoreValues ? 'lg:hidden' : ''}`} />
 
       <p className="text-text-medium_grey lg:leading-29px">{textContent}</p>
 
