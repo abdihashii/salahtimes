@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
+import SingleCoreValue from './singleCoreValue';
 
 /** Core values */
 const CoreValues = () => {
@@ -62,69 +63,26 @@ const CoreValues = () => {
   `);
 
   return (
-    <div className="mt-45px flex flex-col gap-10 text-left">
+    <div
+      className={`mt-45px flex flex-col gap-10 text-left lg:flex lg:flex-row`}
+    >
       {/* Iman (Faith) */}
-      <div>
-        <GatsbyImage
-          image={iman.childImageSharp.gatsbyImageData}
-          alt="Mashaf next to dates, representing Iman (Faith)"
-        />
-        <a
-          className="mb-5 inline-block text-xs text-text-core_values"
-          target="_blank"
-          rel="noreferrer"
-          href={coreValues[0].imageCredit.link}
-        >
-          Photo by {coreValues[0].imageCredit.author} |{' '}
-          {coreValues[0].imageCredit.website}
-        </a>
-        <p className="mb-25px text-xl font-medium">{coreValues[0].coreValue}</p>
-        <p className="text-text-core_values">
-          {coreValues[0].coreValueDescription}
-        </p>
-      </div>
+      <SingleCoreValue
+        image={iman.childImageSharp.gatsbyImageData}
+        coreValue={coreValues[0]}
+      />
 
       {/* Integrity + Transparency */}
-      <div>
-        <GatsbyImage
-          image={integrity.childImageSharp.gatsbyImageData}
-          alt="Roots of a tree next to a waterfall, representing a strong foundation"
-        />
-        <a
-          className="mb-5 inline-block text-xs text-text-core_values"
-          target="_blank"
-          rel="noreferrer"
-          href={coreValues[1].imageCredit.link}
-        >
-          Photo by {coreValues[1].imageCredit.author} |{' '}
-          {coreValues[1].imageCredit.website}
-        </a>
-        <p className="mb-25px text-xl font-medium">{coreValues[1].coreValue}</p>
-        <p className="text-text-core_values">
-          {coreValues[1].coreValueDescription}
-        </p>
-      </div>
+      <SingleCoreValue
+        image={integrity.childImageSharp.gatsbyImageData}
+        coreValue={coreValues[1]}
+      />
 
       {/* Quality */}
-      <div>
-        <GatsbyImage
-          image={quality.childImageSharp.gatsbyImageData}
-          alt="A magnifying glass, representing quality"
-        />
-        <a
-          className="mb-5 inline-block text-xs text-text-core_values"
-          target="_blank"
-          rel="noreferrer"
-          href={coreValues[2].imageCredit.link}
-        >
-          Photo by {coreValues[2].imageCredit.author} |{' '}
-          {coreValues[2].imageCredit.website}
-        </a>
-        <p className="mb-25px text-xl font-medium">{coreValues[2].coreValue}</p>
-        <p className="text-text-core_values">
-          {coreValues[2].coreValueDescription}
-        </p>
-      </div>
+      <SingleCoreValue
+        image={quality.childImageSharp.gatsbyImageData}
+        coreValue={coreValues[2]}
+      />
     </div>
   );
 };
