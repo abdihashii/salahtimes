@@ -1,6 +1,6 @@
 import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 
 const Footer = () => {
   const { faviconCropped } = useStaticQuery(graphql`
@@ -15,84 +15,93 @@ const Footer = () => {
 
   return (
     <footer className="mx-auto mt-56px flex flex-col border-t-3px border-green-secondary pt-12 tracking-0.011em">
-      <div className="mb-8 flex flex-row items-center justify-center">
-        <GatsbyImage
-          image={faviconCropped.childImageSharp.gatsbyImageData}
-          alt="My Prayer Times Logo"
-          className="w-2/12"
-        />
-        <p className="ml-13px text-17px font-bold uppercase text-green-secondary">
-          My Prayer Times
-        </p>
-      </div>
+      <section className="lg:mx-auto lg:flex lg:w-9/12 lg:flex-row lg:gap-16">
+        {/* Logo and One-liner */}
+        <div className="lg:flex lg:flex-col">
+          {/* Logo */}
+          <div className="mb-8 flex flex-row items-center justify-center lg:mb-36px lg:justify-start">
+            <GatsbyImage
+              image={faviconCropped.childImageSharp.gatsbyImageData}
+              alt="My Prayer Times Logo"
+              className="w-2/12"
+            />
+            <p className="ml-17px text-17px font-bold uppercase text-green-secondary lg:ml-4 lg:text-xl">
+              My Prayer Times
+            </p>
+          </div>
 
-      {/* footer one-liner */}
-      <div className="font- mx-auto mb-51px w-10/12 justify-center text-center text-base text-text-grey">
-        <p>
-          Connecting the global Ummah with accurate prayer times and spiritual
-          growth
-        </p>
-      </div>
+          {/* footer one-liner */}
+          <div className="mx-auto mb-51px w-10/12 justify-center text-center text-base text-text-grey lg:!ml-0 lg:w-10/12 lg:text-left lg:leading-8">
+            <p>
+              Connecting the global Ummah with accurate prayer times and
+              spiritual growth
+            </p>
+          </div>
+        </div>
 
-      {/* Prayer times, blog, about us, contact us, and faqs */}
-      <ul className="mb-50px flex flex-col items-center text-lg font-medium leading-44px text-text-grey">
-        <li className="inline-block">
-          <a href="/">Prayer Times</a>
-        </li>
-        <li className="inline-block">
-          <a href="/blog">Blog</a>
-        </li>
-        <li className="inline-block">
-          <a href="/about-us">About Us</a>
-        </li>
-        <li className="inline-block">
-          <a href="contact-us">Contact Us</a>
-        </li>
-        <li className="inline-block">
-          <a href="faqs">FAQs</a>
-        </li>
-      </ul>
+        {/* Prayer times, blog, about us, contact us, and faqs */}
+        <ul className="mb-50px flex flex-col text-center text-lg font-medium leading-44px text-text-grey lg:whitespace-nowrap lg:text-left">
+          <li>
+            <Link to="/">Prayer Times</Link>
+          </li>
+          <li>
+            <Link to="/blog">Blog</Link>
+          </li>
+          <li>
+            <Link to="/about-us">About Us</Link>
+          </li>
+          <li>
+            <Link to="contact-us">Contact Us</Link>
+          </li>
+          <li>
+            <Link to="faqs">FAQs</Link>
+          </li>
+        </ul>
 
-      {/* Privacy policy, terms of use, disclamer, and help center */}
-      <ul className="mb-50px flex flex-col items-center text-lg font-medium leading-44px text-text-grey">
-        <li className="inline-block">
-          <a href="/">Privacy Policy</a>
-        </li>
-        <li className="inline-block">
-          <a href="/">Terms of Use</a>
-        </li>
-        <li className="inline-block">
-          <a href="/">Disclamer</a>
-        </li>
-        <li className="inline-block">
-          <a href="/">Help Center</a>
-        </li>
-      </ul>
+        {/* Privacy policy, terms of use, disclamer, and help center */}
+        <ul className="mb-50px flex flex-col text-center text-lg font-medium leading-44px text-text-grey lg:whitespace-nowrap lg:text-left">
+          <li className="inline-block">
+            <a href="/">Privacy Policy</a>
+          </li>
+          <li className="inline-block">
+            <a href="/">Terms of Use</a>
+          </li>
+          <li className="inline-block">
+            <a href="/">Disclamer</a>
+          </li>
+          <li className="inline-block">
+            <a href="/">Help Center</a>
+          </li>
+        </ul>
 
-      {/* Manage preferences and cookies policy */}
-      <ul className="mb-55px flex flex-col items-center text-lg font-medium leading-44px text-text-grey">
-        <li className="inline-block">
-          <a href="/">Manage Preferences</a>
-        </li>
-        <li className="inline-block">
-          <a href="/">Cookies Policy</a>
-        </li>
-      </ul>
+        {/* Manage preferences and cookies policy */}
+        <ul className="mb-55px flex flex-col text-center text-lg font-medium leading-44px text-text-grey lg:whitespace-nowrap lg:text-left">
+          <li className="inline-block">
+            <a href="/">Manage Preferences</a>
+          </li>
+          <li className="inline-block">
+            <a href="/">Cookies Policy</a>
+          </li>
+        </ul>
 
-      {/* Follow us */}
-      <p className="mb-26px flex justify-center text-xl font-medium uppercase leading-39px text-text-layout_text">
-        Follow Us
-      </p>
+        {/* Social */}
+        <div>
+          {/* Follow us */}
+          <p className="mb-26px flex justify-center text-xl font-medium uppercase leading-39px text-text-layout_text lg:justify-start">
+            Follow Us
+          </p>
 
-      {/* Social media links */}
-      <ul className="mb-63px flex flex-row justify-center gap-x-11px">
-        <li>
-          <a href="/">Twitter</a>
-        </li>
-        <li>
-          <a href="/">Instagram</a>
-        </li>
-      </ul>
+          {/* Social media links */}
+          <ul className="mb-63px flex flex-row justify-center gap-x-11px">
+            <li>
+              <a href="/">Twitter</a>
+            </li>
+            <li>
+              <a href="/">Instagram</a>
+            </li>
+          </ul>
+        </div>
+      </section>
 
       {/* Copyright */}
       <div className="flex justify-center bg-bg-grey p-22px text-13px font-extralight leading-26px text-text-layout_text">
