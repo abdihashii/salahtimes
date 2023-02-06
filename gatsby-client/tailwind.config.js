@@ -56,6 +56,7 @@ module.exports = {
         '11px': '11px',
         '13px': '13px',
         '14px': '14px',
+        '17px': '17px',
         '18px': '18px',
         '21px': '21px',
         '22px': '22px',
@@ -64,6 +65,7 @@ module.exports = {
         '26px': '26px',
         '27px': '27px',
         '30px': '30px',
+        '36px': '36px',
         '38px': '38px !important',
         '39px': '39px',
         '45px': '45px',
@@ -109,6 +111,7 @@ module.exports = {
         '15px': '15px',
         '21px': '21px',
         '22px': '22px',
+        '71px': '71px',
         1.125: '1.125rem',
       },
       fontSize: {
