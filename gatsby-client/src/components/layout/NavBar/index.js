@@ -128,6 +128,7 @@ const NavBar = ({ transparentNav }) => {
           {/* Our Blog button - Navigation */}
           <Link
             className="ml-36 hidden rounded-full bg-green-secondary py-4 px-12 font-semibold text-white hover:bg-green-dark lg:block"
+            activeStyle={{ backgroundColor: '#006307' }}
             to="/blog"
           >
             Our Blog
