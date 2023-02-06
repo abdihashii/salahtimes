@@ -47,6 +47,7 @@ const ImageWithShadow = () => {
       <GatsbyImage
         image={zayed.childImageSharp.gatsbyImageData}
         className="h-5/6 w-10/12"
+        alt={`Sheikh Zayed Grand Mosque, Abu Dhabi`}
       />
     </section>
   );
