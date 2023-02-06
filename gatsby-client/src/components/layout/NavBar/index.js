@@ -41,17 +41,41 @@ const DesktopNav = () => {
   return (
     <nav className="ml-auto hidden text-base font-medium leading-6 text-white lg:block">
       <ul className="flex flex-row gap-10">
-        <li className="opacity-50 hover:opacity-100">
-          <Link to="/about-us">About Us</Link>
+        <li>
+          <Link
+            className="opacity-50 hover:opacity-100"
+            activeStyle={{ opacity: 1 }}
+            to="/about-us/"
+          >
+            About Us
+          </Link>
         </li>
-        <li className="opacity-50 hover:opacity-100">
-          <Link to="/faqs">FAQs</Link>
+        <li>
+          <Link
+            className="opacity-50 hover:opacity-100"
+            activeStyle={{ opacity: 1 }}
+            to="/faqs"
+          >
+            FAQs
+          </Link>
         </li>
-        <li className="opacity-50 hover:opacity-100">
-          <Link to="/resources">Resources</Link>
+        <li>
+          <Link
+            className="opacity-50 hover:opacity-100"
+            activeStyle={{ opacity: 1 }}
+            to="/resources"
+          >
+            Resources
+          </Link>
         </li>
-        <li className="opacity-50 hover:opacity-100">
-          <Link to="/contact-us">Contact Us</Link>
+        <li>
+          <Link
+            className="opacity-50 hover:opacity-100"
+            activeStyle={{ opacity: 1 }}
+            to="/contact-us"
+          >
+            Contact Us
+          </Link>
         </li>
       </ul>
     </nav>
