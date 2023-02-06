@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Seo from '../../components/seo';
 import Layout from '../../components/layout';
 import './blogPost.css';
@@ -12,10 +12,21 @@ import {
 
 const BlogPost = ({ data }) => {
   const blogUrl = typeof window !== 'undefined' ? window.location.href : '';
-
+  console.log(data.blogPost);
   return (
     <Layout>
-      <section className="mx-auto mt-9 mb-12 w-10/12 text-left">
+      <section className="mx-auto mt-9 mb-12 w-10/12 text-left lg:mt-24">
+        {/* Tag */}
+        <div className="mb-5 flex flex-row gap-2 text-xs font-bold text-green-dark lg:mx-auto lg:w-7/12 lg:gap-4 lg:text-2xl">
+          {data.blogPost.metadata.tags.map((tag) => {
+            return (
+              <Link className="hover:underline" to="/">
+                {tag.name}
+              </Link>
+            );
+          })}
+        </div>
+
         {/* Title */}
         <h1 className="mb-30px text-xl font-semibold text-text-layout_text lg:mx-auto lg:w-7/12 lg:text-40px lg:font-medium lg:leading-55px">
           {data.blogPost.title}
@@ -154,6 +165,11 @@ const BlogPost = ({ data }) => {
 export const query = graphql`
   query ($id: String) {
     blogPost: contentfulBlogPost(id: { eq: $id }) {
+      metadata {
+        tags {
+          name
+        }
+      }
       slug
       title
       author
