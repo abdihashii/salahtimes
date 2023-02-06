@@ -9,7 +9,7 @@ const AboutUsHeader = () => {
         backgroundImage: `url(${masjidBackground})`,
       }}
     >
-      <h1 className="mx-auto mb-22px mt-28 text-32px font-semibold leading-39px lg:mb-30px lg:text-6xl">
+      <h1 className="mx-auto mb-22px mt-28 text-32px font-semibold leading-39px lg:mt-52 lg:mb-30px lg:text-6xl">
         Who We Are
       </h1>
       <p className="mx-auto mb-39px w-10/12 text-13px font-normal leading-22px text-text-light_grey lg:mb-60px lg:w-6/12 lg:text-lg lg:font-medium">
