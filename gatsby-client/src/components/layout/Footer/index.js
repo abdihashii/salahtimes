@@ -61,26 +61,26 @@ const Footer = () => {
         {/* Privacy policy, terms of use, disclamer, and help center */}
         <ul className="mb-50px flex flex-col text-center text-lg font-medium leading-44px text-text-grey lg:whitespace-nowrap lg:text-left">
           <li className="inline-block">
-            <a href="/">Privacy Policy</a>
+            <Link to="/">Privacy Policy</Link>
           </li>
           <li className="inline-block">
-            <a href="/">Terms of Use</a>
+            <Link to="/">Terms of Use</Link>
           </li>
           <li className="inline-block">
-            <a href="/">Disclamer</a>
+            <Link to="/">Disclamer</Link>
           </li>
           <li className="inline-block">
-            <a href="/">Help Center</a>
+            <Link to="/">Help Center</Link>
           </li>
         </ul>
 
         {/* Manage preferences and cookies policy */}
         <ul className="mb-55px flex flex-col text-center text-lg font-medium leading-44px text-text-grey lg:whitespace-nowrap lg:text-left">
           <li className="inline-block">
-            <a href="/">Manage Preferences</a>
+            <Link to="/">Manage Preferences</Link>
           </li>
           <li className="inline-block">
-            <a href="/">Cookies Policy</a>
+            <Link to="/">Cookies Policy</Link>
           </li>
         </ul>
 
