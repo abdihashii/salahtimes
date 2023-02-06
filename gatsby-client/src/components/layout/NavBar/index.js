@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import { RxHamburgerMenu, RxCross1 } from 'react-icons/rx';
-import { graphql, useStaticQuery } from 'gatsby';
+import { graphql, Link, useStaticQuery } from 'gatsby';
 import { PrayerTimesContext } from '../../../contexts/prayerTimesContext';
 
 const NavBar = ({ transparentNav }) => {
@@ -20,7 +20,7 @@ const NavBar = ({ transparentNav }) => {
 
   const HamburgerMenu = () => {
     return (
-      <nav className="absolute top-0 left-0 z-20 mx-auto min-h-screen w-full bg-green-extra_dark pt-36 pb-52px font-semibold text-white">
+      <nav className="absolute top-0 left-0 z-20 mx-auto min-h-screen w-full bg-green-extra_dark pt-36 pb-52px font-semibold text-white lg:hidden">
         <ul className="mb-83px flex flex-col gap-16 text-2xl">
           <li className="mx-auto w-fit">
             <a href="/">Prayer Times</a>
@@ -51,17 +51,39 @@ const NavBar = ({ transparentNav }) => {
     );
   };
 
+  const DesktopNav = () => {
+    return (
+      <nav className="ml-auto hidden text-base font-medium leading-6 text-white lg:block">
+        <ul className="flex flex-row gap-10">
+          <li className="opacity-50 hover:opacity-100">
+            <Link to="/about-us">About Us</Link>
+          </li>
+          <li className="opacity-50 hover:opacity-100">
+            <Link to="/faqs">FAQs</Link>
+          </li>
+          <li className="opacity-50 hover:opacity-100">
+            <Link to="/resources">Resources</Link>
+          </li>
+          <li className="opacity-50 hover:opacity-100">
+            <Link to="/contact-us">Contact Us</Link>
+          </li>
+        </ul>
+      </nav>
+    );
+  };
+
   return (
     <>
       <header
-        className={`pt-11px pb-10px ${
+        className={`pt-6 pb-10px lg:pt-10 ${
           transparentNav || isHamburgerMenuOpen
             ? 'absolute top-0 left-0 z-30 w-full'
             : 'static border-b border-header_border_color'
         }`}
       >
         <div className="mx-auto flex w-10/12 flex-row items-center">
-          <a className="flex flex-row items-center gap-10px" href="/">
+          {/* Logo */}
+          <Link className="flex flex-row items-center gap-10px" to="/">
             <GatsbyImage
               image={faviconCropped.childImageSharp.gatsbyImageData}
               alt="My Prayer Times Logo"
@@ -74,17 +96,30 @@ const NavBar = ({ transparentNav }) => {
             >
               My Prayer Times
             </p>
-          </a>
+          </Link>
+
+          {/* Navigation - Desktop */}
+          <DesktopNav />
+
+          {/* Our Blog button - Navigation */}
+          <Link
+            className="ml-36 hidden rounded-full bg-green-secondary py-4 px-12 font-semibold text-white hover:bg-green-dark lg:block"
+            to="/blog"
+          >
+            Our Blog
+          </Link>
+
+          {/* Hamburger icon */}
           {isHamburgerMenuOpen ? (
             <RxCross1
-              className={`ml-auto text-2xl ${
+              className={`ml-auto text-2xl lg:hidden ${
                 transparentNav || isHamburgerMenuOpen ? 'text-white' : ''
               }`}
               onClick={() => setIsHamburgerMenuOpen(!isHamburgerMenuOpen)}
             />
           ) : (
             <RxHamburgerMenu
-              className={`ml-auto text-2xl ${
+              className={`ml-auto text-2xl lg:hidden ${
                 transparentNav ? 'text-white' : ''
               }`}
               onClick={() => setIsHamburgerMenuOpen(!isHamburgerMenuOpen)}
@@ -92,6 +127,8 @@ const NavBar = ({ transparentNav }) => {
           )}
         </div>
       </header>
+
+      {/* Hamburger menu */}
       {isHamburgerMenuOpen && <HamburgerMenu />}
     </>
   );
