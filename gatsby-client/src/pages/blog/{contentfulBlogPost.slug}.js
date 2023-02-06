@@ -119,11 +119,11 @@ const BlogPost = ({ data }) => {
 
         {/* Hero Image */}
         <GatsbyImage
-          className="mb-7 hidden lg:block"
+          className="mb-7 !hidden lg:!block"
           image={data.blogPost.desktop.gatsbyImageData}
         />
         <GatsbyImage
-          className="mb-7 lg:hidden"
+          className="mb-7 lg:!hidden"
           image={data.blogPost.mobile.gatsbyImageData}
         />
 
