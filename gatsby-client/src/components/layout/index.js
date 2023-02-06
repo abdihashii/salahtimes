@@ -6,7 +6,7 @@ import Footer from './Footer';
 const Layout = ({ children, transparentNav }) => {
   return (
     <PrayerTimesContextProvider>
-      <div className="mx-auto w-screen">
+      <div className="mx-auto">
         <NavBar transparentNav={transparentNav} />
         {children}
         <Footer />
