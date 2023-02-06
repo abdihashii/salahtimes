@@ -1,3 +1,4 @@
+import { Link } from 'gatsby';
 import React from 'react';
 import masjidBackground from '../../images/masjid_bg_wide.webp';
 
@@ -19,12 +20,18 @@ const AboutUsHeader = () => {
         informative content.
       </p>
       <div className="mx-auto mb-56px flex flex-col justify-center gap-5 lg:mb-106px lg:flex-row lg:gap-21px">
-        <button className="w-max rounded-4xl bg-green-secondary py-3 px-8 font-semibold text-text-button lg:py-4">
+        <Link
+          to="/faqs"
+          className="w-max rounded-4xl bg-green-secondary py-3 px-8 font-semibold text-text-button hover:bg-green-dark lg:py-4"
+        >
           See Our FAQs
-        </button>
-        <button className="rounded-4xl border border-text-button py-3 px-8 font-semibold text-text-button lg:py-4">
+        </Link>
+        <Link
+          to="/contact-us"
+          className="rounded-4xl border border-text-button py-3 px-8 font-semibold text-text-button hover:border-gray-400 lg:py-4"
+        >
           Contact Us
-        </button>
+        </Link>
       </div>
     </div>
   );
