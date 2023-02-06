@@ -119,8 +119,12 @@ const BlogPost = ({ data }) => {
 
         {/* Hero Image */}
         <GatsbyImage
-          className="mb-7"
-          image={data.blogPost.postHeaderImage.gatsbyImageData}
+          className="mb-7 hidden lg:block"
+          image={data.blogPost.desktop.gatsbyImageData}
+        />
+        <GatsbyImage
+          className="mb-7 lg:hidden"
+          image={data.blogPost.mobile.gatsbyImageData}
         />
 
         {/* Content */}
@@ -179,13 +183,18 @@ export const query = graphql`
           html
         }
       }
-      postHeaderImage {
+      desktop: postHeaderImage {
         gatsbyImageData(
           placeholder: BLURRED
           formats: WEBP
           aspectRatio: 2.142857143
-          resizingBehavior: CROP
-          cropFocus: BOTTOM_LEFT
+        )
+      }
+      mobile: postHeaderImage {
+        gatsbyImageData(
+          placeholder: BLURRED
+          formats: WEBP
+          aspectRatio: 1.495535714
         )
       }
       heroImageCredit {
