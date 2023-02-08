@@ -37,9 +37,13 @@ const HamburgerMenu = () => {
   );
 };
 
-const DesktopNav = () => {
+const DesktopNav = ({ transparentNav }) => {
   return (
-    <nav className="ml-auto hidden text-base font-medium leading-6 text-white lg:block">
+    <nav
+      className={`ml-auto hidden text-base font-medium leading-6 lg:block ${
+        transparentNav ? 'text-white' : 'text-text-nav_grey'
+      }`}
+    >
       <ul className="flex flex-row gap-10">
         <li>
           <Link
@@ -123,12 +127,13 @@ const NavBar = ({ transparentNav }) => {
           </Link>
 
           {/* Navigation - Desktop */}
-          <DesktopNav />
+          <DesktopNav {...{ transparentNav }} />
 
-          {/* Our Blog button - Navigation */}
+          {/* Our Blog button - Desktop */}
           <Link
             className="ml-36 hidden rounded-full bg-green-secondary py-4 px-12 font-semibold text-white hover:bg-green-dark lg:block"
-            activeStyle={{ backgroundColor: '#006307' }}
+            activeStyle={{ opacity: '0.2' }}
+            // partiallyActive={true}
             to="/blog"
           >
             Our Blog

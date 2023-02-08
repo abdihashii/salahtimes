@@ -122,7 +122,11 @@ export const data = graphql`
         id
         slug
         postHeaderImage {
-          gatsbyImageData(formats: WEBP, placeholder: BLURRED)
+          gatsbyImageData(
+            formats: WEBP
+            placeholder: BLURRED
+            aspectRatio: 1.205035971
+          )
           description
         }
         title
