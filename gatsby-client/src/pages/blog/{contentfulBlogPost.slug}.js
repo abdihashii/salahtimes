@@ -188,6 +188,7 @@ export const query = graphql`
           placeholder: BLURRED
           formats: WEBP
           aspectRatio: 2.142857143
+          quality: 100
         )
       }
       mobile: postHeaderImage {
