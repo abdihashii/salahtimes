@@ -31,6 +31,7 @@ module.exports = {
         },
         border: {
           input_white: '#EEEDF0',
+          dropdown_grey: '#E5E1DE',
         },
       },
       borderRadius: {
