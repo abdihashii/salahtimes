@@ -6,15 +6,15 @@ export const PrayerTimeCard = ({ salah, time, isLoading }) => {
   const { closestPrayerTime } = useContext(PrayerTimesContext);
 
   return (
-    <div className={`rounded-5px bg-green-secondary py-1`}>
+    <>
       <div
-        className={`flex flex-col items-center rounded-5px py-3 text-black last:border-none ${
+        className={`flex w-full items-center border-b border-black px-6 py-5 text-black first:rounded-t-20px last:rounded-b-20px last:border-none lg:flex lg:h-151px lg:w-229px lg:flex-col lg:justify-center lg:rounded-20px lg:border-0 lg:p-0 ${
           isLoading
             ? `${gradient}`
             : `${
                 closestPrayerTime.closestPrayer === salah
-                  ? 'bg-green-dark !text-white'
-                  : 'bg-white'
+                  ? 'bg-green-dark !text-white lg:shadow-darkGreen'
+                  : 'bg-white lg:shadow-gray'
               }`
         }`}
       >
@@ -22,11 +22,12 @@ export const PrayerTimeCard = ({ salah, time, isLoading }) => {
           <></>
         ) : (
           <>
-            <p className="mb-5px text-lg font-medium">{time}</p>
-            <p className="text-sm">{salah}</p>
+            <p className="text-24px font-semibold uppercase">{salah}</p>
+            <p className="flex-1 lg:hidden"></p>
+            <p className="text-base font-bold lg:font-normal">{time}</p>
           </>
         )}
       </div>
-    </div>
+    </>
   );
 };

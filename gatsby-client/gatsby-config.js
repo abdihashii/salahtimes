@@ -27,7 +27,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        exclude: ['/404.html', '/404'],
+        exclude: ['/404.html'],
         query: `
           {
             site {
@@ -43,6 +43,12 @@ module.exports = {
             }
           }
         `,
+        // resolveSiteUrl: ({ site }) => site.siteMetadata.siteUrl,
+        // resolvePages: ({ allSitePage: { nodes } }) => {
+        //   return nodes.map((node) => {
+        //     return node.path;
+        //   });
+        // },
       },
     },
     {
@@ -77,6 +83,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-image',
+    'gatsby-plugin-sitemap',
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -100,7 +107,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-fonts`,
       options: {
-        fonts: [`Poppins\:200,400,500,600,700`],
+        fonts: [`Poppins\:400,600,700`],
         display: 'swap',
       },
     },
@@ -132,18 +139,6 @@ module.exports = {
         host: 'https://www.myprayertimes.com',
         sitemap: 'https://www.myprayertimes.com/sitemap-0.xml',
       },
-    },
-    {
-      resolve: `gatsby-source-contentful`,
-      options: {
-        spaceId: process.env.CONTENTFUL_SPACE_ID,
-        accessToken: process.env.CONTENTFUL_DELIVERY_API_ACCESS_TOKEN,
-        enableTags: true,
-      },
-    },
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {},
     },
   ],
 };

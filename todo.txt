@@ -1,5 +1,1 @@
 - change "More Salah Times" to "More Prayer Times"
-- Fix image sizes!
-  - /about-us
-  - /blog
-  - each blog page
