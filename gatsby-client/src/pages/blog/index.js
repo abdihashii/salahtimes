@@ -3,6 +3,7 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 import Layout from '../../components/layout';
 import Seo from '../../components/seo';
+import TagsDropdown from '../../components/tagsDropdown';
 
 const BlogPost = ({
   heroImage,
@@ -51,13 +52,7 @@ const BlogPost = ({
   );
 };
 
-const AllBlogs = ({ data: { blogs, tags } }) => {
-  const handleTagChange = ({ target: { value } }) => {
-    const slug = value.replace(/[A-Z]/g, (m) => '-' + m.toLowerCase());
-
-    window.location.href = slug;
-  };
-
+const AllBlogs = ({ data: { blogs } }) => {
   return (
     <Layout>
       <main className="mx-auto w-10/12">
@@ -66,16 +61,7 @@ const AllBlogs = ({ data: { blogs, tags } }) => {
         </h1>
 
         {/* Tags dropdown */}
-        <select onChange={handleTagChange} className="lg:hidden">
-          <option value={`/blog`}>View all</option>
-          {tags.nodes.map(({ name: tagName, id, contentful_id }) => {
-            return (
-              <option key={id} value={`/blog/tag/${contentful_id}`}>
-                {tagName}
-              </option>
-            );
-          })}
-        </select>
+        <TagsDropdown />
 
         {blogs.nodes.map(
           ({
