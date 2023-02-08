@@ -2,11 +2,14 @@ import { graphql } from 'gatsby';
 import React from 'react';
 import Layout from '../../../components/layout';
 import Seo from '../../../components/seo';
+import TagsDropdown from '../../../components/tagsDropdown';
 
 const BlogsWithTag = ({ data }) => {
   return (
     <Layout>
       <p>{data.tag.name}</p>
+
+      <TagsDropdown />
     </Layout>
   );
 };
