@@ -63,6 +63,7 @@ const AllBlogs = ({ data: { blogs } }) => {
         {/* Tags dropdown */}
         <TagsDropdown />
 
+        {/* Render each blog post */}
         {blogs.nodes.map(
           ({
             id,
