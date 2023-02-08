@@ -39,9 +39,6 @@ export const TagsDropdown = () => {
           (m) => '-' + m.toLowerCase(),
         );
 
-        console.log(`blogPathname: ${blogPathname}`);
-        console.log(`tagPathname: ${tagPathname}`);
-
         return (
           <option
             key={id}
