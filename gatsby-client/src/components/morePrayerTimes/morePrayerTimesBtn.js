@@ -1,24 +1,17 @@
 import React from 'react';
+import { RxArrowDown, RxArrowUp } from 'react-icons/rx';
 
 export const MorePrayerTimesBtn = ({
   onClickHandler,
   isMoreSalahTimesToggled,
 }) => {
   return (
-    <div className="mb-51px flex justify-center">
-      <button
-        className="h-55px w-242px cursor-pointer rounded-4xl border-none bg-green-dark text-base font-semibold uppercase text-white shadow-darkGreen hover:bg-green"
-        onClick={onClickHandler}
-      >
-        <span>More Salah Times</span>
-        <span className="inline-flex h-1.5em w-1.5em items-center justify-center">
-          <i
-            className={`fas ${
-              isMoreSalahTimesToggled ? 'fa-angle-up' : 'fa-angle-down'
-            }`}
-          ></i>
-        </span>
-      </button>
-    </div>
+    <button
+      className="mx-auto mb-27px flex h-55px cursor-pointer items-center justify-center gap-2 rounded-full border-none bg-green-dark px-8 text-base font-semibold uppercase text-white hover:bg-green-secondary"
+      onClick={onClickHandler}
+    >
+      <p>More Prayer Times</p>
+      {isMoreSalahTimesToggled ? <RxArrowUp /> : <RxArrowDown />}
+    </button>
   );
 };

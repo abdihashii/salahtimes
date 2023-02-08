@@ -1,0 +1,30 @@
+.blogPostBody p,
+.blogPostBody li {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 29px;
+  letter-spacing: 0.011em;
+  color: #000;
+  margin-bottom: 2rem;
+}
+
+.blogPostBody p:last-child {
+  margin-bottom: 0;
+}
+
+.blogPostBody li {
+  margin-bottom: 1.5rem;
+}
+
+.blogPostBody li:last-child {
+  margin-bottom: 2rem;
+}
+
+.blogPostBody h2 {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27.5px;
+  letter-spacing: 0.011em;
+  color: #0f0700;
+  margin-bottom: 0.5rem;
+}

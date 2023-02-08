@@ -35,6 +35,7 @@ const PrayerTimesContextProvider = (props) => {
   const [salahCalendarDates, setSalahCalendarDates] = useState([]);
   const [currentTime, setCurrentTime] = useState('');
   const [method, setMethod] = useState('2');
+  const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
 
   /**
    * Gets the prayer times from the latitude and longitude using the aladhan API
@@ -269,6 +270,8 @@ const PrayerTimesContextProvider = (props) => {
         setCurrentTime,
         method,
         setMethod,
+        isHamburgerMenuOpen,
+        setIsHamburgerMenuOpen,
       }}
     >
       {props.children}
