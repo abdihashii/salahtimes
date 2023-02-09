@@ -3,6 +3,7 @@ import React from 'react';
 import BlogPost from '../../components/blog/blogPost';
 import Layout from '../../components/layout';
 import Seo from '../../components/seo';
+import SubscribeToNewsletter from '../../components/subscribeToNewsletter';
 import TagsDropdown from '../../components/tagsDropdown';
 import TagsList from '../../components/tagsList';
 
@@ -61,36 +62,16 @@ const AllBlogs = ({ data: { blogs, tags } }) => {
         style={{
           background: 'linear-gradient(100.39deg, #122318 0.8%, #00260E 100%)',
         }}
-        className="mb-5px py-7 text-center text-base font-medium leading-5 text-white"
+        className="mb-5px py-7 text-center text-base font-medium leading-5 text-white lg:hidden"
       >
         + See more
       </section>
+      <button className="hidden lg:mx-auto lg:mb-24 lg:block lg:rounded-full lg:border-2 lg:border-green-secondary lg:bg-white lg:py-4 lg:px-10 lg:font-semibold lg:text-green-secondary lg:hover:bg-green-secondary lg:hover:text-white">
+        See more
+      </button>
 
       {/* Subscribe section */}
-      <section
-        className="text-center text-white"
-        style={{
-          background: 'linear-gradient(100.39deg, #122318 0.8%, #00260E 100%)',
-        }}
-      >
-        <h2 className="mx-auto w-10/12 pt-34px pb-27px text-xl font-bold">
-          Subscribe to our bi-weekly newsletter
-        </h2>
-        <input
-          className="mx-auto mb-14px w-10/12 rounded-full bg-white py-17px pl-23px text-text-medium_grey"
-          type="text"
-          placeholder="Enter your email address"
-        />
-        <button className="mx-auto mb-14px w-10/12 rounded-full border-2 border-white py-17px">
-          Subscribe
-        </button>
-        <p className="mx-auto w-10/12 pb-8">
-          By clicking the Subscribe button you are agreeing to receive
-          occasional email communications from <strong>MyPrayerTimes</strong>.
-          We will not share your details with any 3rd parties and you can
-          unsubscribe at any time.
-        </p>
-      </section>
+      <SubscribeToNewsletter />
     </Layout>
   );
 };
