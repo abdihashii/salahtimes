@@ -34,10 +34,7 @@ export const TagsDropdown = () => {
     >
       <option value={`/blog/`}>View all</option>
       {tags.map(({ name: tagName, id, contentful_id }) => {
-        const tagPathname = `/blog/tag/${contentful_id}/`.replace(
-          /[A-Z]/g,
-          (m) => '-' + m.toLowerCase(),
-        );
+        const tagPathname = `/blog/tag/${contentful_id}/`;
 
         return (
           <option
