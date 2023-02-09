@@ -1,4 +1,4 @@
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import React from 'react';
 import BlogPost from '../../components/blog/blogPost';
 import Layout from '../../components/layout';
@@ -52,7 +52,7 @@ const AllBlogs = ({ data: { blogs, tags } }) => {
                 }}
               />
             );
-          },
+          }
         )}
       </main>
 
