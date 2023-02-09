@@ -1,20 +1,24 @@
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import React from 'react';
 import BlogPost from '../../components/blog/blogPost';
 import Layout from '../../components/layout';
 import Seo from '../../components/seo';
 import TagsDropdown from '../../components/tagsDropdown';
+import TagsList from '../../components/tagsList';
 
-const AllBlogs = ({ data: { blogs } }) => {
+const AllBlogs = ({ data: { blogs, tags } }) => {
   return (
     <Layout>
-      <main className="mx-auto w-10/12">
-        <h1 className="mb-11 mt-10 text-center text-xl font-bold leading-30px">
+      <main className="xl:6/12 mx-auto w-10/12 lg:w-9/12">
+        <h1 className="mb-11 mt-10 text-center text-xl font-bold capitalize leading-30px lg:mt-20 lg:text-40px">
           Welcome to our Blog
         </h1>
 
         {/* Tags dropdown */}
         <TagsDropdown />
+
+        {/* Tags list */}
+        <TagsList />
 
         {/* Render each blog post */}
         {blogs.nodes.map(
