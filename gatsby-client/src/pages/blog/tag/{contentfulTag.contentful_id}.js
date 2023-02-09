@@ -1,4 +1,4 @@
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import React from 'react';
 import BlogPost from '../../../components/blog/blogPost';
 import Layout from '../../../components/layout';
@@ -7,8 +7,6 @@ import TagsDropdown from '../../../components/tagsDropdown';
 import TagsList from '../../../components/tagsList';
 
 const BlogsWithTag = ({ data }) => {
-  // console.log(data.blogs);
-
   return (
     <Layout>
       <main className="xl:6/12 mx-auto w-10/12 lg:w-9/12">
@@ -54,7 +52,7 @@ const BlogsWithTag = ({ data }) => {
                 }}
               />
             );
-          },
+          }
         )}
       </main>
 
