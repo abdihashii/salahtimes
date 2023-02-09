@@ -133,7 +133,7 @@ const NavBar = ({ transparentNav }) => {
           <Link
             className="ml-36 hidden rounded-full bg-green-secondary py-4 px-12 font-semibold text-white hover:bg-green-dark lg:block"
             activeStyle={{ opacity: '0.2' }}
-            // partiallyActive={true}
+            partiallyActive={true}
             to="/blog"
           >
             Our Blog
