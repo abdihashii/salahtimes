@@ -18,12 +18,12 @@ export const BlogPost = ({
       <a className="block" href={`/blog/${slug}`}>
         <GatsbyImage
           image={mobileHeroImage}
-          className="mb-4 lg:hidden"
+          className="mb-4 lg:!hidden"
           alt={mobileImageDescription}
         />
         <GatsbyImage
           image={desktopHeroImage}
-          className="mb-4 hidden lg:block"
+          className="mb-4 !hidden lg:!block"
           alt={desktopImageDescription}
         />
         {/* tags */}

@@ -19,12 +19,12 @@ const FeaturedBlogPost = ({
       <Link className="block" to={`/blog/${slug}/`}>
         <GatsbyImage
           image={mobileHeroImage}
-          className="mb-4 lg:hidden"
+          className="mb-4 lg:!hidden"
           alt={mobileImageDescription}
         />
         <GatsbyImage
           image={desktopFeaturedHeroImage}
-          className="mb-4 hidden lg:block"
+          className="mb-4 !hidden lg:!block"
           alt={desktopFeaturedImageDescription}
         />
       </Link>
