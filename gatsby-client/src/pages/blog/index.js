@@ -7,10 +7,10 @@ import SubscribeToNewsletter from '../../components/subscribeToNewsletter';
 import TagsDropdown from '../../components/tagsDropdown';
 import TagsList from '../../components/tagsList';
 
-const AllBlogs = ({ data: { blogs, tags } }) => {
+const AllBlogs = ({ data: { blogs } }) => {
   return (
     <Layout>
-      <main className="xl:6/12 mx-auto w-10/12 lg:w-9/12">
+      <main className="mx-auto w-10/12 lg:w-full">
         <h1 className="mb-11 mt-10 text-center text-xl font-bold capitalize leading-30px lg:mt-20 lg:text-40px">
           Welcome to our Blog
         </h1>
@@ -23,33 +23,49 @@ const AllBlogs = ({ data: { blogs, tags } }) => {
 
         {/* Render each blog post */}
         {blogs.nodes.map(
-          ({
-            id,
-            slug,
-            postHeaderImage: {
-              description: imageDescription,
-              gatsbyImageData: heroImage,
+          (
+            {
+              id,
+              slug,
+              mobile: {
+                gatsbyImageData: mobileHeroImage,
+                description: mobileImageDescription,
+              },
+              desktop: {
+                gatsbyImageData: desktopHeroImage,
+                description: desktopImageDescription,
+              },
+              desktop: {
+                gatsbyImageData: desktopFeaturedHeroImage,
+                description: desktopFeaturedImageDescription,
+              },
+              title,
+              body: {
+                childMarkdownRemark: { excerpt },
+              },
+              author,
+              date,
+              metadata: { tags },
             },
-            title,
-            body: {
-              childMarkdownRemark: { excerpt },
-            },
-            author,
-            date,
-            metadata: { tags },
-          }) => {
+            index
+          ) => {
             return (
               <BlogPost
                 key={id}
                 {...{
-                  heroImage,
-                  imageDescription,
+                  mobileHeroImage,
+                  mobileImageDescription,
+                  desktopHeroImage,
+                  desktopImageDescription,
+                  desktopFeaturedHeroImage,
+                  desktopFeaturedImageDescription,
                   title,
                   excerpt,
                   author,
                   date,
                   slug,
                   tags,
+                  index,
                 }}
               />
             );
@@ -83,11 +99,27 @@ export const data = graphql`
       nodes {
         id
         slug
-        postHeaderImage {
+        mobile: postHeaderImage {
           gatsbyImageData(
             formats: WEBP
             placeholder: BLURRED
             aspectRatio: 1.205035971
+          )
+          description
+        }
+        desktop: postHeaderImage {
+          gatsbyImageData(
+            formats: WEBP
+            placeholder: BLURRED
+            aspectRatio: 1.771028037383178
+          )
+          description
+        }
+        desktopFeatured: postHeaderImage {
+          gatsbyImageData(
+            formats: WEBP
+            placeholder: BLURRED
+            aspectRatio: 1.508816120
           )
           description
         }
@@ -104,14 +136,6 @@ export const data = graphql`
             name
           }
         }
-      }
-    }
-    tags: allContentfulTag(sort: { name: ASC }) {
-      totalCount
-      nodes {
-        name
-        id
-        contentful_id
       }
     }
   }
