@@ -58,6 +58,7 @@ module.exports = {
         '11px': '11px',
         '13px': '13px',
         '14px': '14px',
+        '15px': '15px',
         '17px': '17px',
         '18px': '18px',
         '21px': '21px',
@@ -146,6 +147,7 @@ module.exports = {
         '52px': '52px',
         '60px': '60px',
         '77px': '77px',
+        '90px': '90px',
         '100px': '100px',
       },
       minWidth: {
