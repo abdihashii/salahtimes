@@ -1,6 +1,7 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 import BlogPost from '../../components/blog/blogPost';
+import FeaturedBlogPost from '../../components/blog/featuredBlogPost';
 import Layout from '../../components/layout';
 import Seo from '../../components/seo';
 import SubscribeToNewsletter from '../../components/subscribeToNewsletter';
@@ -22,55 +23,75 @@ const AllBlogs = ({ data: { blogs } }) => {
         <TagsList />
 
         {/* Render each blog post */}
-        {blogs.nodes.map(
-          (
-            {
-              id,
-              slug,
-              mobile: {
-                gatsbyImageData: mobileHeroImage,
-                description: mobileImageDescription,
+        <section className="mb-71px lg:bg-green-secondary lg:bg-opacity-5 lg:py-90px">
+          <FeaturedBlogPost
+            mobileHeroImage={blogs.nodes[0].mobile.gatsbyImageData}
+            mobileImageDescription={blogs.nodes[0].mobile.description}
+            desktopFeaturedHeroImage={blogs.nodes[0].desktop.gatsbyImageData}
+            desktopFeaturedImageDescription={
+              blogs.nodes[0].desktop.gatsbyImageData
+            }
+            title={blogs.nodes[0].title}
+            excerpt={blogs.nodes[0].body.childMarkdownRemark.excerpt}
+            author={blogs.nodes[0].author}
+            date={blogs.nodes[0].date}
+            slug={blogs.nodes[0].slug}
+            tags={blogs.nodes[0].metadata.tags}
+          />
+        </section>
+        <section className="lg:mx-auto lg:grid lg:w-9/12 lg:grid-cols-3 lg:gap-8">
+          {blogs.nodes.map(
+            (
+              {
+                id,
+                slug,
+                mobile: {
+                  gatsbyImageData: mobileHeroImage,
+                  description: mobileImageDescription,
+                },
+                desktop: {
+                  gatsbyImageData: desktopHeroImage,
+                  description: desktopImageDescription,
+                },
+                desktop: {
+                  gatsbyImageData: desktopFeaturedHeroImage,
+                  description: desktopFeaturedImageDescription,
+                },
+                title,
+                body: {
+                  childMarkdownRemark: { excerpt },
+                },
+                author,
+                date,
+                metadata: { tags },
               },
-              desktop: {
-                gatsbyImageData: desktopHeroImage,
-                description: desktopImageDescription,
-              },
-              desktop: {
-                gatsbyImageData: desktopFeaturedHeroImage,
-                description: desktopFeaturedImageDescription,
-              },
-              title,
-              body: {
-                childMarkdownRemark: { excerpt },
-              },
-              author,
-              date,
-              metadata: { tags },
-            },
-            index
-          ) => {
-            return (
-              <BlogPost
-                key={id}
-                {...{
-                  mobileHeroImage,
-                  mobileImageDescription,
-                  desktopHeroImage,
-                  desktopImageDescription,
-                  desktopFeaturedHeroImage,
-                  desktopFeaturedImageDescription,
-                  title,
-                  excerpt,
-                  author,
-                  date,
-                  slug,
-                  tags,
-                  index,
-                }}
-              />
-            );
-          }
-        )}
+              index
+            ) => {
+              return (
+                index > 0 && (
+                  <BlogPost
+                    key={id}
+                    {...{
+                      mobileHeroImage,
+                      mobileImageDescription,
+                      desktopHeroImage,
+                      desktopImageDescription,
+                      desktopFeaturedHeroImage,
+                      desktopFeaturedImageDescription,
+                      title,
+                      excerpt,
+                      author,
+                      date,
+                      slug,
+                      tags,
+                      index,
+                    }}
+                  />
+                )
+              );
+            }
+          )}
+        </section>
       </main>
 
       {/* See More Blogs */}
@@ -94,7 +115,7 @@ const AllBlogs = ({ data: { blogs } }) => {
 
 export const data = graphql`
   query {
-    blogs: allContentfulBlogPost(sort: { date: DESC }, limit: 5) {
+    blogs: allContentfulBlogPost(sort: { date: DESC }, limit: 7) {
       totalCount
       nodes {
         id
