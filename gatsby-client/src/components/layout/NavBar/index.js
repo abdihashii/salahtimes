@@ -103,7 +103,7 @@ const NavBar = ({ transparentNav }) => {
   return (
     <>
       <header
-        className={`pt-6 pb-10px lg:pt-10 ${
+        className={`pt-6 pb-10px lg:pt-8 lg:pb-8 ${
           transparentNav || isHamburgerMenuOpen
             ? 'absolute top-0 left-0 z-30 w-full'
             : 'static border-b border-header_border_color'
