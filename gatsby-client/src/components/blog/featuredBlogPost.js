@@ -15,7 +15,7 @@ const FeaturedBlogPost = ({
   tags,
 }) => {
   return (
-    <article className="mb-71px lg:grid lg:grid-cols-2 lg:gap-16 lg:bg-green-secondary lg:bg-opacity-5 lg:px-28 lg:py-90px">
+    <article className="lg:mx-auto lg:grid lg:w-9/12 lg:grid-cols-2 lg:gap-16">
       <Link className="block" to={`/blog/${slug}/`}>
         <GatsbyImage
           image={mobileHeroImage}

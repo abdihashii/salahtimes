@@ -7,34 +7,14 @@ export const BlogPost = ({
   mobileImageDescription,
   desktopHeroImage,
   desktopImageDescription,
-  desktopFeaturedHeroImage,
-  desktopFeaturedImageDescription,
   title,
   excerpt,
   author,
   date,
   slug,
   tags,
-  index,
 }) => {
-  return index === 0 ? (
-    <FeaturedBlogPost
-      key={index}
-      {...{
-        mobileHeroImage,
-        mobileImageDescription,
-        desktopFeaturedHeroImage,
-        desktopFeaturedImageDescription,
-        title,
-        excerpt,
-        author,
-        date,
-        slug,
-        tags,
-        index,
-      }}
-    />
-  ) : (
+  return (
     <article className="mb-71px">
       <a className="block" href={`/blog/${slug}`}>
         <GatsbyImage
