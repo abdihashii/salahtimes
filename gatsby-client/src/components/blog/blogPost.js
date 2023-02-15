@@ -1,23 +1,51 @@
 import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import FeaturedBlogPost from './featuredBlogPost';
 
 export const BlogPost = ({
-  heroImage,
-  imageDescription,
+  mobileHeroImage,
+  mobileImageDescription,
+  desktopHeroImage,
+  desktopImageDescription,
+  desktopFeaturedHeroImage,
+  desktopFeaturedImageDescription,
   title,
   excerpt,
   author,
   date,
   slug,
   tags,
+  index,
 }) => {
-  return (
+  return index === 0 ? (
+    <FeaturedBlogPost
+      key={index}
+      {...{
+        mobileHeroImage,
+        mobileImageDescription,
+        desktopFeaturedHeroImage,
+        desktopFeaturedImageDescription,
+        title,
+        excerpt,
+        author,
+        date,
+        slug,
+        tags,
+        index,
+      }}
+    />
+  ) : (
     <article className="mb-71px">
       <a className="block" href={`/blog/${slug}`}>
         <GatsbyImage
-          image={heroImage}
-          className="mb-4"
-          alt={imageDescription}
+          image={mobileHeroImage}
+          className="mb-4 lg:hidden"
+          alt={mobileImageDescription}
+        />
+        <GatsbyImage
+          image={desktopHeroImage}
+          className="mb-4 hidden lg:block"
+          alt={desktopImageDescription}
         />
         {/* tags */}
         <div className="mb-10px flex flex-row gap-3 lg:hidden">
