@@ -13,7 +13,6 @@ export const BlogPost = ({
   slug,
   tags,
 }) => {
-  console.log(tags);
   return (
     <article className="mb-71px">
       <a className="block" href={`/blog/${slug}`}>

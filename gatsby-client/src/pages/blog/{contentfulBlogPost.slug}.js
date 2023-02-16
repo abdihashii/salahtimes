@@ -13,7 +13,7 @@ import SubscribeToNewsletter from '../../components/subscribeToNewsletter';
 
 const BlogPost = ({ data }) => {
   const blogUrl = typeof window !== 'undefined' ? window.location.href : '';
-  console.log(data.blogPost);
+
   return (
     <Layout>
       <section className="mx-auto mt-9 mb-12 w-10/12 text-left lg:mt-24">
