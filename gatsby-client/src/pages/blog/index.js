@@ -34,7 +34,7 @@ const AllBlogs = ({ data: { blogs } }) => {
               blogs.nodes[0].desktopFeatured.description
             }
             title={blogs.nodes[0].title}
-            excerpt={blogs.nodes[0].body.childMarkdownRemark.excerpt}
+            excerpt={blogs.nodes[0].intro.childMarkdownRemark.excerpt}
             author={blogs.nodes[0].author}
             date={blogs.nodes[0].date}
             slug={blogs.nodes[0].slug}
@@ -55,7 +55,7 @@ const AllBlogs = ({ data: { blogs } }) => {
                   description: desktopImageDescription,
                 },
                 title,
-                body: {
+                intro: {
                   childMarkdownRemark: { excerpt },
                 },
                 author,
@@ -138,12 +138,12 @@ export const data = graphql`
           )
           description
         }
-        title
-        body {
+        intro {
           childMarkdownRemark {
             excerpt
           }
         }
+        title
         author
         date(formatString: "MMM Do, YYYY")
         metadata {
