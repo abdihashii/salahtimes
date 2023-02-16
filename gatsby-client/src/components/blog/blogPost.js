@@ -1,5 +1,6 @@
 import React from 'react';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import { Link } from 'gatsby';
 
 export const BlogPost = ({
   mobileHeroImage,
@@ -15,7 +16,7 @@ export const BlogPost = ({
 }) => {
   return (
     <article className="mb-71px">
-      <a className="block" href={`/blog/${slug}`}>
+      <Link className="block" to={`/blog/${slug}`}>
         <GatsbyImage
           image={mobileHeroImage}
           className="mb-4 lg:!hidden"
@@ -26,16 +27,18 @@ export const BlogPost = ({
           className="mb-4 !hidden lg:!block"
           alt={desktopImageDescription}
         />
-        {/* tags */}
-        <div className="mb-10px flex flex-row gap-3">
-          {tags.map((tag) => {
-            return (
-              <p key={tag.id} className="text-sm font-bold text-green-blog">
-                {tag.name}
-              </p>
-            );
-          })}
-        </div>
+      </Link>
+      {/* tags */}
+      <div className="mb-10px flex flex-row gap-3">
+        {tags.map((tag) => {
+          return (
+            <p key={tag.id} className="text-sm font-bold text-green-blog">
+              {tag.name}
+            </p>
+          );
+        })}
+      </div>
+      <Link to={`/blog/${slug}`}>
         {/* title */}
         <h2 className="mb-18px text-lg font-medium leading-6 text-text-layout_text underline">
           {title}
@@ -50,7 +53,7 @@ export const BlogPost = ({
             <p className="text-sm text-text-medium_grey">{date}</p>
           </div>
         </div>
-      </a>
+      </Link>
     </article>
   );
 };
