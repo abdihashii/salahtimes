@@ -13,6 +13,7 @@ export const BlogPost = ({
   slug,
   tags,
 }) => {
+  console.log(tags);
   return (
     <article className="mb-71px">
       <a className="block" href={`/blog/${slug}`}>
@@ -27,7 +28,7 @@ export const BlogPost = ({
           alt={desktopImageDescription}
         />
         {/* tags */}
-        <div className="mb-10px flex flex-row gap-3 lg:hidden">
+        <div className="mb-10px flex flex-row gap-3">
           {tags.map((tag) => {
             return (
               <p key={tag.id} className="text-sm font-bold text-green-blog">
