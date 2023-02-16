@@ -5,8 +5,8 @@ import FeaturedBlogPost from '../../components/blog/featuredBlogPost';
 import Layout from '../../components/layout';
 import Seo from '../../components/seo';
 import SubscribeToNewsletter from '../../components/subscribeToNewsletter';
-import TagsDropdown from '../../components/tagsDropdown';
-import TagsList from '../../components/tagsList';
+// import TagsDropdown from '../../components/tagsDropdown';
+// import TagsList from '../../components/tagsList';
 
 const AllBlogs = ({ data: { blogs } }) => {
   return (
@@ -17,19 +17,21 @@ const AllBlogs = ({ data: { blogs } }) => {
         </h1>
 
         {/* Tags dropdown */}
-        <TagsDropdown />
+        {/* <TagsDropdown /> */}
 
         {/* Tags list */}
-        <TagsList />
+        {/* <TagsList /> */}
 
         {/* Render each blog post */}
         <section className="mb-71px lg:bg-green-secondary lg:bg-opacity-5 lg:py-90px">
           <FeaturedBlogPost
             mobileHeroImage={blogs.nodes[0].mobile.gatsbyImageData}
             mobileImageDescription={blogs.nodes[0].mobile.description}
-            desktopFeaturedHeroImage={blogs.nodes[0].desktop.gatsbyImageData}
+            desktopFeaturedHeroImage={
+              blogs.nodes[0].desktopFeatured.gatsbyImageData
+            }
             desktopFeaturedImageDescription={
-              blogs.nodes[0].desktop.gatsbyImageData
+              blogs.nodes[0].desktopFeatured.description
             }
             title={blogs.nodes[0].title}
             excerpt={blogs.nodes[0].body.childMarkdownRemark.excerpt}
@@ -43,7 +45,6 @@ const AllBlogs = ({ data: { blogs } }) => {
           {blogs.nodes.map(
             (
               {
-                id,
                 slug,
                 mobile: {
                   gatsbyImageData: mobileHeroImage,
@@ -53,10 +54,6 @@ const AllBlogs = ({ data: { blogs } }) => {
                   gatsbyImageData: desktopHeroImage,
                   description: desktopImageDescription,
                 },
-                desktop: {
-                  gatsbyImageData: desktopFeaturedHeroImage,
-                  description: desktopFeaturedImageDescription,
-                },
                 title,
                 body: {
                   childMarkdownRemark: { excerpt },
@@ -65,19 +62,16 @@ const AllBlogs = ({ data: { blogs } }) => {
                 date,
                 metadata: { tags },
               },
-              index
+              index,
             ) => {
               return (
                 index > 0 && (
                   <BlogPost
-                    key={id}
                     {...{
                       mobileHeroImage,
                       mobileImageDescription,
                       desktopHeroImage,
                       desktopImageDescription,
-                      desktopFeaturedHeroImage,
-                      desktopFeaturedImageDescription,
                       title,
                       excerpt,
                       author,
@@ -89,7 +83,7 @@ const AllBlogs = ({ data: { blogs } }) => {
                   />
                 )
               );
-            }
+            },
           )}
         </section>
       </main>
