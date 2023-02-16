@@ -12,7 +12,7 @@ const FeaturedBlogPost = ({
   author,
   date,
   slug,
-  tags,
+  // tags,
 }) => {
   return (
     <article className="lg:mx-auto lg:grid lg:w-9/12 lg:grid-cols-2 lg:gap-16">
@@ -30,8 +30,12 @@ const FeaturedBlogPost = ({
       </Link>
 
       <div className="">
+        {/* Featured Blog Post Title */}
+        <p className="!hidden lg:mb-10px lg:-mt-6px lg:!block lg:text-2xl lg:font-bold lg:text-text-layout_text">
+          Featured Blog Post
+        </p>
         {/* tags */}
-        <div className="mb-10px flex flex-row gap-3 lg:w-full">
+        {/* <div className="mb-10px flex flex-row gap-3 lg:w-full">
           {tags.map((tag) => {
             return (
               <p
@@ -42,7 +46,7 @@ const FeaturedBlogPost = ({
               </p>
             );
           })}
-        </div>
+        </div> */}
 
         {/* title */}
         <Link to={`/blog/${slug}/`}>

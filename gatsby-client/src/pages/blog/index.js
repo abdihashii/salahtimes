@@ -38,7 +38,7 @@ const AllBlogs = ({ data: { blogs } }) => {
             author={blogs.nodes[0].author}
             date={blogs.nodes[0].date}
             slug={blogs.nodes[0].slug}
-            tags={blogs.nodes[0].metadata.tags}
+            // tags={blogs.nodes[0].metadata.tags}
           />
         </section>
         <section className="lg:mx-auto lg:grid lg:w-9/12 lg:grid-cols-3 lg:gap-8">
@@ -60,7 +60,7 @@ const AllBlogs = ({ data: { blogs } }) => {
                 },
                 author,
                 date,
-                metadata: { tags },
+                // metadata: { tags },
               },
               index,
             ) => {
@@ -77,7 +77,7 @@ const AllBlogs = ({ data: { blogs } }) => {
                       author,
                       date,
                       slug,
-                      tags,
+                      // tags,
                       index,
                     }}
                   />

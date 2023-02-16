@@ -12,7 +12,7 @@ export const BlogPost = ({
   author,
   date,
   slug,
-  tags,
+  // tags,
 }) => {
   return (
     <article className="mb-71px">
@@ -28,8 +28,9 @@ export const BlogPost = ({
           alt={desktopImageDescription}
         />
       </Link>
+
       {/* tags */}
-      <div className="mb-10px flex flex-row gap-3">
+      {/* <div className="mb-10px flex flex-row gap-3">
         {tags.map((tag) => {
           return (
             <p key={tag.id} className="text-sm font-bold text-green-blog">
@@ -37,7 +38,8 @@ export const BlogPost = ({
             </p>
           );
         })}
-      </div>
+      </div> */}
+
       <Link to={`/blog/${slug}`}>
         {/* title */}
         <h2 className="mb-18px text-lg font-medium leading-6 text-text-layout_text underline">
