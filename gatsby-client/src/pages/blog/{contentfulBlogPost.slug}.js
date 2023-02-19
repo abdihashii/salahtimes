@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import Seo from '../../components/seo';
 import Layout from '../../components/layout';
 import './blogPost.css';
@@ -9,15 +9,16 @@ import {
   TwitterShareButton,
   PocketShareButton,
 } from 'react-share';
+import SubscribeToNewsletter from '../../components/subscribeToNewsletter';
 
 const BlogPost = ({ data }) => {
   const blogUrl = typeof window !== 'undefined' ? window.location.href : '';
-  console.log(data.blogPost);
+
   return (
     <Layout>
       <section className="mx-auto mt-9 mb-12 w-10/12 text-left lg:mt-24">
         {/* Tag */}
-        <div className="mb-5 flex flex-row gap-2 text-xs font-bold text-green-dark lg:mx-auto lg:w-7/12 lg:gap-4 lg:text-2xl">
+        {/* <div className="mb-5 flex flex-row gap-2 text-xs font-bold text-green-dark lg:mx-auto lg:w-7/12 lg:gap-4 lg:text-2xl">
           {data.blogPost.metadata.tags.map((tag) => {
             return (
               <Link className="hover:underline" to="/">
@@ -25,7 +26,7 @@ const BlogPost = ({ data }) => {
               </Link>
             );
           })}
-        </div>
+        </div> */}
 
         {/* Title */}
         <h1 className="mb-30px text-xl font-semibold text-text-layout_text lg:mx-auto lg:w-7/12 lg:text-40px lg:font-medium lg:leading-55px">
@@ -137,31 +138,7 @@ const BlogPost = ({ data }) => {
       </section>
 
       {/* Subscribe section */}
-      <section
-        style={{
-          background: 'linear-gradient(100.39deg, #122318 0.8%, #00260E 100%)',
-        }}
-        className="pt-34px pb-8 text-center text-white lg:mx-auto lg:w-10/12 lg:py-100px"
-      >
-        <h3 className="mx-auto mb-27px w-10/12 text-xl font-bold lg:mb-10 lg:text-45px">
-          Subscribe to our bi-weekly newsletter
-        </h3>
-        <div className="lg:mx-auto lg:mb-8 lg:flex lg:w-10/12 lg:flex-row lg:gap-30px">
-          <input
-            type="text"
-            className="mb-14px w-10/12 rounded-full border-2 py-4 px-6 text-text-core_values lg:mb-0"
-            placeholder="Enter your email address"
-          ></input>
-          <button className="mb-14px w-10/12 rounded-full border-2 py-4 lg:mb-0 lg:w-fit lg:px-77px lg:hover:border-gray-400">
-            Subscribe
-          </button>
-        </div>
-        <p className="mx-auto w-10/12 text-xs lg:w-7/12 lg:text-lg">
-          By clicking the Subscribe button you are agreeing to receive
-          occasional email communications from MyPrayerTimes. We will not share
-          your details with any 3rd parties and you can unsubscribe at any time.
-        </p>
-      </section>
+      <SubscribeToNewsletter />
     </Layout>
   );
 };

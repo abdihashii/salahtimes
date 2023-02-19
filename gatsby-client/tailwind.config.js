@@ -31,6 +31,7 @@ module.exports = {
         },
         border: {
           input_white: '#EEEDF0',
+          dropdown_grey: '#E5E1DE',
         },
       },
       borderRadius: {
@@ -53,10 +54,12 @@ module.exports = {
       },
       margin: {
         '5px': '5px',
+        '6px': '6px',
         '10px': '10px',
         '11px': '11px',
         '13px': '13px',
         '14px': '14px',
+        '15px': '15px',
         '17px': '17px',
         '18px': '18px',
         '21px': '21px',
@@ -133,6 +136,7 @@ module.exports = {
         '12px': '12px',
         '14px': '14px',
         '17px': '17px',
+        '20px': '20px',
         '21px': '21px',
         '22px': '22px',
         '23px': '23px',
@@ -144,6 +148,7 @@ module.exports = {
         '52px': '52px',
         '60px': '60px',
         '77px': '77px',
+        '90px': '90px',
         '100px': '100px',
       },
       minWidth: {

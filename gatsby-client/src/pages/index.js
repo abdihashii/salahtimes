@@ -1,7 +1,6 @@
 import React from 'react';
 import Layout from '../components/layout';
 import Seo from '../components/seo';
-import '../styles/styles.scss';
 import { RxArrowRight } from 'react-icons/rx';
 import TextSection from '../components/textSection';
 import { GatsbyImage } from 'gatsby-plugin-image';
