@@ -3,6 +3,7 @@ import { GatsbyImage } from 'gatsby-plugin-image';
 import React from 'react';
 import { RxArrowRight } from 'react-icons/rx';
 import TextSection from './textSection';
+import { Link } from 'gatsby';
 
 /* Trending Stores Of The Month */
 const TrendingStories = () => {
@@ -37,10 +38,10 @@ const TrendingStories = () => {
         {blogPosts.map(
           ({ slug, title, date, postHeaderImage: { gatsbyImageData } }) => {
             return (
-              <a
-                href={`/blog/${slug}`}
+              <Link
+                to={`/blog/${slug}`}
                 key={slug}
-                className="mb-10 inline-block last:mb-0"
+                className="mb-10 inline-block last:mb-0 hover:lg:underline"
               >
                 <GatsbyImage
                   className="mb-30px"
@@ -51,7 +52,7 @@ const TrendingStories = () => {
                   {title}
                 </p>
                 <p className="text-lg text-text-core_values">{date}</p>
-              </a>
+              </Link>
             );
           },
         )}
@@ -59,7 +60,7 @@ const TrendingStories = () => {
 
       <a
         href="/blog"
-        className="mx-auto flex w-max flex-row items-center gap-2 rounded-full bg-green-secondary py-3 px-8 text-xs font-semibold text-white lg:text-lg"
+        className="mx-auto flex w-max flex-row items-center gap-2 rounded-full bg-green-dark py-3 px-8 text-xs font-semibold text-white hover:bg-green-secondary lg:text-lg"
       >
         <p>Explore Our Blogs</p>
         <RxArrowRight />
