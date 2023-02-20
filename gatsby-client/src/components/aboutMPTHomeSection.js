@@ -33,8 +33,7 @@ const AboutMPTHomeSection = () => {
       <div className="mb-50px lg:-order-1 lg:m-0 lg:w-1/2">
         <TextSection
           heading={'About MyPrayerTimes'}
-          textContent={`Varius tristique aliquet vulputate senectus duis urna et tellus. Neque eu ac consequat convallis dui facilisi. Pellentesque leo odio adipiscing tortor. Lorem faucibus lectus sed tristique. Hendrerit convallis sed praesent sed quam lectus laoreet.
-Viverra purus sit auctor convallis. Nullam ac ut elit orci donec sed velit sit nunc. Turpis urna tristique adipiscing cursus malesuada. Ornare augue sollicitudin congue pretium sed purus hendrerit amet magna. Pulvinar lacinia vivamus auctor mauris.`}
+          textContent={`MyPrayerTimes is a community-driven platform providing accurate and reliable prayer times to Muslims of diverse backgrounds. Our mission is to empower and engage the global Ummah through accurate prayer times and informative content.`}
           className="lg:!ml-0 lg:w-full"
         />
         <Link
