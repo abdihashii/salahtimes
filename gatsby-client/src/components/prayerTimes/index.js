@@ -3,7 +3,7 @@ import CurrentTime from '../currentTime/currentTime';
 import { LocationSelector } from '../locationSelector';
 import { MorePrayerTimes } from '../morePrayerTimes/morePrayerTimes';
 import PrayerTimesTitle from '../prayerTimesTitle';
-import { PrayerTimes } from './prayerTimes';
+import { PrayerTimesMobile } from './prayerTimesMobile';
 import masjidBackground from '../../images/masjid_bg.webp';
 import { RxPencil2 } from 'react-icons/rx';
 
@@ -17,24 +17,27 @@ const PrayerTimesSection = () => {
     >
       <PrayerTimesTitle />
 
-      {/* Calculation settings */}
-      <p className="mx-auto w-10/12 text-sm font-normal text-text-light_grey">
-        Calculation Method: <strong>Islamic Society of North America</strong>,
-      </p>
-      <p className="mx-auto mb-5 w-10/12 text-sm font-normal text-text-light_grey">
-        Juristic settings: <strong>Shafii</strong>
-      </p>
+      <div className="mx-auto w-10/12 lg:w-9/12">
+        {/* Calculation settings */}
+        <p className="text-sm font-normal text-text-light_grey">
+          Calculation Method: <strong>Islamic Society of North America</strong>,
+        </p>
 
-      {/* Change settings button */}
-      <button className="mx-auto mb-45px flex w-fit items-center gap-2 text-text-light_blue">
-        <RxPencil2 /> Change Settings
-      </button>
+        <p className="mb-5 text-sm font-normal text-text-light_grey">
+          Juristic settings: <strong>Shafii</strong>
+        </p>
+
+        {/* Change settings button */}
+        <button className="mx-auto mb-45px flex w-fit items-center gap-2 text-text-light_blue">
+          <RxPencil2 /> Change Settings
+        </button>
+      </div>
 
       <LocationSelector />
 
       <CurrentTime />
 
-      <PrayerTimes />
+      <PrayerTimesMobile className="!block lg:!hidden" />
 
       <MorePrayerTimes />
     </section>
