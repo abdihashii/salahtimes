@@ -10,10 +10,8 @@ const Home = () => {
     <Layout transparentNav={true}>
       <PrayerTimesSection />
 
-      {/* About MPT Section */}
       <AboutMPTHomeSection />
 
-      {/* Trending Stories Section */}
       <TrendingStories />
     </Layout>
   );
