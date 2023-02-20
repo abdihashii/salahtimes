@@ -21,7 +21,7 @@ const PrayerTimesContextProvider = (props) => {
   });
   const [prayerTimes, setPrayerTimes] = useState({
     Fajr: '',
-    Sunrise: '',
+    Shuruq: '',
     Dhuhr: '',
     Asr: '',
     Maghrib: '',
@@ -62,7 +62,7 @@ const PrayerTimesContextProvider = (props) => {
         const temp = {
           ...prayerTimes,
           Fajr: convertedSalahTimes[0],
-          Sunrise: convertedSalahTimes[1],
+          Shuruq: convertedSalahTimes[1],
           Dhuhr: convertedSalahTimes[2],
           Asr: convertedSalahTimes[3],
           Maghrib: convertedSalahTimes[4],
