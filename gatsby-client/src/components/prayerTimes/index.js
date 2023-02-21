@@ -6,6 +6,7 @@ import PrayerTimesTitle from '../prayerTimesTitle';
 import { PrayerTimesMobile } from './prayerTimesMobile';
 import masjidBackground from '../../images/masjid_bg.webp';
 import { RxPencil2 } from 'react-icons/rx';
+import DesktopLocationSelector from './desktopLocationSelector';
 
 const PrayerTimesSection = () => {
   return (
@@ -17,6 +18,7 @@ const PrayerTimesSection = () => {
     >
       <PrayerTimesTitle />
 
+      {/* Calculation settings */}
       <div className="mx-auto w-10/12 lg:w-9/12">
         {/* Calculation settings */}
         <p className="text-sm font-normal text-text-light_grey">
@@ -33,7 +35,8 @@ const PrayerTimesSection = () => {
         </button>
       </div>
 
-      <LocationSelector />
+      <LocationSelector className="!block lg:!hidden" />
+      <DesktopLocationSelector className="!hidden lg:!block" />
 
       <CurrentTime />
 
