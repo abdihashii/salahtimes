@@ -17,19 +17,21 @@ const DesktopLocationSelector = ({ className }) => {
   } = useContext(PrayerTimesContext);
 
   return (
-    <div className={`relative mx-auto w-9/12 ${className}`}>
+    <form
+      className={`relative mx-auto w-9/12 ${className}`}
+      value={input.city}
+      onSubmit={handleSelect}
+    >
       {/* Get location button */}
-      <span className="text-15px absolute left-25px top-25px z-10 inline-flex w-fit flex-row items-center justify-center gap-2 font-medium text-black">
-        {/* Your Location */}
-        <button
-          className="text-green-secondary hover:underline"
-          onClick={onMapIconClick}
-          onKeyDown={onMapIconClick}
-          role="button"
-        >
-          Get my location
-        </button>
-      </span>
+      <button
+        className="text-15px absolute left-25px top-25px z-10 inline-flex w-fit flex-row items-center justify-center gap-2 font-medium text-green-secondary hover:underline"
+        onClick={onMapIconClick}
+        onKeyDown={onMapIconClick}
+        role="button"
+        type="button"
+      >
+        Get my location
+      </button>
 
       {/* Location selector */}
       <PlacesAutocomplete
@@ -94,10 +96,13 @@ const DesktopLocationSelector = ({ className }) => {
         )}
       </PlacesAutocomplete>
 
-      <button className="absolute right-5 top-5 flex w-fit flex-row items-center justify-center gap-10px rounded-4px bg-green-dark px-9 py-19px font-medium">
+      <button
+        type="submit"
+        className="absolute right-5 top-5 z-10 flex w-fit flex-row items-center justify-center gap-10px rounded-4px bg-green-secondary px-9 py-19px font-medium hover:bg-green-dark"
+      >
         <RxMagnifyingGlass /> Search
       </button>
-    </div>
+    </form>
   );
 };
 

@@ -171,7 +171,7 @@ const PrayerTimesContextProvider = (props) => {
           .asMinutes();
 
         let [closestPrayer, closestPrayerTime] = Object.entries(
-          prayerTimes,
+          prayerTimes
         ).find(([prayer, time]) => {
           const timeInMinutes = moment
             .duration(moment(time, 'hh:mm a').format('HH:mm'))
@@ -212,11 +212,21 @@ const PrayerTimesContextProvider = (props) => {
    * When the user selects the city name from the popover list
    * @param {string} location - the city name
    */
-  const handleSelect = (location) => {
+  const handleSelect = (arg) => {
+    let location = arg;
+
+    if (arg.target) {
+      const {
+        target: [_, { value }],
+      } = arg;
+      location = value;
+      arg.preventDefault();
+    }
+
     geocodeByAddress(location)
       .then(async (results) => {
         const { long_name } = results[0].address_components.find((o) =>
-          o.types.find((type) => type === 'locality' || type === 'political'),
+          o.types.find((type) => type === 'locality' || type === 'political')
         );
         const latLng = await getLatLng(results[0]);
         return { latLng, long_name };
