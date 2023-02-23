@@ -4,6 +4,7 @@ import { LocationSelector } from '../locationSelector';
 import { MorePrayerTimes } from '../morePrayerTimes/morePrayerTimes';
 import PrayerTimesTitle from '../prayerTimesTitle';
 import { PrayerTimesMobile } from './prayerTimesMobile';
+import { PrayerTimesDesktop } from './prayerTimesDesktop';
 import masjidBackground from '../../images/masjid_bg.webp';
 import { RxPencil2 } from 'react-icons/rx';
 import DesktopLocationSelector from './desktopLocationSelector';
@@ -47,6 +48,7 @@ const PrayerTimesSection = () => {
       <CurrentTime />
 
       <PrayerTimesMobile className="!block lg:!hidden" />
+      <PrayerTimesDesktop className="!hidden lg:!block" />
 
       <MorePrayerTimes />
     </section>
