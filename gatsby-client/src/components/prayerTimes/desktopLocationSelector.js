@@ -46,7 +46,7 @@ const DesktopLocationSelector = ({ className }) => {
               {...getInputProps({
                 placeholder: 'Type your location',
                 autoFocus: true,
-                className: `h-6.25rem w-full border border-border-input_white pb-25px pt-49px px-6 text-15px hover:border-green-secondary focus:border-green-secondary outline-none text-black ${
+                className: `h-6.25rem w-full border border-border-input_white pb-25px pt-49px px-6 text-15px focus:border-green-secondary outline-none text-black ${
                   suggestions.length > 0
                     ? 'rounded-bl-none rounded-br-none rounded-tr-4px rounded-tl-4px'
                     : 'rounded-4px'
@@ -98,7 +98,7 @@ const DesktopLocationSelector = ({ className }) => {
 
       <button
         type="submit"
-        className="absolute right-5 top-5 z-10 flex w-fit flex-row items-center justify-center gap-10px rounded-4px bg-green-secondary px-9 py-19px font-medium hover:bg-green-dark"
+        className="absolute right-5 top-5 z-10 flex w-fit flex-row items-center justify-center gap-10px rounded-4px bg-green-dark px-9 py-19px font-medium hover:bg-green-secondary"
       >
         <RxMagnifyingGlass /> Search
       </button>
