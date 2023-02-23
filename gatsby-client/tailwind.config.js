@@ -28,6 +28,8 @@ module.exports = {
         },
         bg: {
           grey: '#F8F8F8',
+          light_blue: '#007EFF',
+          dark_grey: '#23291F',
         },
         border: {
           input_white: '#EEEDF0',
@@ -54,6 +56,8 @@ module.exports = {
         bg_layer: 'inset 0 0 0 1000px rgba(0, 11, 3, 0.8)',
       },
       margin: {
+        '2px': '2px',
+        '3px': '3px',
         '5px': '5px',
         '6px': '6px',
         '7px': '7px',
@@ -64,6 +68,7 @@ module.exports = {
         '15px': '15px',
         '17px': '17px',
         '18px': '18px',
+        '19px': '19px',
         '21px': '21px',
         '22px': '22px',
         '24px': '24px',
@@ -93,6 +98,7 @@ module.exports = {
         auto: 'auto !important',
       },
       height: {
+        '18px': '18px',
         '1.5em': '1.5em', // 24px
         '2.5em': '2.5em', // 40px
         '55px': '55px',
@@ -105,6 +111,7 @@ module.exports = {
         '1063px': '1063px',
       },
       width: {
+        '18px': '18px',
         '60px': '60px',
         '242px': '242px',
         '229px': '229px',
@@ -125,7 +132,9 @@ module.exports = {
       },
       fontSize: {
         '13px': '13px',
+        '14px': '14px',
         '17px': '17.56px',
+        '19px': '19.41px',
         '24px': '24px',
         '28px': '28px',
         '32px': '32px',
@@ -172,6 +181,7 @@ module.exports = {
       },
       lineHeight: {
         '22px': '22px',
+        '23px': '23px',
         '26px': '26px',
         '29px': '29px',
         '30px': '30px',
@@ -183,6 +193,7 @@ module.exports = {
       },
       spacing: {
         '25px': '25px',
+        '5.5rem': '5.5rem', // 88px
       },
     },
   },
