@@ -4,17 +4,8 @@ import PlacesAutocomplete from 'react-places-autocomplete';
 import { PrayerTimesContext } from '../../contexts/prayerTimesContext';
 
 const DesktopLocationSelector = ({ className }) => {
-  const {
-    input,
-    handleLocationChange,
-    handleSelect,
-    onMapIconClick,
-    getLocationByIpAddress,
-    getUpcomingSalah,
-    setDebug,
-    method,
-    getSalahTimes,
-  } = useContext(PrayerTimesContext);
+  const { input, handleLocationChange, handleSelect, onMapIconClick } =
+    useContext(PrayerTimesContext);
 
   return (
     <form
@@ -27,8 +18,6 @@ const DesktopLocationSelector = ({ className }) => {
         className="text-15px absolute left-25px top-25px z-10 inline-flex w-fit flex-row items-center justify-center gap-2 font-medium text-green-secondary hover:underline"
         onClick={onMapIconClick}
         onKeyDown={onMapIconClick}
-        role="button"
-        type="button"
       >
         Get my location
       </button>

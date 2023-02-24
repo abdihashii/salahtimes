@@ -224,7 +224,7 @@ const PrayerTimesContextProvider = (props) => {
 
     if (arg.target) {
       const {
-        target: [_, { value }],
+        target: [, { value }],
       } = arg;
       location = value;
       arg.preventDefault();
