@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
 import { PrayerTimesContext } from '../../contexts/prayerTimesContext';
 import { isPrayerTimeBeforeCurrentTime } from '../../controllers/prayerTimesController';
+import { pulsatingCircle } from './pulsatinganimation.module.scss';
 
-const Circle = ({ status, className }) => {
+const Circle = ({ firstIndex, lastIndex, circleStatus: status, className }) => {
   const circleStatus = {
     empty: 'h-18px w-18px bg-bg-dark_grey mb-19px mt-3px',
-    full: 'h-6 w-6 border-green-secondary bg-green-secondary mb-17px',
+    full: `${
+      firstIndex ? '-ml-10px' : lastIndex ? '-mr-10px' : ''
+    } h-6 w-6 border-green-secondary bg-green-secondary mb-17px ${pulsatingCircle}`,
     completed: 'h-18px w-18px bg-bg-light_blue mb-19px mt-3px',
   };
 
@@ -49,12 +52,15 @@ export const PrayerTimesDesktop = ({ className }) => {
               ? 'completed'
               : 'empty';
 
+          const firstIndex = index === 0;
+          const lastIndex = index === Object.entries(prayerTimes).length - 1;
+
           return (
             <div
               className={`flex flex-col ${
-                index === 0
+                firstIndex
                   ? 'items-start'
-                  : index === Object.entries(prayerTimes).length - 1
+                  : lastIndex
                   ? 'items-end'
                   : 'items-center'
               }`}
@@ -83,7 +89,7 @@ export const PrayerTimesDesktop = ({ className }) => {
                   Loading...
                 </p>
               )}
-              <Circle status={circleStatus} className="" />
+              <Circle {...{ firstIndex, lastIndex, circleStatus }} />
               <p>{salahMap[salah]}</p>
             </div>
           );
