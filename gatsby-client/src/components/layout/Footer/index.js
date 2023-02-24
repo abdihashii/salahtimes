@@ -42,47 +42,92 @@ const Footer = () => {
         {/* Prayer times, blog, about us, contact us, and faqs */}
         <ul className="mb-50px flex flex-col text-center text-lg font-medium leading-44px text-text-grey lg:whitespace-nowrap lg:text-left">
           <li>
-            <Link to="/">Prayer Times</Link>
+            <Link
+              to="/"
+              className="opacity-50 hover:opacity-100"
+              activeStyle={{ opacity: 1 }}
+            >
+              Prayer Times
+            </Link>
           </li>
           <li>
-            <Link to="/blog">Blog</Link>
+            <Link
+              to="/blog"
+              className="opacity-50 hover:opacity-100"
+              activeStyle={{ opacity: 1 }}
+            >
+              Blog
+            </Link>
           </li>
           <li>
-            <Link to="/about-us">About Us</Link>
+            <Link
+              to="/about-us"
+              className="opacity-50 hover:opacity-100"
+              activeStyle={{ opacity: 1 }}
+            >
+              About Us
+            </Link>
           </li>
           <li>
-            <Link to="contact-us">Contact Us</Link>
+            <Link
+              to="contact-us"
+              className="opacity-50 hover:opacity-100"
+              activeStyle={{ opacity: 1 }}
+            >
+              Contact Us
+            </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="faqs">FAQs</Link>
-          </li>
+          </li> */}
         </ul>
 
         {/* Privacy policy, terms of use, disclamer, and help center */}
         <ul className="mb-50px flex flex-col text-center text-lg font-medium leading-44px text-text-grey lg:whitespace-nowrap lg:text-left">
           <li className="inline-block">
-            <Link to="/">Privacy Policy</Link>
+            <Link
+              to="/privacy-policy"
+              className="opacity-50 hover:opacity-100"
+              activeStyle={{ opacity: 1 }}
+            >
+              Privacy Policy
+            </Link>
           </li>
           <li className="inline-block">
+            <Link
+              to="/cookies-policy"
+              className="opacity-50 hover:opacity-100"
+              activeStyle={{ opacity: 1 }}
+            >
+              Cookies Policy
+            </Link>
+          </li>
+          {/* <li className="inline-block">
             <Link to="/">Terms of Use</Link>
-          </li>
-          <li className="inline-block">
+          </li> */}
+          {/* <li className="inline-block">
             <Link to="/">Disclamer</Link>
-          </li>
-          <li className="inline-block">
+          </li> */}
+          {/* <li className="inline-block">
             <Link to="/">Help Center</Link>
-          </li>
+          </li> */}
         </ul>
 
         {/* Manage preferences and cookies policy */}
-        <ul className="mb-55px flex flex-col text-center text-lg font-medium leading-44px text-text-grey lg:whitespace-nowrap lg:text-left">
+        {/* <ul className="mb-55px flex flex-col text-center text-lg font-medium leading-44px text-text-grey lg:whitespace-nowrap lg:text-left">
           <li className="inline-block">
             <Link to="/">Manage Preferences</Link>
           </li>
           <li className="inline-block">
-            <Link to="/">Cookies Policy</Link>
+            <Link
+              to="/"
+              className="opacity-50 hover:opacity-100"
+              activeStyle={{ opacity: 1 }}
+            >
+              Cookies Policy
+            </Link>
           </li>
-        </ul>
+        </ul> */}
 
         {/* Social */}
         <div>

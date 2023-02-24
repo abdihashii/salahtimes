@@ -54,7 +54,7 @@ const DesktopNav = ({ transparentNav }) => {
             About Us
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link
             className="opacity-50 hover:opacity-100"
             activeStyle={{ opacity: 1 }}
@@ -62,8 +62,8 @@ const DesktopNav = ({ transparentNav }) => {
           >
             FAQs
           </Link>
-        </li>
-        <li>
+        </li> */}
+        {/* <li>
           <Link
             className="opacity-50 hover:opacity-100"
             activeStyle={{ opacity: 1 }}
@@ -71,7 +71,7 @@ const DesktopNav = ({ transparentNav }) => {
           >
             Resources
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link
             className="opacity-50 hover:opacity-100"
