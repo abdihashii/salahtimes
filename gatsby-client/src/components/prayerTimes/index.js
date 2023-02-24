@@ -23,12 +23,12 @@ const PrayerTimesSection = () => {
       {/* <CalculationSettings /> */}
 
       <LocationSelector className="!block lg:!hidden" />
-      <DesktopLocationSelector className="!hidden lg:!block" />
+      <DesktopLocationSelector className="!hidden lg:mb-8 lg:!block" />
 
       <CurrentTime />
 
       <PrayerTimesMobile className="!block lg:!hidden" />
-      <PrayerTimesDesktop className="!hidden lg:!block" />
+      <PrayerTimesDesktop className="!hidden lg:mb-8 lg:!block" />
 
       <MorePrayerTimes />
     </section>
