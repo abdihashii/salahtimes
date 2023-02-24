@@ -3,9 +3,11 @@ import CurrentTime from '../currentTime/currentTime';
 import { LocationSelector } from '../locationSelector';
 import { MorePrayerTimes } from '../morePrayerTimes/morePrayerTimes';
 import PrayerTimesTitle from '../prayerTimesTitle';
-import { PrayerTimes } from './prayerTimes';
+import { PrayerTimesMobile } from './prayerTimesMobile';
+import { PrayerTimesDesktop } from './prayerTimesDesktop';
 import masjidBackground from '../../images/masjid_bg.webp';
-import { RxPencil2 } from 'react-icons/rx';
+import DesktopLocationSelector from './desktopLocationSelector';
+// import CalculationSettings from './calculationSettings';
 
 const PrayerTimesSection = () => {
   return (
@@ -18,23 +20,15 @@ const PrayerTimesSection = () => {
       <PrayerTimesTitle />
 
       {/* Calculation settings */}
-      <p className="mx-auto w-10/12 text-sm font-normal text-text-light_grey">
-        Calculation Method: <strong>Islamic Society of North America</strong>,
-      </p>
-      <p className="mx-auto mb-5 w-10/12 text-sm font-normal text-text-light_grey">
-        Juristic settings: <strong>Shafii</strong>
-      </p>
+      {/* <CalculationSettings /> */}
 
-      {/* Change settings button */}
-      <button className="mx-auto mb-45px flex w-fit items-center gap-2 text-text-light_blue">
-        <RxPencil2 /> Change Settings
-      </button>
-
-      <LocationSelector />
+      <LocationSelector className="!block lg:!hidden" />
+      <DesktopLocationSelector className="!hidden lg:mb-8 lg:!block" />
 
       <CurrentTime />
 
-      <PrayerTimes />
+      <PrayerTimesMobile className="!block lg:!hidden" />
+      <PrayerTimesDesktop className="!hidden lg:mb-8 lg:!block" />
 
       <MorePrayerTimes />
     </section>

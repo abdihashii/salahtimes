@@ -4,7 +4,7 @@ import { PrayerTimesContext } from '../contexts/prayerTimesContext';
 import { RxMagnifyingGlass } from 'react-icons/rx';
 import { RiMapPinLine } from 'react-icons/ri';
 
-export const LocationSelector = () => {
+export const LocationSelector = ({ className }) => {
   const {
     input,
     handleLocationChange,
@@ -44,7 +44,7 @@ export const LocationSelector = () => {
   }, [method]);
 
   return (
-    <>
+    <div className={className}>
       <div className="mx-auto mb-45px w-full">
         <div className="relative mx-auto w-11/12 lg:w-full">
           {/* Map icon */}
@@ -131,6 +131,6 @@ export const LocationSelector = () => {
           </span>
         </div>
       </div>
-    </>
+    </div>
   );
 };

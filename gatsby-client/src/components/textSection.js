@@ -16,7 +16,9 @@ const TextSection = ({ heading, textContent, children, className }) => {
     heading === 'Must-Read Stories Of The Month';
 
   const isMissionOrVision =
-    heading === 'Our Mission' || heading === 'Our Vision';
+    heading === 'Our Mission' ||
+    heading === 'Our Vision' ||
+    heading === 'About MyPrayerTimes';
 
   return (
     <section
