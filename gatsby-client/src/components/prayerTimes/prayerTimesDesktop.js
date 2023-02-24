@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { PrayerTimesContext } from '../../contexts/prayerTimesContext';
 import { isPrayerTimeBeforeCurrentTime } from '../../controllers/prayerTimesController';
 import { pulsatingCircle } from './pulsatinganimation.module.scss';
+import { RxArrowDown, RxArrowUp } from 'react-icons/rx';
 
 const Circle = ({ firstIndex, lastIndex, circleStatus: status, className }) => {
   const circleStatus = {
@@ -35,8 +36,14 @@ export const PrayerTimesDesktop = ({ className }) => {
   return (
     <div className={`mx-auto w-9/12 text-center ${className}`}>
       <div className="relative flex flex-row justify-between">
-        <hr className="absolute top-5.5rem z-0 w-full border" />
+        {/* The horizontal line */}
+        <hr className="top-122px absolute z-0 w-full border" />
+
+        {/* Mapping over the prayer times for times and salah */}
         {Object.entries(prayerTimes).map(([salah, time], index) => {
+          const isSunrise = salah === 'Shuruq';
+          const isSunset = salah === 'Maghrib';
+
           let isBefore = false;
           if (time && closestPrayerTime.closestPrayerTime) {
             isBefore = isPrayerTimeBeforeCurrentTime(
@@ -65,6 +72,17 @@ export const PrayerTimesDesktop = ({ className }) => {
                   : 'items-center'
               }`}
             >
+              <p className="mb-7px flex flex-row items-center justify-center gap-2 text-lg text-green">
+                {isSunrise ? (
+                  <RxArrowUp />
+                ) : isSunset ? (
+                  <RxArrowDown />
+                ) : (
+                  '\u00A0'
+                )}
+                {isSunrise ? 'Sunrise' : isSunset ? 'Sunset' : ''}
+              </p>
+
               {!isLoading ? (
                 <p className="mb-2px text-19px font-semibold leading-23px">
                   {time}
