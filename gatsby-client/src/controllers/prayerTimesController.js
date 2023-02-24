@@ -93,3 +93,7 @@ export const getTimeZoneId = async (lat, lng) => {
 
   return timeZoneId;
 };
+
+export const isPrayerTimeBeforeCurrentTime = (prayerTime, currentTime) => {
+  return moment(prayerTime, 'hh:mm a').isBefore(moment(currentTime, 'hh:mm a'));
+};

@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { PrayerTimesContext } from '../../contexts/prayerTimesContext';
-import { PrayerTimeCard } from './prayerTimeCard';
+import { isPrayerTimeBeforeCurrentTime } from '../../controllers/prayerTimesController';
 
 const Circle = ({ status, className }) => {
   const circleStatus = {
     empty: 'h-18px w-18px bg-bg-dark_grey mb-19px mt-3px',
     full: 'h-6 w-6 border-green-secondary bg-green-secondary mb-17px',
-    completed: 'bg-bg-light_blue',
+    completed: 'h-18px w-18px bg-bg-light_blue mb-19px mt-3px',
   };
 
   return (
@@ -17,7 +17,7 @@ const Circle = ({ status, className }) => {
 };
 
 export const PrayerTimesDesktop = ({ className }) => {
-  const { debug, input, isLoading, prayerTimes, closestPrayerTime } =
+  const { isLoading, prayerTimes, closestPrayerTime } =
     useContext(PrayerTimesContext);
 
   const salahMap = {
@@ -34,8 +34,20 @@ export const PrayerTimesDesktop = ({ className }) => {
       <div className="relative flex flex-row justify-between">
         <hr className="absolute top-5.5rem z-0 w-full border" />
         {Object.entries(prayerTimes).map(([salah, time], index) => {
+          let isBefore = false;
+          if (time && closestPrayerTime.closestPrayerTime) {
+            isBefore = isPrayerTimeBeforeCurrentTime(
+              time,
+              closestPrayerTime.closestPrayerTime,
+            );
+          }
+
           const circleStatus =
-            closestPrayerTime.closestPrayer === salah ? 'full' : 'empty';
+            closestPrayerTime.closestPrayer === salah
+              ? 'full'
+              : isBefore
+              ? 'completed'
+              : 'empty';
 
           return (
             <div
