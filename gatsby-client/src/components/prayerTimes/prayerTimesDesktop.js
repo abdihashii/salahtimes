@@ -33,12 +33,20 @@ export const PrayerTimesDesktop = ({ className }) => {
     <div className={`mx-auto w-9/12 text-center ${className}`}>
       <div className="relative flex flex-row justify-between">
         <hr className="absolute top-5.5rem z-0 w-full border" />
-        {Object.entries(prayerTimes).map(([salah, time]) => {
+        {Object.entries(prayerTimes).map(([salah, time], index) => {
           const circleStatus =
             closestPrayerTime.closestPrayer === salah ? 'full' : 'empty';
 
           return (
-            <div className="flex flex-col items-center">
+            <div
+              className={`flex flex-col ${
+                index === 0
+                  ? 'items-start'
+                  : index === Object.entries(prayerTimes).length - 1
+                  ? 'items-end'
+                  : 'items-center'
+              }`}
+            >
               {!isLoading ? (
                 <p className="mb-2px text-19px font-semibold leading-23px">
                   {time}
