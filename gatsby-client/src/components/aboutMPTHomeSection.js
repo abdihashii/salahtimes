@@ -29,7 +29,7 @@ const AboutMPTHomeSection = () => {
   `);
 
   return (
-    <section className="lg:mx-auto lg:mb-28 lg:flex lg:w-9/12 lg:flex-row-reverse lg:gap-14">
+    <section className="lg:mx-auto lg:mb-36 lg:flex lg:w-9/12 lg:flex-row-reverse lg:gap-14 xl:w-7/12">
       <div className="mb-50px lg:-order-1 lg:m-0 lg:w-1/2">
         <TextSection
           heading={'About MyPrayerTimes'}

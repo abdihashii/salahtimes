@@ -34,7 +34,7 @@ export const PrayerTimesDesktop = ({ className }) => {
   };
 
   return (
-    <div className={`mx-auto w-9/12 text-center xl:w-6/12 ${className}`}>
+    <div className={`mx-auto w-9/12 text-center xl:w-7/12 ${className}`}>
       <div className="relative flex flex-row justify-between">
         {/* The horizontal line */}
         <hr className="absolute top-122px z-0 w-full border" />

@@ -29,7 +29,7 @@ const NavBar = ({ transparentNav }) => {
             : 'static border-b border-header_border_color'
         }`}
       >
-        <div className="mx-auto flex w-10/12 flex-row items-center lg:w-8/12 xl:w-6/12">
+        <div className="mx-auto flex w-10/12 flex-row items-center lg:w-8/12 xl:w-7/12">
           {/* Logo */}
           <Link className="flex flex-row items-center gap-10px" to="/">
             <GatsbyImage

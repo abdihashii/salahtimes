@@ -4,7 +4,9 @@ import React from 'react';
 const SectionBorder = ({ className }) => {
   return (
     <hr
-      className={`mx-auto mb-25px w-20 rounded-xl border-4 border-green-secondary lg:!ml-0 lg:w-16 lg:bg-green-secondary ${className}`}
+      className={`mx-auto mb-25px w-20 rounded-xl border-4 border-green-secondary lg:!ml-0 lg:w-16 lg:bg-green-secondary ${
+        className && className
+      }`}
     />
   );
 };
@@ -26,7 +28,9 @@ const TextSection = ({ heading, textContent, children, className }) => {
         isMissionOrVision
           ? 'w-full lg:mb-45px lg:!mr-0 lg:justify-between lg:text-left'
           : ''
-      } ${isCoreValuesOrTrending ? 'lg:mb-28 lg:w-9/12' : ''} ${className}`}
+      } ${isCoreValuesOrTrending ? 'lg:mb-28 lg:w-9/12 xl:w-7/12' : ''} ${
+        className && className
+      }`}
     >
       <h2
         className={`mb-3 text-2xl font-bold leading-30px lg:font-semibold ${
