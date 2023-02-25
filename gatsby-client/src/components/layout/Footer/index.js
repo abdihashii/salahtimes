@@ -15,7 +15,7 @@ const Footer = () => {
 
   return (
     <footer className="mx-auto mt-56px flex flex-col border-t-3px border-green-secondary pt-12 tracking-0.011em">
-      <section className="lg:mx-auto lg:flex lg:w-9/12 lg:flex-row lg:gap-16">
+      <section className="lg:mx-auto lg:flex lg:w-8/12 lg:flex-row lg:gap-16 xl:w-6/12">
         {/* Logo and One-liner */}
         <div className="lg:flex lg:flex-col">
           {/* Logo */}
@@ -52,15 +52,6 @@ const Footer = () => {
           </li>
           <li>
             <Link
-              to="/blog"
-              className="opacity-50 hover:opacity-100"
-              activeStyle={{ opacity: 1 }}
-            >
-              Blog
-            </Link>
-          </li>
-          <li>
-            <Link
               to="/about-us"
               className="opacity-50 hover:opacity-100"
               activeStyle={{ opacity: 1 }}
@@ -80,6 +71,37 @@ const Footer = () => {
           {/* <li>
             <Link to="faqs">FAQs</Link>
           </li> */}
+          <li>
+            <Link
+              to="/blog"
+              className="opacity-50 hover:opacity-100"
+              activeStyle={{ opacity: 1 }}
+            >
+              Blog
+            </Link>
+          </li>
+        </ul>
+
+        {/* Hijri and Ramadan links */}
+        <ul className="mb-55px flex flex-col text-center text-lg font-medium leading-44px text-text-grey lg:whitespace-nowrap lg:text-left">
+          <li className="inline-block">
+            <Link
+              to="/hijri-date/"
+              className="opacity-50 hover:opacity-100"
+              activeStyle={{ opacity: 1 }}
+            >
+              Hijri date
+            </Link>
+          </li>
+          <li className="inline-block">
+            <Link
+              to="/ramadan-2023/"
+              className="opacity-50 hover:opacity-100"
+              activeStyle={{ opacity: 1 }}
+            >
+              Ramadan 2023
+            </Link>
+          </li>
         </ul>
 
         {/* Privacy policy, terms of use, disclamer, and help center */}
