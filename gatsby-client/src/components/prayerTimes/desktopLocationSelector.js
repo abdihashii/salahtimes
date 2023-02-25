@@ -9,7 +9,7 @@ const DesktopLocationSelector = ({ className }) => {
 
   return (
     <form
-      className={`relative mx-auto w-9/12 ${className}`}
+      className={`relative mx-auto w-9/12 xl:w-6/12 ${className}`}
       value={input.city}
       onSubmit={handleSelect}
     >

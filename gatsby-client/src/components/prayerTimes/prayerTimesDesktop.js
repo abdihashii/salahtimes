@@ -34,10 +34,10 @@ export const PrayerTimesDesktop = ({ className }) => {
   };
 
   return (
-    <div className={`mx-auto w-9/12 text-center ${className}`}>
+    <div className={`mx-auto w-9/12 text-center xl:w-6/12 ${className}`}>
       <div className="relative flex flex-row justify-between">
         {/* The horizontal line */}
-        <hr className="top-122px absolute z-0 w-full border" />
+        <hr className="absolute top-122px z-0 w-full border" />
 
         {/* Mapping over the prayer times for times and salah */}
         {Object.entries(prayerTimes).map(([salah, time], index) => {
