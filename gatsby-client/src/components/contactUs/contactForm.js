@@ -50,14 +50,14 @@ const ContactForm = () => {
     } = e.target.elements;
 
     alert(
-      `name: ${name}, email: ${email}, phone: ${phone}, message: ${message}`
+      `name: ${name}, email: ${email}, phone: ${phone}, message: ${message}`,
     );
   };
 
   return (
     <form
       onSubmit={handleContactSubmit}
-      className="mx-auto w-10/12 rounded-xl bg-white p-7 text-black lg:w-5/12"
+      className="mx-auto w-10/12 rounded-xl border border-green-dark bg-white p-7 text-black lg:w-5/12"
     >
       <div className="mb-7">
         <h3 className="text-lg font-bold">Contact Form</h3>
@@ -65,8 +65,8 @@ const ContactForm = () => {
       </div>
 
       {/* Form inputs */}
-      <div className="mb-7 flex w-full flex-row gap-10">
-        <div className="flex w-1/2 flex-col gap-4">
+      <div className="mb-7 flex w-full flex-col gap-10 lg:flex-row">
+        <div className="flex flex-col gap-4 lg:w-1/2">
           {/* Your Name */}
           <div className="relative">
             <MdPersonOutline className="absolute top-10 left-10px" />
@@ -122,11 +122,11 @@ const ContactForm = () => {
             </label>
           </div>
         </div>
-        <div className="flex w-1/2 flex-col">
+        <div className="flex h-44 flex-col lg:w-1/2">
           <label className="flex h-full flex-col" htmlFor="message">
             * Message
             <textarea
-              className={`mt-1 h-full rounded-md py-2 pl-4 outline-none ring-1 ring-gray-500 hover:ring-green-secondary focus-visible:ring-2 focus-visible:ring-green-secondary ${
+              className={`mt-1 h-full rounded-md py-2 px-4 outline-none ring-1 ring-gray-500 hover:ring-green-secondary focus-visible:ring-2 focus-visible:ring-green-secondary ${
                 field.message.status === 'empty' ? 'bg-gray-200' : 'bg-white'
               }`}
               value={field.message.value}

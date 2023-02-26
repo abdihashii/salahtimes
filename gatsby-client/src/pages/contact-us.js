@@ -6,8 +6,8 @@ import ContactForm from '../components/contactUs/contactForm';
 const ContactUs = () => {
   return (
     <Layout>
-      <main className="bg-green-dark pb-16 text-white">
-        <h1 className="mx-auto mb-22px w-10/12 text-center text-32px font-semibold leading-39px lg:mb-30px lg:w-5/12 lg:pt-16 lg:text-6xl">
+      <main className="pb-16 text-black">
+        <h1 className="mx-auto mt-10 mb-22px w-10/12 text-center text-32px font-semibold leading-39px lg:mt-6 lg:mb-30px lg:w-5/12 lg:pt-16 lg:text-6xl">
           Get in touch!
         </h1>
         <h2 className="mx-auto mb-39px w-10/12 text-center text-13px font-normal leading-22px lg:mb-60px lg:w-5/12 lg:text-lg lg:font-medium">

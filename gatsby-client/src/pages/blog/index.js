@@ -12,7 +12,7 @@ const AllBlogs = ({ data: { blogs } }) => {
   return (
     <Layout>
       <main className="mx-auto w-10/12 lg:w-full">
-        <h1 className="mb-11 mt-10 text-center text-xl font-bold capitalize leading-30px lg:mt-20 lg:text-40px">
+        <h1 className="mb-11 mt-10 text-center text-32px font-semibold capitalize leading-39px lg:mt-6 lg:pt-16 lg:text-6xl">
           Welcome to our Blog
         </h1>
 
