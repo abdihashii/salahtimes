@@ -258,19 +258,6 @@ const PrayerTimesContextProvider = (props) => {
     setIsMoreSalahTimesToggled(!isMoreSalahTimesToggled);
   };
 
-  const handleContactSubmit = (e) => {
-    e.preventDefault();
-
-    const {
-      name: { value: name },
-      email: { value: email },
-      phone: { value: phone },
-      message: { value: message },
-    } = e.target.elements;
-
-    console.log(name);
-  };
-
   return (
     <PrayerTimesContext.Provider
       value={{
@@ -302,7 +289,6 @@ const PrayerTimesContextProvider = (props) => {
         setMethod,
         isHamburgerMenuOpen,
         setIsHamburgerMenuOpen,
-        handleContactSubmit,
       }}
     >
       {props.children}

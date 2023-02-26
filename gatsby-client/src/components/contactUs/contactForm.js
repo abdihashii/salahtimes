@@ -1,5 +1,4 @@
-import React, { useContext, useState } from 'react';
-import { PrayerTimesContext } from '../../contexts/prayerTimesContext';
+import React, { useState } from 'react';
 import {
   MdOutlineLocalPhone,
   MdOutlineEmail,
@@ -7,8 +6,6 @@ import {
 } from 'react-icons/md';
 
 const ContactForm = () => {
-  const { handleContactSubmit } = useContext(PrayerTimesContext);
-
   const [field, setField] = useState({
     name: {
       value: '',
@@ -40,6 +37,21 @@ const ContactForm = () => {
         status: e.target.value.length > 0 ? 'dirty' : 'empty',
       },
     });
+  };
+
+  const handleContactSubmit = (e) => {
+    e.preventDefault();
+
+    const {
+      name: { value: name },
+      email: { value: email },
+      phone: { value: phone },
+      message: { value: message },
+    } = e.target.elements;
+
+    alert(
+      `name: ${name}, email: ${email}, phone: ${phone}, message: ${message}`
+    );
   };
 
   return (
