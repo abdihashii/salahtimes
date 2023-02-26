@@ -81,7 +81,6 @@ const ContactForm = () => {
                 id="name"
                 type="text"
                 placeholder="Ibn Rushd"
-                autoFocus
               ></input>
             </label>
           </div>
