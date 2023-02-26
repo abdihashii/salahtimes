@@ -25,7 +25,7 @@ const ContactUs = () => {
 export const Head = () => {
   return (
     <>
-      <Seo pageTitle={'About Us'} />
+      <Seo pageTitle={'Contact Us'} />
     </>
   );
 };

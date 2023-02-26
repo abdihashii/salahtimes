@@ -22,6 +22,15 @@ const DesktopNav = ({ transparentNav }) => {
           <Link
             className="opacity-50 hover:opacity-100"
             activeStyle={{ opacity: 1 }}
+            to="/faqs/"
+          >
+            FAQs
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="opacity-50 hover:opacity-100"
+            activeStyle={{ opacity: 1 }}
             to="/hijri-date/"
           >
             Hijri Date
