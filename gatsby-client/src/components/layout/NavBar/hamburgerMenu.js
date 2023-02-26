@@ -8,16 +8,16 @@ const HamburgerMenu = () => {
           <a href="/">Prayer Times</a>
         </li>
         <li className="mx-auto w-fit">
-          <a href="/about-us">About Us</a>
+          <a href="/about-us/">About Us</a>
         </li>
         <li className="mx-auto w-fit">
-          <a href="/resources">Resources</a>
+          <a href="/faqs/">FAQs</a>
         </li>
         <li className="mx-auto w-fit">
-          <a href="/faqs">FAQs</a>
+          <a href="/ramadan-2023/">Ramadan 2023</a>
         </li>
         <li className="mx-auto w-fit">
-          <a href="/contact-us">Contact Us</a>
+          <a href="/contact-us/">Contact Us</a>
         </li>
       </ul>
 
