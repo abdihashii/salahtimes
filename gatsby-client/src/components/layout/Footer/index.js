@@ -52,7 +52,7 @@ const Footer = () => {
           </li>
           <li>
             <Link
-              to="/about-us"
+              to="/about-us/"
               className="opacity-50 hover:opacity-100"
               activeStyle={{ opacity: 1 }}
             >
@@ -61,7 +61,7 @@ const Footer = () => {
           </li>
           <li>
             <Link
-              to="contact-us"
+              to="/contact-us/"
               className="opacity-50 hover:opacity-100"
               activeStyle={{ opacity: 1 }}
             >
@@ -73,7 +73,7 @@ const Footer = () => {
           </li> */}
           <li>
             <Link
-              to="/blog"
+              to="/blog/"
               className="opacity-50 hover:opacity-100"
               activeStyle={{ opacity: 1 }}
             >
