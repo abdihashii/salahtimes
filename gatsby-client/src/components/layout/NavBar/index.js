@@ -29,7 +29,7 @@ const NavBar = ({ transparentNav }) => {
             : 'static border-b border-header_border_color'
         }`}
       >
-        <div className="mx-auto flex w-10/12 flex-row items-center lg:w-8/12 xl:w-7/12">
+        <div className="mx-auto flex w-10/12 flex-row items-center lg:w-8/12 lg:justify-between xl:w-7/12">
           {/* Logo */}
           <Link className="flex flex-row items-center gap-10px" to="/">
             <GatsbyImage
@@ -51,10 +51,10 @@ const NavBar = ({ transparentNav }) => {
 
           {/* Our Blog button - Desktop */}
           <Link
-            className="ml-36 hidden rounded-full bg-green-dark py-4 px-12 font-semibold text-white hover:bg-green-secondary lg:block"
+            className="!hidden rounded-full bg-green-dark py-4 px-12 font-semibold text-white hover:bg-green-secondary lg:!block"
             activeStyle={{ opacity: '0.2' }}
             partiallyActive={true}
-            to="/blog"
+            to="/blog/"
           >
             Our Blog
           </Link>

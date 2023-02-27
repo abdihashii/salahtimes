@@ -4,7 +4,7 @@ import { Link } from 'gatsby';
 const DesktopNav = ({ transparentNav }) => {
   return (
     <nav
-      className={`ml-auto hidden text-base font-medium leading-6 lg:block ${
+      className={`!hidden text-base font-medium leading-6 lg:!block ${
         transparentNav ? 'text-white' : 'text-text-nav_grey'
       }`}
     >
@@ -16,6 +16,15 @@ const DesktopNav = ({ transparentNav }) => {
             to="/about-us/"
           >
             About Us
+          </Link>
+        </li>
+        <li>
+          <Link
+            className="opacity-50 hover:opacity-100"
+            activeStyle={{ opacity: 1 }}
+            to="/faqs/"
+          >
+            FAQs
           </Link>
         </li>
         <li>
