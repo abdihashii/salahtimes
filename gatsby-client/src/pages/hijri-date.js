@@ -11,10 +11,12 @@ const HijriDate = () => {
 
   return (
     <Layout>
-      <h1>
-        {month} {day}, {year}
-      </h1>
-      <h2>Today's Gregorian Date: {todaysDate}</h2>
+      <main className="text-center font-medium">
+        <h1 className="mb-22px mt-10 text-32px lg:mt-6 lg:mb-30px lg:pt-16 lg:text-6xl">
+          {month} {day}, {year}
+        </h1>
+        <h2>Today's Gregorian Date: {todaysDate}</h2>
+      </main>
     </Layout>
   );
 };

@@ -14,8 +14,11 @@ const HamburgerMenu = () => {
           <a href="/faqs/">FAQs</a>
         </li>
         <li className="mx-auto w-fit">
-          <a href="/ramadan-2023/">Ramadan 2023</a>
+          <a href="/hijri-date/">Hijri Date</a>
         </li>
+        {/* <li className="mx-auto w-fit">
+          <a href="/ramadan-2023/">Ramadan 2023</a>
+        </li> */}
         <li className="mx-auto w-fit">
           <a href="/contact-us/">Contact Us</a>
         </li>
