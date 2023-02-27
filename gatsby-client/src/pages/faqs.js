@@ -12,7 +12,7 @@ const Faqs = () => {
         <h1 className="mx-auto mt-10 mb-22px w-10/12 text-center text-32px font-bold leading-39px text-green-dark lg:mt-6 lg:mb-30px lg:w-5/12 lg:pt-16 lg:text-6xl">
           Frequently Asked Questions (FAQs)
         </h1>
-        <h2 className="mx-auto mb-12 w-10/12 text-center text-13px font-normal leading-22px lg:mb-28 lg:w-5/12 lg:text-lg lg:font-medium">
+        <h2 className="mx-auto mb-12 w-10/12 text-center text-13px font-normal leading-22px lg:mb-16 lg:w-5/12 lg:text-lg lg:font-medium">
           Here are some common questions and answers about our website and
           services:
         </h2>
