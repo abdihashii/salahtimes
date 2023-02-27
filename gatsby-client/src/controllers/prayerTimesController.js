@@ -63,7 +63,7 @@ export const convertSalahTimes = (salahTimes) => {
 export const getCityNameFromLatLng = async (lat, lng) => {
   try {
     const res = await fetch(
-      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${process.env.GATSBY_MAPS_API_KEY}`,
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${process.env.GATSBY_MAPS_API_KEY}`
     );
     const { results } = await res.json();
 
@@ -96,4 +96,14 @@ export const getTimeZoneId = async (lat, lng) => {
 
 export const isPrayerTimeBeforeCurrentTime = (prayerTime, currentTime) => {
   return moment(prayerTime, 'hh:mm a').isBefore(moment(currentTime, 'hh:mm a'));
+};
+
+export const getTodaysDate = () => {
+  const today = new Date();
+
+  const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0
+  const dd = String(today.getDate()).padStart(2, '0');
+  const yyyy = today.getFullYear();
+
+  return `${dd}-${mm}-${yyyy}`;
 };
