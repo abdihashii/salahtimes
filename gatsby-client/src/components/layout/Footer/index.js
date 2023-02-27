@@ -50,40 +50,6 @@ const Footer = () => {
               Prayer Times
             </Link>
           </li>
-          <li>
-            <Link
-              to="/about-us/"
-              className="opacity-50 hover:opacity-100"
-              activeStyle={{ opacity: 1 }}
-            >
-              About Us
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/contact-us/"
-              className="opacity-50 hover:opacity-100"
-              activeStyle={{ opacity: 1 }}
-            >
-              Contact Us
-            </Link>
-          </li>
-          {/* <li>
-            <Link to="faqs">FAQs</Link>
-          </li> */}
-          <li>
-            <Link
-              to="/blog/"
-              className="opacity-50 hover:opacity-100"
-              activeStyle={{ opacity: 1 }}
-            >
-              Blog
-            </Link>
-          </li>
-        </ul>
-
-        {/* Hijri and Ramadan links */}
-        <ul className="mb-55px flex flex-col text-center text-lg font-medium leading-44px text-text-grey lg:whitespace-nowrap lg:text-left">
           <li className="inline-block">
             <Link
               to="/hijri-date/"
@@ -100,6 +66,46 @@ const Footer = () => {
               activeStyle={{ opacity: 1 }}
             >
               Ramadan 2023
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/blog/"
+              className="opacity-50 hover:opacity-100"
+              activeStyle={{ opacity: 1 }}
+            >
+              Blog
+            </Link>
+          </li>
+        </ul>
+
+        {/* Hijri and Ramadan links */}
+        <ul className="mb-55px flex flex-col text-center text-lg font-medium leading-44px text-text-grey lg:whitespace-nowrap lg:text-left">
+          <li>
+            <Link
+              to="/about-us/"
+              className="opacity-50 hover:opacity-100"
+              activeStyle={{ opacity: 1 }}
+            >
+              About Us
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/faqs/"
+              className="opacity-50 hover:opacity-100"
+              activeStyle={{ opacity: 1 }}
+            >
+              FAQs
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/contact-us/"
+              className="opacity-50 hover:opacity-100"
+              activeStyle={{ opacity: 1 }}
+            >
+              Contact Us
             </Link>
           </li>
         </ul>
