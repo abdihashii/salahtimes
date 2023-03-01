@@ -8,10 +8,13 @@ const SubscribeToNewsletter = () => {
         background: 'linear-gradient(100.39deg, #122318 0.8%, #00260E 100%)',
       }}
     >
-      <h2 className="mx-auto mb-27px w-10/12 text-xl font-bold lg:mb-10 lg:text-45px lg:leading-57px">
+      {/* Subcribe header */}
+      <h2 className="mx-auto mb-27px w-10/12 text-xl font-bold lg:mb-10 lg:text-45px lg:leading-57px xl:w-6/12">
         Subscribe to our bi-weekly newsletter
       </h2>
-      <div className="lg:mx-auto lg:mb-8 lg:flex lg:w-10/12 lg:flex-row lg:gap-30px">
+
+      {/* Email input */}
+      <div className="lg:mx-auto lg:mb-8 lg:flex lg:w-10/12 lg:flex-row lg:gap-30px xl:w-6/12">
         <input
           type="text"
           className="mb-14px w-10/12 rounded-full border-2 py-4 px-6 text-text-core_values lg:mb-0"
@@ -21,7 +24,9 @@ const SubscribeToNewsletter = () => {
           Subscribe
         </button>
       </div>
-      <p className="mx-auto w-10/12 text-xs lg:w-7/12 lg:text-lg">
+
+      {/* TOS text */}
+      <p className="mx-auto w-10/12 text-xs lg:w-7/12 lg:text-lg xl:w-6/12">
         By clicking the Subscribe button you are agreeing to receive occasional
         email communications from <strong>MyPrayerTimes</strong>. We will not
         share your details with any 3rd parties and you can unsubscribe at any

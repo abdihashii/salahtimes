@@ -22,7 +22,7 @@ const AboutUsHeader = () => {
       <div className="mx-auto mb-56px flex flex-col justify-center gap-5 lg:mb-106px lg:flex-row lg:gap-21px">
         <Link
           to="/faqs"
-          className="w-max rounded-4xl bg-green-secondary py-3 px-8 font-semibold text-text-button hover:bg-green-dark lg:py-4"
+          className="w-max rounded-4xl bg-green-dark py-3 px-8 font-semibold text-text-button hover:bg-green-secondary lg:py-4"
         >
           See Our FAQs
         </Link>
