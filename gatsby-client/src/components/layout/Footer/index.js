@@ -19,7 +19,10 @@ const Footer = () => {
         {/* Logo and One-liner */}
         <div className="lg:flex lg:w-4/12 lg:flex-col">
           {/* Logo and logo name */}
-          <div className="mb-8 flex flex-row items-center justify-center lg:mb-36px lg:justify-start">
+          <Link
+            to="/"
+            className="mb-8 flex flex-row items-center justify-center lg:mb-36px lg:justify-start"
+          >
             <GatsbyImage
               image={faviconCropped.childImageSharp.gatsbyImageData}
               alt="My Prayer Times Logo"
@@ -28,7 +31,7 @@ const Footer = () => {
             <p className="ml-17px text-17px font-bold uppercase text-green-secondary lg:ml-4 lg:text-xl">
               My Prayer Times
             </p>
-          </div>
+          </Link>
 
           {/* footer one-liner */}
           <div className="mx-auto mb-51px w-10/12 justify-center text-center text-base text-text-grey lg:!ml-0 lg:w-10/12 lg:text-left lg:leading-8">
