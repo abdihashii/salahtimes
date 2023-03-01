@@ -63,7 +63,7 @@ export const convertSalahTimes = (salahTimes) => {
 export const getCityNameFromLatLng = async (lat, lng) => {
   try {
     const res = await fetch(
-      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${process.env.GATSBY_MAPS_API_KEY}`
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${process.env.GATSBY_MAPS_API_KEY}`,
     );
     const { results } = await res.json();
 
@@ -105,5 +105,12 @@ export const getTodaysDate = () => {
   const dd = String(today.getDate()).padStart(2, '0');
   const yyyy = today.getFullYear();
 
-  return `${dd}-${mm}-${yyyy}`;
+  const gregorianDate = moment(`${yyyy}-${mm}-${dd}`, 'YYYY-MM-DD').format(
+    'MMMM Do, YYYY',
+  );
+
+  return {
+    forHijri: `${dd}-${mm}-${yyyy}`,
+    gregorianDate: gregorianDate,
+  };
 };

@@ -3,13 +3,13 @@ import { getTodaysDate } from '../controllers/prayerTimesController';
 
 const useHijriDate = () => {
   const [hijriDate, setHijriDate] = useState({});
-  const todaysDate = getTodaysDate();
+  const { forHijri, gregorianDate } = getTodaysDate();
   const adjustment = 1;
 
   useEffect(() => {
     const fetchHijriDate = async () => {
       const hijriData = await fetch(
-        `http://api.aladhan.com/v1/gToH?date=${todaysDate}&adjustment=${adjustment}`
+        `http://api.aladhan.com/v1/gToH?date=${forHijri}&adjustment=${adjustment}`,
       );
       const {
         data: { hijri },
@@ -27,7 +27,7 @@ const useHijriDate = () => {
     fetchHijriDate();
   }, []);
 
-  return { hijriDate, todaysDate };
+  return { hijriDate, gregorianDate };
 };
 
 export default useHijriDate;

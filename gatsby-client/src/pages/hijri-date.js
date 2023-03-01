@@ -6,7 +6,7 @@ import Seo from '../components/seo';
 const HijriDate = () => {
   const {
     hijriDate: { hijriMonth: month, day, year },
-    todaysDate,
+    gregorianDate,
   } = useHijriDate();
 
   return (
@@ -15,7 +15,9 @@ const HijriDate = () => {
         <h1 className="mb-22px mt-10 text-32px lg:mt-6 lg:mb-30px lg:pt-16 lg:text-6xl">
           {month} {day}, {year}
         </h1>
-        <h2>Today's Gregorian Date: {todaysDate}</h2>
+        <h2 className="text-lg lg:text-xl">
+          Today's Gregorian Date: {gregorianDate}
+        </h2>
       </main>
     </Layout>
   );
