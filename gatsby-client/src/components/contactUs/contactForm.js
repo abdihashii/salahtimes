@@ -121,7 +121,7 @@ const ContactForm = () => {
             </label>
           </div>
         </div>
-        <div className="flex h-44 flex-col lg:w-1/2">
+        <div className="flex h-52 flex-col lg:h-auto lg:w-1/2">
           <label className="flex h-full flex-col" htmlFor="message">
             * Message
             <textarea
@@ -137,6 +137,14 @@ const ContactForm = () => {
           </label>
         </div>
       </div>
+
+      {/* Hidden form fields */}
+      <input
+        type="hidden"
+        name="_subject"
+        value="Contact from MyPrayerTimes.com"
+      ></input>
+      <input type="hidden" name="_honeypot" value="" />
 
       {/* Submit button */}
       <div className="mx-auto w-fit">
