@@ -206,11 +206,7 @@ export const query = graphql`
 `;
 
 export const Head = ({ data }) => {
-  return (
-    <>
-      <Seo pageTitle={data.blogPost.title} />
-    </>
-  );
+  return <Seo pageTitle={data.blogPost.title} />;
 };
 
 export default BlogPost;
