@@ -1,6 +1,6 @@
 ### P1 ideas
-- [x] Show city name and current time once selected (#2)
-- [x] Allow users to select method
+- [ ] Show city name and current time once selected (#2)
+- [ ] Allow users to select method
 - [ ] Allow for even more advanced methods in the future (like asr calculations, etc.)
 - [ ] Qibla
 - [ ] switch between hijri and greg calendars
