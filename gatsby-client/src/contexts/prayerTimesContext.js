@@ -1,5 +1,5 @@
 import moment from 'moment-timezone';
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useReducer } from 'react';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import {
   convertSalahTimes,
@@ -8,23 +8,36 @@ import {
   getTimeZoneId,
 } from '../controllers/prayerTimesController';
 
+const prayerTimesReducer = (prayerTimes, action) => {
+  switch (action.type) {
+    case 'SET_PRAYER_TIMES': {
+      return action.payload;
+    }
+    default: {
+      throw new Error(`Unhandled action type: ${action.type}`);
+    }
+  }
+};
+
 export const PrayerTimesContext = createContext(null);
 
 const PrayerTimesContextProvider = (props) => {
-  // Prayer times states
-  const [input, setInput] = useState({
-    city: '',
-    selectedCity: '',
-    lat: 0,
-    lng: 0,
-  });
-  const [prayerTimes, setPrayerTimes] = useState({
+  // Reducer
+  const [prayerTimes, dispatch] = useReducer(prayerTimesReducer, {
     Fajr: '',
     Shuruq: '',
     Dhuhr: '',
     Asr: '',
     Maghrib: '',
     Isha: '',
+  });
+
+  // Prayer times states
+  const [input, setInput] = useState({
+    city: '',
+    selectedCity: '',
+    lat: 0,
+    lng: 0,
   });
   const [closestPrayerTime, setClosetPrayerTime] = useState({
     closestPrayer: '',
@@ -95,7 +108,10 @@ const PrayerTimesContextProvider = (props) => {
         const lng = position.coords.longitude;
 
         const tempPrayerTimes = await getSalahTimes(lat, lng, method);
-        setPrayerTimes(tempPrayerTimes);
+        dispatch({
+          type: 'SET_PRAYER_TIMES',
+          payload: tempPrayerTimes,
+        });
 
         const cityNameFromLatLng = await getCityNameFromLatLng(lat, lng);
         const temp = {
@@ -142,7 +158,10 @@ const PrayerTimesContextProvider = (props) => {
       } = await res.json();
 
       const tempPrayerTimes = await getSalahTimes(lat, lng, method);
-      setPrayerTimes(tempPrayerTimes);
+      dispatch({
+        type: 'SET_PRAYER_TIMES',
+        payload: tempPrayerTimes,
+      });
 
       const cityNameFromLatLng = await getCityNameFromLatLng(lat, lng);
       const temp = {
@@ -178,7 +197,7 @@ const PrayerTimesContextProvider = (props) => {
           .asMinutes();
 
         let [closestPrayer, closestPrayerTime] = Object.entries(
-          prayerTimes
+          prayerTimes,
         ).find(([prayer, time]) => {
           const timeInMinutes = moment
             .duration(moment(time, 'hh:mm a').format('HH:mm'))
@@ -233,7 +252,7 @@ const PrayerTimesContextProvider = (props) => {
     geocodeByAddress(location)
       .then(async (results) => {
         const { long_name } = results[0].address_components.find((o) =>
-          o.types.find((type) => type === 'locality' || type === 'political')
+          o.types.find((type) => type === 'locality' || type === 'political'),
         );
         const latLng = await getLatLng(results[0]);
         return { latLng, long_name };
@@ -249,7 +268,10 @@ const PrayerTimesContextProvider = (props) => {
         });
 
         const tempPrayerTimes = await getSalahTimes(lat, lng, method);
-        setPrayerTimes(tempPrayerTimes);
+        dispatch({
+          type: 'SET_PRAYER_TIMES',
+          payload: tempPrayerTimes,
+        });
       })
       .catch((error) => console.error('Error', error));
   };
@@ -268,7 +290,7 @@ const PrayerTimesContextProvider = (props) => {
         input,
         setInput,
         prayerTimes,
-        setPrayerTimes,
+        dispatch,
         getSalahTimes,
         getCityNameFromLatLng,
         onMapIconClick,
