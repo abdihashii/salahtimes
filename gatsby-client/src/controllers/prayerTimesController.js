@@ -93,3 +93,24 @@ export const getTimeZoneId = async (lat, lng) => {
 
   return timeZoneId;
 };
+
+export const isPrayerTimeBeforeCurrentTime = (prayerTime, currentTime) => {
+  return moment(prayerTime, 'hh:mm a').isBefore(moment(currentTime, 'hh:mm a'));
+};
+
+export const getTodaysDate = () => {
+  const today = new Date();
+
+  const mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0
+  const dd = String(today.getDate()).padStart(2, '0');
+  const yyyy = today.getFullYear();
+
+  const gregorianDate = moment(`${yyyy}-${mm}-${dd}`, 'YYYY-MM-DD').format(
+    'MMMM Do, YYYY',
+  );
+
+  return {
+    forHijri: `${dd}-${mm}-${yyyy}`,
+    gregorianDate: gregorianDate,
+  };
+};

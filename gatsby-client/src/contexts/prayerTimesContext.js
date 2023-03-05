@@ -11,8 +11,7 @@ import {
 export const PrayerTimesContext = createContext(null);
 
 const PrayerTimesContextProvider = (props) => {
-  const [debug, setDebug] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  // Prayer times states
   const [input, setInput] = useState({
     city: '',
     selectedCity: '',
@@ -21,7 +20,7 @@ const PrayerTimesContextProvider = (props) => {
   });
   const [prayerTimes, setPrayerTimes] = useState({
     Fajr: '',
-    Sunrise: '',
+    Shuruq: '',
     Dhuhr: '',
     Asr: '',
     Maghrib: '',
@@ -31,10 +30,19 @@ const PrayerTimesContextProvider = (props) => {
     closestPrayer: '',
     closestPrayerTime: '',
   });
-  const [isMoreSalahTimesToggled, setIsMoreSalahTimesToggled] = useState(false);
+  const [method, setMethod] = useState('2');
   const [salahCalendarDates, setSalahCalendarDates] = useState([]);
   const [currentTime, setCurrentTime] = useState('');
-  const [method, setMethod] = useState('2');
+
+  // Testing states
+  const [debug, setDebug] = useState(false);
+
+  // Toggle states
+  const [isMoreSalahTimesToggled, setIsMoreSalahTimesToggled] = useState(false);
+  const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
+
+  // Misc states
+  const [isLoading, setIsLoading] = useState(false);
 
   /**
    * Gets the prayer times from the latitude and longitude using the aladhan API
@@ -61,7 +69,7 @@ const PrayerTimesContextProvider = (props) => {
         const temp = {
           ...prayerTimes,
           Fajr: convertedSalahTimes[0],
-          Sunrise: convertedSalahTimes[1],
+          Shuruq: convertedSalahTimes[1],
           Dhuhr: convertedSalahTimes[2],
           Asr: convertedSalahTimes[3],
           Maghrib: convertedSalahTimes[4],
@@ -170,7 +178,7 @@ const PrayerTimesContextProvider = (props) => {
           .asMinutes();
 
         let [closestPrayer, closestPrayerTime] = Object.entries(
-          prayerTimes,
+          prayerTimes
         ).find(([prayer, time]) => {
           const timeInMinutes = moment
             .duration(moment(time, 'hh:mm a').format('HH:mm'))
@@ -211,11 +219,21 @@ const PrayerTimesContextProvider = (props) => {
    * When the user selects the city name from the popover list
    * @param {string} location - the city name
    */
-  const handleSelect = (location) => {
+  const handleSelect = (arg) => {
+    let location = arg;
+
+    if (arg.target) {
+      const {
+        target: [, { value }],
+      } = arg;
+      location = value;
+      arg.preventDefault();
+    }
+
     geocodeByAddress(location)
       .then(async (results) => {
         const { long_name } = results[0].address_components.find((o) =>
-          o.types.find((type) => type === 'locality' || type === 'political'),
+          o.types.find((type) => type === 'locality' || type === 'political')
         );
         const latLng = await getLatLng(results[0]);
         return { latLng, long_name };
@@ -269,6 +287,8 @@ const PrayerTimesContextProvider = (props) => {
         setCurrentTime,
         method,
         setMethod,
+        isHamburgerMenuOpen,
+        setIsHamburgerMenuOpen,
       }}
     >
       {props.children}

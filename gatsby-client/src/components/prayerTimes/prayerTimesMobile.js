@@ -2,13 +2,13 @@ import React, { useContext } from 'react';
 import { PrayerTimesContext } from '../../contexts/prayerTimesContext';
 import { PrayerTimeCard } from './prayerTimeCard';
 
-export const PrayerTimes = () => {
+export const PrayerTimesMobile = ({ className }) => {
   const { debug, input, isLoading, prayerTimes, closestPrayerTime } =
     useContext(PrayerTimesContext);
 
   return (
-    <>
-      <div className="mx-auto mb-51px flex w-11/12 flex-col items-center rounded-20px border border-black lg:w-full lg:flex-row lg:gap-1.125 lg:rounded-none lg:border-0 lg:p-0">
+    <div className={`${className}`}>
+      <div className="mx-auto mb-39px grid w-11/12 grid-cols-3 items-center gap-y-22px gap-x-15px">
         {Object.entries(prayerTimes).map(([salah, time]) => {
           return (
             <PrayerTimeCard
@@ -33,6 +33,6 @@ export const PrayerTimes = () => {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 };
