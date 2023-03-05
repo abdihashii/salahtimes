@@ -9,7 +9,7 @@ import masjidBackground from '../../images/masjid_bg.webp';
 import DesktopLocationSelector from './desktopLocationSelector';
 // import CalculationSettings from './calculationSettings';
 
-const PrayerTimesSection = () => {
+const PrayerTimesSection = ({ cityName, coordinates }) => {
   return (
     <section
       className="mb-59px flex min-h-screen flex-col bg-cover bg-no-repeat text-center text-white shadow-bg_layer"
@@ -22,7 +22,10 @@ const PrayerTimesSection = () => {
       {/* Calculation settings */}
       {/* <CalculationSettings /> */}
 
-      <LocationSelector className="!block lg:!hidden" />
+      <LocationSelector
+        {...{ cityName, coordinates }}
+        className="!block lg:!hidden"
+      />
       <DesktopLocationSelector className="!hidden lg:mb-8 lg:!block" />
 
       <CurrentTime />

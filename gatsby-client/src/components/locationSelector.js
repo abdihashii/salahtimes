@@ -4,9 +4,10 @@ import { PrayerTimesContext } from '../contexts/prayerTimesContext';
 import { RxMagnifyingGlass } from 'react-icons/rx';
 import { RiMapPinLine } from 'react-icons/ri';
 
-export const LocationSelector = ({ className }) => {
+export const LocationSelector = ({ cityName, coordinates, className }) => {
   const {
     input,
+    setInput,
     handleLocationChange,
     handleSelect,
     onMapIconClick,
@@ -15,13 +16,38 @@ export const LocationSelector = ({ className }) => {
     setDebug,
     method,
     getSalahTimes,
+    dispatch,
   } = useContext(PrayerTimesContext);
 
   useEffect(() => {
-    getLocationByIpAddress(
-      `https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.GATSBY_MAPS_API_KEY}`,
-      { method: 'POST' },
-    );
+    if (cityName && coordinates) {
+      async function getSalahTimesByCityName() {
+        const tempSalahTimes = await getSalahTimes(
+          coordinates.lat,
+          coordinates.lon,
+        );
+
+        setInput({
+          ...input,
+          selectedCity: cityName,
+          city: cityName,
+          lat: coordinates.lat,
+          lng: coordinates.lon,
+        });
+
+        dispatch({
+          type: 'SET_PRAYER_TIMES',
+          payload: tempSalahTimes,
+        });
+      }
+
+      getSalahTimesByCityName();
+    } else {
+      getLocationByIpAddress(
+        `https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.GATSBY_MAPS_API_KEY}`,
+        { method: 'POST' },
+      );
+    }
 
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
