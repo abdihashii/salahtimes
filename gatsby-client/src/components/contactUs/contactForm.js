@@ -1,62 +1,39 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   MdOutlineLocalPhone,
   MdOutlineEmail,
   MdPersonOutline,
 } from 'react-icons/md';
+import { useForm, useFormState } from 'react-hook-form';
 
 const ContactForm = () => {
-  const [field, setField] = useState({
-    name: {
-      value: '',
-      status: 'empty',
-      error: false,
-    },
-    email: {
-      value: '',
-      status: 'empty',
-      error: false,
-    },
-    phone: {
-      value: '',
-      status: 'empty',
-      error: false,
-    },
-    message: {
-      value: '',
-      status: 'empty',
-      error: false,
+  const {
+    register,
+    formState: { errors },
+    control,
+    resetField,
+    getValues,
+  } = useForm({
+    defaultValues: {
+      name: '',
+      email: '',
+      phone: '',
+      message: '',
     },
   });
+  const { dirtyFields } = useFormState({ control });
 
-  const handleFieldChange = (e) => {
-    setField({
-      ...field,
-      [e.target.id]: {
-        value: e.target.value,
-        status: e.target.value.length > 0 ? 'dirty' : 'empty',
-      },
-    });
-  };
-
-  const handleContactSubmit = (e) => {
-    e.preventDefault();
-
-    const {
-      name: { value: name },
-      email: { value: email },
-      phone: { value: phone },
-      message: { value: message },
-    } = e.target.elements;
-
-    alert(
-      `name: ${name}, email: ${email}, phone: ${phone}, message: ${message}`,
-    );
+  const handleBlur = ({ target: { id, value } }) => {
+    if (value && getValues(id).length === 0) {
+      resetField(id);
+    }
   };
 
   return (
     <form
-      onSubmit={handleContactSubmit}
+      action="https://mailthis.to/contact-MPT"
+      method="POST"
+      target="_blank"
       className="mx-auto w-10/12 rounded-xl border border-green-dark bg-white p-7 text-black lg:w-5/12"
     >
       <div className="mb-7">
@@ -73,15 +50,17 @@ const ContactForm = () => {
             <label className="flex flex-col" htmlFor="name">
               * Your Name
               <input
-                className={`mt-1 rounded-md py-2 pl-8 outline-none ring-1 ring-gray-500 hover:ring-green-secondary focus-visible:ring-2 focus-visible:ring-green-secondary ${
-                  field.name.status === 'empty' ? 'bg-gray-200' : 'bg-white'
-                }`}
-                value={field.name.value}
-                onChange={handleFieldChange}
+                className={`mt-1 rounded-md py-2 pl-8 outline-none ring-1 ring-gray-500 hover:ring-green-secondary focus-visible:ring-2 focus-visible:ring-green-secondary 
+                  ${dirtyFields.name ? 'bg-white' : 'bg-gray-200'}
+                `}
                 id="name"
                 type="text"
                 placeholder="Ibn Rushd"
+                {...register('name', { required: true })}
               ></input>
+              {errors.name && (
+                <span className="text-red-500">This field is required</span>
+              )}
             </label>
           </div>
 
@@ -91,15 +70,18 @@ const ContactForm = () => {
             <label className="flex flex-col" htmlFor="email">
               * E-Mail
               <input
-                className={`mt-1 rounded-md py-2 pl-8 outline-none ring-1 ring-gray-500 hover:ring-green-secondary focus-visible:ring-2 focus-visible:ring-green-secondary ${
-                  field.email.status === 'empty' ? 'bg-gray-200' : 'bg-white'
-                }`}
-                value={field.email.value}
-                onChange={handleFieldChange}
+                className={`mt-1 rounded-md py-2 pl-8 outline-none ring-1 ring-gray-500 hover:ring-green-secondary focus-visible:ring-2 focus-visible:ring-green-secondary 
+                  ${dirtyFields.email ? 'bg-white' : 'bg-gray-200'}
+                `}
                 id="email"
                 type="email"
                 placeholder="mansa@musa.com"
+                name="_replyto"
+                {...register('email', { required: true })}
               />
+              {errors.email && (
+                <span className="text-red-500">This field is required</span>
+              )}
             </label>
           </div>
 
@@ -109,34 +91,49 @@ const ContactForm = () => {
             <label className="flex flex-col" htmlFor="phone">
               Phone
               <input
-                className={`mt-1 rounded-md py-2 pl-8 outline-none ring-1 ring-gray-500 hover:ring-green-secondary focus-visible:ring-2 focus-visible:ring-green-secondary ${
-                  field.phone.status === 'empty' ? 'bg-gray-200' : 'bg-white'
-                }`}
-                value={field.phone.value}
-                onChange={handleFieldChange}
+                className={`mt-1 rounded-md py-2 pl-8 outline-none ring-1 ring-gray-500 hover:ring-green-secondary focus-visible:ring-2 focus-visible:ring-green-secondary 
+                  ${dirtyFields.phone ? 'bg-white' : 'bg-gray-200'}
+                `}
                 id="phone"
                 type="tel"
                 placeholder="123-456-7890"
+                {...register('phone')}
               />
             </label>
           </div>
         </div>
-        <div className="flex h-44 flex-col lg:w-1/2">
+        <div className="flex h-52 flex-col lg:h-auto lg:w-1/2">
           <label className="flex h-full flex-col" htmlFor="message">
             * Message
             <textarea
-              className={`mt-1 h-full rounded-md py-2 px-4 outline-none ring-1 ring-gray-500 hover:ring-green-secondary focus-visible:ring-2 focus-visible:ring-green-secondary ${
-                field.message.status === 'empty' ? 'bg-gray-200' : 'bg-white'
-              }`}
-              value={field.message.value}
-              onChange={handleFieldChange}
+              className={`mt-1 h-full rounded-md py-2 px-4 outline-none ring-1 ring-gray-500 hover:ring-green-secondary focus-visible:ring-2 focus-visible:ring-green-secondary 
+                ${dirtyFields.message ? 'bg-white' : 'bg-gray-200'}
+              `}
               id="message"
               type="text"
               placeholder="Write your message here..."
+              {...register('message', { required: true })}
+              onBlur={handleBlur}
             />
+            {errors.message && (
+              <span className="text-red-500">This field is required</span>
+            )}
           </label>
         </div>
       </div>
+
+      {/* Hidden form fields */}
+      <input
+        type="hidden"
+        name="_subject"
+        value="Contact from MyPrayerTimes.com"
+      ></input>
+      <input type="hidden" name="_honeypot" value="" />
+      <input
+        type="hidden"
+        name="_confirmation"
+        value="Your message has been sent. Thank you!"
+      />
 
       {/* Submit button */}
       <div className="mx-auto w-fit">

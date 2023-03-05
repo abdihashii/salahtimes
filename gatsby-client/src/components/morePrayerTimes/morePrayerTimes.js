@@ -62,7 +62,7 @@ export const MorePrayerTimes = () => {
                   return (
                     <tr
                       key={readable}
-                      className={`border-b hover:bg-gray-200 ${
+                      className={`border-b hover:bg-gray-400 ${
                         todaysDate === readable
                           ? 'bg-green-dark text-white hover:!bg-green-secondary'
                           : ''

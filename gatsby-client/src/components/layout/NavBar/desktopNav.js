@@ -36,7 +36,7 @@ const DesktopNav = ({ transparentNav }) => {
             Hijri Date
           </Link>
         </li>
-        <li>
+        {/* <li>
           <Link
             className="opacity-50 hover:opacity-100"
             activeStyle={{ opacity: 1 }}
@@ -44,7 +44,7 @@ const DesktopNav = ({ transparentNav }) => {
           >
             Ramadan 2023
           </Link>
-        </li>
+        </li> */}
         <li>
           <Link
             className="opacity-50 hover:opacity-100"

@@ -10,14 +10,16 @@ const OurPledge = () => {
       }}
     >
       <h2 className="mb-30px text-28px font-bold lg:text-45px">Our Pledge</h2>
-      <p className="mx-auto mb-9 w-11/12 lg:w-7/12">
-        Every day, we focus on creating a better mobile app, one that is
-        relevant and useful to the Ummah. We may not always get it right, but we
-        pledge to always listen to you, our users, to improve and to serve you
-        better today, compared to yesterday.
+      <p className="mx-auto mb-9 w-11/12 lg:w-7/12 xl:w-6/12">
+        Our pledge is to provide accurate and reliable Islamic prayer times for
+        Muslims of diverse backgrounds. We are committed to upholding principles
+        of integrity, transparency, and love for Allah. These principles guide
+        our work as we strive to establish a community of believers who stay on
+        track with their daily salah and continue to learn and grow in their
+        spiritual journey.
       </p>
       <hr className="mx-auto mb-9 w-6/12 lg:w-3/12" />
-      <p className="mx-auto mb-9 w-11/12 lg:w-7/12">
+      <p className="mx-auto mb-9 w-11/12 lg:w-7/12 xl:w-6/12">
         "If anyone fulfils his brother’s needs, Allah will fulfil his needs; if
         one relieves a Muslim of his troubles, Allah will relieve his troubles
         on the Day of Resurrection."
