@@ -17,7 +17,7 @@ const Footer = () => {
     <footer className="mx-auto mt-56px flex flex-col border-t-3px border-green-secondary pt-12 tracking-0.011em">
       <section className="lg:mx-auto lg:flex lg:w-8/12 lg:flex-row lg:gap-16 xl:w-7/12">
         {/* Logo and One-liner */}
-        <div className="lg:flex lg:w-4/12 lg:flex-col">
+        <div className="lg:flex lg:w-6/12 lg:flex-col">
           {/* Logo and logo name */}
           <Link
             to="/"
@@ -36,13 +36,13 @@ const Footer = () => {
           {/* footer one-liner */}
           <div className="mx-auto mb-51px w-10/12 justify-center text-center text-base text-text-grey lg:!ml-0 lg:w-10/12 lg:text-left lg:leading-8">
             <p>
-              Connecting the global Ummah with accurate prayer times and
-              spiritual growth
+              Connecting the Ummah with accurate prayer times and spiritual
+              growth
             </p>
           </div>
         </div>
 
-        <div className="lg:flex lg:w-8/12 lg:flex-row lg:justify-between">
+        <div className="lg:flex lg:w-6/12 lg:flex-row lg:justify-between">
           {/* Prayer times, blog, about us, contact us, and faqs */}
           <ul className="mb-50px flex flex-col text-center text-lg font-medium leading-44px text-text-grey lg:whitespace-nowrap lg:text-left">
             <li>
@@ -115,10 +115,10 @@ const Footer = () => {
           </ul>
 
           {/* Privacy policy, terms of use, disclamer, and help center */}
-          <ul className="mb-50px flex flex-col text-center text-lg font-medium leading-44px text-text-grey lg:whitespace-nowrap lg:text-left">
+          {/* <ul className="mb-50px flex flex-col text-center text-lg font-medium leading-44px text-text-grey lg:whitespace-nowrap lg:text-left">
             <li className="inline-block">
               <Link
-                to="/privacy-policy"
+                to="/privacy-policy/"
                 className="opacity-50 hover:opacity-100"
                 activeStyle={{ opacity: 1 }}
               >
@@ -133,17 +133,17 @@ const Footer = () => {
               >
                 Cookies Policy
               </Link>
-            </li>
-            {/* <li className="inline-block">
+            </li> */}
+          {/* <li className="inline-block">
             <Link to="/">Terms of Use</Link>
           </li> */}
-            {/* <li className="inline-block">
+          {/* <li className="inline-block">
             <Link to="/">Disclamer</Link>
           </li> */}
-            {/* <li className="inline-block">
+          {/* <li className="inline-block">
             <Link to="/">Help Center</Link>
           </li> */}
-          </ul>
+          {/* </ul> */}
 
           {/* Manage preferences and cookies policy */}
           {/* <ul className="mb-55px flex flex-col text-center text-lg font-medium leading-44px text-text-grey lg:whitespace-nowrap lg:text-left">
