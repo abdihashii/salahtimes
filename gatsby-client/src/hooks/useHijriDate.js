@@ -9,7 +9,7 @@ const useHijriDate = () => {
   useEffect(() => {
     const fetchHijriDate = async () => {
       const hijriData = await fetch(
-        `http://api.aladhan.com/v1/gToH?date=${forHijri}&adjustment=${adjustment}`,
+        `https://api.aladhan.com/v1/gToH?date=${forHijri}&adjustment=${adjustment}`,
       );
       const {
         data: { hijri },
