@@ -95,7 +95,7 @@ const BlogPost = ({ data }) => {
             {/* Pocket */}
             <PocketShareButton
               url={blogUrl}
-              title={data.blogPost.body.childMarkdownRemark.excerpt}
+              title={data.blogPost.title}
               className="inline-block w-6"
             >
               <GatsbyImage
