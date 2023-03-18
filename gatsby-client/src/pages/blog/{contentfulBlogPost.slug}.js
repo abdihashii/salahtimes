@@ -164,6 +164,7 @@ export const query = graphql`
       intro {
         childMarkdownRemark {
           html
+          excerpt(pruneLength: 100)
         }
       }
       desktop: postHeaderImage {
@@ -219,6 +220,7 @@ export const Head = ({ data }) => {
       pageTitle={data.blogPost.title}
       imgUrl={data.blogPost.mobile.url}
       imgAlt={data.blogPost.mobile.description}
+      blogDescription={data.blogPost.intro.childMarkdownRemark.excerpt}
     />
   );
 };
