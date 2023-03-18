@@ -19,10 +19,8 @@ const Seo = ({ pageTitle, imgUrl, imgAlt, blogDescription }) => {
         content={imgUrl ? 'summary_large_image' : 'summary'}
       />
       <meta name="twitter:title" content={pageTitle} />
-      <meta
-        name="twitter:description"
-        content={blogDescription || description}
-      />
+      <meta name="twitter:description" content={blogDescription} />
+      <meta name="twitter:image" content={imgUrl} />
       <meta name="twitter:image:alt" content={imgAlt || 'MyPrayerTimes.com'} />
       <meta name="twitter:creator" content={social.twitter} />
     </>
