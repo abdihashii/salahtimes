@@ -12,6 +12,9 @@ const useSiteMetadata = () => {
           description
           siteUrl
           title
+          social {
+            twitter
+          }
         }
       }
     }

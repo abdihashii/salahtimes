@@ -70,11 +70,13 @@ const BlogPost = ({ data }) => {
             {/* Twitter */}
             <TwitterShareButton
               url={blogUrl}
-              title={data.blogPost.body.childMarkdownRemark.excerpt}
+              title={data.blogPost.title}
+              related={['@myprayertimes']}
               className="inline-block w-6"
             >
               <GatsbyImage
                 image={data.twitterShareButton.childImageSharp.gatsbyImageData}
+                alt="Share on Twitter"
               />
             </TwitterShareButton>
 
@@ -86,6 +88,7 @@ const BlogPost = ({ data }) => {
             >
               <GatsbyImage
                 image={data.facebookShareButton.childImageSharp.gatsbyImageData}
+                alt="Share on Facebook"
               />
             </FacebookShareButton>
 
@@ -97,6 +100,7 @@ const BlogPost = ({ data }) => {
             >
               <GatsbyImage
                 image={data.pocketShareButton.childImageSharp.gatsbyImageData}
+                alt="Save on Pocket"
               />
             </PocketShareButton>
           </div>
@@ -122,10 +126,12 @@ const BlogPost = ({ data }) => {
         <GatsbyImage
           className="mb-7 !hidden lg:!block"
           image={data.blogPost.desktop.gatsbyImageData}
+          alt={data.blogPost.mobile.description}
         />
         <GatsbyImage
           className="mb-7 lg:!hidden"
           image={data.blogPost.mobile.gatsbyImageData}
+          alt={data.blogPost.mobile.description}
         />
 
         {/* Content */}
@@ -169,6 +175,8 @@ export const query = graphql`
         )
       }
       mobile: postHeaderImage {
+        url
+        description
         gatsbyImageData(
           placeholder: BLURRED
           formats: WEBP
@@ -206,7 +214,13 @@ export const query = graphql`
 `;
 
 export const Head = ({ data }) => {
-  return <Seo pageTitle={data.blogPost.title} />;
+  return (
+    <Seo
+      pageTitle={data.blogPost.title}
+      imgUrl={data.blogPost.mobile.url}
+      imgAlt={data.blogPost.mobile.description}
+    />
+  );
 };
 
 export default BlogPost;
