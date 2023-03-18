@@ -125,5 +125,6 @@ module.exports = {
       resolve: `gatsby-transformer-remark`,
       options: {},
     },
+    `gatsby-plugin-preload-fonts`,
   ],
 };
