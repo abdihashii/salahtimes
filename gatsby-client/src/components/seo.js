@@ -9,7 +9,6 @@ const Seo = ({ pageTitle, imgUrl, imgAlt, blogDescription }) => {
       <title>{pageTitle} | My Prayer Times</title>
       <meta name="description" content={description} />
       <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
-
       <meta property="og:title" content={title} />
       <meta
         property="og:description"
@@ -17,7 +16,6 @@ const Seo = ({ pageTitle, imgUrl, imgAlt, blogDescription }) => {
       />
       <meta property="og:type" content="website" />
       <meta property="og:image" content={imgUrl} />
-
       <meta
         name="twitter:card"
         content={imgUrl ? 'summary_large_image' : 'summary'}
