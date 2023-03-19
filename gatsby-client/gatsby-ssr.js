@@ -3,6 +3,7 @@ const React = require('react');
 
 const HeadComponents = [
   <script
+    defer
     key={1}
     src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GATSBY_MAPS_API_KEY}&libraries=places`}
   ></script>,
