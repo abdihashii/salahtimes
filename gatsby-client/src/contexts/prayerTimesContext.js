@@ -151,11 +151,19 @@ const PrayerTimesContextProvider = (props) => {
   const getLocationByIpAddress = async (url, options) => {
     try {
       setIsLoading(true);
-      const res = await fetch(url, options);
 
-      const {
-        location: { lat, lng },
-      } = await res.json();
+      // debugger;
+
+      // const res = await fetch(url, options);
+
+      // const {
+      //   location: { lat, lng },
+      // } = await res.json();
+
+      const req = await fetch(url);
+      const { loc } = await req.json();
+
+      const [lat, lng] = loc.split(',');
 
       const tempPrayerTimes = await getSalahTimes(lat, lng, method);
       dispatch({
@@ -176,6 +184,7 @@ const PrayerTimesContextProvider = (props) => {
       setIsLoading(false);
     } catch (err) {
       setIsLoading(false);
+      onMapIconClick();
       console.error(err);
     }
   };
