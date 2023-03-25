@@ -4,7 +4,7 @@ import { getTodaysDate } from '../controllers/prayerTimesController';
 const useHijriDate = () => {
   const [hijriDate, setHijriDate] = useState({});
   const { forHijri, gregorianDate } = getTodaysDate();
-  const adjustment = 1;
+  const adjustment = 0;
 
   useEffect(() => {
     const fetchHijriDate = async () => {
