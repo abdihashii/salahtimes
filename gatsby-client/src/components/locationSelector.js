@@ -44,8 +44,8 @@ export const LocationSelector = ({ cityName, coordinates, className }) => {
       getSalahTimesByCityName();
     } else {
       getLocationByIpAddress(
-        `https://www.googleapis.com/geolocation/v1/geolocate?key=${process.env.GATSBY_MAPS_API_KEY}`,
-        { method: 'POST' },
+        `https://ipinfo.io/json?token=${process.env.GATSBY_IPINFO_TOKEN}`,
+        { method: 'GET' },
       );
     }
 
