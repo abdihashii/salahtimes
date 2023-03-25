@@ -146,19 +146,10 @@ const PrayerTimesContextProvider = (props) => {
   /**
    * Sets the prayer times and the city name on page init load
    * @param {string} url - the api url
-   * @param {object} options - the post options properties
    */
-  const getLocationByIpAddress = async (url, options) => {
+  const getLocationByIpAddress = async (url) => {
     try {
       setIsLoading(true);
-
-      // debugger;
-
-      // const res = await fetch(url, options);
-
-      // const {
-      //   location: { lat, lng },
-      // } = await res.json();
 
       const req = await fetch(url);
       const { loc } = await req.json();
@@ -184,8 +175,8 @@ const PrayerTimesContextProvider = (props) => {
       setIsLoading(false);
     } catch (err) {
       setIsLoading(false);
-      onMapIconClick();
-      console.error(err);
+      // onMapIconClick();
+      // console.error(err);
     }
   };
 
