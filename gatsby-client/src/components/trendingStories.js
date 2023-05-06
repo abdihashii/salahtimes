@@ -58,13 +58,13 @@ const TrendingStories = () => {
         )}
       </div>
 
-      <a
-        href="/blog"
+      <Link
+        to="/blog"
         className="mx-auto flex w-max flex-row items-center gap-2 rounded-full bg-green-dark py-3 px-8 text-xs font-semibold text-white hover:bg-green-secondary lg:text-lg"
       >
         <p>Explore Our Blogs</p>
         <RxArrowRight />
-      </a>
+      </Link>
     </TextSection>
   );
 };
