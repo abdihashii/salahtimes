@@ -17,7 +17,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://www.myprayertimes.com`,
+        siteUrl: `https://www.myprayertimes.com/`,
       },
     },
     {
