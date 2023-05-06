@@ -171,7 +171,7 @@ const Footer = () => {
             {/* Social media links */}
             <ul className="mb-63px flex flex-row justify-center gap-x-11px">
               <li>
-                <a href="/">Twitter</a>
+                <a href="https://twitter.com/myprayertimes">Twitter</a>
               </li>
               <li>
                 <a href="/">Instagram</a>
