@@ -8,7 +8,7 @@ module.exports = {
     description:
       'Get accurate, reliable Islamic prayer times for your current location with our easy-to-use website. Never miss your daily salah again with our reliable prayer time calculator. Start getting your prayer times today and stay on track with your daily salah!',
     author: '@abdihashii',
-    siteUrl: `https://www.myprayertimes.com`,
+    siteUrl: `https://myprayertimes.com/`,
     social: {
       twitter: `@myprayertimes`,
     },
@@ -17,13 +17,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://www.myprayertimes.com/`,
+        siteUrl: `https://myprayertimes.com/`,
       },
     },
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
-        exclude: ['/404.html', '/404'],
         query: `
           {
             site {
@@ -39,14 +38,19 @@ module.exports = {
             }
           }
         `,
+        resolvePages: ({ allSitePage: { nodes: allPages } }) => {
+          return allPages.map((page) => {
+            return { ...page };
+          });
+        },
       },
     },
     {
       resolve: 'gatsby-plugin-htaccess',
       options: {
         https: true,
-        www: true,
-        host: 'www.myprayertimes.com', // if 'www' is set to 'false', be sure to also remove it here!
+        www: false,
+        host: 'myprayertimes.com', // if 'www' is set to 'false', be sure to also remove it here!
       },
     },
     {
@@ -109,8 +113,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-robots-txt`,
       options: {
-        host: 'https://www.myprayertimes.com',
-        sitemap: 'https://www.myprayertimes.com/sitemap-0.xml',
+        host: 'https://myprayertimes.com/',
+        sitemap: 'https://myprayertimes.com/sitemap-0.xml/',
       },
     },
     {
