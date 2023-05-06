@@ -37,7 +37,7 @@ const AboutMPTHomeSection = () => {
           className="lg:!ml-0 lg:w-full"
         />
         <Link
-          to="/about-us"
+          to="/about-us/"
           className="mx-auto flex w-fit flex-row items-center gap-4 rounded-full border border-green-secondary px-25px py-14px text-xs font-semibold text-green-secondary hover:bg-green-secondary hover:text-white lg:!ml-0 lg:text-lg"
         >
           <p>Learn more</p>

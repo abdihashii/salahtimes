@@ -63,15 +63,6 @@ const Footer = () => {
                 Hijri date
               </Link>
             </li>
-            {/* <li className="inline-block">
-            <Link
-              to="/ramadan-2023/"
-              className="opacity-50 hover:opacity-100"
-              activeStyle={{ opacity: 1 }}
-            >
-              Ramadan 2023
-            </Link>
-          </li> */}
             <li>
               <Link
                 to="/blog/"

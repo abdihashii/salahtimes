@@ -16,7 +16,7 @@ export const BlogPost = ({
 }) => {
   return (
     <article className="mb-71px">
-      <Link className="block" to={`/blog/${slug}`}>
+      <Link className="block" to={`/blog/${slug}/`}>
         <GatsbyImage
           image={mobileHeroImage}
           className="mb-4 lg:!hidden"
@@ -40,7 +40,7 @@ export const BlogPost = ({
         })}
       </div> */}
 
-      <Link to={`/blog/${slug}`}>
+      <Link to={`/blog/${slug}/`}>
         {/* title */}
         <h2 className="mb-18px text-lg font-medium leading-6 text-text-layout_text underline">
           {title}

@@ -39,7 +39,7 @@ const TrendingStories = () => {
           ({ slug, title, date, postHeaderImage: { gatsbyImageData } }) => {
             return (
               <Link
-                to={`/blog/${slug}`}
+                to={`/blog/${slug}/`}
                 key={slug}
                 className="mb-10 inline-block last:mb-0 hover:lg:underline"
               >
@@ -59,7 +59,7 @@ const TrendingStories = () => {
       </div>
 
       <Link
-        to="/blog"
+        to="/blog/"
         className="mx-auto flex w-max flex-row items-center gap-2 rounded-full bg-green-dark py-3 px-8 text-xs font-semibold text-white hover:bg-green-secondary lg:text-lg"
       >
         <p>Explore Our Blogs</p>

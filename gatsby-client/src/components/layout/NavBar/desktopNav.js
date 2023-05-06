@@ -40,7 +40,7 @@ const DesktopNav = ({ transparentNav }) => {
           <Link
             className="opacity-50 hover:opacity-100"
             activeStyle={{ opacity: 1 }}
-            to="/contact-us"
+            to="/contact-us/"
           >
             Contact Us
           </Link>
