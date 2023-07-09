@@ -27,9 +27,9 @@ const PrayerTimesTitle = () => {
         Prayer times in "
         <span className="text-green-700">{input.city_name}</span>"
       </h1>
-      <pre className="rounded-4px mx-auto mb-20 w-1/4 bg-black p-5 text-white">
+      {/* <pre className="rounded-4px mx-auto mb-20 w-1/4 bg-black p-5 text-white">
         {JSON.stringify(input, null, 2)}
-      </pre>
+      </pre> */}
     </>
   );
 };
