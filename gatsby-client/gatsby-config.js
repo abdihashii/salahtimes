@@ -13,6 +13,7 @@ module.exports = {
       twitter: `@myprayertimes`,
     },
   },
+  trailingSlash: 'never',
   plugins: [
     {
       resolve: `gatsby-plugin-canonical-urls`,
