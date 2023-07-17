@@ -3,12 +3,7 @@ import LocationSelector from './components/locationSelector';
 
 export default function Home() {
   return (
-    <section
-      className="shadow-bg_layer mb-14 flex min-h-screen flex-col bg-cover bg-no-repeat text-center text-white"
-      // style={{
-      //   backgroundImage: `url(${masjidBackground})`,
-      // }}
-    >
+    <section className="shadow-bg_layer mb-14 flex min-h-screen flex-col bg-cover bg-no-repeat p-4 text-center text-white sm:p-10 lg:p-20">
       <PrayerTimesTitle />
 
       <LocationSelector />
