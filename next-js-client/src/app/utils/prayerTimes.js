@@ -14,20 +14,18 @@ export const getCurrentDay = () => {
  * @returns {Promise<GeolocationPosition>} GeolocationPosition
  * @throws {Error} Error
  */
-export const getUserGeolocation = async () => {
+export const getUserGeolocation = () => {
   if (!navigator.geolocation) {
     throw new Error('Geolocation is not supported by this browser.');
   }
 
-  const position =
-    (await new Promise()) <
-    GeolocationPosition >
-    ((resolve, reject) =>
-      navigator.geolocation.getCurrentPosition(resolve, reject));
+  return new Promise((resolve, reject) =>
+    navigator.geolocation.getCurrentPosition(resolve, reject)
+  ).then((position) => {
+    const { latitude, longitude } = position.coords;
 
-  const { latitude, longitude } = position.coords;
-
-  return { lat: latitude, lng: longitude };
+    return { lat: latitude, lng: longitude };
+  });
 };
 
 /**
