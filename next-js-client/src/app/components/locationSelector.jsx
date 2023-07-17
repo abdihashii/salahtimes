@@ -93,13 +93,7 @@ const LocationSelector = () => {
           onClick={handleGetLocation} // Set onClick handler here
           disabled={locationLoading} // Disable the button when loading
         >
-          {!locationLoading ? (
-            <LoadingIcon />
-          ) : (
-            <div className="mx-auto inline-block h-5 w-5 animate-spin">
-              <LocationIcon />
-            </div>
-          )}
+          {!locationLoading ? <LoadingIcon /> : <LocationIcon />}
         </button>
       </div>
 
