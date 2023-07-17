@@ -5,16 +5,28 @@
     <link href="/dist/output.css" rel="stylesheet" />
     <script src="popup.js"></script>
   </head>
-  <body class="w-72 flex flex-col py-4">
-    <!-- <h1 class="text-4xl text-center text-gray-700 font-bold leading-none">
-      MyPrayerTimes
-    </h1> -->
-
+  <body class="w-72 h-36 flex items-center justify-center bg-soft-gray">
     <button
       id="prayerTimesButton"
-      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-1/2 mx-auto"
+      class="bg-brand-main hover:bg-brand-secondary text-white font-bold py-2 px-4 rounded-xl"
     >
       Get Prayer Times
     </button>
+
+    <!-- Loading spinner -->
+    <div id="loadingSpinner" class="hidden">
+      <svg class="animate-spin h-12 w-12" viewBox="0 0 50 50">
+        <circle
+          class="text-brand-main stroke-current"
+          cx="25"
+          cy="25"
+          r="20"
+          fill="none"
+          stroke-width="5"
+          stroke-linecap="round"
+          stroke-dasharray="80 20"
+        />
+      </svg>
+    </div>
   </body>
 </html>
