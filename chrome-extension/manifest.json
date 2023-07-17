@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "MyPrayerTimes",
   "version": "1.0",
-  "permissions": ["activeTab"],
+  "permissions": ["geolocation"],
   "action": {
     "default_popup": "src/popup.html"
   }

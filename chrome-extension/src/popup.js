@@ -1,3 +1,13 @@
+function fetchUserGeolocation() {
+  getUserGeolocation()
+    .then((coords) => {
+      console.log(`Latitude: ${coords.lat}, Longitude: ${coords.lng}`);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   var prayerTimesButton = document.getElementById('prayerTimesButton');
   var loadingSpinner = document.getElementById('loadingSpinner');
@@ -12,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
     setTimeout(function () {
       loadingSpinner.classList.add('hidden');
       prayerTimesButton.classList.remove('hidden');
+
+      fetchUserGeolocation();
     }, 3000);
   }
 });
