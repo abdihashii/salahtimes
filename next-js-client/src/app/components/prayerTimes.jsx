@@ -1,3 +1,5 @@
+'use client';
+
 import { useAtom } from 'jotai';
 import { prayerTimesAtom } from '../atoms/prayerTimesAtoms';
 

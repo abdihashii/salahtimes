@@ -1,5 +1,3 @@
-'use client';
-
 import PrayerTimesTitle from './components/prayerTimesTitle';
 import LocationSelector from './components/locationSelector';
 
