@@ -67,13 +67,15 @@ const LocationSelector = () => {
 
   return (
     <form className="mb-8 mt-4 flex flex-col items-center justify-center sm:mt-8 lg:mt-16">
+      {/* <pre className="rounded-4px mx-auto mb-20 w-3/4 bg-black p-5 text-white">
+        {JSON.stringify(input, null, 2)}
+      </pre> */}
       {hasMounted ?
         <div className="mb-4 flex w-full flex-row gap-2 lg:w-3/4 lg:justify-between">
           <GooglePlacesAutocomplete
             selectProps={{
               inputValue: input.label,
-              // input,
-              // value: input.label,
+              value: input.label,
               onInputChange: (i, a, p) => {
                 if (a.action !== "input-change") return;
 
@@ -85,11 +87,19 @@ const LocationSelector = () => {
               onChange: (i) => {
                 setInput(i)
               },
-              placeholder: "Please enter your loction",
               className: "lg:w-10/12 h-14 text-left", // the container styles
               classNames: {
                 control: () => "h-full",
-                menu: () => "text-black"
+                menu: () => "text-black",
+                input: () => "opacity-100",
+              },
+              styles: {
+                input: (provided) => ({
+                  ...provided,
+                  input: {
+                    opacity: "1 !important",
+                  },
+                }),
               }
             }}
           />
@@ -107,10 +117,6 @@ const LocationSelector = () => {
           </button>
         </div>
         : null}
-
-      <pre className="rounded-4px mx-auto mb-20 w-1/4 bg-black p-5 text-white">
-        {JSON.stringify(input, null, 2)}
-      </pre>
 
       {/* Buttons that get prayer times and current location */}
       <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:mt-8 sm:flex-row lg:mt-16">
