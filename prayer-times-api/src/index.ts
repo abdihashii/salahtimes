@@ -11,7 +11,7 @@ const main = () => {
 
   const prayerTimes = getPrayerTimes(lat, lng, date, calcMethod);
 
-  // console.log(`Fajr: ${prayerTimes.fajr}`);
+  console.log(prayerTimes);
 };
 
 main();

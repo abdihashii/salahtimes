@@ -11,16 +11,14 @@ const getPrayerTimes = (
   const coordinates = new Coordinates(lat, lng);
   const prayerTimes = new PrayerTimes(coordinates, date, calcMethod);
 
-  const tz = find(lat, lng);
-  console.log(`The found tz is: ${tz}`);
+  const timeZones = find(lat, lng); // string[]
 
-  const fajr = moment(prayerTimes.fajr).tz(tz[0]).format("h:mm A");
-  console.log(`fajr: ${fajr}`);
-  const sunrise = moment(prayerTimes.sunrise).tz(tz[0]).format("h:mm A");
-  const dhuhr = moment(prayerTimes.dhuhr).tz(tz[0]).format("h:mm A");
-  const asr = moment(prayerTimes.asr).tz(tz[0]).format("h:mm A");
-  const maghrib = moment(prayerTimes.maghrib).tz(tz[0]).format("h:mm A");
-  const isha = moment(prayerTimes.isha).tz(tz[0]).format("h:mm A");
+  const fajr = moment(prayerTimes.fajr).tz(timeZones[0]).format("h:mm A");
+  const sunrise = moment(prayerTimes.sunrise).tz(timeZones[0]).format("h:mm A");
+  const dhuhr = moment(prayerTimes.dhuhr).tz(timeZones[0]).format("h:mm A");
+  const asr = moment(prayerTimes.asr).tz(timeZones[0]).format("h:mm A");
+  const maghrib = moment(prayerTimes.maghrib).tz(timeZones[0]).format("h:mm A");
+  const isha = moment(prayerTimes.isha).tz(timeZones[0]).format("h:mm A");
 
   return {
     fajr,
@@ -29,6 +27,7 @@ const getPrayerTimes = (
     asr,
     maghrib,
     isha,
+    timeZones,
   };
 };
 
