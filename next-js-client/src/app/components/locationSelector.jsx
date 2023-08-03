@@ -2,50 +2,22 @@
 
 import { useEffect, useRef } from 'react';
 import { useAtom } from 'jotai';
-import {
-  inputAtom,
-  coordinatesAtom,
-  prayerTimesAtom,
-  locationLoadingAtom,
-} from '../atoms/prayerTimesAtoms';
-import {
-  getUserGeolocation,
-  getPrayerTimesFromAPI,
-} from '../utils/prayerTimes';
+import { inputAtom } from '../atoms/prayerTimesAtoms';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import LoadingIcon from '../icons/loadingIcon';
 import LocationIcon from '../icons/locationIcon';
 import { useMounted } from '../hooks/useMounted';
+import { useCoordinates } from '../hooks/useCoordinates';
 
 const LocationSelector = () => {
   const [input, setInput] = useAtom(inputAtom);
-  const [coordinates, setCoordinates] = useAtom(coordinatesAtom);
-  const [locationLoading, setLocationLoading] = useAtom(locationLoadingAtom);
-  const [, setPrayerTimes] = useAtom(prayerTimesAtom);
 
-  const prevCoordinatesRef = useRef();
+  const { coordinates, locationLoading, fetchPrayerTimes, handleGetLocation } =
+    useCoordinates();
 
   const { hasMounted } = useMounted();
 
-  const handleGetLocation = async () => {
-    setLocationLoading(true);
-    try {
-      const coords = await getUserGeolocation();
-      setCoordinates(coords);
-    } catch (error) {
-      console.log('Unable to retrieve your location due to ', error);
-    }
-    setLocationLoading(false);
-  };
-
-  const fetchPrayerTimes = async (coords) => {
-    try {
-      const prayerTimes = await getPrayerTimesFromAPI(coords);
-      setPrayerTimes(prayerTimes); // Update prayer times atom
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const prevCoordinatesRef = useRef();
 
   useEffect(() => {
     // On first render, set the previous coordinates to the current ones
@@ -58,7 +30,7 @@ const LocationSelector = () => {
       prevCoordinatesRef.current.lat !== coordinates.lat ||
       prevCoordinatesRef.current.lng !== coordinates.lng
     ) {
-      fetchPrayerTimes(coordinates);
+      // fetchPrayerTimes(coordinates);
     }
 
     // Set the previous coordinates to the current ones for the next render
@@ -124,6 +96,10 @@ const LocationSelector = () => {
         <button
           type="submit"
           className="flex h-12 w-full transform flex-row items-center justify-center rounded-lg bg-green-600 px-5 font-semibold text-white transition-all duration-500 ease-in-out hover:scale-105 hover:bg-green-500 sm:mb-0 sm:w-64"
+          onClick={(e) => {
+            e.preventDefault();
+            fetchPrayerTimes(coordinates);
+          }}
         >
           Click
         </button>

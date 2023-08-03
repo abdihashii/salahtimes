@@ -10,22 +10,24 @@ export const getCurrentDay = () => {
   return `${day}-${month}-${year}`;
 };
 
-/**
- * @returns {Promise<GeolocationPosition>} GeolocationPosition
- * @throws {Error} Error
- */
-export const getUserGeolocation = () => {
-  if (!navigator.geolocation) {
-    throw new Error('Geolocation is not supported by this browser.');
-  }
+export const getUserGeolocation = async () => {
+  try {
+    const url = `https://ipinfo.io/json?token=${process.env.NEXT_PUBLIC_IPINFO_API_KEY}`;
 
-  return new Promise((resolve, reject) =>
-    navigator.geolocation.getCurrentPosition(resolve, reject)
-  ).then((position) => {
-    const { latitude, longitude } = position.coords;
+    const res = await fetch(url);
+    const data = await res.json();
+
+    const { loc } = data;
+    const location = loc.split(',');
+    let [latitude, longitude] = location;
+
+    latitude = parseFloat(latitude);
+    longitude = parseFloat(longitude);
 
     return { lat: latitude, lng: longitude };
-  });
+  } catch (error) {
+    console.log(`Failed to get user's geolocation: ${error}`);
+  }
 };
 
 /**
@@ -37,11 +39,15 @@ export const getUserGeolocation = () => {
  */
 export const getPrayerTimesFromAPI = async (coords) => {
   const { lat, lng } = coords;
-  const day = getCurrentDay();
 
   const response = await fetch(
-    `http://api.aladhan.com/v1/timings/${day}?latitude=${lat}&longitude=${lng}&method=2`
+    `https://localhost:3000/get-prayer-times/?lat=${lat}&lng=${lng}`,
   );
+
   const data = await response.json();
-  return data.data.timings;
+  debugger;
+
+  const { formattedData } = data;
+
+  return formattedData;
 };
