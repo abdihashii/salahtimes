@@ -66,63 +66,64 @@ const LocationSelector = () => {
   }, [coordinates]); // this effect runs whenever coordinates change
 
   return (
-    <form className="mb-8 mt-4 flex flex-col items-center justify-center sm:mt-8 lg:mt-16">
+    <form className="gap-y-4 flex flex-col items-center justify-center sm:mt-8 lg:mt-16">
       {/* <pre className="rounded-4px mx-auto mb-20 w-3/4 bg-black p-5 text-white">
         {JSON.stringify(input, null, 2)}
       </pre> */}
-      {hasMounted ?
-        <div className="mb-4 flex w-full flex-row gap-2 lg:w-3/4 lg:justify-between">
+      {hasMounted ? (
+        <div className="flex w-full flex-row gap-x-2 lg:w-3/4 lg:justify-between">
+          {/* Input box */}
           <GooglePlacesAutocomplete
             selectProps={{
               inputValue: input.label,
               value: input.label,
               onInputChange: (i, a, p) => {
-                if (a.action !== "input-change") return;
+                if (a.action !== 'input-change') return;
 
                 setInput({
                   ...input,
                   label: i,
-                })
+                });
               },
               onChange: (i) => {
-                setInput(i)
+                setInput(i);
               },
-              className: "lg:w-10/12 h-14 text-left", // the container styles
+              className: 'w-10/12 lg:w-10/12 h-14 text-left', // the container styles
               classNames: {
-                control: () => "h-full",
-                menu: () => "text-black",
-                input: () => "opacity-100",
+                control: () => 'h-full',
+                menu: () => 'text-black',
+                input: () => 'opacity-100',
               },
               styles: {
                 input: (provided) => ({
                   ...provided,
                   input: {
-                    opacity: "1 !important",
+                    opacity: '1 !important',
                   },
                 }),
-              }
+              },
             }}
           />
-
 
           {/* Get location lat and long */}
           <button
             type="button"
-            className={`flex h-14 w-24 transform flex-row items-center justify-center rounded-lg bg-indigo-600 px-5 font-semibold text-white transition-all duration-500 ease-in-out hover:scale-105 ${locationLoading ? 'cursor-not-allowed' : 'hover:bg-indigo-500'
-              }`}
+            className={`flex h-14 w-24 transform flex-row items-center justify-center rounded-lg bg-indigo-600 px-5 font-semibold text-white transition-all duration-500 ease-in-out hover:scale-105 ${
+              locationLoading ? 'cursor-not-allowed' : 'hover:bg-indigo-500'
+            }`}
             onClick={handleGetLocation} // Set onClick handler here
             disabled={locationLoading} // Disable the button when loading
           >
             {!locationLoading ? <LoadingIcon /> : <LocationIcon />}
           </button>
         </div>
-        : null}
+      ) : null}
 
       {/* Buttons that get prayer times and current location */}
-      <div className="mt-4 flex flex-col items-center justify-center gap-4 sm:mt-8 sm:flex-row lg:mt-16">
+      <div className="flex flex-col items-center justify-center">
         <button
           type="submit"
-          className="mb-2 flex h-12 w-full transform flex-row items-center justify-center rounded-lg bg-green-600 px-5 font-semibold text-white transition-all duration-500 ease-in-out hover:scale-105 hover:bg-green-500 sm:mb-0 sm:w-64"
+          className="flex h-12 w-full transform flex-row items-center justify-center rounded-lg bg-green-600 px-5 font-semibold text-white transition-all duration-500 ease-in-out hover:scale-105 hover:bg-green-500 sm:mb-0 sm:w-64"
         >
           Click
         </button>
