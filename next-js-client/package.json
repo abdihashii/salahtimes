@@ -19,5 +19,8 @@
     "react-dom": "18.2.0",
     "react-google-places-autocomplete": "^4.0.1",
     "tailwindcss": "3.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "20.4.5"
   }
 }
