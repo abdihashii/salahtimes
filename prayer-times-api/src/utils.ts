@@ -1,4 +1,9 @@
-import { Coordinates, PrayerTimes, CalculationParameters } from 'adhan';
+import {
+  Coordinates,
+  PrayerTimes,
+  CalculationParameters,
+  CalculationMethod,
+} from 'adhan';
 import moment from 'moment-timezone';
 import { find } from 'geo-tz';
 
@@ -6,7 +11,7 @@ const getPrayerTimes = (
   lat: number,
   lng: number,
   date: Date,
-  calcMethod: CalculationParameters,
+  calcMethod: CalculationParameters
 ) => {
   const coordinates = new Coordinates(lat, lng);
   const prayerTimes = new PrayerTimes(coordinates, date, calcMethod);
@@ -34,4 +39,25 @@ const getPrayerTimes = (
   };
 };
 
-export { getPrayerTimes };
+const getNumberQueryParam = (param: any): number | null => {
+  if (typeof param === 'string') {
+    const num = parseFloat(param);
+    if (!isNaN(num)) return num;
+  }
+
+  return null;
+};
+
+const getCalculationMethodParam = (method: any): CalculationParameters => {
+  if (
+    typeof method === 'string' &&
+    typeof CalculationMethod[method] === 'function'
+  ) {
+    return CalculationMethod[method]();
+  }
+
+  // Default to Muslim World League
+  return CalculationMethod.MuslimWorldLeague();
+};
+
+export { getPrayerTimes, getNumberQueryParam, getCalculationMethodParam };

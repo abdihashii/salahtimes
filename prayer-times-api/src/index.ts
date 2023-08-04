@@ -1,5 +1,8 @@
-import { CalculationMethod, CalculationParameters } from 'adhan';
-import { getPrayerTimes } from './utils';
+import {
+  getPrayerTimes,
+  getNumberQueryParam,
+  getCalculationMethodParam,
+} from './utils';
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -9,27 +12,6 @@ const app = express();
 // -- Middlewares --
 app.use(bodyParser.json());
 app.use(cors());
-
-const getNumberQueryParam = (param: any): number | null => {
-  if (typeof param === 'string') {
-    const num = parseFloat(param);
-    if (!isNaN(num)) return num;
-  }
-
-  return null;
-};
-
-const getCalculationMethodParam = (method: any): CalculationParameters => {
-  if (
-    typeof method === 'string' &&
-    typeof CalculationMethod[method] === 'function'
-  ) {
-    return CalculationMethod[method]();
-  }
-
-  // Default to Muslim World League
-  return CalculationMethod.MuslimWorldLeague();
-};
 
 app.get('/', (req, res) => {
   const name = req.body.name || 'World';
