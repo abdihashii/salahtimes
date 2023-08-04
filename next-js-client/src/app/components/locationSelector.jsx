@@ -12,8 +12,13 @@ import { useCoordinates } from '../hooks/useCoordinates';
 const LocationSelector = () => {
   const [input, setInput] = useAtom(inputAtom);
 
-  const { coordinates, locationLoading, fetchPrayerTimes, handleGetLocation } =
-    useCoordinates();
+  const {
+    prayerTimes,
+    coordinates,
+    locationLoading,
+    fetchPrayerTimes,
+    handleGetLocation,
+  } = useCoordinates();
 
   const { hasMounted } = useMounted();
 
@@ -38,7 +43,7 @@ const LocationSelector = () => {
   }, [coordinates]); // this effect runs whenever coordinates change
 
   return (
-    <form className="gap-y-4 flex flex-col items-center justify-center sm:mt-8 lg:mt-16">
+    <form className="flex flex-col items-center justify-center gap-y-4 sm:mt-8 lg:mt-16">
       {/* <pre className="rounded-4px mx-auto mb-20 w-3/4 bg-black p-5 text-white">
         {JSON.stringify(input, null, 2)}
       </pre> */}
@@ -106,8 +111,14 @@ const LocationSelector = () => {
       </div>
 
       <pre className="rounded-4px mx-auto mb-20 w-1/4 bg-black p-5 text-white">
+        <h2 className="mb-5 text-center text-2xl font-bold">Coordinates</h2>
         {JSON.stringify(coordinates, null, 2)}
       </pre>
+
+      {/* <pre className="rounded-4px mx-auto mb-20 w-1/4 bg-black p-5 text-white">
+        <h2 className="mb-5 text-center text-2xl font-bold">Prayer Times</h2>
+        {JSON.stringify(prayerTimes, null, 2)}
+      </pre> */}
     </form>
   );
 };
