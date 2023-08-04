@@ -12,13 +12,8 @@ import { useCoordinates } from '../hooks/useCoordinates';
 const LocationSelector = () => {
   const [input, setInput] = useAtom(inputAtom);
 
-  const {
-    prayerTimes,
-    coordinates,
-    locationLoading,
-    fetchPrayerTimes,
-    handleGetLocation,
-  } = useCoordinates();
+  const { coordinates, locationLoading, fetchPrayerTimes, handleGetLocation } =
+    useCoordinates();
 
   const { hasMounted } = useMounted();
 
@@ -109,16 +104,6 @@ const LocationSelector = () => {
           Click
         </button>
       </div>
-
-      <pre className="rounded-4px mx-auto mb-20 w-1/4 bg-black p-5 text-white">
-        <h2 className="mb-5 text-center text-2xl font-bold">Coordinates</h2>
-        {JSON.stringify(coordinates, null, 2)}
-      </pre>
-
-      {/* <pre className="rounded-4px mx-auto mb-20 w-1/4 bg-black p-5 text-white">
-        <h2 className="mb-5 text-center text-2xl font-bold">Prayer Times</h2>
-        {JSON.stringify(prayerTimes, null, 2)}
-      </pre> */}
     </form>
   );
 };
