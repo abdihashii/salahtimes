@@ -2,10 +2,13 @@ import { CalculationMethod, CalculationParameters } from 'adhan';
 import { getPrayerTimes } from './utils';
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 const app = express();
 
+// -- Middlewares --
 app.use(bodyParser.json());
+app.use(cors());
 
 const getNumberQueryParam = (param: any): number | null => {
   if (typeof param === 'string') {
@@ -49,8 +52,6 @@ app.get('/get-prayer-times', (req, res) => {
   const calcMethod = getCalculationMethodParam(req.query.calcMethod);
 
   const prayerTimes = getPrayerTimes(lat, lng, date, calcMethod);
-
-  console.log(prayerTimes);
 
   res.send(prayerTimes);
 });
