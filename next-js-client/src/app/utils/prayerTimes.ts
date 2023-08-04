@@ -1,3 +1,5 @@
+import type { Coordinates } from '../types/prayerTimeTypes';
+
 /**
  * @returns {string} Current day in the format of "DD-MM-YYYY"
  */
@@ -27,17 +29,12 @@ export const getUserGeolocation = async () => {
     return { lat: latitude, lng: longitude };
   } catch (error) {
     console.log(`Failed to get user's geolocation: ${error}`);
+
+    return { lat: null, lng: null };
   }
 };
 
-/**
- * @param {Object} coords
- * @param {number} coords.lat
- * @param {number} coords.lng
- * @returns {Promise<Object>} Prayer times
- * @throws {Error} Error
- */
-export const getPrayerTimesFromAPI = async (coords) => {
+export const getPrayerTimesFromAPI = async (coords: Coordinates) => {
   const { lat, lng } = coords;
 
   const response = await fetch(
