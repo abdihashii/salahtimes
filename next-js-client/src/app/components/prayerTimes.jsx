@@ -7,49 +7,33 @@ const PrayerTimes = () => {
   const [prayerTimes] = useAtom(prayerTimesAtom);
 
   return (
-    <div className="flex flex-row items-center justify-center gap-5">
-      <div className="flex flex-col items-center justify-center">
-        <h2 className="text-2xl font-medium leading-10 text-black">Fajr</h2>
-        <p className="text-2xl font-medium leading-10 text-black">
-          {prayerTimes.fajr}
-        </p>
-      </div>
-
-      <div className="flex flex-col items-center justify-center">
-        <h2 className="text-2xl font-medium leading-10 text-black">Sunrise</h2>
-        <p className="text-2xl font-medium leading-10 text-black">
-          {prayerTimes.sunrise}
-        </p>
-      </div>
-
-      <div className="flex flex-col items-center justify-center">
-        <h2 className="text-2xl font-medium leading-10 text-black">Dhuhr</h2>
-        <p className="text-2xl font-medium leading-10 text-black">
-          {prayerTimes.dhuhr}
-        </p>
-      </div>
-
-      <div className="flex flex-col items-center justify-center">
-        <h2 className="text-2xl font-medium leading-10 text-black">Asr</h2>
-        <p className="text-2xl font-medium leading-10 text-black">
-          {prayerTimes.asr}
-        </p>
-      </div>
-
-      <div className="flex flex-col items-center justify-center">
-        <h2 className="text-2xl font-medium leading-10 text-black">Maghrib</h2>
-        <p className="text-2xl font-medium leading-10 text-black">
-          {prayerTimes.maghrib}
-        </p>
-      </div>
-
-      <div className="flex flex-col items-center justify-center">
-        <h2 className="text-2xl font-medium leading-10 text-black">Isha</h2>
-        <p className="text-2xl font-medium leading-10 text-black">
-          {prayerTimes.isha}
-        </p>
-      </div>
-    </div>
+    <>
+      {prayerTimes && Object.entries(prayerTimes).length > 0 && (
+        <table className="w-full table-auto border-collapse border text-black">
+          <thead>
+            <tr>
+              <th className="border border-b-0 px-4 py-2">Fajr</th>
+              <th className="border border-b-0 px-4 py-2">Sunrise</th>
+              <th className="border border-b-0 px-4 py-2">Dhuhr</th>
+              <th className="border border-b-0 px-4 py-2">Asr</th>
+              <th className="border border-b-0 px-4 py-2">Maghrib</th>
+              <th className="border border-b-0 px-4 py-2">Isha</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              {prayerTimes &&
+                Object.entries(prayerTimes).length > 0 &&
+                Object.entries(prayerTimes).map(([prayer, time]) => (
+                  <td key={prayer} className="border border-t-0 px-4 py-2">
+                    {time}
+                  </td>
+                ))}
+            </tr>
+          </tbody>
+        </table>
+      )}
+    </>
   );
 };
 

@@ -1,5 +1,6 @@
 import PrayerTimesTitle from './components/prayerTimesTitle';
 import LocationSelector from './components/locationSelector';
+import PrayerTimes from './components/prayerTimes';
 
 export default function Home() {
   return (
@@ -10,7 +11,7 @@ export default function Home() {
 
       {/* <CurrentTime /> */}
 
-      {/* <PrayerTimes /> */}
+      <PrayerTimes />
     </section>
   );
 }
