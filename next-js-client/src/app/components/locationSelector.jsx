@@ -44,7 +44,7 @@ const LocationSelector = () => {
   }, [coordinates]); // this effect runs whenever coordinates change
 
   return (
-    <form className="mb-4 flex flex-col items-center justify-center gap-y-4 sm:mt-8 lg:mt-16">
+    <form className="mx-auto mb-8 mt-16 flex w-8/12 flex-col gap-y-4">
       {/* <pre className="w-full text-left text-xs text-gray-500 lg:w-3/4">
         <p className="text-sm font-semibold text-gray-700">Input</p>
         {JSON.stringify(input, null, 2)}
@@ -56,7 +56,7 @@ const LocationSelector = () => {
       </pre> */}
 
       {hasMounted ? (
-        <div className="flex w-full flex-row gap-x-2 lg:w-3/4 lg:justify-between">
+        <div className="flex flex-row gap-x-2 lg:justify-between">
           {/* Input box */}
           <GooglePlacesAutocomplete
             selectProps={{
@@ -105,8 +105,8 @@ const LocationSelector = () => {
         </div>
       ) : null}
 
-      {/* Buttons that get prayer times and current location */}
-      <div className="flex flex-col items-center justify-center">
+      {/* Button that get prayer times and current location */}
+      {/* <div className="flex flex-col items-center justify-center">
         <button
           type="submit"
           className="flex h-12 w-full transform flex-row items-center justify-center rounded-lg bg-green-600 px-5 font-semibold text-white transition-all duration-500 ease-in-out hover:scale-105 hover:bg-green-500 sm:mb-0 sm:w-64"
@@ -117,7 +117,7 @@ const LocationSelector = () => {
         >
           Click
         </button>
-      </div>
+      </div> */}
     </form>
   );
 };

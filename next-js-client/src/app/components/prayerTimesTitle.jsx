@@ -8,7 +8,7 @@ const PrayerTimesTitle = () => {
 
   return (
     <>
-      <h1 className="mx-auto my-10 w-full text-5xl font-medium text-indigo-900">
+      <h1 className="mx-auto my-10 w-full text-center text-5xl font-medium text-indigo-900">
         Prayer times in "<span className="text-indigo-700">{input.label}</span>"
       </h1>
     </>

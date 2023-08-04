@@ -9,7 +9,7 @@ const PrayerTimes = () => {
   return (
     <>
       {prayerTimes && Object.entries(prayerTimes).length > 0 && (
-        <table className="w-full table-auto border-collapse border text-black">
+        <table className="mx-auto w-8/12 table-auto border-collapse border text-center text-black">
           <thead>
             <tr>
               <th className="border border-b-0 px-4 py-2">Fajr</th>
