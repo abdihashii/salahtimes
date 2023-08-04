@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useAtom } from 'jotai';
 import { inputAtom } from '../atoms/prayerTimesAtoms';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
@@ -11,9 +11,15 @@ import { useCoordinates } from '../hooks/useCoordinates';
 
 const LocationSelector = () => {
   const [input, setInput] = useAtom(inputAtom);
+  const [currentInput, setCurrentInput] = useState(input.label);
 
-  const { coordinates, locationLoading, fetchPrayerTimes, handleGetLocation } =
-    useCoordinates();
+  const {
+    coordinates,
+    locationLoading,
+    fetchPrayerTimes,
+    handleGetLatLngFromIPAddress,
+    handleGetLatLngFromInput,
+  } = useCoordinates();
 
   const { hasMounted } = useMounted();
 
@@ -30,7 +36,7 @@ const LocationSelector = () => {
       prevCoordinatesRef.current.lat !== coordinates.lat ||
       prevCoordinatesRef.current.lng !== coordinates.lng
     ) {
-      // fetchPrayerTimes(coordinates);
+      fetchPrayerTimes(coordinates);
     }
 
     // Set the previous coordinates to the current ones for the next render
@@ -38,27 +44,35 @@ const LocationSelector = () => {
   }, [coordinates]); // this effect runs whenever coordinates change
 
   return (
-    <form className="flex flex-col items-center justify-center gap-y-4 sm:mt-8 lg:mt-16">
-      {/* <pre className="rounded-4px mx-auto mb-20 w-3/4 bg-black p-5 text-white">
+    <form className="mb-4 flex flex-col items-center justify-center gap-y-4 sm:mt-8 lg:mt-16">
+      {/* <pre className="w-full text-left text-xs text-gray-500 lg:w-3/4">
+        <p className="text-sm font-semibold text-gray-700">Input</p>
         {JSON.stringify(input, null, 2)}
+      </pre>
+
+      <pre className="w-full text-left text-xs text-gray-500 lg:w-3/4">
+        <p className="text-sm font-semibold text-gray-700">Coordinates</p>
+        {JSON.stringify(coordinates, null, 2)}
       </pre> */}
+
       {hasMounted ? (
         <div className="flex w-full flex-row gap-x-2 lg:w-3/4 lg:justify-between">
           {/* Input box */}
           <GooglePlacesAutocomplete
             selectProps={{
-              inputValue: input.label,
-              value: input.label,
-              onInputChange: (i, a, p) => {
-                if (a.action !== 'input-change') return;
+              inputValue: currentInput,
+              value: currentInput,
+              // onInputChange triggers whenever the input changes
+              onInputChange: (newValue, actionMeta) => {
+                if (actionMeta.action !== 'input-change') return;
 
-                setInput({
-                  ...input,
-                  label: i,
-                });
+                setCurrentInput(newValue); // change the current input for the input box, not the atom
               },
-              onChange: (i) => {
-                setInput(i);
+              // onChange triggers whenever the input is selected
+              onChange: async (newValue) => {
+                setInput(newValue); // change the input atom for the title
+                setCurrentInput(newValue.label); // change the current input for the input box
+                await handleGetLatLngFromInput(newValue);
               },
               className: 'w-10/12 lg:w-10/12 h-14 text-left', // the container styles
               classNames: {
@@ -83,7 +97,7 @@ const LocationSelector = () => {
             className={`flex h-14 w-24 transform flex-row items-center justify-center rounded-lg bg-indigo-600 px-5 font-semibold text-white transition-all duration-500 ease-in-out hover:scale-105 ${
               locationLoading ? 'cursor-not-allowed' : 'hover:bg-indigo-500'
             }`}
-            onClick={handleGetLocation} // Set onClick handler here
+            onClick={handleGetLatLngFromIPAddress} // Set onClick handler here
             disabled={locationLoading} // Disable the button when loading
           >
             {!locationLoading ? <LoadingIcon /> : <LocationIcon />}
@@ -96,9 +110,9 @@ const LocationSelector = () => {
         <button
           type="submit"
           className="flex h-12 w-full transform flex-row items-center justify-center rounded-lg bg-green-600 px-5 font-semibold text-white transition-all duration-500 ease-in-out hover:scale-105 hover:bg-green-500 sm:mb-0 sm:w-64"
-          onClick={(e) => {
+          onClick={async (e) => {
             e.preventDefault();
-            fetchPrayerTimes(coordinates);
+            await handleGetLatLngFromInput(input);
           }}
         >
           Click
