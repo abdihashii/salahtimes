@@ -22,13 +22,11 @@ const PrayerTimes = () => {
           </thead>
           <tbody>
             <tr>
-              {prayerTimes &&
-                Object.entries(prayerTimes).length > 0 &&
-                Object.entries(prayerTimes).map(([prayer, time]) => (
-                  <td key={prayer} className="border border-t-0 px-4 py-2">
-                    {time}
-                  </td>
-                ))}
+              {Object.entries(prayerTimes).map(([prayer, time]) => (
+                <td key={prayer} className="border border-t-0 px-4 py-2">
+                  {time}
+                </td>
+              ))}
             </tr>
           </tbody>
         </table>
