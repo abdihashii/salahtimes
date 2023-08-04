@@ -1,11 +1,10 @@
 'use client';
 
 import { useAtom } from 'jotai';
-import { inputAtom, prayerTimesAtom } from '../atoms/prayerTimesAtoms';
+import { inputAtom } from '../atoms/prayerTimesAtoms';
 
 const PrayerTimesTitle = () => {
   const [input] = useAtom(inputAtom);
-  // const [prayerTimes] = useAtom(prayerTimesAtom);
 
   return (
     <>
