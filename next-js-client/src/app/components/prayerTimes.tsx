@@ -17,15 +17,25 @@ const PrayerTimes = () => {
       ) : (
         prayerTimes &&
         Object.entries(prayerTimes).length > 0 && (
-          <div className="mx-auto flex w-8/12 flex-col rounded border text-center">
+          <div className="mx-auto flex w-8/12 flex-col rounded border border-border-gray text-center">
             {/* Prayers row */}
             <div className="flex flex-row">
-              <p className="w-2/12 border-r py-2 font-bold">Fajr</p>
-              <p className="w-2/12 border-r py-2 font-bold">Sunrise</p>
-              <p className="w-2/12 border-r py-2 font-bold">Dhuhr</p>
-              <p className="w-2/12 border-r py-2 font-bold">Asr</p>
-              <p className="w-2/12 border-r py-2 font-bold">Maghrib</p>
-              <p className="w-2/12 py-2 font-bold">Isha</p>
+              <p className="w-2/12 border-r border-border-gray py-2 font-bold">
+                Fajr
+              </p>
+              <p className="w-2/12 border-r border-border-gray py-2 font-bold">
+                Sunrise
+              </p>
+              <p className="w-2/12 border-r border-border-gray py-2 font-bold">
+                Dhuhr
+              </p>
+              <p className="w-2/12 border-r border-border-gray py-2 font-bold">
+                Asr
+              </p>
+              <p className="w-2/12 border-r border-border-gray py-2 font-bold">
+                Maghrib
+              </p>
+              <p className="w-2/12 border-border-gray py-2 font-bold">Isha</p>
             </div>
 
             {/* Times row */}
@@ -33,7 +43,7 @@ const PrayerTimes = () => {
               {Object.entries(prayerTimes).map(([prayer, time]) => (
                 <p
                   key={prayer}
-                  className="w-2/12 border-r py-2 last:border-r-0"
+                  className="w-2/12 border-r border-border-gray py-2 last:border-r-0"
                 >
                   {time}
                 </p>
