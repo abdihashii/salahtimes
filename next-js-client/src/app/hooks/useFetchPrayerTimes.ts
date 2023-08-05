@@ -2,10 +2,9 @@ import { useAtom } from 'jotai';
 import { prayerTimesAtom } from '../atoms/prayerTimesAtoms';
 import { getPrayerTimesFromAPI } from '../utils/prayerTimes';
 import type { PrayerTimes } from '../types/prayerTimeTypes';
-import type { FetchPrayerTimesError } from '../types/errorTypes';
 import { fetchPrayerTimesErrorAtom } from '../atoms/errorAtoms';
 
-export const usePrayerTimes = () => {
+export const useFetchPrayerTimes = () => {
   const [prayerTimes, setPrayerTimes] = useAtom(prayerTimesAtom);
   const [, setFetchPrayerTimesError] = useAtom(fetchPrayerTimesErrorAtom);
 

@@ -3,18 +3,16 @@
 import { useEffect, useRef, useState } from 'react';
 import { useAtom } from 'jotai';
 import { inputAtom } from '../atoms/prayerTimesAtoms';
-import { fetchPrayerTimesErrorAtom } from '../atoms/errorAtoms';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 import LoadingIcon from '../icons/loadingIcon';
 import LocationIcon from '../icons/locationIcon';
 import { useMounted } from '../hooks/useMounted';
 import { useCoordinates } from '../hooks/useCoordinates';
-import { usePrayerTimes } from '../hooks/usePrayerTimes';
+import { useFetchPrayerTimes } from '../hooks/useFetchPrayerTimes';
 
 const LocationSelector = () => {
   const [input, setInput] = useAtom(inputAtom);
   const [currentInput, setCurrentInput] = useState(input.label);
-  const [, setFetchPrayerTimesError] = useAtom(fetchPrayerTimesErrorAtom);
 
   const {
     coordinates,
@@ -22,7 +20,7 @@ const LocationSelector = () => {
     handleGetLatLngFromIPAddress,
     handleGetLatLngFromInput,
   } = useCoordinates();
-  const { fetchPrayerTimes } = usePrayerTimes();
+  const { fetchPrayerTimes } = useFetchPrayerTimes();
 
   const { hasMounted } = useMounted();
 
