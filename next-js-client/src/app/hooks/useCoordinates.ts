@@ -6,17 +6,12 @@ import {
   coordinatesAtom,
   prayerTimesAtom,
 } from '../atoms/prayerTimesAtoms';
-import {
-  getUserGeolocation,
-  getPrayerTimesFromAPI,
-} from '../utils/prayerTimes';
-import { PrayerTimes } from '../types/prayerTimeTypes';
+import { getUserGeolocation } from '../utils/prayerTimes';
 import type { Input } from '../types/prayerTimeTypes';
 
 export const useCoordinates = () => {
   const [locationLoading, setLocationLoading] = useAtom(locationLoadingAtom);
   const [coordinates, setCoordinates] = useAtom(coordinatesAtom);
-  const [prayerTimes, setPrayerTimes] = useAtom(prayerTimesAtom);
 
   const handleGetLatLngFromInput = async (input: Input) => {
     const encodedAddress =
@@ -45,21 +40,10 @@ export const useCoordinates = () => {
     setLocationLoading(false);
   };
 
-  const fetchPrayerTimes = async (coords: { lat: number; lng: number }) => {
-    try {
-      const prayerTimes = await getPrayerTimesFromAPI(coords);
-      setPrayerTimes(prayerTimes as PrayerTimes); // Update prayer times atom
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return {
     locationLoading,
     coordinates,
-    prayerTimes,
     handleGetLatLngFromInput,
     handleGetLatLngFromIPAddress,
-    fetchPrayerTimes,
   };
 };
