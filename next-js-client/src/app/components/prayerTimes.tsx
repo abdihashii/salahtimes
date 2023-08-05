@@ -17,27 +17,29 @@ const PrayerTimes = () => {
       ) : (
         prayerTimes &&
         Object.entries(prayerTimes).length > 0 && (
-          <table className="mx-auto w-8/12 table-auto border-collapse border text-center text-black">
-            <thead>
-              <tr>
-                <th className="border border-b-0 px-4 py-2">Fajr</th>
-                <th className="border border-b-0 px-4 py-2">Sunrise</th>
-                <th className="border border-b-0 px-4 py-2">Dhuhr</th>
-                <th className="border border-b-0 px-4 py-2">Asr</th>
-                <th className="border border-b-0 px-4 py-2">Maghrib</th>
-                <th className="border border-b-0 px-4 py-2">Isha</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                {Object.entries(prayerTimes).map(([prayer, time]) => (
-                  <td key={prayer} className="border border-t-0 px-4 py-2">
-                    {time}
-                  </td>
-                ))}
-              </tr>
-            </tbody>
-          </table>
+          <div className="mx-auto flex w-8/12 flex-col rounded border text-center">
+            {/* Prayers row */}
+            <div className="flex flex-row">
+              <p className="w-2/12 border-r py-2 font-bold">Fajr</p>
+              <p className="w-2/12 border-r py-2 font-bold">Sunrise</p>
+              <p className="w-2/12 border-r py-2 font-bold">Dhuhr</p>
+              <p className="w-2/12 border-r py-2 font-bold">Asr</p>
+              <p className="w-2/12 border-r py-2 font-bold">Maghrib</p>
+              <p className="w-2/12 py-2 font-bold">Isha</p>
+            </div>
+
+            {/* Times row */}
+            <div className="flex flex-row">
+              {Object.entries(prayerTimes).map(([prayer, time]) => (
+                <p
+                  key={prayer}
+                  className="w-2/12 border-r py-2 last:border-r-0"
+                >
+                  {time}
+                </p>
+              ))}
+            </div>
+          </div>
         )
       )}
     </>
