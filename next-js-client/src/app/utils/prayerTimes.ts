@@ -38,7 +38,7 @@ export const getPrayerTimesFromAPI = async (coords: Coordinates) => {
   const { lat, lng } = coords;
 
   const response = await fetch(
-    `http://localhost:3000/get-prayer-times?lat=${lat}&lng=${lng}`
+    `http://localhost:3001/get-prayer-times?lat=${lat}&lng=${lng}`
   );
 
   const data = await response.json();
