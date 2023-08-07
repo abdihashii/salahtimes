@@ -73,6 +73,11 @@ export const LocationSelector = ({ cityName, coordinates, className }) => {
     <div className={className}>
       <div className="mx-auto mb-45px w-full">
         <div className="relative mx-auto w-11/12 lg:w-full">
+          {/* Map icon */}
+          <span className="absolute left-0 top-0 z-10 inline-flex h-2.5em w-2.5em items-center justify-center text-2xl">
+            <RxMagnifyingGlass className="text-text-grey" />
+          </span>
+
           <PlacesAutocomplete
             value={input.city}
             onChange={handleLocationChange}
@@ -138,9 +143,9 @@ export const LocationSelector = ({ cityName, coordinates, className }) => {
             )}
           </PlacesAutocomplete>
 
-          <span className="z-10 flex h-60px w-1/12 max-w-60px items-center justify-center">
+          <span className="absolute right-0 top-0 z-10 flex h-60px w-60px items-center justify-center">
             <span
-              className="pointer-events-auto inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-green-secondary text-xl hover:bg-green-dark"
+              className=" pointer-events-auto inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-green-secondary text-xl hover:bg-green-dark"
               onClick={onMapIconClick}
               onKeyDown={onMapIconClick}
               role="button"
