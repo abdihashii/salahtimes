@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { useAtom } from 'jotai';
 import {
   inputAtom,
@@ -14,14 +14,13 @@ import { useMounted } from '../hooks/useMounted';
 import { useCoordinates } from '../hooks/useCoordinates';
 import { useFetchPrayerTimes } from '../hooks/useFetchPrayerTimes';
 import { fetchPrayerTimesErrorAtom } from '../atoms/errorAtoms';
-import { Coordinates } from '../types/prayerTimeTypes';
 
 const LocationSelector = () => {
   const [input, setInput] = useAtom(inputAtom);
-  const [currentInput, setCurrentInput] = useState(input.label);
+  const [currentInput, setCurrentInput] = useState(input.label); // current input for the input box
   const [, setPrayerTimes] = useAtom(prayerTimesAtom);
   const [, setFetchPrayerTimesError] = useAtom(fetchPrayerTimesErrorAtom);
-  const [coordinates, setCoordinates] = useAtom(coordinatesAtom);
+  const [, setCoordinates] = useAtom(coordinatesAtom);
 
   const {
     locationLoading,
