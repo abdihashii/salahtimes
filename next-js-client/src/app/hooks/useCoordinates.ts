@@ -23,19 +23,22 @@ export const useCoordinates = () => {
   const handleGetLatLngFromInput = async (
     input: Input
   ): Promise<Coordinates | string> => {
-    const encodedAddress =
-      input.value?.description && encodeURI(input.value.description);
-    const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`;
+    try {
+      const encodedAddress =
+        input.value?.description && encodeURI(input.value.description);
+      const url = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`;
 
-    const response = await fetch(url);
-    const data = await response.json();
+      const response = await fetch(url);
+      const data = await response.json();
 
-    if (data.status === 'OK') {
       const { lat, lng } = data.results[0].geometry.location;
 
       return { lat, lng };
-    } else {
-      return 'Unable to retrieve your location';
+    } catch (error) {
+      console.error(error);
+      throw new Error(
+        'Unexpected error occurred after selecting an address from the dropdown.'
+      );
     }
   };
 
@@ -51,7 +54,11 @@ export const useCoordinates = () => {
       return coords;
     } catch (error) {
       setLocationLoading(false);
-      return `Unable to retrieve your location due to ${error}`;
+
+      console.error(error);
+      throw new Error(
+        'Unexpected error occurred while retrieving your location.'
+      );
     }
   };
 
@@ -79,11 +86,12 @@ export const useCoordinates = () => {
 
         // Fetch prayer times for the given coordinates.
         const pT = await fetchPrayerTimes(coordinates);
+
         setPrayerTimes(pT);
       } catch (error: any) {
         // Handle fetch errors.
         setFetchPrayerTimesError({
-          error,
+          error: error.message,
         });
         setPrayerTimes(null);
       }

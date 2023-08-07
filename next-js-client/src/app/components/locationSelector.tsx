@@ -14,6 +14,7 @@ import { useMounted } from '../hooks/useMounted';
 import { useCoordinates } from '../hooks/useCoordinates';
 import { useFetchPrayerTimes } from '../hooks/useFetchPrayerTimes';
 import { fetchPrayerTimesErrorAtom } from '../atoms/errorAtoms';
+import type { Coordinates } from '../types/prayerTimeTypes';
 
 const LocationSelector = () => {
   const [input, setInput] = useAtom(inputAtom);
@@ -33,16 +34,6 @@ const LocationSelector = () => {
 
   return hasMounted ? (
     <form className="mx-auto mb-8 mt-16 flex w-full flex-row gap-x-2 gap-y-4 lg:w-8/12">
-      {/* <pre className="w-full text-left text-xs text-gray-500 lg:w-3/4">
-            <p className="text-sm font-semibold text-gray-700">Input</p>
-            {JSON.stringify(input, null, 2)}
-          </pre>
-    
-          <pre className="w-full text-left text-xs text-gray-500 lg:w-3/4">
-            <p className="text-sm font-semibold text-gray-700">Coordinates</p>
-            {JSON.stringify(coordinates, null, 2)}
-          </pre> */}
-
       {/* Input box */}
       <GooglePlacesAutocomplete
         selectProps={{
@@ -64,9 +55,13 @@ const LocationSelector = () => {
             setInput(newValue); // change the input atom for the title
             setCurrentInput(newValue.label); // change the current input for the input box
 
-            const coords = await handleGetLatLngFromInput(newValue);
+            try {
+              const coords = await handleGetLatLngFromInput(newValue);
 
-            setCoordinates(coords);
+              setCoordinates(coords);
+            } catch (error: any) {
+              setFetchPrayerTimesError({ error: error.message });
+            }
           },
           className: 'w-full lg:w-10/12 h-14 text-left', // the container styles
           classNames: {
@@ -92,42 +87,24 @@ const LocationSelector = () => {
           locationLoading ? 'cursor-not-allowed' : 'hover:bg-indigo-500'
         }`}
         onClick={async () => {
-          handleGetLatLngFromIPAddress().then((coords) => {
-            if (!coords) return;
+          try {
+            const coords = await handleGetLatLngFromIPAddress();
 
-            if (typeof coords !== 'string') {
-              return fetchPrayerTimes(coords)
-                .then((pT) => {
-                  setPrayerTimes(pT);
-                })
-                .catch((error) => {
-                  setFetchPrayerTimesError({ error });
-                });
-            } else {
-              setFetchPrayerTimesError({
-                error: `Received invalid coordinates: ${coords}`,
-              });
+            try {
+              const pT = await fetchPrayerTimes(coords as Coordinates);
+
+              setPrayerTimes(pT);
+            } catch (error: any) {
+              setFetchPrayerTimesError({ error: error.message });
             }
-          });
-        }} // Set onClick handler here
+          } catch (error: any) {
+            setFetchPrayerTimesError({ error: error.message });
+          }
+        }}
         disabled={locationLoading} // Disable the button when loading
       >
         {!locationLoading ? <LoadingIcon /> : <LocationIcon />}
       </button>
-
-      {/* Button that get prayer times and current location */}
-      {/* <div className="flex flex-col items-center justify-center">
-          <button
-            type="submit"
-            className="flex h-12 w-full transform flex-row items-center justify-center rounded-lg bg-green-600 px-5 font-semibold text-white transition-all duration-500 ease-in-out hover:scale-105 hover:bg-green-500 sm:mb-0 sm:w-64"
-            onClick={async (e) => {
-              e.preventDefault();
-              await handleGetLatLngFromInput(input);
-            }}
-          >
-            Click
-          </button>
-        </div> */}
     </form>
   ) : null;
 };

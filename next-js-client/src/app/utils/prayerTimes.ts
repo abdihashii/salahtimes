@@ -12,38 +12,24 @@ export const getCurrentDay = () => {
   return `${day}-${month}-${year}`;
 };
 
-export const getUserGeolocation = async () => {
+export const getUserGeolocation = async (): Promise<Coordinates | string> => {
   try {
     const url = `https://ipinfo.io/json?token=${process.env.NEXT_PUBLIC_IPINFO_API_KEY}`;
 
     const res = await fetch(url);
+
+    if (!res.ok) {
+      throw new Error('Failed to fetch geolocation from the service.');
+    }
+
     const data = await res.json();
 
     const { loc } = data;
-    const location = loc.split(',');
-    let [latitude, longitude] = location;
-
-    latitude = parseFloat(latitude);
-    longitude = parseFloat(longitude);
+    const location = loc.split(','); // split string into array
+    const [latitude, longitude] = location.map(parseFloat); // convert string to float
 
     return { lat: latitude, lng: longitude };
-  } catch (error) {
-    console.log(`Failed to get user's geolocation: ${error}`);
-
-    return { lat: null, lng: null };
+  } catch (error: any) {
+    return `Failed to get geolocation: ${error.message}`;
   }
-};
-
-export const getPrayerTimesFromAPI = async (coords: Coordinates) => {
-  const { lat, lng } = coords;
-
-  const response = await fetch(
-    `http://localhost:3001/get-prayer-times?lat=${lat}&lng=${lng}`
-  );
-
-  const data = await response.json();
-
-  const { formattedData } = data;
-
-  return formattedData;
 };
