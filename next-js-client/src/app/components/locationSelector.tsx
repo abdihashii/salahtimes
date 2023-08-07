@@ -34,7 +34,7 @@ const LocationSelector = () => {
   const { hasMounted } = useMounted();
 
   return hasMounted ? (
-    <form className="mx-auto mb-8 mt-16 flex w-full flex-row gap-x-2 gap-y-4 lg:w-8/12">
+    <form className="mx-auto mb-8 mt-16 flex w-full flex-row gap-x-2 gap-y-4 lg:w-8/12 lg:justify-between">
       {/* Input box */}
       <GooglePlacesAutocomplete
         selectProps={{
