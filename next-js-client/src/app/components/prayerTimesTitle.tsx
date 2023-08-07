@@ -12,7 +12,13 @@ const PrayerTimesTitle = () => {
         <span className="text-2xl font-normal lg:text-4xl">
           Prayer times in
         </span>
-        {input.label && <span className="text-indigo-700">{input.label}</span>}
+        {input.label ? (
+          <span className="text-indigo-700">{input.label}</span>
+        ) : (
+          <span className="text-indigo-700">
+            <span className="animate-pulse">Loading</span>
+          </span>
+        )}
       </h1>
     </>
   );
