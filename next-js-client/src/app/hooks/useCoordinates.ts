@@ -46,6 +46,7 @@ export const useCoordinates = () => {
     Coordinates | string
   > => {
     setLocationLoading(true);
+
     try {
       const coords = await getUserGeolocation();
 
@@ -55,6 +56,28 @@ export const useCoordinates = () => {
     } catch (error) {
       setLocationLoading(false);
 
+      console.error(error);
+      throw new Error(
+        'Unexpected error occurred while retrieving your location.'
+      );
+    }
+  };
+
+  const handleGetFormattedAddressFromLatLng = async (coords: Coordinates) => {
+    try {
+      const formattedLatLng = `${coords?.lat},${coords?.lng}`;
+
+      const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${formattedLatLng}&result_type=locality&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}`;
+
+      const response = await fetch(url);
+      const data = await response.json();
+
+      const { results } = data;
+      const [{ formatted_address }] = results;
+
+      return formatted_address;
+    } catch (error) {
+      debugger;
       console.error(error);
       throw new Error(
         'Unexpected error occurred while retrieving your location.'
@@ -125,5 +148,6 @@ export const useCoordinates = () => {
     locationLoading,
     handleGetLatLngFromInput,
     handleGetLatLngFromIPAddress,
+    handleGetFormattedAddressFromLatLng,
   };
 };

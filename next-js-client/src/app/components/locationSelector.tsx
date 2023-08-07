@@ -27,6 +27,7 @@ const LocationSelector = () => {
     locationLoading,
     handleGetLatLngFromIPAddress,
     handleGetLatLngFromInput,
+    handleGetFormattedAddressFromLatLng,
   } = useCoordinates();
   const { fetchPrayerTimes } = useFetchPrayerTimes();
 
@@ -88,7 +89,19 @@ const LocationSelector = () => {
         }`}
         onClick={async () => {
           try {
+            // Get the latitude and longitude from the user's IP address
             const coords = await handleGetLatLngFromIPAddress();
+
+            // Get the formatted address using reverse geocoding
+            const formattedAddress = await handleGetFormattedAddressFromLatLng(
+              coords as Coordinates
+            );
+
+            // Set the input and current input to the formatted address
+            setInput({
+              label: formattedAddress,
+            });
+            setCurrentInput(formattedAddress);
 
             try {
               const pT = await fetchPrayerTimes(coords as Coordinates);
