@@ -1,26 +1,20 @@
-import { useAtom } from 'jotai';
-import { prayerTimesAtom } from '../atoms/prayerTimesAtoms';
 import { getPrayerTimesFromAPI } from '../utils/prayerTimes';
-import type { PrayerTimes } from '../types/prayerTimeTypes';
-import { fetchPrayerTimesErrorAtom } from '../atoms/errorAtoms';
+import type { Coordinates, PrayerTimes } from '../types/prayerTimeTypes';
 
 export const useFetchPrayerTimes = () => {
-  const [prayerTimes, setPrayerTimes] = useAtom(prayerTimesAtom);
-  const [, setFetchPrayerTimesError] = useAtom(fetchPrayerTimesErrorAtom);
-
-  const fetchPrayerTimes = async (coords: { lat: number; lng: number }) => {
+  const fetchPrayerTimes = async (
+    coords: Coordinates
+  ): Promise<PrayerTimes | string> => {
     try {
       const prayerTimes = await getPrayerTimesFromAPI(coords);
-      setPrayerTimes(prayerTimes as PrayerTimes); // Update prayer times atom
+
+      return prayerTimes;
     } catch (error) {
-      setFetchPrayerTimesError({
-        error: 'Failed to fetch prayer times',
-      });
+      return 'Failed to fetch prayer times';
     }
   };
 
   return {
     fetchPrayerTimes,
-    prayerTimes,
   };
 };
