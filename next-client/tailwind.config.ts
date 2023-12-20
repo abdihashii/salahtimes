@@ -8,6 +8,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        lg: '1210px',
+        xl: '1980px',
+      },
       colors: {
         green: {
           DEFAULT: '#34C759',
