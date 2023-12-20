@@ -2,15 +2,15 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 import DesktopNav from './DesktopNav';
-import { usePathname } from 'next/navigation';
 
 const Header = () => {
   const pathname = usePathname();
 
   return (
-    <header className="pt-6 pb-[10px] lg:pt-8 lg:pb-8 static border-b border-header_border_color">
+    <header className="static w-full border-b border-header_border_color pb-[10px] pt-6 lg:pb-8 lg:pt-8">
       <div className="mx-auto flex w-10/12 flex-row items-center lg:w-8/12 lg:justify-between xl:w-7/12">
         {/* Logo */}
         <Link className="flex flex-row items-center gap-3" href="/">
@@ -20,7 +20,7 @@ const Header = () => {
             width={48}
             height={48}
           />
-          <p className="uppercase text-green-secondary font-bold">
+          <p className="font-bold uppercase text-green-secondary">
             My Prayer Times
           </p>
         </Link>
@@ -30,10 +30,10 @@ const Header = () => {
 
         {/* Our Blog button - Desktop */}
         <Link
-          className={`!hidden rounded-full bg-green-dark py-4 px-12 font-semibold text-white hover:bg-green-secondary lg:!block hover:transition-colors
+          className={`!hidden rounded-full bg-green-dark px-12 py-4 font-semibold text-white hover:bg-green-secondary hover:transition-colors lg:!block
           ${
             pathname === '/blog'
-              ? 'opacity-20 pointer-events-none'
+              ? 'pointer-events-none opacity-20'
               : 'cursor-pointer'
           }`}
           href="/blog"
