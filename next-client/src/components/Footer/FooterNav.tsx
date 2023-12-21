@@ -3,8 +3,11 @@
 import { Instagram, Twitter } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react';
+import { usePathname } from 'next/navigation';
 
 const FooterNav = () => {
+  const pathname = usePathname();
+
   return (
     <div className="lg:flex lg:w-6/12 lg:justify-between">
       {/* Prayer times, hijri date, and blog links */}
@@ -12,7 +15,9 @@ const FooterNav = () => {
         <li>
           <Link
             href="/"
-            className="opacity-50 transition-opacity hover:opacity-100"
+            className={`transition-opacity hover:opacity-100 ${
+              pathname === '/' ? 'opacity-100' : 'opacity-50'
+            }`}
           >
             Prayer Times
           </Link>
@@ -21,14 +26,21 @@ const FooterNav = () => {
         <li>
           <Link
             href="/hijri-date"
-            className="opacity-50 transition-opacity hover:opacity-100"
+            className={`transition-opacity hover:opacity-100 ${
+              pathname === '/hijri-date' ? 'opacity-100' : 'opacity-50'
+            }`}
           >
             Hijri Date
           </Link>
         </li>
 
         <li>
-          <Link href="/blog/" className="opacity-50 hover:opacity-100">
+          <Link
+            href="/blog/"
+            className={`transition-opacity hover:opacity-100 ${
+              pathname === '/blog' ? 'opacity-100' : 'opacity-50'
+            }`}
+          >
             Blog
           </Link>
         </li>
@@ -37,19 +49,34 @@ const FooterNav = () => {
       {/* About us, FAQs, and contact us links */}
       <ul className="mb-12 flex flex-col text-center text-lg font-medium leading-[44px] text-[#646464] lg:whitespace-nowrap lg:text-left dark:text-white">
         <li>
-          <Link href="/about-us" className="opacity-50 hover:opacity-100">
+          <Link
+            href="/about-us"
+            className={`hover:opacity-100 hover:transition-opacity ${
+              pathname === '/about' ? 'opacity-100' : 'opacity-50'
+            }`}
+          >
             About Us
           </Link>
         </li>
 
         <li>
-          <Link href="/faqs" className="opacity-50 hover:opacity-100">
+          <Link
+            href="/faqs"
+            className={`transition-opacity hover:opacity-100 ${
+              pathname === '/faqs' ? 'opacity-100' : 'opacity-50'
+            }`}
+          >
             FAQs
           </Link>
         </li>
 
         <li>
-          <Link href="/contact-us" className="opacity-50 hover:opacity-100">
+          <Link
+            href="/contact-us"
+            className={`transition-opacity hover:opacity-100 ${
+              pathname === '/contact-us' ? 'opacity-100' : 'opacity-50'
+            }`}
+          >
             Contact Us
           </Link>
         </li>
@@ -110,7 +137,7 @@ const FooterNav = () => {
 
         <ul className="mb-16 flex flex-row justify-center gap-x-3">
           <li>
-            <Link href="https://twitter.com/myprayertimes">
+            <Link href="https://twitter.com/myprayertimes" target="_blank">
               <Twitter />
             </Link>
           </li>
