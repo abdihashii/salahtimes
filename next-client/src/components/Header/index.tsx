@@ -3,11 +3,16 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { useTheme } from 'next-themes';
+import { Moon, Sun } from 'lucide-react';
+import useHasMounted from '@/hooks/useHasMounted';
 
 import DesktopNav from './DesktopNav';
 
 const Header = () => {
   const pathname = usePathname();
+  const { theme, setTheme } = useTheme();
+  const hasMounted = useHasMounted();
 
   return (
     <header className="static w-full border-b border-header_border_color pb-[10px] pt-6 lg:pb-8 lg:pt-8">
@@ -40,6 +45,19 @@ const Header = () => {
         >
           Our Blog
         </Link>
+
+        {/* Dark mode toggle */}
+        {hasMounted && theme === 'light' ? (
+          <Moon
+            className="w-10 cursor-pointer"
+            onClick={() => setTheme('dark')}
+          />
+        ) : (
+          <Sun
+            className="w-10 cursor-pointer"
+            onClick={() => setTheme('light')}
+          />
+        )}
 
         {/* Hamburger icon */}
         {/* {isHamburgerMenuOpen ? (
