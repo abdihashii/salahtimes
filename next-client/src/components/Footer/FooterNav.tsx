@@ -72,9 +72,9 @@ const FooterNav = () => {
 
         <li>
           <Link
-            href="/contact-us"
+            href="/contact"
             className={`transition-opacity hover:opacity-100 ${
-              pathname === '/contact-us' ? 'opacity-100' : 'opacity-50'
+              pathname === '/contact' ? 'opacity-100' : 'opacity-50'
             }`}
           >
             Contact Us
