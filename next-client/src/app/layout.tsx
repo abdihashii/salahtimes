@@ -7,7 +7,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 const poppins = Poppins({
-  weight: ['400', '600', '700'], // Add the weights you need
+  weight: ['400', '500', '600', '700'], // Add the weights you need
   display: 'swap',
   subsets: ['latin'],
 });
