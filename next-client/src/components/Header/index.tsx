@@ -17,47 +17,55 @@ const Header = () => {
   return (
     <header className="static w-full border-b border-header_border_color pb-[10px] pt-6 lg:pb-8 lg:pt-8">
       <div className="mx-auto flex w-10/12 flex-row items-center lg:w-8/12 lg:justify-between xl:w-7/12">
-        {/* Logo */}
-        <Link className="flex flex-row items-center gap-3" href="/">
-          <Image
-            src={'/favicon-cropped-600px.png'}
-            alt="My Prayer Times Logo"
-            width={48}
-            height={48}
-          />
-          <p className="font-bold uppercase text-green-secondary">
-            My Prayer Times
-          </p>
-        </Link>
+        {/* Logo at the start */}
+        <div className="flex-grow-0">
+          <Link className="flex flex-row items-center gap-3" href="/">
+            <Image
+              src={'/favicon-cropped-600px.png'}
+              alt="My Prayer Times Logo"
+              width={48}
+              height={48}
+            />
+            <p className="font-bold uppercase text-green-secondary">
+              My Prayer Times
+            </p>
+          </Link>
+        </div>
 
-        {/* Navigation - Desktop */}
-        <DesktopNav />
+        {/* Navigation in the center */}
+        <div className="hidden flex-grow justify-center lg:flex">
+          <DesktopNav />
+        </div>
 
-        {/* Our Blog button - Desktop */}
-        <Link
-          className={`!hidden rounded-full bg-green-dark px-12 py-4 font-semibold text-white hover:bg-green-secondary hover:transition-colors lg:!block
-          ${
-            pathname === '/blog'
-              ? 'pointer-events-none opacity-20'
-              : 'cursor-pointer'
-          }`}
-          href="/blog"
-        >
-          Our Blog
-        </Link>
+        {/* Blog button at the end */}
+        <div className="flex-grow-0">
+          <Link
+            className={`hidden rounded-full bg-green-dark px-12 py-4 font-semibold text-white hover:bg-green-secondary hover:transition-colors lg:flex
+        ${
+          pathname === '/blog'
+            ? 'pointer-events-none opacity-20'
+            : 'cursor-pointer'
+        }`}
+            href="/blog"
+          >
+            Our Blog
+          </Link>
+        </div>
 
-        {/* Dark mode toggle */}
-        {hasMounted && theme === 'light' ? (
-          <Moon
-            className="w-10 cursor-pointer"
-            onClick={() => setTheme('dark')}
-          />
-        ) : (
-          <Sun
-            className="w-10 cursor-pointer"
-            onClick={() => setTheme('light')}
-          />
-        )}
+        {/* Dark mode toggle at the far right */}
+        <div className="ml-4 flex-grow-0">
+          {hasMounted && theme === 'light' ? (
+            <Moon
+              className="w-10 cursor-pointer"
+              onClick={() => setTheme('dark')}
+            />
+          ) : (
+            <Sun
+              className="w-10 cursor-pointer"
+              onClick={() => setTheme('light')}
+            />
+          )}
+        </div>
 
         {/* Hamburger icon */}
         {/* {isHamburgerMenuOpen ? (

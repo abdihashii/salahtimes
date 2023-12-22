@@ -7,7 +7,7 @@ const DesktopNav = () => {
   const pathname = usePathname();
 
   return (
-    <nav className="!hidden text-base font-medium leading-6 lg:!block text-[#130102] dark:text-white">
+    <nav className="!hidden text-base font-medium leading-6 text-[#130102] lg:!block dark:text-white">
       <ul className="flex flex-row gap-10">
         <li>
           <Link
