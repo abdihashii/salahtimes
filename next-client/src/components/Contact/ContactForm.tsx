@@ -40,7 +40,7 @@ const ContactForm = () => {
   ) : (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="mx-auto w-10/12 space-y-7 rounded-xl border border-green-dark p-7 lg:w-5/12"
+      className="mx-auto w-10/12 space-y-8 rounded-xl border border-gray-500 p-7 lg:w-5/12"
     >
       <section>
         <h3 className="text-lg font-bold">Contact Form</h3>
@@ -52,12 +52,10 @@ const ContactForm = () => {
         <div className="flex flex-col gap-4 lg:h-auto lg:w-1/2">
           {/* Your Name */}
           <div className="relative flex flex-col gap-2">
-            <User className="absolute left-2 top-[2.1rem] w-4 text-black" />
+            <User className="absolute left-2 top-[2.1rem] w-4" />
             <Label htmlFor="name">* Your Name</Label>
             <Input
-              className={`mt-1 rounded-md py-2 pl-8 text-black outline-none ring-1 ring-gray-500 hover:ring-green-secondary focus-visible:ring-2 focus-visible:ring-green-secondary 
-                  ${true ? 'bg-white' : 'bg-gray-200'}
-                `}
+              className={`mt-1 rounded-md py-2 pl-8 outline-none ring-1 ring-gray-500 hover:ring-green-secondary focus-visible:ring-2 focus-visible:ring-green-secondary`}
               id="name"
               type="text"
               placeholder="Ibn Rushd"
@@ -70,12 +68,10 @@ const ContactForm = () => {
 
           {/* Your Email */}
           <div className="relative flex flex-col gap-2">
-            <Mail className="absolute left-2 top-[2.1rem] w-4 text-black" />
+            <Mail className="absolute left-2 top-[2.1rem] w-4" />
             <Label htmlFor="email">* E-Mail</Label>
             <Input
-              className={`mt-1 rounded-md py-2 pl-8 text-black outline-none ring-1 ring-gray-500 hover:ring-green-secondary focus-visible:ring-2 focus-visible:ring-green-secondary 
-                  ${true ? 'bg-white' : 'bg-gray-200'}
-                `}
+              className={`mt-1 rounded-md py-2 pl-8 outline-none ring-1 ring-gray-500 hover:ring-green-secondary focus-visible:ring-2 focus-visible:ring-green-secondary`}
               id="email"
               type="email"
               placeholder="mansa@musa.com"
@@ -89,12 +85,10 @@ const ContactForm = () => {
 
           {/* Phone */}
           <div className="relative flex flex-col gap-2">
-            <Phone className="absolute left-2 top-[2.1rem] w-4 text-black" />
+            <Phone className="absolute left-2 top-[2.1rem] w-4" />
             <Label htmlFor="phone">Phone</Label>
             <Input
-              className={`mt-1 rounded-md py-2 pl-8 text-black outline-none ring-1 ring-gray-500 hover:ring-green-secondary focus-visible:ring-2 focus-visible:ring-green-secondary 
-                  ${true ? 'bg-white' : 'bg-gray-200'}
-                `}
+              className={`mt-1 rounded-md py-2 pl-8 outline-none ring-1 ring-gray-500 hover:ring-green-secondary focus-visible:ring-2 focus-visible:ring-green-secondary`}
               id="phone"
               type="tel"
               placeholder="123-456-7890"
@@ -110,9 +104,7 @@ const ContactForm = () => {
         <div className="flex h-52 flex-col gap-2 lg:h-auto lg:w-1/2">
           <Label htmlFor="message">* Message</Label>
           <Textarea
-            className={`mt-1 h-full rounded-md px-4 py-2 text-black outline-none ring-1 ring-gray-500 hover:ring-green-secondary focus-visible:ring-2 focus-visible:ring-green-secondary 
-                ${true ? 'bg-white' : 'bg-gray-200'}
-              `}
+            className={`mt-1 h-full rounded-md px-4 py-2 outline-none ring-1 ring-gray-500 hover:ring-green-secondary focus-visible:ring-2 focus-visible:ring-green-secondary`}
             id="message"
             placeholder="Write your message here..."
             {...register('message')}
