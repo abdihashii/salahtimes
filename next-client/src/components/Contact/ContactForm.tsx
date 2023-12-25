@@ -40,11 +40,13 @@ const ContactForm = () => {
   ) : (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="mx-auto w-10/12 space-y-8 rounded-xl border border-gray-500 p-7 lg:w-5/12"
+      className="mx-auto w-10/12 space-y-8 rounded-xl border border-gray-500 p-7 lg:w-5/12 xl:mx-0 xl:w-1/2 xl:space-y-10"
     >
       <section>
-        <h3 className="text-lg font-bold">Contact Form</h3>
-        <p className="text-sm">Required fields are marked with an asterisk*</p>
+        <h3 className="text-lg font-bold xl:text-3xl">Contact Form</h3>
+        <p className="text-sm xl:text-base">
+          Required fields are marked with an asterisk*
+        </p>
       </section>
 
       <section className="flex w-full flex-col gap-10 lg:flex-row">
