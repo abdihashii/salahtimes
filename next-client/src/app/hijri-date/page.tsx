@@ -4,7 +4,7 @@ export default function HijriDatePage() {
   const m = moment();
 
   return (
-    <main className="my-24 flex flex-grow flex-col items-center justify-center gap-6 font-medium">
+    <main className="my-24 flex flex-grow flex-col items-center justify-center gap-6">
       <h1 className="text-4xl lg:text-6xl">
         {m.locale('en').format('iMMMM iD, iYYYY')}
       </h1>
