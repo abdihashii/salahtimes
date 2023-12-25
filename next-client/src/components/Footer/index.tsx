@@ -6,7 +6,7 @@ import FooterNav from './FooterNav';
 
 const Footer = () => {
   return (
-    <footer className="mx-auto mt-14 flex flex-col border-t-4 border-green-secondary pt-12 tracking-[0.011em]">
+    <footer className="mx-auto flex w-full flex-col border-t-4 border-green-secondary pt-12 tracking-[0.011em]">
       <section className="lg:mx-auto lg:flex lg:w-8/12 lg:flex-row lg:gap-16 xl:w-7/12">
         {/* Logo and One-liner */}
         <div className="gap-8 lg:flex lg:w-6/12 lg:flex-col">
