@@ -14,8 +14,18 @@ const Header = () => {
   const { theme, setTheme } = useTheme();
   const hasMounted = useHasMounted();
 
+  const transparentNav = pathname === '/' || pathname === '/about';
+
   return (
-    <header className="static w-full border-b border-header_border_color pb-[10px] pt-6 lg:pb-8 lg:pt-8">
+    <header
+      className={`w-full pb-[10px] pt-6 lg:pb-8 lg:pt-8
+      ${
+        transparentNav
+          ? 'absolute left-0 top-0 z-30 w-full'
+          : 'static border-b border-header_border_color'
+      }
+    `}
+    >
       <div className="mx-auto flex w-10/12 flex-row items-center lg:w-8/12 lg:justify-between xl:w-7/12">
         {/* Logo at the start */}
         <div className="flex-grow-0">
@@ -26,7 +36,11 @@ const Header = () => {
               width={48}
               height={48}
             />
-            <p className="font-bold uppercase text-green-secondary">
+            <p
+              className={`uppercase ${
+                transparentNav ? 'text-white' : 'text-green-secondary'
+              } font-bold`}
+            >
               My Prayer Times
             </p>
           </Link>
@@ -34,18 +48,14 @@ const Header = () => {
 
         {/* Navigation in the center */}
         <div className="hidden flex-grow justify-center lg:flex">
-          <DesktopNav />
+          <DesktopNav transparentNav={transparentNav} />
         </div>
 
         {/* Blog button at the end */}
         <div className="flex-grow-0">
           <Link
             className={`hidden rounded-full bg-green-dark px-12 py-4 font-semibold text-white hover:bg-green-secondary hover:transition-colors lg:flex
-        ${
-          pathname === '/blog'
-            ? 'pointer-events-none opacity-20'
-            : 'cursor-pointer'
-        }`}
+        ${pathname === '/blog' ? 'pointer-events-none opacity-20' : ''}`}
             href="/blog"
           >
             Our Blog
@@ -56,12 +66,16 @@ const Header = () => {
         <div className="ml-4 flex-grow-0">
           {hasMounted && theme === 'light' ? (
             <Moon
-              className="w-10 cursor-pointer"
+              className={`w-10 cursor-pointer
+                ${transparentNav ? 'text-white' : ''}
+              `}
               onClick={() => setTheme('dark')}
             />
           ) : (
             <Sun
-              className="w-10 cursor-pointer"
+              className={`w-10 cursor-pointer
+                ${transparentNav ? 'text-white' : ''}
+              `}
               onClick={() => setTheme('light')}
             />
           )}

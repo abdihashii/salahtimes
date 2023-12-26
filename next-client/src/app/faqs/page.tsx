@@ -65,7 +65,7 @@ export default function FaqPages() {
   return (
     <main className="flex flex-grow flex-col space-y-16 py-10 lg:py-16">
       {/* Title Section */}
-      <h1 className="mx-auto mb-6 w-10/12 text-center text-3xl font-semibold leading-10 text-green-dark lg:mb-7 lg:w-5/12 lg:text-6xl dark:text-green-secondary">
+      <h1 className="mx-auto mb-6 w-10/12 text-center text-3xl font-semibold leading-10 lg:mb-7 lg:w-5/12 lg:text-6xl">
         Frequently Asked Questions (FAQs)
       </h1>
 

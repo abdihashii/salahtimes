@@ -3,11 +3,15 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-const DesktopNav = () => {
+const DesktopNav = ({ transparentNav }: { transparentNav: boolean }) => {
   const pathname = usePathname();
 
   return (
-    <nav className="!hidden text-base font-medium leading-6 text-[#130102] lg:!block dark:text-white">
+    <nav
+      className={`!hidden text-base font-medium leading-6 lg:!block
+        ${transparentNav ? 'text-white' : 'text-[#130102] dark:text-white'}
+      `}
+    >
       <ul className="flex flex-row gap-10">
         <li>
           <Link
