@@ -1,8 +1,10 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function AboutPage() {
   return (
     <main className="flex flex-grow flex-col pb-10 lg:pb-16">
+      {/* Header Section */}
       <section
         className="shadow-bg_layer bg-cover bg-no-repeat pb-14 text-center text-white lg:bg-center lg:pb-28"
         style={{
@@ -22,17 +24,146 @@ export default function AboutPage() {
         <article className="flex flex-row justify-center gap-5">
           <Link
             href="/faqs"
-            className="w-max rounded-full bg-green-dark px-8 py-4 font-medium leading-loose transition-colors hover:bg-green-secondary"
+            className="w-max rounded-full bg-green-dark px-8 py-2 font-medium leading-loose transition-colors hover:bg-green-secondary"
           >
             See Our FAQs
           </Link>
 
           <Link
             href="/contact"
-            className="w-max rounded-full border-2 border-[#FFFAF5] px-12 py-4 font-medium leading-loose transition-colors hover:border-gray-400"
+            className="w-max rounded-full border-2 border-[#FFFAF5] px-8 py-2 font-medium leading-loose transition-colors hover:border-gray-400"
           >
             Contact Us
           </Link>
+        </article>
+      </section>
+
+      {/* Mission and Vision Section */}
+      <section className="lg:mx-auto lg:mt-28 lg:flex lg:w-9/12 lg:flex-row lg:gap-20 xl:w-7/12">
+        <article className="relative mx-auto w-11/12 lg:w-1/2">
+          <div className="absolute bottom-0 right-0 h-5/6 w-10/12 bg-green-secondary"></div>
+
+          <div className="relative left-0 top-0 h-5/6 w-10/12">
+            <Image
+              src="/sheikh-zayed-grand-mosque.jpg"
+              alt="Sheikh Zayed Grand Mosque, Abu Dhabi"
+              fill={true}
+              objectFit="cover"
+            />
+          </div>
+        </article>
+
+        <div className="space-y-10 lg:w-1/2">
+          <article className="space-y-5">
+            <h2 className="mb-3 text-2xl font-bold leading-8 lg:text-5xl lg:font-semibold lg:leading-[57px]">
+              Our Mission
+            </h2>
+
+            <hr className="mx-auto w-20 rounded-xl border-4 border-green-secondary lg:ml-0 lg:w-16 lg:bg-green-secondary" />
+
+            <p className="text-[#848280] lg:leading-7">
+              To empower Muslims of diverse backgrounds with accurate and
+              reliable Islamic prayer times while providing informative content
+              to deepen understanding and connection with Allah and our faith.
+              Guided by principles of integrity, transparency, and love for
+              Allah, we strive to establish a community of believers who stay on
+              track with their daily salah and continue to learn and grow in
+              their spiritual journey.
+            </p>
+          </article>
+
+          <article className="space-y-5">
+            <h2 className="leading-30px lg:leading-57px mb-3 text-2xl font-bold lg:text-5xl lg:font-semibold">
+              Our Vision
+            </h2>
+
+            <hr className="mx-auto w-20 rounded-xl border-4 border-green-secondary lg:ml-0 lg:w-16 lg:bg-green-secondary" />
+
+            <p className="text-[#848280] lg:leading-7">
+              To be a global platform that engages the Ummah and inspires a
+              deeper connection and love for Salah through accurate prayer times
+              and high-quality, well-researched content. We aspire to be known
+              as the go-to website for all things related to Islamic prayer and
+              to have a substantial impact on our users.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      {/* Core Values Section */}
+      <section className="mx-auto flex w-11/12 flex-col gap-10 lg:mt-40 lg:w-9/12 xl:w-7/12">
+        <article className="space-y-5 text-center">
+          <h2 className="text-2xl font-bold leading-8 lg:text-5xl lg:font-semibold lg:leading-[57px]">
+            Our Core Values
+          </h2>
+
+          <p className="text-[#848280] lg:leading-7">
+            Discover the guiding principles that shape our mission and vision at
+            MyPrayerTimes.
+          </p>
+        </article>
+
+        <article className="flex h-auto flex-col gap-10 lg:grid lg:grid-cols-3">
+          <div className="max-w-[370px] space-y-5">
+            <div>
+              <Image src="/iman.jpg" alt="" width="370" height="400" />
+              <Link
+                href="/"
+                target="_blank"
+                className="inline-block text-xs text-[#717171]"
+              >
+                Photo by Abdullah Arid | Unsplash
+              </Link>
+            </div>
+
+            <p className="text-xl font-medium">Iman (Faith)</p>
+            <p className="text-[#717171]">
+              At MyPrayerTimes, we believe that faith is the foundation of a
+              meaningful and fulfilling life as a Muslim. We strive to provide
+              content and resources that deepen knowledge and connection with
+              Allah.
+            </p>
+          </div>
+
+          <div className="max-w-[370px] space-y-5">
+            <div>
+              <Image src="/integrity.jpg" alt="" width="370" height="400" />
+              <Link
+                href="/"
+                target="_blank"
+                className="inline-block text-xs text-[#717171]"
+              >
+                Photo by Zach Reiner | Unsplash
+              </Link>
+            </div>
+
+            <p className="text-xl font-medium">Integrity + Transparency</p>
+            <p className="text-[#717171]">
+              We pride ourselves on being open and upfront with our users,
+              providing accurate and reliable salah times and being transparent
+              in our practices.
+            </p>
+          </div>
+
+          <div className="max-w-[370px] space-y-5">
+            <div>
+              <Image src="/quality.jpg" alt="" width="370" height="400" />
+              <Link
+                href="/"
+                target="_blank"
+                className="inline-block text-xs text-[#717171]"
+              >
+                Photo by Jon Tyson | Unsplash
+              </Link>
+            </div>
+
+            <p className="text-xl font-medium">Commitment to Quality</p>
+            <p className="text-[#717171]">
+              We aim to provide the highest quality content and user experience,
+              from accurate prayer times to informative and well-researched blog
+              posts about prayer in Islam.
+            </p>
+          </div>
         </article>
       </section>
     </main>
