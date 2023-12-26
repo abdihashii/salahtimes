@@ -139,11 +139,13 @@ const FooterNav = () => {
           <li>
             <Link href="https://twitter.com/myprayertimes" target="_blank">
               <Twitter />
+              <span className="sr-only">Follow us on Twitter</span>
             </Link>
           </li>
           <li>
             <Link href="/">
               <Instagram />
+              <span className="sr-only">Follow us on Instagram</span>
             </Link>
           </li>
         </ul>
