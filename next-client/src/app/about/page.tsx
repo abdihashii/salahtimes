@@ -1,7 +1,38 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const blogQuery = `
+    {
+      blogPostCollection(limit: 6) {
+        items {
+          sys {
+            id
+          }
+          slug
+          date
+          postHeaderImage {
+            url
+          }
+        }
+      }
+    }
+  `;
+
+  const resp = await fetch(
+    `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.CONTENTFUL_DELIVERY_API_ACCESS_TOKEN}`,
+      },
+      body: JSON.stringify({ blogQuery }),
+    }
+  );
+
+  const blogs = await resp.json();
+
   return (
     <main className="flex flex-grow flex-col pb-10 lg:pb-16">
       {/* Header Section */}
@@ -91,7 +122,7 @@ export default function AboutPage() {
       </section>
 
       {/* Core Values Section */}
-      <section className="mx-auto flex w-11/12 flex-col gap-10 lg:mt-40 lg:w-9/12 xl:w-7/12">
+      <section className="flex w-11/12 flex-col gap-10 lg:mx-auto lg:mt-40 lg:w-9/12 xl:w-7/12">
         <article className="space-y-5 text-center">
           <h2 className="text-2xl font-bold leading-8 lg:text-5xl lg:font-semibold lg:leading-[57px]">
             Our Core Values
@@ -165,6 +196,31 @@ export default function AboutPage() {
             </p>
           </div>
         </article>
+      </section>
+
+      {/* Our Pledge Section */}
+      <section
+        className="text-center text-white lg:mt-28 lg:py-20"
+        style={{
+          background: 'linear-gradient(100.39deg, #122318 0.8%, #00260E 100%)',
+        }}
+      >
+        <h2 className="mb-8 text-3xl font-bold lg:text-[45px]">Our Pledge</h2>
+        <p className="mx-auto mb-9 w-11/12 lg:w-7/12 xl:w-6/12">
+          Our pledge is to provide accurate and reliable Islamic prayer times
+          for Muslims of diverse backgrounds. We are committed to upholding
+          principles of integrity, transparency, and love for Allah. These
+          principles guide our work as we strive to establish a community of
+          believers who stay on track with their daily salah and continue to
+          learn and grow in their spiritual journey.
+        </p>
+        <hr className="mx-auto mb-9 w-6/12 lg:w-3/12" />
+        <p className="mx-auto mb-9 w-11/12 lg:w-7/12 xl:w-6/12">
+          &quot;If anyone fulfils his brother&apos;s needs, Allah will fulfil
+          his needs; if one relieves a Muslim of his troubles, Allah will
+          relieve his troubles on the Day of Resurrection.&quot;
+        </p>
+        <p>Prophet Muhammad ﷺ, Sahih Bukhari</p>
       </section>
     </main>
   );
