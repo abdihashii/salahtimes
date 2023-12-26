@@ -50,7 +50,7 @@ const FooterNav = () => {
       <ul className="mb-12 flex flex-col text-center text-lg font-medium leading-[44px] text-[#646464] lg:whitespace-nowrap lg:text-left dark:text-white">
         <li>
           <Link
-            href="/about-us"
+            href="/about"
             className={`hover:opacity-100 hover:transition-opacity ${
               pathname === '/about' ? 'opacity-100' : 'opacity-50'
             }`}
