@@ -246,7 +246,7 @@ export default async function AboutPage() {
             <Link
               key={blog.sys.id}
               href={blog.slug}
-              className="inline-block hover:lg:underline"
+              className="relative inline-block hover:lg:underline"
             >
               <Image src={blog.postHeaderImage.url} alt="" fill />
               <p>{blog.title}</p>
