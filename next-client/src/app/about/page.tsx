@@ -9,6 +9,7 @@ export default async function AboutPage() {
           sys {
             id
           }
+          title
           slug
           date
           postHeaderImage {
@@ -19,7 +20,7 @@ export default async function AboutPage() {
     }
   `;
 
-  const resp = await fetch(
+  const res = await fetch(
     `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`,
     {
       method: 'POST',
@@ -27,11 +28,15 @@ export default async function AboutPage() {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${process.env.CONTENTFUL_DELIVERY_API_ACCESS_TOKEN}`,
       },
-      body: JSON.stringify({ blogQuery }),
+      body: JSON.stringify({ query: blogQuery }),
     }
   );
 
-  const blogs = await resp.json();
+  const {
+    data: {
+      blogPostCollection: { items: blogs },
+    },
+  } = await res.json();
 
   return (
     <main className="flex flex-grow flex-col pb-10 lg:pb-16">
@@ -221,6 +226,34 @@ export default async function AboutPage() {
           relieve his troubles on the Day of Resurrection.&quot;
         </p>
         <p>Prophet Muhammad ﷺ, Sahih Bukhari</p>
+      </section>
+
+      {/* Trending Stories Section */}
+      <section className="mx-auto flex w-11/12 flex-col lg:mt-28 lg:w-9/12 xl:w-7/12">
+        <article className="space-y-5 text-center">
+          <h2 className="text-2xl font-bold leading-8 lg:text-[40px] ">
+            Must-Read Stories Of The Month
+          </h2>
+
+          <p className="text-[#848280] lg:leading-7">
+            Stay informed and inspired with our top-trending stories of the
+            month.
+          </p>
+        </article>
+
+        <article className="lg:grid lg:grid-cols-3 lg:gap-10">
+          {blogs.map((blog: any) => (
+            <Link
+              key={blog.sys.id}
+              href={blog.slug}
+              className="inline-block hover:lg:underline"
+            >
+              <Image src={blog.postHeaderImage.url} alt="" fill />
+              <p>{blog.title}</p>
+              <p>{blog.date}</p>
+            </Link>
+          ))}
+        </article>
       </section>
     </main>
   );
