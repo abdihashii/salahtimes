@@ -15,7 +15,6 @@ const Footer = () => {
             <div className="relative min-h-[60px] w-2/12">
               <Image
                 src="/favicon-cropped-600px.png"
-                layout="responsive"
                 width={100}
                 height={100}
                 objectFit="contain"
