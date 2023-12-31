@@ -1,17 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { sanitizeDate } from '@/lib/utils';
 
 export default async function BlogPage() {
   // const createExcerpt = (text: string) => {};
-
-  const sanitizeDate = (date: string) => {
-    const dateObj = new Date(date);
-    const month = dateObj.toLocaleString('default', { month: 'short' });
-    const day = dateObj.getDate();
-    const year = dateObj.getFullYear();
-
-    return `${month} ${day}, ${year}`;
-  };
 
   const query = `
     {
