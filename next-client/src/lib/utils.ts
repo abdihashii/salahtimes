@@ -13,3 +13,20 @@ export const sanitizeDate = (date: string) => {
 
   return `${month} ${day}, ${year}`;
 };
+
+export const fetchTimezone = async (lat: number, lng: number) => {
+  const timestamp = Math.floor(Date.now() / 1000); // Current timestamp in seconds
+  const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
+  const url = `https://maps.googleapis.com/maps/api/timezone/json?location=${lat},${lng}&timestamp=${timestamp}&key=${apiKey}`;
+
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    const { timeZoneId } = data;
+
+    return timeZoneId;
+  } catch (error) {
+    console.error(`Error fetching timezone: ${error}`);
+    return null;
+  }
+};
