@@ -3,10 +3,10 @@
 import React, { useState, useEffect } from 'react';
 import { PrayerTimes, Coordinates, CalculationMethod } from 'adhan';
 import { Loader } from '@googlemaps/js-api-loader';
-import './autocompleteStyles.css';
 import moment from 'moment-timezone';
-import CurrentTime from './CurrentTime';
 import { fetchLocationFromIP, fetchTimezone } from '@/lib/utils';
+
+import CurrentTime from './CurrentTime';
 
 const LocationSelector = () => {
   const [inputValue, setInputValue] = useState('');
