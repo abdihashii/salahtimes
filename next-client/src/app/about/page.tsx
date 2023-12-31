@@ -42,7 +42,7 @@ export default async function AboutPage() {
     <main className="flex flex-grow flex-col pb-10 lg:pb-16">
       {/* Header Section */}
       <section
-        className="shadow-bg_layer bg-cover bg-no-repeat pb-14 text-center text-white lg:bg-center lg:pb-28"
+        className="bg-cover bg-no-repeat pb-14 text-center text-white shadow-bg_layer lg:bg-center lg:pb-28"
         style={{
           backgroundImage: 'url("/masjid_bg_wide.webp")',
         }}
@@ -81,10 +81,10 @@ export default async function AboutPage() {
 
           <div className="relative left-0 top-0 h-5/6 w-10/12">
             <Image
+              className="object-cover"
               src="/sheikh-zayed-grand-mosque.jpg"
               alt="Sheikh Zayed Grand Mosque, Abu Dhabi"
               fill={true}
-              objectFit="cover"
             />
           </div>
         </article>
