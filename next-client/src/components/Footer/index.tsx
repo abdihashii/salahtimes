@@ -12,12 +12,11 @@ const Footer = () => {
         <div className="gap-8 lg:flex lg:w-6/12 lg:flex-col">
           {/* Logo */}
           <Link href="/" className="flex flex-row items-center">
-            <div className="relative min-h-[60px] w-2/12">
+            <div className="relative min-h-[60px] w-2/12 bg-cover">
               <Image
                 src="/favicon-cropped-600px.png"
                 width={100}
                 height={100}
-                objectFit="contain"
                 alt="MyPrayerTimes Logo"
               />
             </div>
