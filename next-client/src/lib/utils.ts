@@ -30,3 +30,19 @@ export const fetchTimezone = async (lat: number, lng: number) => {
     return null;
   }
 };
+
+export const fetchLocationFromIP = async () => {
+  try {
+    const response = await fetch(`http://ip-api.com/json`);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error(`Error fetching location from IP: ${error}`);
+    return null;
+  }
+};

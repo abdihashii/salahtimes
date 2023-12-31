@@ -6,7 +6,7 @@ import { Loader } from '@googlemaps/js-api-loader';
 import './autocompleteStyles.css';
 import moment from 'moment-timezone';
 import CurrentTime from './CurrentTime';
-import { fetchTimezone } from '@/lib/utils';
+import { fetchLocationFromIP, fetchTimezone } from '@/lib/utils';
 
 const LocationSelector = () => {
   const [inputValue, setInputValue] = useState('');
@@ -27,6 +27,25 @@ const LocationSelector = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
+  };
+
+  const handleGetLocation = async () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+        },
+        async (error) => {
+          if (error.code === error.PERMISSION_DENIED) {
+            const { lat, lon } = await fetchLocationFromIP(); // Fallback to IP location
+            console.log(`Latitude: ${lat}, Longitude: ${lon}`);
+          }
+        }
+      );
+    } else {
+      await fetchLocationFromIP(); // Fallback to IP location
+    }
   };
 
   useEffect(() => {
@@ -106,7 +125,10 @@ const LocationSelector = () => {
       {/* Location selector */}
       <div className="w-full">
         <div className="relative w-full">
-          <button className="absolute left-6 top-6 z-10 inline-flex w-fit text-green-secondary hover:underline">
+          <button
+            onClick={handleGetLocation}
+            className="absolute left-6 top-6 z-10 inline-flex w-fit text-green-secondary hover:underline"
+          >
             Get my location
           </button>
 
