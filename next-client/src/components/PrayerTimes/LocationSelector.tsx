@@ -25,27 +25,46 @@ const LocationSelector = () => {
   });
   const [prayerTimes, setPrayerTimes] = useState<PrayerTimes | null>(null);
 
+  const setValues = async (
+    name: string,
+    lat: number,
+    lng: number,
+    formatted_address: string
+  ) => {
+    const timezoneData = await fetchTimezone(lat, lng);
+
+    if (!timezoneData) {
+      console.log('No timezone data found');
+      return;
+    }
+
+    setSelectedPlace({
+      name: name,
+      lat: lat,
+      lng: lng,
+      formatted_address: formatted_address,
+      timezone: timezoneData,
+      currentTimeInLocation: moment().tz(timezoneData).format('h:mm A'),
+    });
+
+    setInputValue(formatted_address);
+
+    // set prayer times
+    const coordinates = new Coordinates(lat, lng);
+    const params = CalculationMethod.MuslimWorldLeague();
+    setPrayerTimes(new PrayerTimes(coordinates, new Date(), params));
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
   };
 
   const handleGetLocation = async () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
-        },
-        async (error) => {
-          if (error.code === error.PERMISSION_DENIED) {
-            const { lat, lon } = await fetchLocationFromIP(); // Fallback to IP location
-            console.log(`Latitude: ${lat}, Longitude: ${lon}`);
-          }
-        }
-      );
-    } else {
-      await fetchLocationFromIP(); // Fallback to IP location
-    }
+    const { lat, lon, countryCode, city } = await fetchLocationFromIP(); // Fallback to IP location
+    const formatted_address = `${city}, ${countryCode}`;
+
+    // set the values
+    setValues(city, lat, lon, formatted_address);
   };
 
   useEffect(() => {
@@ -71,37 +90,12 @@ const LocationSelector = () => {
           return;
         }
 
-        console.log(
-          `Place: ${JSON.stringify(place.formatted_address, null, 2)}`
-        );
-
-        const timezoneData = await fetchTimezone(
+        setValues(
+          place.name,
           place.geometry.location.lat(),
-          place.geometry.location.lng()
+          place.geometry.location.lng(),
+          place.formatted_address
         );
-
-        if (!timezoneData) {
-          console.log('No timezone data found');
-          return;
-        }
-
-        setSelectedPlace({
-          name: place.name,
-          lat: place.geometry.location.lat(),
-          lng: place.geometry.location.lng(),
-          formatted_address: place.formatted_address,
-          timezone: timezoneData,
-          currentTimeInLocation: moment().tz(timezoneData).format('h:mm A'),
-        });
-        setInputValue(place.formatted_address);
-
-        // set prayer times
-        const coordinates = new Coordinates(
-          place.geometry.location.lat(),
-          place.geometry.location.lng()
-        );
-        const params = CalculationMethod.NorthAmerica();
-        setPrayerTimes(new PrayerTimes(coordinates, new Date(), params));
       });
     });
   }, []);
