@@ -40,7 +40,7 @@ const Footer = () => {
       </section>
 
       {/* Copyright */}
-      <div className="flex justify-center bg-[#F8F8F8] p-6 text-sm font-extralight leading-7 text-[#0F0700]">
+      <div className="flex justify-center border-t-2 border-t-black p-6 text-sm font-extralight leading-7 text-[#0F0700] dark:border-t-[#F8F8F8] dark:text-white">
         Copyright ©MyPrayerTimes 2023. All rights reserved
       </div>
     </footer>
