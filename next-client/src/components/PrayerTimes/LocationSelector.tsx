@@ -1,10 +1,14 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { PrayerTimes, Coordinates, CalculationMethod } from 'adhan';
 import { Loader } from '@googlemaps/js-api-loader';
 import moment from 'moment-timezone';
-import { fetchLocationFromIP, fetchTimezone } from '@/lib/utils';
+import {
+  fetchDateTimeDataFromTimeZone,
+  fetchLocationFromIP,
+  fetchTimezone,
+  formatTimeString,
+} from '@/lib/utils';
 
 import CurrentTime from './CurrentTime';
 
@@ -23,7 +27,22 @@ const LocationSelector = () => {
     lng: null,
     formatted_address: '',
   });
-  const [prayerTimes, setPrayerTimes] = useState<PrayerTimes | null>(null);
+  // const [prayerTimes, setPrayerTimes] = useState<PrayerTimes | null>(null);
+  const [prayerTimes, setPrayerTimes] = useState<{
+    fajr: string | null;
+    sunrise: string | null;
+    dhuhr: string | null;
+    asr: string | null;
+    maghrib: string | null;
+    isha: string | null;
+  }>({
+    fajr: null,
+    sunrise: null,
+    dhuhr: null,
+    asr: null,
+    maghrib: null,
+    isha: null,
+  });
 
   const setValues = async (
     name: string,
@@ -31,9 +50,9 @@ const LocationSelector = () => {
     lng: number,
     formatted_address: string
   ) => {
-    const timezoneData = await fetchTimezone(lat, lng);
+    const timezoneId = await fetchTimezone(lat, lng);
 
-    if (!timezoneData) {
+    if (!timezoneId) {
       console.log('No timezone data found');
       return;
     }
@@ -43,16 +62,37 @@ const LocationSelector = () => {
       lat: lat,
       lng: lng,
       formatted_address: formatted_address,
-      timezone: timezoneData,
-      currentTimeInLocation: moment().tz(timezoneData).format('h:mm A'),
+      timezone: timezoneId,
+      currentTimeInLocation: moment().tz(timezoneId).format('h:mm A'),
     });
 
     setInputValue(formatted_address);
 
     // set prayer times
-    const coordinates = new Coordinates(lat, lng);
-    const params = CalculationMethod.MuslimWorldLeague();
-    setPrayerTimes(new PrayerTimes(coordinates, new Date(), params));
+    try {
+      // get current date of the users timezone
+      const timeData = await fetchDateTimeDataFromTimeZone(timezoneId);
+      const { year, month, day } = timeData;
+      const formattedDate = `${day}-${month}-${year}`;
+
+      const resp = await fetch(
+        `http://api.aladhan.com/v1/timings/${formattedDate}?latitude=${lat}&longitude=${lng}&method=3`
+      );
+      const {
+        data: { timings },
+      } = await resp.json();
+
+      setPrayerTimes({
+        fajr: timings.Fajr,
+        sunrise: timings.Sunrise,
+        dhuhr: timings.Dhuhr,
+        asr: timings.Asr,
+        maghrib: timings.Maghrib,
+        isha: timings.Isha,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -154,8 +194,7 @@ const LocationSelector = () => {
 
             return (
               <div key={prayer}>
-                {prayer}:{' '}
-                {moment(prayerTime).tz('America/Chicago').format('h:mm A')}
+                {prayer}: {formatTimeString(prayerTime)}
               </div>
             );
           })}
