@@ -199,7 +199,7 @@ const LocationSelector = () => {
             return (
               <div
                 key={prayer}
-                className="flex h-8 flex-row items-center justify-center rounded-md bg-green-dark text-white"
+                className="flex h-10 flex-row items-center justify-center rounded-md bg-green-dark text-white"
               >
                 {prayer}: {formatTimeString(prayerTime)}
               </div>
@@ -208,12 +208,12 @@ const LocationSelector = () => {
         </div>
       ) : (
         <div className="mx-auto grid w-full grid-cols-6 justify-between gap-6">
-          <Skeleton className="h-8 bg-green-dark" />
-          <Skeleton className="h-8 bg-green-dark" />
-          <Skeleton className="h-8 bg-green-dark" />
-          <Skeleton className="h-8 bg-green-dark" />
-          <Skeleton className="h-8 bg-green-dark" />
-          <Skeleton className="h-8 bg-green-dark" />
+          <Skeleton className="h-10 bg-green-dark" />
+          <Skeleton className="h-10 bg-green-dark" />
+          <Skeleton className="h-10 bg-green-dark" />
+          <Skeleton className="h-10 bg-green-dark" />
+          <Skeleton className="h-10 bg-green-dark" />
+          <Skeleton className="h-10 bg-green-dark" />
         </div>
       )}
 
