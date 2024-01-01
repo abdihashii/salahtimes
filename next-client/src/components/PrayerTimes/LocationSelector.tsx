@@ -76,19 +76,17 @@ const LocationSelector = () => {
       const formattedDate = `${day}-${month}-${year}`;
 
       const resp = await fetch(
-        `http://api.aladhan.com/v1/timings/${formattedDate}?latitude=${lat}&longitude=${lng}&method=3`
+        `/api/prayer-times?date=${formattedDate}&lat=${lat}&lng=${lng}&method=2`
       );
-      const {
-        data: { timings },
-      } = await resp.json();
+      const data = await resp.json();
 
       setPrayerTimes({
-        fajr: timings.Fajr,
-        sunrise: timings.Sunrise,
-        dhuhr: timings.Dhuhr,
-        asr: timings.Asr,
-        maghrib: timings.Maghrib,
-        isha: timings.Isha,
+        fajr: data.Fajr,
+        sunrise: data.Sunrise,
+        dhuhr: data.Dhuhr,
+        asr: data.Asr,
+        maghrib: data.Maghrib,
+        isha: data.Isha,
       });
     } catch (error) {
       console.log(error);
