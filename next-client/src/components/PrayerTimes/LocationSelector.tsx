@@ -11,6 +11,7 @@ import {
 } from '@/lib/utils';
 
 import CurrentTime from './CurrentTime';
+import { Skeleton } from '../ui/skeleton';
 
 const LocationSelector = () => {
   const [inputValue, setInputValue] = useState('');
@@ -43,6 +44,7 @@ const LocationSelector = () => {
     maghrib: null,
     isha: null,
   });
+  const [prayerTimesLoading, setPrayerTimesLoading] = useState(false);
 
   const setValues = async (
     name: string,
@@ -70,6 +72,8 @@ const LocationSelector = () => {
 
     // set prayer times
     try {
+      setPrayerTimesLoading(true);
+
       // get current date of the users timezone
       const timeData = await fetchDateTimeDataFromTimeZone(timezoneId);
       const { year, month, day } = timeData;
@@ -90,6 +94,8 @@ const LocationSelector = () => {
       });
     } catch (error) {
       console.log(error);
+    } finally {
+      setPrayerTimesLoading(false);
     }
   };
 
@@ -178,8 +184,8 @@ const LocationSelector = () => {
       </div>
 
       {/* Prayer times */}
-      {prayerTimes && (
-        <div className="mx-auto flex w-full flex-row justify-between">
+      {!prayerTimesLoading ? (
+        <div className="mx-auto grid w-full grid-cols-6 justify-between gap-6">
           {Object.entries(prayerTimes).map(([prayer, prayerTime]) => {
             if (!prayerTime) return null;
 
@@ -191,11 +197,23 @@ const LocationSelector = () => {
               return null;
 
             return (
-              <div key={prayer}>
+              <div
+                key={prayer}
+                className="flex h-8 flex-row items-center justify-center rounded-md bg-green-dark text-white"
+              >
                 {prayer}: {formatTimeString(prayerTime)}
               </div>
             );
           })}
+        </div>
+      ) : (
+        <div className="mx-auto grid w-full grid-cols-6 justify-between gap-6">
+          <Skeleton className="h-8 bg-green-dark" />
+          <Skeleton className="h-8 bg-green-dark" />
+          <Skeleton className="h-8 bg-green-dark" />
+          <Skeleton className="h-8 bg-green-dark" />
+          <Skeleton className="h-8 bg-green-dark" />
+          <Skeleton className="h-8 bg-green-dark" />
         </div>
       )}
 
