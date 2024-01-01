@@ -46,3 +46,35 @@ export const fetchLocationFromIP = async () => {
     return null;
   }
 };
+
+export const fetchDateTimeDataFromTimeZone = async (timeZone: string) => {
+  try {
+    const response = await fetch(`/api/timeApi?timeZone=${timeZone}`);
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error(`Error fetching date/time data from timezone: ${error}`);
+    return null;
+  }
+};
+
+export const formatTimeString = (timeString: string) => {
+  // Split the time string into hours and minutes
+  const [hours24, minutes] = timeString.split(':').map(Number);
+
+  // Convert 24-hour time to 12-hour time
+  const hours12 = hours24 % 12 || 12;
+  const suffix = hours24 >= 12 ? 'PM' : 'AM';
+
+  // Pad minutes with a leading zero if necessary
+  const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+
+  // Format and return the time string
+  return `${hours12}:${formattedMinutes} ${suffix}`;
+};
