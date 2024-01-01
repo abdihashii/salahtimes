@@ -49,7 +49,7 @@ export const fetchLocationFromIP = async () => {
 
 export const fetchDateTimeDataFromTimeZone = async (timeZone: string) => {
   try {
-    const response = await fetch(`/api/timeApi?timeZone=${timeZone}`);
+    const response = await fetch(`/api/time-api?timeZone=${timeZone}`);
 
     if (!response.ok) {
       throw new Error('Network response was not ok');
