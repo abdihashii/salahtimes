@@ -78,3 +78,36 @@ export const formatTimeString = (timeString: string) => {
   // Format and return the time string
   return `${hours12}:${formattedMinutes} ${suffix}`;
 };
+
+export const findNextPrayer = (
+  timings: {
+    [key: string]: string;
+  },
+  currentTime: string
+) => {
+  const [currentHours, currentMinutes] = currentTime.split(':').map(Number);
+  const currentTimeInMinutes = currentHours * 60 + currentMinutes;
+
+  const timeToMinutes = (time: string) => {
+    const [hours, minutes] = time.split(':').map(Number);
+    return hours * 60 + minutes;
+  };
+
+  let nextPrayer = null;
+  let smallestDiff = Number.MAX_SAFE_INTEGER;
+
+  for (const [prayer, time] of Object.entries(timings)) {
+    const prayerTimeInMinutes = timeToMinutes(time);
+    const diff = prayerTimeInMinutes - currentTimeInMinutes;
+
+    if (diff > 0 && diff < smallestDiff) {
+      smallestDiff = diff;
+      nextPrayer = {
+        prayer,
+        time: formatTimeString(time),
+      };
+    }
+  }
+
+  return nextPrayer;
+};

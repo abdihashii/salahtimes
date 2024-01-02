@@ -28,21 +28,24 @@ const LocationSelector = () => {
     lng: null,
     formatted_address: '',
   });
-  // const [prayerTimes, setPrayerTimes] = useState<PrayerTimes | null>(null);
   const [prayerTimes, setPrayerTimes] = useState<{
-    fajr: string | null;
-    sunrise: string | null;
-    dhuhr: string | null;
-    asr: string | null;
-    maghrib: string | null;
-    isha: string | null;
+    Fajr: string | null;
+    Sunrise: string | null;
+    Dhuhr: string | null;
+    Asr: string | null;
+    Maghrib: string | null;
+    Isha: string | null;
+    nextPrayer?: {
+      prayer: string;
+      time: string;
+    } | null;
   }>({
-    fajr: null,
-    sunrise: null,
-    dhuhr: null,
-    asr: null,
-    maghrib: null,
-    isha: null,
+    Fajr: null,
+    Sunrise: null,
+    Dhuhr: null,
+    Asr: null,
+    Maghrib: null,
+    Isha: null,
   });
   const [prayerTimesLoading, setPrayerTimesLoading] = useState(false);
 
@@ -80,17 +83,20 @@ const LocationSelector = () => {
       const formattedDate = `${day}-${month}-${year}`;
 
       const resp = await fetch(
-        `/api/prayer-times?date=${formattedDate}&lat=${lat}&lng=${lng}&method=2`
+        `/api/prayer-times?date=${formattedDate}&lat=${lat}&lng=${lng}&method=2&currentTime=${moment()
+          .tz(timezoneId)
+          .format('HH:mm')}`
       );
-      const data = await resp.json();
+      const { filteredTimings: timings, nextPrayer } = await resp.json();
 
       setPrayerTimes({
-        fajr: data.Fajr,
-        sunrise: data.Sunrise,
-        dhuhr: data.Dhuhr,
-        asr: data.Asr,
-        maghrib: data.Maghrib,
-        isha: data.Isha,
+        Fajr: timings.Fajr,
+        Sunrise: timings.Sunrise,
+        Dhuhr: timings.Dhuhr,
+        Asr: timings.Asr,
+        Maghrib: timings.Maghrib,
+        Isha: timings.Isha,
+        nextPrayer: nextPrayer,
       });
     } catch (error) {
       console.log(error);
@@ -190,7 +196,7 @@ const LocationSelector = () => {
             if (!prayerTime) return null;
 
             if (
-              !['fajr', 'sunrise', 'dhuhr', 'asr', 'maghrib', 'isha'].includes(
+              !['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'].includes(
                 prayer
               )
             )
@@ -201,7 +207,8 @@ const LocationSelector = () => {
                 key={prayer}
                 className="flex h-10 flex-row items-center justify-center rounded-md bg-green-dark text-white"
               >
-                {prayer}: {formatTimeString(prayerTime)}
+                {prayer}: {formatTimeString(prayerTime as string)}
+                {prayerTimes.nextPrayer?.prayer === prayer ? '(Next)' : ''}
               </div>
             );
           })}
@@ -221,6 +228,10 @@ const LocationSelector = () => {
         name={selectedPlace.name}
         currentTime={selectedPlace.currentTimeInLocation || ''}
       />
+
+      <pre>
+        <code>{JSON.stringify(prayerTimes.nextPrayer?.prayer, null, 2)}</code>
+      </pre>
     </article>
   );
 };
