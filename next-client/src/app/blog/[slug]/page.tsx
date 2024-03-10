@@ -28,8 +28,6 @@ export default async function BlogSlugPage({
   `;
 
 	const contentfulUrl = `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}`;
-	console.log(contentfulUrl);
-	console.log(`slug: ${slug}`);
 
 	const resp = await fetch(contentfulUrl, {
 		method: 'POST',
