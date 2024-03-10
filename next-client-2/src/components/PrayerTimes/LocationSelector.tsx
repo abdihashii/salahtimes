@@ -73,10 +73,9 @@ const LocationSelector = () => {
             return (
               <div
                 key={prayer}
-                className="flex h-10 flex-row items-center justify-center rounded-md bg-green-dark text-white"
+                className={`flex h-10 flex-row items-center justify-center rounded-md ${prayerTimes.nextPrayer?.prayer === prayer ? 'bg-green-dark' : 'bg-white text-green-secondary'}`}
               >
                 {prayer}: {formatTimeString(prayerTime as string)}
-                {prayerTimes.nextPrayer?.prayer === prayer ? '(Next)' : ''}
               </div>
             );
           })}
@@ -97,10 +96,6 @@ const LocationSelector = () => {
         name={selectedPlace.name}
         currentTime={selectedPlace.currentTimeInLocation || ''}
       />
-
-      <pre>
-        <code>{JSON.stringify(prayerTimes.nextPrayer?.prayer, null, 2)}</code>
-      </pre>
     </article>
   );
 };

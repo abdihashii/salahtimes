@@ -95,6 +95,17 @@ export const fetchDateTimeDataFromTimeZone = async (timeZone: string) => {
 };
 
 /**
+ * This function takes a time string in the format "HH:MM" and returns
+ * the time in minutes.
+ * @param time - time string in the format "HH:MM"
+ * @returns - time in minutes
+ */
+const timeToMinutes = (time: string) => {
+  const [hours, minutes] = time.split(':').map(Number);
+  return hours * 60 + minutes;
+};
+
+/**
  * It takes a time string in the format "HH:MM" and returns a formatted
  * time string in the format "HH:MM AM/PM". Basically, it converts 24-hour
  * time to 12-hour time and adds the AM/PM suffix.
@@ -125,18 +136,15 @@ export const findNextPrayer = (
   const [currentHours, currentMinutes] = currentTime.split(':').map(Number);
   const currentTimeInMinutes = currentHours * 60 + currentMinutes;
 
-  const timeToMinutes = (time: string) => {
-    const [hours, minutes] = time.split(':').map(Number);
-    return hours * 60 + minutes;
-  };
-
   let nextPrayer = null;
   let smallestDiff = Number.MAX_SAFE_INTEGER;
 
   for (const [prayer, time] of Object.entries(timings)) {
-    console.log(prayer, time);
-    if (!['Fajr, Sunrise, Dhuhr, Asr, Maghrib, Isha'].includes(prayer))
+    if (
+      !['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'].includes(prayer)
+    ) {
       continue;
+    }
 
     const prayerTimeInMinutes = timeToMinutes(time);
     const diff = prayerTimeInMinutes - currentTimeInMinutes;
