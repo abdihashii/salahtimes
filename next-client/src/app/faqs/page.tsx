@@ -50,18 +50,18 @@ const faqs = [
 		contact: [
 			{
 				question: 'How can I contact MyPrayerTimes.com?',
-				answer: 'You can contact us through our website&apos;s contact form.',
+				answer: "You can contact us through our website's contact form.",
 			},
 		],
 	},
 ];
 
-export default function FaqPages() {
-	const generalFaqs = faqs[0].general;
-	const prayerTimesFaqs = faqs[1].prayerTimes;
-	const contentFaqs = faqs[2].content;
-	const contactFaqs = faqs[3].contact;
+const generalFaqs = faqs[0].general;
+const prayerTimesFaqs = faqs[1].prayerTimes;
+const contentFaqs = faqs[2].content;
+const contactFaqs = faqs[3].contact;
 
+export default function FaqPages() {
 	return (
 		<main className="flex flex-grow flex-col space-y-16 py-10 lg:py-16">
 			{/* Title Section */}
