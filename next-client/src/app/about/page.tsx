@@ -245,7 +245,7 @@ export default async function AboutPage() {
 					{blogs.map((blog: any) => (
 						<Link
 							key={blog.sys.id}
-							href={blog.slug}
+							href={`/blog/${blog.slug}`}
 							className="relative inline-block hover:lg:underline"
 						>
 							<Image src={blog.postHeaderImage.url} alt="" fill />
