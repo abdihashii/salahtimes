@@ -7,38 +7,38 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 const poppins = Poppins({
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
-  display: 'swap',
-  subsets: ['latin'],
-  preload: true,
+	weight: ['100', '200', '300', '400', '500', '600', '700', '800'],
+	display: 'swap',
+	subsets: ['latin'],
+	preload: true,
 });
 
 export const metadata: Metadata = {
-  title: 'MyPrayerTimes',
-  description: 'MyPrayerTimes',
+	title: 'MyPrayerTimes',
+	description: 'MyPrayerTimes',
 };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className={`${poppins.className} flex min-h-screen flex-col`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Header />
+	return (
+		<html lang="en">
+			<body className={`${poppins.className} flex min-h-screen flex-col`}>
+				<ThemeProvider
+					attribute="class"
+					defaultTheme="light"
+					enableSystem
+					disableTransitionOnChange
+				>
+					<Header />
 
-          {children}
+					{children}
 
-          <Footer />
-        </ThemeProvider>
-      </body>
-    </html>
-  );
+					<Footer />
+				</ThemeProvider>
+			</body>
+		</html>
+	);
 }
