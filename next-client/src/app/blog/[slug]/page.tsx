@@ -7,6 +7,7 @@ import { cosmic } from '@/lib/cosmicBucketClient';
 
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
+import SubscribeToNewsletter from '@/components/SubscribeToNewsletter';
 
 dayjs.extend(advancedFormat);
 
@@ -92,67 +93,72 @@ export default async function BlogSlugPage({
 	} = await getBlogPost(slug);
 
 	return (
-		<main className="mx-auto mb-12 mt-9 w-10/12 text-left lg:mt-24">
-			<section className="">
-				<h1 className="mb-[30px] text-xl font-semibold text-[#0f0700] lg:mx-auto lg:w-7/12 lg:text-[40px] lg:font-medium lg:leading-[55px]">
-					{title}
-				</h1>
+		<main className="mb-14 mt-9 lg:mt-24">
+			<div className="mx-auto mb-12 w-10/12 text-left">
+				<section className="">
+					<h1 className="mb-[30px] text-xl font-semibold text-[#0f0700] lg:mx-auto lg:w-7/12 lg:text-[40px] lg:font-medium lg:leading-[55px]">
+						{title}
+					</h1>
 
-				{/* Author, Date, and Share Links */}
-				<div className="mb-8 flex flex-row items-center gap-4 lg:mx-auto lg:w-7/12">
-					{/* Author's image */}
-					<span
-						style={{
-							width: '46px',
-							height: '46px',
-							backgroundColor: 'yellow',
-							borderRadius: '46px',
-						}}
-						className="lg:hidden"
-					></span>
-					<span
-						style={{
-							width: '53px',
-							height: '53px',
-							backgroundColor: 'yellow',
-							borderRadius: '53px',
-						}}
-						className="hidden lg:block"
-					></span>
+					{/* Author, Date, and Share Links */}
+					<div className="mb-8 flex flex-row items-center gap-4 lg:mx-auto lg:w-7/12">
+						{/* Author's image */}
+						<span
+							style={{
+								width: '46px',
+								height: '46px',
+								backgroundColor: 'yellow',
+								borderRadius: '46px',
+							}}
+							className="lg:hidden"
+						></span>
+						<span
+							style={{
+								width: '53px',
+								height: '53px',
+								backgroundColor: 'yellow',
+								borderRadius: '53px',
+							}}
+							className="hidden lg:block"
+						></span>
 
-					{/* Author name and date */}
-					<div className="flex flex-col gap-1">
-						<p className="text-base text-[#0f0700] lg:text-xl">{author}</p>
-						<p className="text-xs text-[#848280] lg:text-lg">
-							{formattedDateString}
-						</p>
+						{/* Author name and date */}
+						<div className="flex flex-col gap-1">
+							<p className="text-base text-[#0f0700] lg:text-xl">{author}</p>
+							<p className="text-xs text-[#848280] lg:text-lg">
+								{formattedDateString}
+							</p>
+						</div>
 					</div>
-				</div>
-			</section>
+				</section>
 
-			<section className="mb-7 lg:mx-auto lg:w-7/12">
-				<ReactMarkdown components={components}>{intro}</ReactMarkdown>
-			</section>
+				<section className="mb-7 lg:mx-auto lg:w-7/12">
+					<ReactMarkdown components={components}>{intro}</ReactMarkdown>
+				</section>
 
-			{/* Hero Image */}
-			<section className="h-fit w-full ">
-				<div className="relative h-[600px] w-full">
-					<Image
-						className="object-cover"
-						src={hero_image.url}
-						alt={hero_image_credit}
-						fill={true}
-					/>
-				</div>
-				<ReactMarkdown components={components}>
-					{hero_image_credit}
-				</ReactMarkdown>
-			</section>
+				{/* Hero Image */}
+				<section className="h-fit w-full ">
+					<div className="relative h-[600px] w-full">
+						<Image
+							className="object-cover"
+							src={hero_image.url}
+							alt={hero_image_credit}
+							fill={true}
+						/>
+					</div>
+					<ReactMarkdown components={components}>
+						{hero_image_credit}
+					</ReactMarkdown>
+				</section>
 
-			{/* Blog Post Body */}
-			<section className="mt-7 lg:mx-auto lg:w-7/12">
-				<ReactMarkdown components={components}>{body}</ReactMarkdown>
-			</section>
+				{/* Blog Post Body */}
+				<section className="mt-7 lg:mx-auto lg:w-7/12">
+					<ReactMarkdown components={components}>{body}</ReactMarkdown>
+				</section>
+			</div>
+
+			{/* Subscribe to Newsletter */}
+			<SubscribeToNewsletter />
 		</main>
 	);
 }
