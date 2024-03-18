@@ -14,7 +14,10 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-	title: 'MyPrayerTimes',
+	title: {
+		template: '%s | MyPrayerTimes',
+		default: 'MyPrayerTimes',
+	},
 	description: 'MyPrayerTimes',
 };
 

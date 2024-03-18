@@ -1,7 +1,8 @@
 import Image from 'next/image';
+import { Metadata } from 'next';
 
 import ReactMarkdown from 'react-markdown';
-import type { Components } from 'react-markdown';
+import { components } from './markdownComponents';
 
 import { cosmic } from '@/lib/cosmicBucketClient';
 
@@ -11,43 +12,19 @@ import SubscribeToNewsletter from '@/components/SubscribeToNewsletter';
 
 dayjs.extend(advancedFormat);
 
-const components: Components = {
-	h2: (h2) => {
-		return (
-			<h2 className="mb-2 text-lg font-semibold text-[#0f0700]">
-				{h2.children}
-			</h2>
-		);
-	},
-	p: (p) => {
-		return (
-			<p className="mb-8 text-base font-light leading-7 text-black last:mb-0">
-				{p.children}
-			</p>
-		);
-	},
-	ol: (ol) => {
-		return <ol className="ml-8 list-inside">{ol.children}</ol>;
-	},
-	li: (li) => {
-		return (
-			<li className="mb-6 list-decimal text-base font-light leading-7 text-black last:mb-8">
-				{li.children}
-			</li>
-		);
-	},
-	a: (a) => {
-		return (
-			<a
-				className="text-xs text-[#848280] hover:text-[#0f0700] hover:underline focus:text-[#0f0700]"
-				href={typeof a.href === 'string' ? a.href : ''}
-				target="_blank"
-			>
-				{a.children}
-			</a>
-		);
-	},
-};
+export async function generateMetadata({
+	params,
+}: {
+	params: { slug: string };
+}): Promise<Metadata> {
+	const slug = params.slug;
+
+	const { title } = await getBlogPost(slug);
+
+	return {
+		title: title,
+	};
+}
 
 const getBlogPost = async (slug: string) => {
 	const blogPost = await cosmic.objects
@@ -94,7 +71,7 @@ export default async function BlogSlugPage({
 
 	return (
 		<main className="mb-14 mt-9 lg:mt-24">
-			<div className="mx-auto mb-12 w-10/12 text-left">
+			<div className="mx-auto mb-12 w-10/12 text-left dark:text-white">
 				<section className="">
 					<h1 className="mb-[30px] text-xl font-semibold text-[#0f0700] lg:mx-auto lg:w-7/12 lg:text-[40px] lg:font-medium lg:leading-[55px]">
 						{title}
