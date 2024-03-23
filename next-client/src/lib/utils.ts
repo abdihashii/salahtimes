@@ -1,4 +1,5 @@
 import { type ClassValue, clsx } from 'clsx';
+// import { getPlaiceholder } from 'plaiceholder';
 import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
@@ -159,4 +160,45 @@ export const findNextPrayer = (
 	}
 
 	return nextPrayer;
+};
+
+// export const getBase64 = async (url: string) => {
+// 	try {
+// 		const res = await fetch(url);
+
+// 		if (!res.ok) {
+// 			throw new Error(`Failed to fetch image: ${res.status}	${res.statusText}`);
+// 		}
+
+// 		const buffer = await res.arrayBuffer();
+
+// 		const { base64 } = await getPlaiceholder(Buffer.from(buffer));
+
+// 		console.log(base64);
+
+// 		return base64;
+// 	} catch (err) {
+// 		if (err instanceof Error) console.log(err.stack);
+// 	}
+// };
+
+// export const addBlurredDataUrls = async (images: any): Promise<any> => {
+// 	//
+// 	const base64Promises = images.map(async (image: any) => {
+// 		return getBase64(image.src.large);
+// 	});
+
+// 	const base64Results = await Promise.all(base64Promises);
+
+// 	const photosWithBlur = images.photos.map((photo, i) => {
+// 		photo.blurredDataUrl = base64Results[i];
+// 		return photo;
+// 	});
+
+// 	return photosWithBlur;
+// };
+
+export const createExcerpt = (introText: string) => {
+	const excerpt = introText.split(' ').slice(0, 40).join(' ');
+	return excerpt;
 };

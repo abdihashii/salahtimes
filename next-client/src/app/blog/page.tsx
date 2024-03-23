@@ -1,16 +1,16 @@
+import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { sanitizeDate } from '@/lib/utils';
+
+import { sanitizeDate, createExcerpt } from '@/lib/utils';
+
 import SubscribeToNewsletter from '@/components/SubscribeToNewsletter';
-import { Metadata } from 'next';
 
 export const metadata: Metadata = {
 	title: 'Blog',
 };
 
 export default async function BlogPage() {
-	// const createExcerpt = (text: string) => {};
-
 	const query = `
     {
       blogPostCollection(order: date_DESC, limit: 7) {
@@ -79,9 +79,8 @@ export default async function BlogPage() {
 							{items[0].title}
 						</Link>
 
-						<p className="text-[#848280] lg:leading-7">
-							Text excerpt goes here Text excerpt goes here Text excerpt goes
-							here Text excerpt goes here Text excerpt goes here Text excerpt
+						<p className="line-clamp-3 text-[#848280] lg:leading-7">
+							{createExcerpt(items[0].intro)}
 						</p>
 
 						{/* Author and date */}
@@ -125,11 +124,7 @@ export default async function BlogPage() {
 							</p>
 
 							{/* Excerpt */}
-							<p className="line-clamp-2">
-								Excerpt goes here Excerpt goes here Excerpt goes here Excerpt
-								goes here Excerpt goes here Excerpt goes here Excerpt goes here
-								Excerpt goes here Excerpt goes here
-							</p>
+							<p className="line-clamp-2 h-14">{createExcerpt(item.intro)}</p>
 
 							{/* Author and date */}
 							<div className="flex flex-row items-center gap-4">
