@@ -34,39 +34,11 @@ const usePrayerTimes = () => {
 		prayerTimesLoadingAtom,
 	);
 
-	/**
-	 * Sets the values of the location to the state.
-	 * @param name - The name of the location
-	 * @param lat - The latitude of the location
-	 * @param lng - The longitude of the location
-	 * @param formatted_address - The formatted address of the location
-	 * @returns - void
-	 */
-	const setValues = async (
-		name: string,
+	const fetchAndSetPrayerTimes = async (
 		lat: number,
 		lng: number,
-		formatted_address: string,
+		timezoneId: string,
 	) => {
-		const timezoneId = await fetchTimezone(lat, lng);
-
-		if (!timezoneId) {
-			console.log('No timezone data found');
-			return;
-		}
-
-		setSelectedPlace({
-			name: name,
-			lat: lat,
-			lng: lng,
-			formatted_address: formatted_address,
-			timezone: timezoneId,
-			currentTimeInLocation: moment().tz(timezoneId).format('h:mm A'),
-		});
-
-		setInputValue(formatted_address);
-
-		// set prayer times
 		try {
 			setPrayerTimesLoading(true);
 
@@ -108,6 +80,17 @@ const usePrayerTimes = () => {
 		}
 	};
 
+	const setTimezoneFromLatLng = async (lat: number, lng: number) => {
+		const timezoneId = await fetchTimezone(lat, lng);
+
+		if (!timezoneId) {
+			console.log('No timezone data found');
+			return;
+		}
+
+		return timezoneId;
+	};
+
 	/**
 	 * This function is responsible for fetching the user's location
 	 * asynchronously with the ip-api.com API. It then sets the values
@@ -119,7 +102,7 @@ const usePrayerTimes = () => {
 		const formatted_address = `${city}, ${countryCode}`;
 
 		// set the values
-		setValues(city, lat, lon, formatted_address);
+		// setValues(city, lat, lon, formatted_address);
 	};
 
 	/**
@@ -138,6 +121,7 @@ const usePrayerTimes = () => {
 			const input = document.getElementById('autocomplete') as HTMLInputElement;
 			const autocomplete = new google.maps.places.Autocomplete(input);
 
+			// When the user selects a place from the dropdown, set the values
 			autocomplete.addListener('place_changed', async () => {
 				const place = autocomplete.getPlace();
 
@@ -151,14 +135,33 @@ const usePrayerTimes = () => {
 					return;
 				}
 
-				setValues(
-					place.name,
+				// get the timezone id from the lat and lng
+				const timezoneId = await setTimezoneFromLatLng(
 					place.geometry.location.lat(),
 					place.geometry.location.lng(),
-					place.formatted_address,
+				);
+
+				setSelectedPlace({
+					name: place.name,
+					lat: place.geometry.location.lat(),
+					lng: place.geometry.location.lng(),
+					formatted_address: place.formatted_address,
+					timezone: timezoneId,
+					currentTimeInLocation: moment().tz(timezoneId).format('h:mm A'),
+				});
+
+				setInputValue(place.formatted_address);
+
+				// after setting the values, fetch and set the prayer times
+				await fetchAndSetPrayerTimes(
+					place.geometry.location.lat(),
+					place.geometry.location.lng(),
+					timezoneId,
 				);
 			});
 		});
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return {
