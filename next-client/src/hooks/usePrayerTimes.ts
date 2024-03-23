@@ -6,25 +6,33 @@ import {
 import type { TPlace, TPrayerTime } from '@/types';
 import { Loader } from '@googlemaps/js-api-loader';
 import moment from 'moment-timezone';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { atom, useAtom } from 'jotai';
+
+const inputValueAtom = atom<string>('');
+const selectedPlaceAtom = atom<TPlace>({
+	name: '',
+	lat: null,
+	lng: null,
+	formatted_address: '',
+});
+const prayerTimesAtom = atom<TPrayerTime>({
+	Fajr: null,
+	Sunrise: null,
+	Dhuhr: null,
+	Asr: null,
+	Maghrib: null,
+	Isha: null,
+});
+const prayerTimesLoadingAtom = atom<boolean>(false);
 
 const usePrayerTimes = () => {
-	const [inputValue, setInputValue] = useState('');
-	const [selectedPlace, setSelectedPlace] = useState<TPlace>({
-		name: '',
-		lat: null,
-		lng: null,
-		formatted_address: '',
-	});
-	const [prayerTimes, setPrayerTimes] = useState<TPrayerTime>({
-		Fajr: null,
-		Sunrise: null,
-		Dhuhr: null,
-		Asr: null,
-		Maghrib: null,
-		Isha: null,
-	});
-	const [prayerTimesLoading, setPrayerTimesLoading] = useState(false);
+	const [inputValue, setInputValue] = useAtom(inputValueAtom);
+	const [selectedPlace, setSelectedPlace] = useAtom(selectedPlaceAtom);
+	const [prayerTimes, setPrayerTimes] = useAtom(prayerTimesAtom);
+	const [prayerTimesLoading, setPrayerTimesLoading] = useAtom(
+		prayerTimesLoadingAtom,
+	);
 
 	/**
 	 * Sets the values of the location to the state.
