@@ -64,6 +64,10 @@ export const fetchLocationFromIP = async () => {
 
 		const data = await response.json();
 
+		if (data.status !== 'success') {
+			throw new Error('Failed to fetch location from IP');
+		}
+
 		return data;
 	} catch (error) {
 		console.error(`Error fetching location from IP: ${error}`);

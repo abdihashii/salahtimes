@@ -13,7 +13,7 @@ const inputValueAtom = atom<string>('');
 const selectedPlaceAtom = atom<TPlace>({
 	name: '',
 	lat: null,
-	lng: null,
+	lon: null,
 	formatted_address: '',
 });
 const prayerTimesAtom = atom<TPrayerTime>({
@@ -34,14 +34,32 @@ const usePrayerTimes = () => {
 		prayerTimesLoadingAtom,
 	);
 
-	const fetchAndSetPrayerTimes = async (
+	/**
+	 * Fetches the prayer times from the /api/prayer-times endpoint by passing
+	 * the date, latitude, longitude, timezone ID, and the current time in the
+	 * user's timezone.
+	 * @param lat - Latitude
+	 * @param lon - Longitude
+	 * @param timezoneId - Timezone ID
+	 * @returns - Promise that resolves to the prayer times and the next prayer
+	 */
+	const fetchPrayerTimes = async (
 		lat: number,
-		lng: number,
+		lon: number,
 		timezoneId: string,
-	) => {
+	): Promise<
+		| {
+				timings: TPrayerTime;
+				nextPrayer: {
+					prayer: string;
+					time: string;
+				};
+		  }
+		| {
+				error: any;
+		  }
+	> => {
 		try {
-			setPrayerTimesLoading(true);
-
 			// get current date of the users timezone
 			const timeData = await fetchDateTimeDataFromTimeZone(timezoneId);
 			const { year, month, day } = timeData;
@@ -49,9 +67,9 @@ const usePrayerTimes = () => {
 			// format the date
 			const formattedDate = `${day}-${month}-${year}`;
 
-			// fetch prayer times by date, lat, lng, and timezone id
+			// fetch prayer times by date, lat, lon, and timezone id
 			const resp = await fetch(
-				`/api/prayer-times?date=${formattedDate}&lat=${lat}&lng=${lng}&method=2&currentTime=${moment()
+				`/api/prayer-times?date=${formattedDate}&lat=${lat}&lon=${lon}&method=2&currentTime=${moment()
 					.tz(timezoneId)
 					.format('HH:mm')}`,
 			);
@@ -62,6 +80,47 @@ const usePrayerTimes = () => {
 
 			// Get the prayer times and the next prayer data from the response
 			const { filteredTimings: timings, nextPrayer } = await resp.json();
+
+			if (!timings) {
+				throw new Error('Failed to fetch prayer times');
+			}
+
+			return {
+				timings,
+				nextPrayer,
+			};
+		} catch (error) {
+			return {
+				error,
+			};
+		}
+	};
+
+	/**
+	 * Fetches and sets the prayer times to the state by calling the
+	 * fetchPrayerTimes function and passing the latitude, longitude, and
+	 * timezone ID.
+	 * @param lat - Latitude
+	 * @param lon - Longitude
+	 * @param timezoneId - Timezone ID
+	 * @returns - Promise that resolves by setting the prayer times to the state
+	 * and returns an error if there is an error.
+	 */
+	const fetchAndSetPrayerTimes = async (
+		lat: number,
+		lon: number,
+		timezoneId: string,
+	) => {
+		try {
+			setPrayerTimesLoading(true);
+
+			const resp = await fetchPrayerTimes(lat, lon, timezoneId);
+
+			if ('error' in resp) {
+				throw resp.error;
+			}
+
+			const { timings, nextPrayer } = resp;
 
 			// set the prayer times to the state
 			setPrayerTimes({
@@ -74,14 +133,22 @@ const usePrayerTimes = () => {
 				nextPrayer: nextPrayer,
 			});
 		} catch (error) {
-			console.log(error);
+			return {
+				error,
+			};
 		} finally {
 			setPrayerTimesLoading(false);
 		}
 	};
 
-	const setTimezoneFromLatLng = async (lat: number, lng: number) => {
-		const timezoneId = await fetchTimezone(lat, lng);
+	/**
+	 * Gets the timezone ID of the user based on the latitude and longitude
+	 * @param lat - Latitude
+	 * @param lon - Longitude
+	 * @returns - Timezone ID
+	 */
+	const getTimezoneFromLatLon = async (lat: number, lon: number) => {
+		const timezoneId = await fetchTimezone(lat, lon);
 
 		if (!timezoneId) {
 			console.log('No timezone data found');
@@ -98,11 +165,31 @@ const usePrayerTimes = () => {
 	 * This happens when the user clicks the "Get my location" button.
 	 */
 	const handleGetLocation = async () => {
-		const { lat, lon, countryCode, city } = await fetchLocationFromIP(); // Fallback to IP location
+		const { lat, lon, countryCode, city, timezone } =
+			await fetchLocationFromIP(); // Fallback to IP location
+
+		// format the address to City, Country
 		const formatted_address = `${city}, ${countryCode}`;
 
 		// set the values
-		// setValues(city, lat, lon, formatted_address);
+		setSelectedPlace({
+			name: city,
+			lat,
+			lon,
+			formatted_address,
+			timezone,
+			currentTimeInLocation: moment().tz(timezone).format('h:mm A'),
+		});
+		setInputValue(formatted_address);
+		try {
+			const resp = await fetchAndSetPrayerTimes(lat, lon, timezone);
+
+			if (resp && 'error' in resp) {
+				throw resp.error;
+			}
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	/**
@@ -136,7 +223,7 @@ const usePrayerTimes = () => {
 				}
 
 				// get the timezone id from the lat and lng
-				const timezoneId = await setTimezoneFromLatLng(
+				const timezoneId = await getTimezoneFromLatLon(
 					place.geometry.location.lat(),
 					place.geometry.location.lng(),
 				);
@@ -144,7 +231,7 @@ const usePrayerTimes = () => {
 				setSelectedPlace({
 					name: place.name,
 					lat: place.geometry.location.lat(),
-					lng: place.geometry.location.lng(),
+					lon: place.geometry.location.lng(),
 					formatted_address: place.formatted_address,
 					timezone: timezoneId,
 					currentTimeInLocation: moment().tz(timezoneId).format('h:mm A'),
@@ -153,11 +240,19 @@ const usePrayerTimes = () => {
 				setInputValue(place.formatted_address);
 
 				// after setting the values, fetch and set the prayer times
-				await fetchAndSetPrayerTimes(
-					place.geometry.location.lat(),
-					place.geometry.location.lng(),
-					timezoneId,
-				);
+				try {
+					const resp = await fetchAndSetPrayerTimes(
+						place.geometry.location.lat(),
+						place.geometry.location.lng(),
+						timezoneId,
+					);
+
+					if (resp && 'error' in resp) {
+						throw resp.error;
+					}
+				} catch (error) {
+					console.log(error);
+				}
 			});
 		});
 
