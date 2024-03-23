@@ -163,6 +163,14 @@ export const findNextPrayer = (
 		}
 	}
 
+	// check edge case where the next prayer is Fajr
+	if (nextPrayer === null) {
+		nextPrayer = {
+			prayer: 'Fajr',
+			time: formatTimeString(timings.Fajr),
+		};
+	}
+
 	return nextPrayer;
 };
 
