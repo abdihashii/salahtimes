@@ -1,10 +1,8 @@
 import { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
-
-import { sanitizeDate, createExcerpt } from '@/lib/utils';
 
 import SubscribeToNewsletter from '@/components/SubscribeToNewsletter';
+import FeaturedPost from '@/components/Blog/FeaturedPost';
+import BlogPosts from '@/components/Blog/BlogPosts';
 
 export const metadata: Metadata = {
 	title: 'Blog',
@@ -56,90 +54,10 @@ export default async function BlogPage() {
 			</h1>
 
 			{/* Featured Post section */}
-			<section className="lg:bg-green-secondary lg:bg-opacity-15 lg:py-24 dark:lg:bg-opacity-30">
-				{/* Wrapper for featured post */}
-				<article className="lg:mx-auto lg:grid lg:min-h-[500px] lg:w-9/12 lg:grid-cols-2 lg:gap-16">
-					{/* Left side */}
-					<div className="relative mx-auto h-full w-full">
-						<Image
-							className="object-cover"
-							src={items[0].postHeaderImage.url}
-							alt={items[0].postHeaderImage.description}
-							fill={true}
-						/>
-					</div>
-
-					{/* Right side */}
-					<div className="flex flex-col gap-5">
-						<h2 className="lg:text-2xl lg:font-bold">Featured Blog Post</h2>
-						<Link
-							className="text-lg font-normal leading-6 underline lg:text-4xl lg:leading-[55px] "
-							href={`/blog/${items[0].slug}`}
-						>
-							{items[0].title}
-						</Link>
-
-						<p className="line-clamp-3 text-[#848280] lg:leading-7">
-							{createExcerpt(items[0].intro)}
-						</p>
-
-						{/* Author and date */}
-						<div className="flex flex-row items-center gap-4">
-							<span className="h-12 w-12 rounded-full bg-yellow-400"></span>
-
-							<div className="flex flex-col">
-								<p className="text-text-layout_text text-lg lg:text-xl">
-									{items[0].author}
-								</p>
-								<p className="text-sm lg:text-base">
-									{sanitizeDate(items[0].date)}
-								</p>
-							</div>
-						</div>
-					</div>
-				</article>
-			</section>
+			<FeaturedPost item={items[0]} />
 
 			{/* Three blog posts */}
-			<section className="lg:mx-auto lg:grid lg:w-9/12 lg:grid-cols-3 lg:gap-8 lg:py-24">
-				{items.slice(1, 4).map((item: any) => (
-					<article key={item} className="min-h-[450px] overflow-hidden">
-						<Link
-							className="group flex h-full w-full flex-col justify-between gap-5"
-							href={`/blog/${item.slug}`}
-						>
-							{/* Hero image */}
-							<div className="relative h-2/3">
-								<Image
-									className="object-cover"
-									alt={item.postHeaderImage.description}
-									src={item.postHeaderImage.url}
-									fill={true}
-								/>
-							</div>
-
-							{/* Title */}
-							<p className="text-lg font-medium capitalize leading-6 group-hover:underline">
-								{item.title}
-							</p>
-
-							{/* Excerpt */}
-							<p className="line-clamp-2 h-14">{createExcerpt(item.intro)}</p>
-
-							{/* Author and date */}
-							<div className="flex flex-row items-center gap-4">
-								<span className="h-11 w-11 rounded-full bg-yellow-400"></span>
-								<div className="flex flex-col">
-									<p className="text-lg">{item.author}</p>
-									<p className="text-sm text-gray-400">
-										{sanitizeDate(item.date)}
-									</p>
-								</div>
-							</div>
-						</Link>
-					</article>
-				))}
-			</section>
+			<BlogPosts items={items} />
 
 			{/* Newsletter section */}
 			<SubscribeToNewsletter />
