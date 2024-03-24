@@ -44,8 +44,8 @@ const HamburgerMenu = ({ closeMenu }: { closeMenu: () => void }) => {
 				<li className="mx-auto w-fit">
 					<Link
 						onClick={handleClick}
-						href="/hijri"
-						className={`${pathname === '/hijri' ? 'text-green-secondary' : ''}`}
+						href="/hijri-date"
+						className={`${pathname === '/hijri-date' ? 'text-green-secondary' : ''}`}
 					>
 						Hijri Date
 					</Link>
