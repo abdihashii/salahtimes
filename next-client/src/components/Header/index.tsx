@@ -4,15 +4,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
-import { Moon, Sun } from 'lucide-react';
+import { Menu, Moon, Sun, X } from 'lucide-react';
 import useHasMounted from '@/hooks/useHasMounted';
 
 import DesktopNav from './DesktopNav';
+import { useState } from 'react';
+import HamburgerMenu from './HamburgerMenu';
 
 const Header = () => {
 	const pathname = usePathname();
 	const { theme, setTheme } = useTheme();
 	const hasMounted = useHasMounted();
+	const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
 
 	const transparentNav = pathname === '/' || pathname === '/about';
 
@@ -26,9 +29,9 @@ const Header = () => {
 			}
     `}
 		>
-			<nav className="mx-auto flex w-10/12 flex-row items-center lg:w-8/12 lg:justify-between xl:w-7/12">
+			<div className="mx-auto flex w-10/12 flex-row items-center lg:w-8/12 lg:justify-between xl:w-7/12">
 				{/* Logo at the start */}
-				<div className="flex-grow-0">
+				<div className="z-50 flex-grow-0">
 					<Link className="flex flex-row items-center gap-3" href="/">
 						<Image
 							src={'/favicon-cropped-600px.png'}
@@ -63,7 +66,7 @@ const Header = () => {
 				</div>
 
 				{/* Dark mode toggle at the far right */}
-				<div className="ml-4 flex-grow-0">
+				<div className={`ml-4 hidden flex-grow-0 lg:block`}>
 					{hasMounted && theme === 'light' ? (
 						<Moon
 							className={`w-10 cursor-pointer
@@ -82,9 +85,9 @@ const Header = () => {
 				</div>
 
 				{/* Hamburger icon */}
-				{/* {isHamburgerMenuOpen ? (
+				{isHamburgerMenuOpen ? (
 					<X
-						className={`ml-auto text-2xl lg:hidden ${
+						className={`z-50 ml-auto text-2xl lg:hidden ${
 							transparentNav || isHamburgerMenuOpen ? 'text-white' : ''
 						}`}
 						onClick={() => setIsHamburgerMenuOpen(!isHamburgerMenuOpen)}
@@ -96,8 +99,13 @@ const Header = () => {
 						}`}
 						onClick={() => setIsHamburgerMenuOpen(!isHamburgerMenuOpen)}
 					/>
-				)} */}
-			</nav>
+				)}
+
+				{/* Hamburger menu */}
+				{isHamburgerMenuOpen && (
+					<HamburgerMenu closeMenu={() => setIsHamburgerMenuOpen(false)} />
+				)}
+			</div>
 		</header>
 	);
 };
