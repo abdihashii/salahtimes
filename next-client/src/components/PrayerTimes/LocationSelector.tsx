@@ -23,14 +23,14 @@ const LocationSelector = () => {
 			{/* The title of the prayer times location */}
 			<h1 className="mx-auto line-clamp-2 h-auto w-10/12 text-4xl font-medium leading-[45px] lg:line-clamp-1 lg:text-6xl">
 				{selectedPlace.name ? (
-					<div>
-						Prayer times in &quot;
-						<span className="text-green">{selectedPlace.name}</span>
-						&quot;
+					<div className="flex flex-col gap-4">
+						<p>Prayer times in</p>
+						<p className="text-green">&quot;{selectedPlace.name}&quot;</p>
 					</div>
 				) : (
-					<div>
-						<span className="text-green">Prayer times</span> in your location
+					<div className="flex flex-col gap-2">
+						<p className="text-green">Prayer times</p>
+						<p>in your location</p>
 					</div>
 				)}
 			</h1>
