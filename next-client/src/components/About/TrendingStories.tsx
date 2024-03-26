@@ -1,0 +1,82 @@
+import Image from 'next/image';
+import Link from 'next/link';
+
+import { ArrowRight } from 'lucide-react';
+
+import dayjs from 'dayjs';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+
+dayjs.extend(advancedFormat);
+
+const TrendingStories = ({
+	blogPosts,
+}: {
+	blogPosts: {
+		id: string;
+		title: string;
+		slug: string;
+		metadata: {
+			date: string;
+			hero_image: {
+				url: string;
+			};
+		};
+	}[];
+}) => {
+	return (
+		<section className="mx-auto flex w-11/12 flex-col gap-10 lg:mt-28 lg:w-9/12 xl:w-7/12">
+			<article className="space-y-5 text-center">
+				<h2 className="text-2xl font-bold leading-8 lg:text-[40px] ">
+					Must-Read Stories Of The Month
+				</h2>
+
+				<p className="text-[#848280] lg:leading-7">
+					Stay informed and inspired with our top-trending stories of the month.
+				</p>
+			</article>
+
+			<article className="text-left lg:grid lg:grid-cols-3 lg:gap-10">
+				{blogPosts.map((blogPost: any) => {
+					const formattedDateString = dayjs(blogPost.metadata.date).format(
+						'MMM Do, YYYY',
+					);
+
+					return (
+						<Link
+							key={blogPost.id}
+							href={`/blog/${blogPost.slug}`}
+							className="flex h-80 flex-col gap-4 hover:lg:underline"
+						>
+							<div className="relative h-44 w-full">
+								<Image
+									className="object-cover"
+									src={blogPost.metadata.hero_image.url}
+									alt={blogPost.title}
+									fill={true}
+								/>
+							</div>
+							<p className="line-clamp-2 text-xl text-[#222]">
+								{blogPost.title}
+							</p>
+							<p className="text-lg font-light text-[#717171]">
+								{formattedDateString}
+							</p>
+						</Link>
+					);
+				})}
+			</article>
+
+			<article>
+				<Link
+					href="/blog"
+					className="mx-auto flex w-max flex-row items-center gap-2 rounded-full bg-green-dark px-8 py-3 text-xs text-white hover:bg-green-secondary lg:text-lg"
+				>
+					<p>See All Stories</p>
+					<ArrowRight />
+				</Link>
+			</article>
+		</section>
+	);
+};
+
+export default TrendingStories;
