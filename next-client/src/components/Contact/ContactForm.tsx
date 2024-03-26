@@ -63,9 +63,12 @@ const ContactForm = () => {
 							placeholder="Ibn Rushd"
 							{...register('name')}
 						/>
-						<p className="text-xs text-red-500">
-							{errors.name?.message?.toString()}
-						</p>
+
+						<div className="h-8">
+							<p className="text-xs text-red-500">
+								{errors.name?.message?.toString()}
+							</p>
+						</div>
 					</div>
 
 					{/* Your Email */}
@@ -80,9 +83,11 @@ const ContactForm = () => {
 							{...register('email')}
 							// name="_replyto"
 						/>
-						<p className="text-xs text-red-500">
-							{errors.email?.message?.toString()}
-						</p>
+						<div className="h-4">
+							<p className="text-xs text-red-500">
+								{errors.email?.message?.toString()}
+							</p>
+						</div>
 					</div>
 
 					{/* Phone */}
@@ -96,9 +101,12 @@ const ContactForm = () => {
 							placeholder="123-456-7890"
 							{...register('phone')}
 						/>
-						<p className="text-xs text-red-500">
-							{errors.phone?.message?.toString()}
-						</p>
+
+						<div className="h-4">
+							<p className="text-xs text-red-500">
+								{errors.phone?.message?.toString()}
+							</p>
+						</div>
 					</div>
 				</div>
 
@@ -111,9 +119,11 @@ const ContactForm = () => {
 						placeholder="Write your message here..."
 						{...register('message')}
 					/>
-					<p className="text-xs text-red-500">
-						{errors.message?.message?.toString()}
-					</p>
+					<div className="h-4">
+						<p className="text-xs text-red-500">
+							{errors.message?.message?.toString()}
+						</p>
+					</div>
 				</div>
 			</section>
 
