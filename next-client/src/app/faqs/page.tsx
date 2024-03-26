@@ -19,7 +19,7 @@ export default function FaqPages() {
 						<Link
 							key="quality-content-link"
 							className="text-green-dark underline"
-							href="/blog/"
+							href="/blog"
 						>
 							high-quality content
 						</Link>,
@@ -81,7 +81,7 @@ export default function FaqPages() {
 						<Link
 							key="contact-us-link"
 							className="text-green-dark underline"
-							href="/contact-us/"
+							href="/contact"
 						>
 							Contact us
 						</Link>,
