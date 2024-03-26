@@ -7,19 +7,6 @@ import OurPledge from '@/components/About/OurPledge';
 import TrendingStories from '@/components/About/TrendingStories';
 
 export default async function AboutPage() {
-	const getBlogPosts = async () => {
-		const data = await cosmic.objects
-			.find({
-				type: 'blog-posts',
-			})
-			.props(['id', 'title', 'slug', 'metadata.date', 'metadata.hero_image'])
-			.limit(6);
-
-		return data.objects;
-	};
-
-	const blogPosts = await getBlogPosts();
-
 	return (
 		<main className="flex flex-grow flex-col pb-10 lg:pb-16">
 			{/* Header Section */}
@@ -35,7 +22,7 @@ export default async function AboutPage() {
 			<OurPledge />
 
 			{/* Trending Stories Section */}
-			<TrendingStories blogPosts={blogPosts} />
+			<TrendingStories />
 		</main>
 	);
 }

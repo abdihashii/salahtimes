@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { cosmic } from '@/lib/cosmicBucketClient';
 
 import { ArrowRight } from 'lucide-react';
 
@@ -8,9 +9,7 @@ import advancedFormat from 'dayjs/plugin/advancedFormat';
 
 dayjs.extend(advancedFormat);
 
-const TrendingStories = ({
-	blogPosts,
-}: {
+type TBlogPost = {
 	blogPosts: {
 		id: string;
 		title: string;
@@ -21,8 +20,23 @@ const TrendingStories = ({
 				url: string;
 			};
 		};
-	}[];
-}) => {
+	};
+};
+
+const getBlogPosts = async (): Promise<TBlogPost[]> => {
+	const data = await cosmic.objects
+		.find({
+			type: 'blog-posts',
+		})
+		.props(['id', 'title', 'slug', 'metadata.date', 'metadata.hero_image'])
+		.limit(6);
+
+	return data.objects;
+};
+
+const TrendingStories = async () => {
+	const blogPosts = await getBlogPosts();
+
 	return (
 		<section className="mx-auto flex w-11/12 flex-col gap-10 lg:mt-28 lg:w-9/12 xl:w-7/12">
 			<article className="space-y-5 text-center">
