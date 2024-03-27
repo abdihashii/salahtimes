@@ -3,7 +3,8 @@ import React from 'react';
 
 const MissionAndVision = () => {
 	return (
-		<section className="lg:mx-auto lg:mt-28 lg:flex lg:w-9/12 lg:flex-row lg:gap-20 xl:w-7/12">
+		<section className="mx-auto mb-10 mt-[59px] w-11/12 lg:mx-auto lg:mt-28 lg:flex lg:w-9/12 lg:flex-row lg:gap-20 xl:w-7/12">
+			{/* Image with shadow */}
 			<article className="relative mx-auto w-11/12 lg:w-1/2">
 				<div className="absolute bottom-0 right-0 h-5/6 w-10/12 bg-green-secondary"></div>
 
@@ -17,15 +18,16 @@ const MissionAndVision = () => {
 				</div>
 			</article>
 
+			{/* Our mission and vision */}
 			<div className="space-y-10 lg:w-1/2">
-				<article className="space-y-5">
-					<h2 className="mb-3 text-2xl font-bold leading-8 lg:text-5xl lg:font-semibold lg:leading-[57px]">
+				<article className="mx-auto mb-10 flex w-full flex-col text-center lg:!mr-0 lg:mb-[45px] lg:justify-between lg:text-left">
+					<h2 className="mb-3 text-2xl font-bold leading-[30px] lg:text-[45px] lg:font-semibold lg:leading-[57px]">
 						Our Mission
 					</h2>
 
-					<hr className="mx-auto w-20 rounded-xl border-4 border-green-secondary lg:ml-0 lg:w-16 lg:bg-green-secondary" />
+					<hr className="mx-auto mb-[25px] w-20 rounded-xl border-4 border-green-secondary lg:ml-0 lg:w-16 lg:bg-green-secondary" />
 
-					<p className="text-[#848280] lg:leading-7">
+					<p className="font-light text-[#848280] lg:font-normal lg:leading-7">
 						To empower Muslims of diverse backgrounds with accurate and reliable
 						Islamic prayer times while providing informative content to deepen
 						understanding and connection with Allah and our faith. Guided by
@@ -36,14 +38,14 @@ const MissionAndVision = () => {
 					</p>
 				</article>
 
-				<article className="space-y-5">
-					<h2 className="leading-30px lg:leading-57px mb-3 text-2xl font-bold lg:text-5xl lg:font-semibold">
+				<article className="mx-auto mb-10 flex w-full flex-col text-center lg:!mr-0 lg:mb-[45px] lg:justify-between lg:text-left">
+					<h2 className="mb-3 text-2xl font-bold leading-[30px] lg:text-[45px] lg:font-semibold lg:leading-[57px]">
 						Our Vision
 					</h2>
 
-					<hr className="mx-auto w-20 rounded-xl border-4 border-green-secondary lg:ml-0 lg:w-16 lg:bg-green-secondary" />
+					<hr className="mx-auto mb-[25px] w-20 rounded-xl border-4 border-green-secondary lg:ml-0 lg:w-16 lg:bg-green-secondary" />
 
-					<p className="text-[#848280] lg:leading-7">
+					<p className="font-light text-[#848280] lg:font-normal lg:leading-7">
 						To be a global platform that engages the Ummah and inspires a deeper
 						connection and love for Salah through accurate prayer times and
 						high-quality, well-researched content. We aspire to be known as the

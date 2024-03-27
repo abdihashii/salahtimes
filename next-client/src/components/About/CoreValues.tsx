@@ -4,13 +4,15 @@ import React from 'react';
 
 const CoreValues = () => {
 	return (
-		<section className="flex w-11/12 flex-col gap-10 lg:mx-auto lg:mt-40 lg:w-9/12 xl:w-7/12">
+		<section className="mx-auto mb-10 flex w-11/12 flex-col gap-10 lg:mx-auto lg:mt-28 lg:w-9/12 lg:gap-20 xl:w-7/12">
 			<article className="space-y-5 text-center">
 				<h2 className="text-2xl font-bold leading-8 lg:text-5xl lg:font-semibold lg:leading-[57px]">
 					Our Core Values
 				</h2>
 
-				<p className="text-[#848280] lg:leading-7">
+				<hr className="mx-auto mb-[25px] w-20 rounded-xl border-4 border-green-secondary lg:ml-0 lg:hidden lg:w-16 lg:bg-green-secondary" />
+
+				<p className="font-light text-[#848280] lg:font-normal lg:leading-7">
 					Discover the guiding principles that shape our mission and vision at
 					MyPrayerTimes.
 				</p>
@@ -21,7 +23,7 @@ const CoreValues = () => {
 					<div>
 						<Image src="/iman.jpg" alt="" width="370" height="400" />
 						<Link
-							href="/"
+							href="https://unsplash.com/photos/blue-book-beside-brown-wooden-stick-Dxi6KbpvUgA"
 							target="_blank"
 							className="inline-block text-xs text-[#717171]"
 						>
@@ -42,7 +44,7 @@ const CoreValues = () => {
 					<div>
 						<Image src="/integrity.jpg" alt="" width="370" height="400" />
 						<Link
-							href="/"
+							href="https://unsplash.com/photos/tree-roots-on-rock-formation-hW11fwjzVfA"
 							target="_blank"
 							className="inline-block text-xs text-[#717171]"
 						>
@@ -62,7 +64,7 @@ const CoreValues = () => {
 					<div>
 						<Image src="/quality.jpg" alt="" width="370" height="400" />
 						<Link
-							href="/"
+							href="https://unsplash.com/photos/black-framed-magnifying-glass-ZSBFoikEu_Q"
 							target="_blank"
 							className="inline-block text-xs text-[#717171]"
 						>

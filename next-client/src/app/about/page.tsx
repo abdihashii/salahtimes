@@ -1,5 +1,3 @@
-import { cosmic } from '@/lib/cosmicBucketClient';
-
 import AboutUsHeader from '@/components/About/AboutUsHeader';
 import CoreValues from '@/components/About/CoreValues';
 import MissionAndVision from '@/components/About/MissionAndVision';

@@ -83,7 +83,7 @@ const TrendingStories = async () => {
 			<article>
 				<Link
 					href="/blog"
-					className="mx-auto flex w-max flex-row items-center gap-2 rounded-full bg-green-dark px-8 py-3 text-xs text-white hover:bg-green-secondary lg:text-lg"
+					className="mx-auto flex w-max flex-row items-center gap-2 rounded-full bg-green-dark px-8 py-3 text-xs font-medium text-white hover:bg-green-secondary lg:text-lg"
 				>
 					<p>See All Stories</p>
 					<ArrowRight />
