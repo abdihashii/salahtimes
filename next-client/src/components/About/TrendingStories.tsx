@@ -44,6 +44,8 @@ const TrendingStories = async () => {
 					Must-Read Stories Of The Month
 				</h2>
 
+				<hr className="mx-auto mb-[25px] w-20 rounded-xl border-4 border-green-secondary lg:hidden" />
+
 				<p className="text-[#848280] lg:leading-7">
 					Stay informed and inspired with our top-trending stories of the month.
 				</p>
