@@ -178,3 +178,29 @@ export const createExcerpt = (introText: string) => {
 	const excerpt = introText.split(' ').slice(0, 40).join(' ');
 	return excerpt;
 };
+
+export const getLatLonFromContentful = async (
+	cityName: string,
+): Promise<{ lat: number; lon: number }> => {
+	const res = await fetch(
+		`https://cdn.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master/entries?access_token=${process.env.CONTENTFUL_DELIVERY_API_ACCESS_TOKEN}&content_type=city&select=fields&fields.cityName=${cityName}`,
+	);
+
+	const data = await res.json();
+
+	const { items } = data;
+
+	const [
+		{
+			fields: {
+				cityName: cN,
+				coordinates: { lat, lon },
+			},
+		},
+	] = items;
+
+	return {
+		lat,
+		lon,
+	};
+};
