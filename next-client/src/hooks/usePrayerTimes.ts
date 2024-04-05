@@ -8,6 +8,7 @@ import { Loader } from '@googlemaps/js-api-loader';
 import moment from 'moment-timezone';
 import { useEffect } from 'react';
 import { atom, useAtom } from 'jotai';
+import type { TLocation } from '@/types';
 
 const inputValueAtom = atom<string>('');
 const selectedPlaceAtom = atom<TPlace>({
@@ -26,7 +27,7 @@ const prayerTimesAtom = atom<TPrayerTime>({
 });
 const prayerTimesLoadingAtom = atom<boolean>(false);
 
-const usePrayerTimes = () => {
+const usePrayerTimes = (location: TLocation | null) => {
 	const [inputValue, setInputValue] = useAtom(inputValueAtom);
 	const [selectedPlace, setSelectedPlace] = useAtom(selectedPlaceAtom);
 	const [prayerTimes, setPrayerTimes] = useAtom(prayerTimesAtom);
@@ -180,7 +181,9 @@ const usePrayerTimes = () => {
 			timezone,
 			currentTimeInLocation: moment().tz(timezone).format('h:mm A'),
 		});
+
 		setInputValue(formatted_address);
+
 		try {
 			const resp = await fetchAndSetPrayerTimes(lat, lon, timezone);
 
@@ -191,6 +194,59 @@ const usePrayerTimes = () => {
 			console.log(error);
 		}
 	};
+
+	/**
+	 * This useEffect hook is responsible for setting the prayer times
+	 * based on the location passed in the search params. It first checks
+	 * if there is a location in the search params, then it gets the timezone
+	 * ID from the latitude and longitude. After that, it sets the selected
+	 * place values, the input value, and finally fetches and sets the prayer
+	 * times.
+	 */
+	useEffect(() => {
+		async function setPrayerTimesFromLocationSearchParam() {
+			// First, we'll check if there was even a location passed in the search params
+			if (!location) {
+				return;
+			}
+
+			const { lat, lon } = location;
+
+			if (!lat || !lon) {
+				console.log('No location data found');
+				return;
+			}
+
+			// Then, we'll get the timezone id from the lat and lon
+			const timezoneId = await getTimezoneFromLatLon(lat, lon);
+
+			// After getting the timezone id, we'll set the selected place values
+			setSelectedPlace({
+				name: location.cityName,
+				lat,
+				lon,
+				formatted_address: location.cityName,
+				timezone: timezoneId,
+				currentTimeInLocation: moment().tz(timezoneId).format('h:mm A'),
+			});
+
+			// Next, we'll set the input value to the city name
+			setInputValue(location.cityName);
+
+			// Finally, we'll fetch and set the prayer times
+			try {
+				const resp = await fetchAndSetPrayerTimes(lat, lon, timezoneId);
+
+				if (resp && 'error' in resp) {
+					throw resp.error;
+				}
+			} catch (error) {
+				console.log(error);
+			}
+		}
+
+		setPrayerTimesFromLocationSearchParam();
+	}, [location]);
 
 	/**
 	 * This useEffect hook is responsible for initializing the Google Maps
@@ -211,6 +267,8 @@ const usePrayerTimes = () => {
 			// When the user selects a place from the dropdown, set the values
 			autocomplete.addListener('place_changed', async () => {
 				const place = autocomplete.getPlace();
+
+				debugger;
 
 				if (
 					!place.geometry ||

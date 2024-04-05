@@ -19,3 +19,9 @@ export type TPrayerTime = {
 		time: string;
 	} | null;
 };
+
+export type TLocation = {
+	cityName: string;
+	lat: number | null;
+	lon: number | null;
+};

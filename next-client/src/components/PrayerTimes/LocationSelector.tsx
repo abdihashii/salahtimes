@@ -7,8 +7,9 @@ import CurrentTime from './CurrentTime';
 import { Skeleton } from '../ui/skeleton';
 import usePrayerTimes from '@/hooks/usePrayerTimes';
 import { MapPin } from 'lucide-react';
+import type { TLocation } from '@/types';
 
-const LocationSelector = () => {
+const LocationSelector = ({ location }: { location?: TLocation | null }) => {
 	const {
 		selectedPlace,
 		prayerTimesLoading,
@@ -16,13 +17,18 @@ const LocationSelector = () => {
 		handleGetLocation,
 		inputValue,
 		setInputValue,
-	} = usePrayerTimes();
+	} = usePrayerTimes(location || null);
 
 	return (
 		<article className="mx-auto mt-28 flex flex-col gap-10 lg:mt-52 lg:w-9/12 lg:gap-20 xl:w-7/12">
 			{/* The title of the prayer times location */}
 			<h1 className="mx-auto line-clamp-2 h-auto w-10/12 text-4xl font-medium leading-[45px] lg:line-clamp-1 lg:text-6xl">
-				{selectedPlace.name ? (
+				{location && !selectedPlace ? (
+					<div className="flex flex-col gap-4">
+						<p>Prayer times in</p>
+						<p className="text-green">&quot;{location.cityName}&quot;</p>
+					</div>
+				) : selectedPlace.name ? (
 					<div className="flex flex-col gap-4">
 						<p>Prayer times in</p>
 						<p className="text-green">&quot;{selectedPlace.name}&quot;</p>

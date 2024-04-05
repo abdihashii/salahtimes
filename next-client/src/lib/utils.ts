@@ -181,19 +181,26 @@ export const createExcerpt = (introText: string) => {
 
 export const getLatLonFromContentful = async (
 	cityName: string,
-): Promise<{ lat: number; lon: number }> => {
+): Promise<{ lat?: number; lon?: number; error?: string }> => {
 	const res = await fetch(
-		`https://cdn.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master/entries?access_token=${process.env.CONTENTFUL_DELIVERY_API_ACCESS_TOKEN}&content_type=city&select=fields&fields.cityName=${cityName}`,
+		`https://cdn.contentful.com/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master/entries?access_token=${process.env.CONTENTFUL_DELIVERY_API_ACCESS_TOKEN}&content_type=city&select=fields.coordinates&fields.cityName=${cityName}`,
 	);
 
+	if (!res.ok) {
+		return { error: 'Failed to fetch location from contentful API' };
+	}
+
 	const data = await res.json();
+
+	if (!data.items.length) {
+		return { error: 'Location not found' };
+	}
 
 	const { items } = data;
 
 	const [
 		{
 			fields: {
-				cityName: cN,
 				coordinates: { lat, lon },
 			},
 		},
@@ -203,4 +210,24 @@ export const getLatLonFromContentful = async (
 		lat,
 		lon,
 	};
+};
+
+/**
+ * Converts the location param to a location string
+ * from {city-country/state} to {City, Country/State}
+ * @param location - city-country string
+ * @returns - city, country string
+ */
+export const cleanLocation = (location: string) => {
+	// city-country to city, country
+	const commaSeparated = location.replace('-', ',');
+
+	const [city, countryState] = commaSeparated.split(',');
+
+	// Capitalize the first letter of the city and both letters of the
+	// country/state
+	const capitalizedCity = city.charAt(0).toUpperCase() + city.slice(1);
+	const capitalizedCountryState = countryState.toUpperCase();
+
+	return `${capitalizedCity}, ${capitalizedCountryState}`;
 };
