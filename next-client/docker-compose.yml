@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  nextjs:
+    container_name: nextjs-dev-app
+    build:
+      context: .
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    command: pnpm run dev
