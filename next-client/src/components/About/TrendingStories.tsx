@@ -38,7 +38,7 @@ const TrendingStories = async () => {
 	const blogPosts = await getBlogPosts();
 
 	return (
-		<section className="mx-auto flex w-11/12 flex-col gap-10 lg:mt-28 lg:w-9/12 xl:w-7/12">
+		<section className="mx-auto flex w-11/12 flex-col gap-10 lg:mt-36 lg:w-9/12 xl:w-7/12">
 			<article className="space-y-5 text-center">
 				<h2 className="text-2xl font-bold leading-8 lg:text-[40px] ">
 					Must-Read Stories Of The Month

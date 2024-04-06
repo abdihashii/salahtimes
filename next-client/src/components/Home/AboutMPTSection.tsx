@@ -5,7 +5,8 @@ import React from 'react';
 
 const AboutMPTSection = () => {
 	return (
-		<section className="mx-auto mt-16 h-fit w-11/12 lg:mx-auto lg:mb-8 lg:flex lg:h-[406px] lg:w-9/12 lg:flex-row-reverse lg:gap-14 xl:w-7/12">
+		<section className="mx-auto mt-16 h-fit w-11/12 lg:mx-auto lg:flex lg:h-[320px] lg:w-9/12 lg:flex-row-reverse lg:gap-14 xl:w-7/12">
+			{/* About MPT Text Section */}
 			<div className="mb-[50px] lg:-order-1 lg:m-0 lg:w-1/2">
 				<div className="mx-auto mb-10 flex w-full flex-col text-center lg:!ml-0 lg:!mr-0 lg:mb-11 lg:w-full lg:justify-between lg:text-left">
 					<h2 className="mb-3 text-2xl font-bold leading-[30px] lg:text-[45px] lg:font-semibold lg:leading-[57px]">
@@ -33,7 +34,7 @@ const AboutMPTSection = () => {
 
 			{/* Two Image Section */}
 			<div className="mx-auto mb-28 flex w-full flex-row gap-4 lg:m-0 lg:h-full lg:w-1/2 lg:justify-between">
-				<div className="relative mb-11 h-[150px] w-11/12 lg:mb-14 lg:h-[200px] lg:w-5/12">
+				<div className="relative mb-11 h-[150px] w-11/12 lg:mb-14 lg:h-[250px] lg:w-5/12">
 					<Image
 						className="rounded-lg object-cover"
 						src={'/masjid_1.png'}
@@ -42,7 +43,7 @@ const AboutMPTSection = () => {
 						sizes="(max-width: 768px) 100vw, 50vw"
 					/>
 				</div>
-				<div className="relative mt-11 h-[150px] w-11/12 lg:mt-14 lg:h-[200px] lg:w-5/12">
+				<div className="relative mt-11 h-[150px] w-11/12 lg:mt-auto lg:h-[250px] lg:w-5/12">
 					<Image
 						className="rounded-lg object-cover"
 						src={'/masjid_2.png'}
