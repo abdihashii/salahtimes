@@ -6,11 +6,11 @@ const MissionAndVision = () => {
 		<section className="mx-auto mb-10 mt-[59px] flex w-11/12 flex-col gap-10 lg:mx-auto lg:mt-28 lg:w-9/12 lg:flex-row lg:gap-20 xl:w-7/12">
 			{/* Image with shadow */}
 			<article className="relative mx-auto h-[250px] w-full lg:h-auto lg:w-1/2">
-				<div className="absolute bottom-0 right-0 h-5/6 w-10/12 bg-green-secondary"></div>
+				<div className="absolute bottom-0 right-0 h-5/6 w-10/12 rounded-lg bg-green-secondary lg:rounded-none"></div>
 
 				<div className="relative left-0 top-0 h-5/6 w-10/12">
 					<Image
-						className="object-cover"
+						className="rounded-lg object-cover lg:rounded-none"
 						src="/sheikh-zayed-grand-mosque.jpg"
 						alt="Sheikh Zayed Grand Mosque, Abu Dhabi"
 						fill={true}
