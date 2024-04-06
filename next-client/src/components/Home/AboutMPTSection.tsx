@@ -32,13 +32,14 @@ const AboutMPTSection = () => {
 			</div>
 
 			{/* Two Image Section */}
-			<div className="mx-auto mb-28 flex w-10/12 flex-row gap-4 lg:m-0 lg:h-full lg:w-1/2 lg:justify-between">
+			<div className="mx-auto mb-28 flex w-full flex-row gap-4 lg:m-0 lg:h-full lg:w-1/2 lg:justify-between">
 				<div className="relative mb-11 h-[150px] w-11/12 lg:mb-14 lg:h-[200px] lg:w-5/12">
 					<Image
 						className="rounded-lg object-cover"
 						src={'/masjid_1.png'}
 						alt=""
 						fill={true}
+						sizes="(max-width: 768px) 100vw, 50vw"
 					/>
 				</div>
 				<div className="relative mt-11 h-[150px] w-11/12 lg:mt-14 lg:h-[200px] lg:w-5/12">
@@ -47,6 +48,7 @@ const AboutMPTSection = () => {
 						src={'/masjid_2.png'}
 						alt=""
 						fill={true}
+						sizes="(max-width: 768px) 100vw, 50vw"
 					/>
 				</div>
 			</div>
