@@ -3,9 +3,9 @@ import React from 'react';
 
 const MissionAndVision = () => {
 	return (
-		<section className="mx-auto mb-10 mt-[59px] w-11/12 lg:mx-auto lg:mt-28 lg:flex lg:w-9/12 lg:flex-row lg:gap-20 xl:w-7/12">
+		<section className="mx-auto mb-10 mt-[59px] flex w-11/12 flex-col gap-10 lg:mx-auto lg:mt-28 lg:w-9/12 lg:flex-row lg:gap-20 xl:w-7/12">
 			{/* Image with shadow */}
-			<article className="relative mx-auto w-11/12 lg:w-1/2">
+			<article className="relative mx-auto h-[250px] w-full lg:h-auto lg:w-1/2">
 				<div className="absolute bottom-0 right-0 h-5/6 w-10/12 bg-green-secondary"></div>
 
 				<div className="relative left-0 top-0 h-5/6 w-10/12">
@@ -14,6 +14,7 @@ const MissionAndVision = () => {
 						src="/sheikh-zayed-grand-mosque.jpg"
 						alt="Sheikh Zayed Grand Mosque, Abu Dhabi"
 						fill={true}
+						sizes="(max-width: 767px) 100vw, (max-width: 1023px) 50vw, 33vw"
 					/>
 				</div>
 			</article>

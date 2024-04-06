@@ -8,10 +8,11 @@ const OurPledge = () => {
 				background: 'linear-gradient(100.39deg, #122318 0.8%, #00260E 100%)',
 			}}
 		>
-			<h2 className="mb-[30px] text-[28px] font-bold lg:text-[45px]">
+			<h2 className="mb-[30px] text-[28px] font-medium lg:text-[45px] lg:font-bold">
 				Our Pledge
 			</h2>
-			<p className="mx-auto mb-9 w-11/12 lg:w-7/12 xl:w-6/12">
+
+			<p className="mx-auto mb-9 w-11/12 font-extralight lg:w-7/12 lg:font-normal xl:w-6/12">
 				Our pledge is to provide accurate and reliable Islamic prayer times for
 				Muslims of diverse backgrounds. We are committed to upholding principles
 				of integrity, transparency, and love for Allah. These principles guide
@@ -19,13 +20,18 @@ const OurPledge = () => {
 				track with their daily salah and continue to learn and grow in their
 				spiritual journey.
 			</p>
+
 			<hr className="mx-auto mb-9 w-6/12 lg:w-3/12" />
-			<p className="mx-auto mb-9 w-11/12 lg:w-7/12 xl:w-6/12">
+
+			<p className="mx-auto mb-9 w-11/12 font-light lg:w-7/12 lg:font-normal xl:w-6/12">
 				&quot;If anyone fulfils his brother&apos;s needs, Allah will fulfil his
 				needs; if one relieves a Muslim of his troubles, Allah will relieve his
 				troubles on the Day of Resurrection.&quot;
 			</p>
-			<p>Prophet Muhammad ﷺ, Sahih Bukhari</p>
+
+			<p className="font-light lg:font-normal">
+				Prophet Muhammad ﷺ, Sahih Bukhari
+			</p>
 		</section>
 	);
 };

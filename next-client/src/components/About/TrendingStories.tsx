@@ -51,7 +51,7 @@ const TrendingStories = async () => {
 				</p>
 			</article>
 
-			<article className="text-left lg:grid lg:grid-cols-3 lg:gap-10">
+			<article className="flex flex-col gap-4 text-left lg:grid lg:grid-cols-3 lg:gap-8">
 				{blogPosts.map((blogPost: any) => {
 					const formattedDateString = dayjs(blogPost.metadata.date).format(
 						'MMM Do, YYYY',
@@ -61,14 +61,15 @@ const TrendingStories = async () => {
 						<Link
 							key={blogPost.id}
 							href={`/blog/${blogPost.slug}`}
-							className="flex h-80 flex-col gap-4 hover:lg:underline"
+							className="flex h-80 flex-col gap-2 lg:gap-4 hover:lg:underline"
 						>
 							<div className="relative h-44 w-full">
 								<Image
-									className="object-cover"
+									className="rounded-lg object-cover lg:rounded-none"
 									src={blogPost.metadata.hero_image.url}
 									alt={blogPost.title}
 									fill={true}
+									sizes="(max-width: 768px) 100vw, (max-width: 1024px) 33vw, 25vw"
 								/>
 							</div>
 							<p className="line-clamp-2 text-xl text-[#222]">
