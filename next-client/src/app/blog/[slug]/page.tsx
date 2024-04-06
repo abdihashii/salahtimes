@@ -70,9 +70,9 @@ export default async function BlogSlugPage({
 	} = await getBlogPost(slug);
 
 	return (
-		<main className="mb-14 mt-9 lg:mt-24">
-			<div className="mx-auto mb-12 w-10/12 text-left dark:text-white">
-				<section className="">
+		<main className="mx-auto mb-14 mt-9 w-11/12 lg:mt-24 lg:w-10/12">
+			<div className="mb-12 text-left dark:text-white">
+				<section>
 					<h1 className="mb-[30px] text-xl font-semibold text-[#0f0700] lg:mx-auto lg:w-7/12 lg:text-[40px] lg:font-medium lg:leading-[55px]">
 						{title}
 					</h1>
