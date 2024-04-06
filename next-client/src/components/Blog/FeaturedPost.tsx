@@ -7,11 +7,11 @@ const FeaturedPost = ({ item }: { item: any }) => {
 	return (
 		<section className="lg:bg-green-secondary lg:bg-opacity-15 lg:py-24 dark:lg:bg-opacity-30">
 			{/* Wrapper for featured post */}
-			<article className="lg:mx-auto lg:grid lg:min-h-[500px] lg:w-9/12 lg:grid-cols-2 lg:gap-16">
+			<article className="space-y-5 rounded-lg bg-green-secondary bg-opacity-15 p-5 lg:mx-auto lg:grid lg:min-h-[500px] lg:w-9/12 lg:grid-cols-2 lg:gap-16 lg:rounded-none lg:bg-transparent lg:p-0">
 				{/* Left side */}
-				<div className="relative mx-auto h-full w-full">
+				<div className="aspect-h-1 aspect-w-2 relative mx-auto w-full">
 					<Image
-						className="object-cover"
+						className="rounded-lg object-cover lg:rounded-none"
 						src={item.postHeaderImage.url}
 						alt={item.postHeaderImage.description}
 						fill={true}
@@ -19,10 +19,12 @@ const FeaturedPost = ({ item }: { item: any }) => {
 				</div>
 
 				{/* Right side */}
-				<div className="flex flex-col gap-5">
-					<h2 className="lg:text-2xl lg:font-bold">Featured Blog Post</h2>
+				<div className="flex flex-col gap-5 lg:!mt-0">
+					<h2 className="!hidden lg:!block lg:text-2xl lg:font-bold">
+						Featured Blog Post
+					</h2>
 					<Link
-						className="text-lg font-normal leading-6 underline lg:text-4xl lg:leading-[55px] "
+						className="text-lg font-normal leading-6 underline lg:text-4xl lg:leading-[55px]"
 						href={`/blog/${item.slug}`}
 					>
 						{item.title}

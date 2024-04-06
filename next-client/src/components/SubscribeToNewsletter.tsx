@@ -3,24 +3,24 @@ import React from 'react';
 const SubscribeToNewsletter = () => {
 	return (
 		<section
-			className="text-center text-white lg:mx-auto lg:w-10/12 lg:py-[100px]"
+			className="flex flex-col gap-4 rounded-lg py-[50px] text-center text-white lg:mx-auto lg:w-10/12 lg:gap-10 lg:rounded-none lg:py-[100px]"
 			style={{
 				background: 'linear-gradient(100.39deg, #122318 0.8%, #00260E 100%)',
 			}}
 		>
 			{/* Subcribe header */}
-			<h2 className="mx-auto w-10/12 text-xl font-bold lg:mb-10 lg:text-[45px] lg:leading-[57px] xl:w-6/12">
+			<h2 className="mx-auto w-10/12 text-xl font-bold lg:text-[45px] lg:leading-[57px] xl:w-6/12">
 				Subscribe to our bi-weekly newsletter
 			</h2>
 
 			{/* Email input */}
-			<div className="lg:mx-auto lg:mb-8 lg:flex lg:w-10/12 lg:flex-row lg:gap-7 xl:w-6/12">
+			<div className="lg:mx-auto lg:flex lg:w-10/12 lg:flex-row lg:gap-7 xl:w-6/12">
 				<input
 					type="text"
 					className="mb-4 w-10/12 rounded-full border-2 bg-white px-6 py-4 text-black lg:mb-0"
 					placeholder="Enter your email address"
 				></input>
-				<button className="mb-[14px] w-10/12 rounded-full border-2 border-white py-4 lg:mb-0 lg:w-fit lg:px-[77px] lg:hover:border-gray-400">
+				<button className="w-10/12 rounded-full border-2 border-white py-4 lg:w-fit lg:px-[77px] lg:hover:border-gray-400">
 					Subscribe
 				</button>
 			</div>

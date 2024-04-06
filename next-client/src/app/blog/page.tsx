@@ -47,9 +47,9 @@ export default async function BlogPage() {
 	} = await resp.json();
 
 	return (
-		<main className="flex flex-grow flex-col gap-16 py-10 font-light lg:py-16">
+		<main className="mx-auto flex w-11/12 flex-grow flex-col gap-16 py-10 font-light lg:w-full lg:py-16">
 			{/* Title */}
-			<h1 className="text-center font-semibold capitalize lg:text-6xl">
+			<h1 className="text-center text-[32px] font-semibold capitalize leading-[39px] lg:text-6xl">
 				Welcome to our Blog
 			</h1>
 
