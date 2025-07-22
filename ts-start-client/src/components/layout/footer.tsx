@@ -4,7 +4,7 @@ import ActiveLink from "@/components/ui/active-link";
 
 export default function Footer() {
   return (
-    <footer className="mx-auto mt-14 flex flex-col border-t-[3px] border-green-secondary pt-12 tracking-0.011em">
+    <footer className="flex w-full flex-col border-t-[3px] border-green-secondary pt-12 tracking-[0.011em]">
       <section className="lg:mx-auto lg:flex lg:w-8/12 lg:flex-row lg:gap-16 xl:w-7/12">
         {/* Logo and One-liner */}
         <div className="lg:flex lg:w-6/12 lg:flex-col">
