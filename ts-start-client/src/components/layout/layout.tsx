@@ -9,7 +9,7 @@ export default function Layout({
   transparentNav: boolean;
 }) {
   return (
-    <div className="mx-auto">
+    <div className="mx-auto min-h-screen flex flex-col">
       <NavBar transparentNav={transparentNav} />
       {children}
       <Footer />
