@@ -6,8 +6,9 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   return (
-    <div>
-      <h1>Hello World</h1>
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-4">Home</h1>
+      <p>View the current Prayer Times.</p>
     </div>
   );
 }
