@@ -3,14 +3,22 @@
 import type { ReactNode } from "react";
 import {
   Outlet,
-  createRootRoute,
+  createRootRouteWithContext,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
+import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
+import { QueryClient } from "@tanstack/react-query";
 
 import appCss from "@/styles/app.css?url";
+import Layout from "@/components/layout/layout";
+import TanStackQueryLayout from "@/integrations/tanstack-query/layout";
 
-export const Route = createRootRoute({
+interface MyRouterContext {
+  queryClient: QueryClient;
+}
+
+export const Route = createRootRouteWithContext<MyRouterContext>()({
   head: () => ({
     meta: [
       {
@@ -21,7 +29,7 @@ export const Route = createRootRoute({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "TanStack Start Starter",
+        title: "MyPrayerTimes",
       },
     ],
     links: [
@@ -37,14 +45,19 @@ export const Route = createRootRoute({
 function RootComponent() {
   return (
     <RootDocument>
-      <Outlet />
+      <Layout transparentNav={false}>
+        <Outlet />
+      </Layout>
+
+      <TanStackRouterDevtools />
+      <TanStackQueryLayout />
     </RootDocument>
   );
 }
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html>
+    <html lang="en">
       <head>
         <HeadContent />
       </head>
