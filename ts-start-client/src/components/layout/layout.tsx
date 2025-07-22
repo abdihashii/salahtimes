@@ -11,7 +11,7 @@ export default function Layout({
   return (
     <div className="mx-auto min-h-screen flex flex-col">
       <NavBar transparentNav={transparentNav} />
-      {children}
+      <main className="flex-1 w-full">{children}</main>
       <Footer />
     </div>
   );
