@@ -8,7 +8,7 @@ export default function DesktopNav({
   return (
     <nav
       className={`!hidden text-base font-medium leading-6 lg:!block ${
-        transparentNav ? "text-white" : "text-text-nav_grey"
+        transparentNav ? "text-white" : "text-[#130102]"
       }`}
     >
       <ul className="flex flex-row gap-10">

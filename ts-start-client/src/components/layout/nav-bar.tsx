@@ -32,7 +32,7 @@ export default function NavBar({
             />
             <p
               className={`uppercase ${
-                transparentNav ? "text-white" : "text-green-secondary"
+                transparentNav ? "text-white" : "text-[#0a8337]"
               } font-bold`}
             >
               My Prayer Times
@@ -44,7 +44,7 @@ export default function NavBar({
 
           {/* Our Blog button - Desktop */}
           <Link
-            className="!hidden rounded-full bg-green-dark py-4 px-12 font-semibold text-white hover:bg-green-secondary lg:!block"
+            className="!hidden rounded-full bg-[#006307] py-4 px-12 font-semibold text-white hover:bg-[#0a8337] lg:!block"
             activeProps={{ style: { opacity: "0.2" } }}
             to="/blog"
           >

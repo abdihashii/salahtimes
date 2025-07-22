@@ -1,44 +1,44 @@
-import { Link } from "@tanstack/react-router";
+import ActiveLink from "@/components/ui/active-link";
 
 const HamburgerMenu = () => {
   return (
-    <nav className="absolute top-0 left-0 z-20 mx-auto min-h-screen w-full bg-green-extra_dark pt-36 pb-52px font-semibold text-white lg:hidden">
+    <nav className="absolute top-0 left-0 z-20 mx-auto min-h-screen w-full bg-[#000B03] pt-36 pb-52px font-semibold text-white lg:hidden">
       <ul className="mb-83px flex flex-col gap-16 text-2xl">
         <li className="mx-auto w-fit">
-          <Link to="/" activeClassName="text-green-secondary">
+          <ActiveLink to="/" activeClassName="text-[#0a8337]">
             Prayer Times
-          </Link>
+          </ActiveLink>
         </li>
         <li className="mx-auto w-fit">
-          <Link to="/about-us/" activeClassName="text-green-secondary">
+          <ActiveLink to="/about" activeClassName="text-[#0a8337]">
             About Us
-          </Link>
+          </ActiveLink>
         </li>
         <li className="mx-auto w-fit">
-          <Link to="/faqs/" activeClassName="text-green-secondary">
+          <ActiveLink to="/faqs" activeClassName="text-[#0a8337]">
             FAQs
-          </Link>
+          </ActiveLink>
         </li>
         <li className="mx-auto w-fit">
-          <Link to="/hijri-date/" activeClassName="text-green-secondary">
+          <ActiveLink to="/hijri-date" activeClassName="text-[#0a8337]">
             Hijri Date
-          </Link>
+          </ActiveLink>
         </li>
         <li className="mx-auto w-fit">
-          <Link to="/contact-us/" activeClassName="text-green-secondary">
+          <ActiveLink to="/contact" activeClassName="text-[#0a8337]">
             Contact Us
-          </Link>
+          </ActiveLink>
         </li>
       </ul>
 
       <hr className="mx-auto mb-45px w-7/12" />
 
-      <Link
-        to="/blog/"
-        className="mx-auto block w-fit rounded-full bg-green-secondary py-4 px-50px"
+      <ActiveLink
+        to="/blog"
+        className="mx-auto block w-fit rounded-full bg-[#0a8337] py-4 px-50px"
       >
         Our Blog
-      </Link>
+      </ActiveLink>
     </nav>
   );
 };
