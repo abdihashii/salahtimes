@@ -31,7 +31,7 @@ export function ContactForm() {
       action="#"
       method="POST"
       target="_blank"
-      className="mx-auto flex w-10/12 flex-col gap-7 rounded-xl border border-green-dark bg-white p-7 text-black lg:w-5/12"
+      className="mx-auto flex w-5/6 flex-col gap-7 rounded-xl border border-green-dark bg-white p-7 text-black lg:w-5/12"
     >
       <div className="flex flex-col gap-2">
         <h3 className="text-lg font-bold">Contact Form</h3>
@@ -43,7 +43,7 @@ export function ContactForm() {
         <div className="flex flex-col gap-4 lg:w-1/2">
           {/* Your Name */}
           <div className="relative">
-            <UserIcon className="absolute top-10 left-[10px]" />
+            <UserIcon className="absolute top-10 left-2.5" />
             <label className="flex flex-col" htmlFor="name">
               * Your Name
               <input
@@ -63,7 +63,7 @@ export function ContactForm() {
 
           {/* Your Email */}
           <div className="relative">
-            <MailIcon className="absolute top-10 left-[10px]" />
+            <MailIcon className="absolute top-10 left-2.5" />
             <label className="flex flex-col" htmlFor="email">
               * E-Mail
               <input
@@ -84,7 +84,7 @@ export function ContactForm() {
 
           {/* Phone */}
           <div className="relative">
-            <PhoneIcon className="absolute top-10 left-[10px]" />
+            <PhoneIcon className="absolute top-10 left-2.5" />
             <label className="flex flex-col" htmlFor="phone">
               Phone
               <input
