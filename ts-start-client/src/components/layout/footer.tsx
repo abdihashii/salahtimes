@@ -4,7 +4,7 @@ import ActiveLink from "@/components/ui/active-link";
 
 export default function Footer() {
   return (
-    <footer className="flex w-full flex-col border-t-[3px] border-green-secondary pt-12 tracking-[0.011em]">
+    <footer className="flex w-full flex-col border-t-[3px] border-[#0a8337] pt-12 tracking-[0.011em]">
       <section className="lg:mx-auto lg:flex lg:w-8/12 lg:flex-row lg:gap-16 xl:w-7/12">
         {/* Logo and One-liner */}
         <div className="lg:flex lg:w-6/12 lg:flex-col">
@@ -18,13 +18,13 @@ export default function Footer() {
               alt="My Prayer Times Logo"
               className="w-2/12"
             />
-            <p className="ml-[17px] text-[17px] font-bold uppercase text-green-secondary lg:ml-4 lg:text-xl">
+            <p className="ml-[17px] text-[17px] font-bold uppercase text-[#0a8337] lg:ml-4 lg:text-xl">
               My Prayer Times
             </p>
           </Link>
 
           {/* footer one-liner */}
-          <div className="mx-auto mb-[51px] w-10/12 justify-center text-center text-base text-text-grey lg:!ml-0 lg:w-10/12 lg:text-left lg:leading-8">
+          <div className="mx-auto mb-[51px] w-10/12 justify-center text-center text-base text-[#646464] lg:!ml-0 lg:w-10/12 lg:text-left lg:leading-8">
             <p>
               Connecting the Ummah with accurate prayer times and spiritual
               growth
@@ -34,69 +34,33 @@ export default function Footer() {
 
         <div className="lg:flex lg:w-6/12 lg:flex-row lg:justify-between">
           {/* Prayer times, blog, about us, contact us, and faqs */}
-          <ul className="mb-[50px] flex flex-col text-center text-lg font-medium leading-[44px] text-text-grey lg:whitespace-nowrap lg:text-left">
+          <ul className="mb-[50px] flex flex-col text-center text-lg font-medium leading-[44px] text-[#646464] lg:whitespace-nowrap lg:text-left">
             <li>
-              <ActiveLink
-                to="/"
-                className="opacity-50 hover:opacity-100"
-                activeClassName="opacity-100"
-              >
-                Prayer Times
-              </ActiveLink>
+              <ActiveLink to="/">Prayer Times</ActiveLink>
             </li>
             <li className="inline-block">
-              <ActiveLink
-                to="/hijri-date"
-                className="opacity-50 hover:opacity-100"
-                activeClassName="opacity-100"
-              >
-                Hijri date
-              </ActiveLink>
+              <ActiveLink to="/hijri-date">Hijri date</ActiveLink>
             </li>
             <li>
-              <ActiveLink
-                to="/blog"
-                className="opacity-50 hover:opacity-100"
-                activeClassName="opacity-100"
-              >
-                Blog
-              </ActiveLink>
+              <ActiveLink to="/blog">Blog</ActiveLink>
             </li>
           </ul>
 
           {/* Info links */}
-          <ul className="mb-[55px] flex flex-col text-center text-lg font-medium leading-[44px] text-text-grey lg:whitespace-nowrap lg:text-left">
+          <ul className="mb-[55px] flex flex-col text-center text-lg font-medium leading-[44px] text-[#646464] lg:whitespace-nowrap lg:text-left">
             <li>
-              <ActiveLink
-                to="/about"
-                className="opacity-50 hover:opacity-100"
-                activeClassName="opacity-100"
-              >
-                About Us
-              </ActiveLink>
+              <ActiveLink to="/about">About Us</ActiveLink>
             </li>
             <li>
-              <ActiveLink
-                to="/faqs"
-                className="opacity-50 hover:opacity-100"
-                activeClassName="opacity-100"
-              >
-                FAQs
-              </ActiveLink>
+              <ActiveLink to="/faqs">FAQs</ActiveLink>
             </li>
             <li>
-              <ActiveLink
-                to="/contact"
-                className="opacity-50 hover:opacity-100"
-                activeClassName="opacity-100"
-              >
-                Contact Us
-              </ActiveLink>
+              <ActiveLink to="/contact">Contact Us</ActiveLink>
             </li>
           </ul>
 
           {/* Privacy policy, terms of use, disclamer, and help center */}
-          {/* <ul className="mb-50px flex flex-col text-center text-lg font-medium leading-44px text-text-grey lg:whitespace-nowrap lg:text-left">
+          {/* <ul className="mb-50px flex flex-col text-center text-lg font-medium leading-44px text-[#646464] lg:whitespace-nowrap lg:text-left">
             <li className="inline-block">
               <Link
                 to="/privacy-policy/"
@@ -127,7 +91,7 @@ export default function Footer() {
           {/* </ul> */}
 
           {/* Manage preferences and cookies policy */}
-          {/* <ul className="mb-55px flex flex-col text-center text-lg font-medium leading-44px text-text-grey lg:whitespace-nowrap lg:text-left">
+          {/* <ul className="mb-55px flex flex-col text-center text-lg font-medium leading-44px text-[#646464] lg:whitespace-nowrap lg:text-left">
           <li className="inline-block">
             <Link to="/">Manage Preferences</Link>
           </li>
@@ -145,7 +109,7 @@ export default function Footer() {
           {/* Social */}
           <div>
             {/* Follow us */}
-            <p className="mb-[26px] flex justify-center text-xl font-medium uppercase leading-[39px] text-text-layout_text lg:justify-start">
+            <p className="mb-[26px] flex justify-center text-xl font-medium uppercase leading-[39px] text-[#0f0700] lg:justify-start">
               Follow Us
             </p>
 
@@ -163,7 +127,7 @@ export default function Footer() {
       </section>
 
       {/* Copyright */}
-      <div className="flex justify-center bg-bg-grey p-[22px] text-[13px] font-extralight leading-[26px] text-text-layout_text">
+      <div className="flex justify-center bg-[#f8f8f8] p-[22px] text-[13px] font-extralight leading-[26px] text-[#0f0700]">
         Copyright ©MyPrayerTimes 2023. All rights reserved
       </div>
     </footer>
