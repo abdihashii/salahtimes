@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getTodaysDate, fetchHijriDate } from "@/lib/utils";
+import { getFormattedDates, fetchHijriDate } from "@/lib/utils";
 
 export function useHijriDate() {
   const adjustment = 1;
-  const { forHijri, gregorianDate } = getTodaysDate();
+  const { forHijri, gregorianDate } = getFormattedDates();
 
   const hijriDateQuery = useQuery({
     queryKey: ["hijri-date"],
