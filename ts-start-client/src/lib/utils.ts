@@ -2,22 +2,27 @@ import { clsx, type ClassValue } from "clsx";
 import { format } from "date-fns";
 import { twMerge } from "tailwind-merge";
 
+import { DATE_FORMATS } from "@/lib/constants";
+import { DateFormats } from "@/lib/types";
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const getTodaysDate = () => {
-  const today = new Date();
+export const formatDateForHijriAPI = (date: Date = new Date()): string => {
+  return format(date, DATE_FORMATS.HIJRI_API);
+};
 
-  const mm = String(today.getMonth() + 1).padStart(2, "0"); // January is 0
-  const dd = String(today.getDate()).padStart(2, "0");
-  const yyyy = today.getFullYear();
+export const formatGregorianDate = (date: Date = new Date()): string => {
+  return format(date, DATE_FORMATS.GREGORIAN_DISPLAY);
+};
 
-  const gregorianDate = format(today, "MMMM do, yyyy");
+export const getFormattedDates = (date?: Date): DateFormats => {
+  const targetDate = date || new Date();
 
   return {
-    forHijri: `${dd}-${mm}-${yyyy}`,
-    gregorianDate: gregorianDate,
+    forHijri: formatDateForHijriAPI(targetDate),
+    gregorianDate: formatGregorianDate(targetDate),
   };
 };
 
