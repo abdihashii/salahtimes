@@ -37,13 +37,8 @@ export function ContactForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="mx-auto flex w-5/6 flex-col gap-7 rounded-xl border border-green-dark bg-white p-7 text-black lg:w-5/12"
+      className="mx-auto flex w-5/6 flex-col gap-7 rounded-xl border border-[#006307] bg-white p-7 text-black lg:w-1/2"
     >
-      <div className="flex flex-col gap-2">
-        <h3 className="text-lg font-bold">Contact Form</h3>
-        <p className="text-sm">Required fields are marked with an asterisk*</p>
-      </div>
-
       {/* Form inputs */}
       <div className="flex w-full flex-col gap-10 lg:flex-row">
         <div className="flex flex-col gap-4 lg:w-1/2">
