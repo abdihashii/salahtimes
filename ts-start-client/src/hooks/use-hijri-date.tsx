@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 
-import { getFormattedDates, fetchHijriDate } from "@/lib/utils";
+import { getFormattedDates } from "@/lib/utils";
+import { fetchHijriDate } from "@/services/hijri.service";
 
 export function useHijriDate() {
   const adjustment = 1;
